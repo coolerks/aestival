@@ -306,7 +306,8 @@ export function AppSidebar() {
           </ContextMenuGroup>
         </ContextMenuContent>
       </ContextMenu>
-      <SidebarRail className="-top-[50px]" />
+      {/* 上延量与标题栏高度 53px 对齐，使 hover 高亮与点击区域从窗口顶部连续到底部 */}
+      <SidebarRail className="-top-[53px]" />
     </Sidebar>
   )
 }
