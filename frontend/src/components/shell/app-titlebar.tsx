@@ -25,31 +25,26 @@ export function AppTitlebar() {
 
   return (
     <header className="app-no-drag relative z-20 flex h-[53px] shrink-0">
+      {/* 实体背景层：左缘与侧栏/材质层同步滑动，保证整列回缩统一 */}
+      <div
+        aria-hidden="true"
+        className={cn(
+          "absolute inset-y-0 right-0 border-b bg-background transition-[left] duration-200 ease-linear",
+          sidebarState === "expanded"
+            ? "left-[var(--sidebar-width)]"
+            : "left-0"
+        )}
+      />
       <div
         aria-hidden="true"
         className="app-drag-region absolute inset-x-2 top-2 bottom-0 z-0"
       />
-      <div
-        className={cn(
-          "pointer-events-none relative z-10 flex min-w-0 items-center px-2 transition-[width,background-color,border-color]",
-          sidebarState === "expanded"
-            ? "w-[var(--sidebar-width)] shrink-0 bg-transparent"
-            : "flex-1 border-b bg-background"
-        )}
-      >
+      <div className="pointer-events-none relative z-10 flex min-w-0 flex-1 items-center px-2">
         <div className="h-full w-[72px] shrink-0" aria-hidden="true" />
         <div className="app-no-drag pointer-events-auto flex min-w-0 flex-1 items-center gap-1">
           <SidebarTrigger aria-label="显示或隐藏左侧栏" />
           <p className="ml-1 min-w-0 truncate text-sm font-medium">{title}</p>
         </div>
-      </div>
-
-      <div
-        className={cn(
-          "pointer-events-none relative z-10 flex items-center justify-end gap-1 border-b bg-background px-2",
-          sidebarState === "expanded" ? "min-w-0 flex-1" : "shrink-0"
-        )}
-      >
         <div className="app-no-drag pointer-events-auto flex shrink-0 items-center gap-1">
           <IconButton
             label="全局搜索"
