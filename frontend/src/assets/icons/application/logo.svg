@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="1248" height="1248" viewBox="0 0 1248 1248"
+     role="img" aria-label="抽象海浪与叶片图标"
+     shape-rendering="geometricPrecision">
+  <defs>
+    <clipPath id="roundedIcon">
+      <rect x="0" y="0" width="1248" height="1248" rx="336" ry="336"/>
+    </clipPath>
+
+    <radialGradient id="bgBase" cx="50%" cy="45%" r="72%">
+      <stop offset="0%" stop-color="#fffdf8"/>
+      <stop offset="48%" stop-color="#fff9ea"/>
+      <stop offset="82%" stop-color="#fff2d9"/>
+      <stop offset="100%" stop-color="#ffe9c5"/>
+    </radialGradient>
+
+    <radialGradient id="bgGlow1" cx="17%" cy="50%" r="42%">
+      <stop offset="0%" stop-color="#fff3cd" stop-opacity=".52"/>
+      <stop offset="100%" stop-color="#fff3cd" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="bgGlow2" cx="77%" cy="18%" r="38%">
+      <stop offset="0%" stop-color="#fff0c8" stop-opacity=".42"/>
+      <stop offset="100%" stop-color="#fff0c8" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="finGradient" x1="235" y1="856" x2="740" y2="278"
+                    gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#24b89d"/>
+      <stop offset="48%" stop-color="#38c2b1"/>
+      <stop offset="100%" stop-color="#57cbc0"/>
+    </linearGradient>
+
+    <linearGradient id="bodyGradient" x1="336" y1="938" x2="1024" y2="602"
+                    gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0568cf"/>
+      <stop offset="31%" stop-color="#08a5df"/>
+      <stop offset="61%" stop-color="#0598dd"/>
+      <stop offset="100%" stop-color="#0873d1"/>
+    </linearGradient>
+
+    <linearGradient id="lightWaveGradient" x1="526" y1="713" x2="847" y2="603"
+                    gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#73d9ef"/>
+      <stop offset="55%" stop-color="#43c7ea"/>
+      <stop offset="100%" stop-color="#0da9e2"/>
+    </linearGradient>
+
+    <linearGradient id="deepWaveGradient" x1="702" y1="803" x2="1038" y2="689"
+                    gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#056bcf"/>
+      <stop offset="100%" stop-color="#1458cc"/>
+    </linearGradient>
+
+    <linearGradient id="sprayGradient" x1="860" y1="536" x2="996" y2="405"
+                    gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#72d3a6"/>
+      <stop offset="100%" stop-color="#a7dfa0"/>
+    </linearGradient>
+
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%"
+            color-interpolation-filters="sRGB">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4.5" result="blur"/>
+      <feOffset dy="3" result="offset"/>
+      <feColorMatrix in="offset" type="matrix"
+        values="0 0 0 0 0.02
+                0 0 0 0 0.24
+                0 0 0 0 0.34
+                0 0 0 .10 0" result="shadow"/>
+      <feMerge>
+        <feMergeNode in="shadow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <path id="bodyShape" d="
+      M 270 947
+      C 339 888, 429 847, 529 826
+      C 573 817, 607 814, 618 798
+      C 628 783, 618 761, 594 745
+      C 573 732, 551 722, 545 704
+      C 539 684, 561 668, 590 651
+      C 648 618, 728 598, 815 599
+      C 903 595, 974 615, 1021 659
+      C 1063 699, 1083 742, 1083 787
+      C 1084 843, 1057 889, 1016 912
+      C 972 937, 929 925, 873 911
+      C 763 882, 650 873, 536 883
+      C 434 892, 345 913, 270 947 Z"/>
+
+    <clipPath id="bodyClip" clipPathUnits="userSpaceOnUse">
+      <use href="#bodyShape" xlink:href="#bodyShape"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#roundedIcon)">
+    <rect width="1248" height="1248" fill="url(#bgBase)"/>
+    <rect width="1248" height="1248" fill="url(#bgGlow1)"/>
+    <rect width="1248" height="1248" fill="url(#bgGlow2)"/>
+
+    <g filter="url(#softShadow)">
+      <path fill="url(#finGradient)" d="
+        M 183 871
+        C 202 708, 276 536, 405 402
+        C 493 311, 607 260, 681 271
+        C 717 276, 738 292, 739 313
+        C 741 345, 716 394, 691 445
+        C 666 496, 659 526, 674 551
+        C 687 574, 712 582, 748 589
+        C 758 591, 766 594, 766 597
+        C 766 600, 756 600, 741 599
+        C 650 592, 571 603, 499 628
+        C 454 644, 425 662, 425 681
+        C 425 696, 441 704, 458 716
+        C 472 726, 469 737, 449 743
+        C 420 752, 386 752, 345 761
+        C 274 778, 207 822, 183 871 Z"/>
+
+      <use href="#bodyShape" xlink:href="#bodyShape" fill="url(#bodyGradient)"/>
+
+      <g clip-path="url(#bodyClip)">
+        <path fill="url(#lightWaveGradient)" opacity=".92" d="
+          M 522 726
+          C 560 709, 610 701, 665 692
+          C 714 684, 746 664, 779 639
+          C 804 620, 826 605, 850 595
+          L 900 560
+          L 500 560
+          L 500 760 Z"/>
+
+        <path fill="url(#deepWaveGradient)" opacity=".78" d="
+          M 701 741
+          C 742 714, 790 717, 842 716
+          C 892 715, 928 688, 972 683
+          C 1004 679, 1039 688, 1064 705
+          C 1080 732, 1085 762, 1083 791
+          C 1080 839, 1056 884, 1015 910
+          C 968 937, 922 922, 872 910
+          C 818 897, 758 886, 699 883
+          C 731 858, 744 831, 731 812
+          C 721 798, 696 793, 690 773
+          C 686 759, 690 750, 701 741 Z"/>
+      </g>
+    </g>
+
+    <path fill="url(#sprayGradient)" opacity=".88" d="
+      M 868 532
+      C 870 484, 889 446, 919 421
+      C 943 401, 970 402, 978 414
+      C 989 432, 972 454, 947 473
+      C 922 492, 894 504, 868 532 Z"/>
+
+    <path fill="url(#sprayGradient)" opacity=".88" d="
+      M 912 551
+      C 931 531, 952 520, 974 519
+      C 990 518, 1004 525, 1000 536
+      C 996 549, 975 553, 954 551
+      C 939 550, 925 548, 912 551 Z"/>
+  </g>
+</svg>

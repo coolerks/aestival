@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=My Product
+Comment=A aestival application
+# The Exec line includes %u to pass the URL to the application
+Exec=/usr/local/bin/aestival %u
+Terminal=false
+Type=Application
+Icon=aestival
+Categories=Utility;
+StartupWMClass=aestival
+
+ 
