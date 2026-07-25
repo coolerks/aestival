@@ -48,7 +48,8 @@ function AestivalWorkspace() {
       >
         <SidebarGlassBackdrop />
         <AppTitlebar />
-        <div className="relative z-10 flex min-h-0 flex-1">
+        {/* z-30 使 SidebarRail 上延部分在标题栏区域同样可 hover 并显示高亮线；行内容与标题栏垂直方向不重叠，不影响其他层级 */}
+        <div className="relative z-30 flex min-h-0 flex-1">
           <AppSidebar />
           <SidebarInset className="min-h-0 overflow-hidden">
             <WorkspaceShell />
