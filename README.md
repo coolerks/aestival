@@ -15,6 +15,10 @@
 > [!IMPORTANT]
 > Aestival 正在开发中。当前仓库以桌面应用外壳、前端 UI 和 Mock 交互为主，尚未接入真实模型调用、数据库、向量检索、MCP、Skill、终端、文件系统、定时任务执行或外部消息平台服务。
 
+![UI](./screenshots/ui.png "UI")
+
+![KNOWLEDGE](./screenshots/knowledge.png "KNOWLEDGE")
+
 ## 🌊 Aestival 是什么
 
 Aestival 面向需要长期使用 AI Agent 处理项目任务的桌面场景。它将代理对话、项目上下文、文件浏览、终端、搜索、日志和会话调试放在统一工作区内，并通过明确的权限与状态反馈展示代理执行过程。
