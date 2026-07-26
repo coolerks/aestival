@@ -8,12 +8,14 @@ import { toast } from "sonner"
 
 import { IconButton } from "@/components/shell/icon-button"
 import { SidebarTrigger, useSidebar } from "@/components/ui/sidebar"
+import { navigationItems } from "@/data/mock-workspace"
 import { cn } from "@/lib/utils"
 import { toggleWindowMaximise } from "@/services/window-service"
 import { useWorkspaceStore } from "@/store/workspace-store"
 
 export function AppTitlebar() {
   const { state: sidebarState } = useSidebar()
+  const activePage = useWorkspaceStore((state) => state.activePage)
   const setCommandOpen = useWorkspaceStore((state) => state.setCommandOpen)
   const toggleRightPanel = useWorkspaceStore((state) => state.toggleRightPanel)
   const toggleBottomPanel = useWorkspaceStore(
@@ -21,6 +23,8 @@ export function AppTitlebar() {
   )
   const rightPanelOpen = useWorkspaceStore((state) => state.rightPanelOpen)
   const bottomPanelOpen = useWorkspaceStore((state) => state.bottomPanelOpen)
+  const title =
+    navigationItems.find((item) => item.id === activePage)?.label ?? "Aestival"
 
   const handleTitlebarDoubleClick = (event: MouseEvent<HTMLElement>) => {
     if (event.button !== 0) {
@@ -53,6 +57,16 @@ export function AppTitlebar() {
             : "left-0"
         )}
       />
+      <div
+        className={cn(
+          "pointer-events-none absolute inset-y-0 right-[116px] z-10 flex min-w-0 items-center transition-[left] duration-200 ease-linear",
+          sidebarState === "expanded"
+            ? "left-[calc(var(--sidebar-width)+1rem)]"
+            : "left-[124px]"
+        )}
+      >
+        <p className="min-w-0 truncate text-sm font-medium">{title}</p>
+      </div>
       <div className="pointer-events-none relative z-10 flex min-w-0 flex-1 items-center px-4">
         <div className="h-full w-[72px] shrink-0" aria-hidden="true" />
         <div className="flex min-w-0 flex-1 items-center gap-1">
