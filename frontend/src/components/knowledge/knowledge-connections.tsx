@@ -38,6 +38,7 @@ import {
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
@@ -119,11 +120,13 @@ export function KnowledgeConnections() {
             </SelectValue>
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">全部状态</SelectItem>
-            <SelectItem value="online">在线</SelectItem>
-            <SelectItem value="offline">离线</SelectItem>
-            <SelectItem value="auth-error">认证失败</SelectItem>
-            <SelectItem value="untested">未测试</SelectItem>
+            <SelectGroup>
+              <SelectItem value="all">全部状态</SelectItem>
+              <SelectItem value="online">在线</SelectItem>
+              <SelectItem value="offline">离线</SelectItem>
+              <SelectItem value="auth-error">认证失败</SelectItem>
+              <SelectItem value="untested">未测试</SelectItem>
+            </SelectGroup>
           </SelectContent>
         </Select>
         <Button size="sm" onClick={() => setNewConnectionOpen(true)}>

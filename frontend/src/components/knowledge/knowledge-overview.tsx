@@ -52,6 +52,7 @@ import { Separator } from "@/components/ui/separator"
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
@@ -278,12 +279,14 @@ export function KnowledgeOverview() {
             </SelectValue>
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">全部类型</SelectItem>
-            {knowledgeSourceDefinitions.map((source) => (
-              <SelectItem key={source.type} value={source.type}>
-                {source.name}
-              </SelectItem>
-            ))}
+            <SelectGroup>
+              <SelectItem value="all">全部类型</SelectItem>
+              {knowledgeSourceDefinitions.map((source) => (
+                <SelectItem key={source.type} value={source.type}>
+                  {source.name}
+                </SelectItem>
+              ))}
+            </SelectGroup>
           </SelectContent>
         </Select>
         <Select
@@ -300,12 +303,14 @@ export function KnowledgeOverview() {
             </SelectValue>
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">全部状态</SelectItem>
-            <SelectItem value="ready">就绪</SelectItem>
-            <SelectItem value="syncing">同步中</SelectItem>
-            <SelectItem value="needs-update">需更新</SelectItem>
-            <SelectItem value="error">错误</SelectItem>
-            <SelectItem value="disabled">已停用</SelectItem>
+            <SelectGroup>
+              <SelectItem value="all">全部状态</SelectItem>
+              <SelectItem value="ready">就绪</SelectItem>
+              <SelectItem value="syncing">同步中</SelectItem>
+              <SelectItem value="needs-update">需更新</SelectItem>
+              <SelectItem value="error">错误</SelectItem>
+              <SelectItem value="disabled">已停用</SelectItem>
+            </SelectGroup>
           </SelectContent>
         </Select>
         <DropdownMenu>

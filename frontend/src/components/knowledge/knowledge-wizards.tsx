@@ -69,6 +69,7 @@ import { Progress } from "@/components/ui/progress"
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
@@ -145,7 +146,9 @@ function WizardFrame({
           <DialogTitle>{title}</DialogTitle>
           <DialogDescription>{description}</DialogDescription>
         </DialogHeader>
-        <div className="min-h-0 overflow-y-auto">{children}</div>
+        <div className="-mx-1 min-h-0 overflow-y-auto px-1">
+          {children}
+        </div>
         <DialogFooter>{footer}</DialogFooter>
       </DialogContent>
     </Dialog>
@@ -304,11 +307,13 @@ export function NewConnectionWizard() {
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="全部">全部类别</SelectItem>
-                <SelectItem value="关系数据库">关系数据库</SelectItem>
-                <SelectItem value="向量数据库">向量数据库</SelectItem>
-                <SelectItem value="搜索引擎">搜索引擎</SelectItem>
-                <SelectItem value="本地文件">本地文件</SelectItem>
+                <SelectGroup>
+                  <SelectItem value="全部">全部类别</SelectItem>
+                  <SelectItem value="关系数据库">关系数据库</SelectItem>
+                  <SelectItem value="向量数据库">向量数据库</SelectItem>
+                  <SelectItem value="搜索引擎">搜索引擎</SelectItem>
+                  <SelectItem value="本地文件">本地文件</SelectItem>
+                </SelectGroup>
               </SelectContent>
             </Select>
             <ItemGroup className="grid gap-2 sm:grid-cols-2">
@@ -686,11 +691,13 @@ export function NewKnowledgeWizard() {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="所有智能体">所有智能体</SelectItem>
-                  <SelectItem value="通用智能体、代码审查">
-                    通用智能体、代码审查
-                  </SelectItem>
-                  <SelectItem value="产品智能体">产品智能体</SelectItem>
+                  <SelectGroup>
+                    <SelectItem value="所有智能体">所有智能体</SelectItem>
+                    <SelectItem value="通用智能体、代码审查">
+                      通用智能体、代码审查
+                    </SelectItem>
+                    <SelectItem value="产品智能体">产品智能体</SelectItem>
+                  </SelectGroup>
                 </SelectContent>
               </Select>
             </Field>
@@ -717,11 +724,13 @@ export function NewKnowledgeWizard() {
                   </SelectValue>
                 </SelectTrigger>
                 <SelectContent>
-                  {connections.map((connection) => (
-                    <SelectItem key={connection.id} value={connection.id}>
-                      {connection.name}
-                    </SelectItem>
-                  ))}
+                  <SelectGroup>
+                    {connections.map((connection) => (
+                      <SelectItem key={connection.id} value={connection.id}>
+                        {connection.name}
+                      </SelectItem>
+                    ))}
+                  </SelectGroup>
                 </SelectContent>
               </Select>
               <FieldDescription>
@@ -768,9 +777,11 @@ export function NewKnowledgeWizard() {
                   <SelectValue>自动识别</SelectValue>
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="auto">自动识别</SelectItem>
-                  <SelectItem value="markdown">Markdown</SelectItem>
-                  <SelectItem value="plain">纯文本</SelectItem>
+                  <SelectGroup>
+                    <SelectItem value="auto">自动识别</SelectItem>
+                    <SelectItem value="markdown">Markdown</SelectItem>
+                    <SelectItem value="plain">纯文本</SelectItem>
+                  </SelectGroup>
                 </SelectContent>
               </Select>
             </Field>
@@ -818,15 +829,17 @@ export function NewKnowledgeWizard() {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="Mock Embed 1024">
-                    Mock Embed 1024
-                  </SelectItem>
-                  <SelectItem value="Mock Embed 1536">
-                    Mock Embed 1536
-                  </SelectItem>
-                  <SelectItem value="使用已有向量 · 1024">
-                    使用已有向量 · 1024
-                  </SelectItem>
+                  <SelectGroup>
+                    <SelectItem value="Mock Embed 1024">
+                      Mock Embed 1024
+                    </SelectItem>
+                    <SelectItem value="Mock Embed 1536">
+                      Mock Embed 1536
+                    </SelectItem>
+                    <SelectItem value="使用已有向量 · 1024">
+                      使用已有向量 · 1024
+                    </SelectItem>
+                  </SelectGroup>
                 </SelectContent>
               </Select>
             </Field>
@@ -923,9 +936,11 @@ export function NewKnowledgeWizard() {
                   </SelectValue>
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="manual">手动</SelectItem>
-                  <SelectItem value="startup">启动时</SelectItem>
-                  <SelectItem value="schedule">定时任务</SelectItem>
+                  <SelectGroup>
+                    <SelectItem value="manual">手动</SelectItem>
+                    <SelectItem value="startup">启动时</SelectItem>
+                    <SelectItem value="schedule">定时任务</SelectItem>
+                  </SelectGroup>
                 </SelectContent>
               </Select>
             </Field>
