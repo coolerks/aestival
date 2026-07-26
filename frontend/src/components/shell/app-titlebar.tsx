@@ -3,10 +3,13 @@ import {
   PanelRightIcon,
   SearchIcon,
 } from "lucide-react"
+import type { MouseEvent } from "react"
+import { toast } from "sonner"
 
 import { IconButton } from "@/components/shell/icon-button"
 import { SidebarTrigger, useSidebar } from "@/components/ui/sidebar"
 import { cn } from "@/lib/utils"
+import { toggleWindowMaximise } from "@/services/window-service"
 import { useWorkspaceStore } from "@/store/workspace-store"
 
 export function AppTitlebar() {
@@ -19,8 +22,27 @@ export function AppTitlebar() {
   const rightPanelOpen = useWorkspaceStore((state) => state.rightPanelOpen)
   const bottomPanelOpen = useWorkspaceStore((state) => state.bottomPanelOpen)
 
+  const handleTitlebarDoubleClick = (event: MouseEvent<HTMLElement>) => {
+    if (event.button !== 0) {
+      return
+    }
+
+    const target = event.target
+    if (target instanceof Element && target.closest(".app-no-drag")) {
+      return
+    }
+
+    event.preventDefault()
+    void toggleWindowMaximise().catch(() => {
+      toast.error("无法切换窗口大小")
+    })
+  }
+
   return (
-    <header className="app-drag-region relative z-20 flex h-[53px] shrink-0">
+    <header
+      className="app-drag-region relative z-20 flex h-[53px] shrink-0"
+      onDoubleClick={handleTitlebarDoubleClick}
+    >
       {/* 实体背景层：左缘与侧栏/材质层同步滑动，保证整列回缩统一 */}
       <div
         aria-hidden="true"
