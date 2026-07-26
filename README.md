@@ -224,7 +224,7 @@ aestival/
 | 文件和文件夹图标    | `frontend/src/assets/icons/material/`                     |
 | 文件图标映射规则    | `docs/文件图标映射.md`                                          |
 
-文件图标资源参考 [Material Icon Theme](https://github.com/material-extensions/vscode-material-icon-theme)。正式发布前仍需完成资源来源、许可证与映射一致性检查。
+文件图标资源使用 [Material Icon Theme](https://github.com/material-extensions/vscode-material-icon-theme)。
 
 ## 📚 设计文档
 
