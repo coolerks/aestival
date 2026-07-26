@@ -10,7 +10,10 @@ function SelectGroup({ className, ...props }: SelectPrimitive.Group.Props) {
   return (
     <SelectPrimitive.Group
       data-slot="select-group"
-      className={cn("scroll-my-1 p-1", className)}
+      className={cn(
+        "scroll-my-1 p-1 in-data-[align-trigger=true]:pl-[5px]",
+        className
+      )}
       {...props}
     />
   )
@@ -61,7 +64,7 @@ function SelectContent({
   sideOffset = 4,
   align = "center",
   alignOffset = 0,
-  alignItemWithTrigger = false,
+  alignItemWithTrigger = true,
   ...props
 }: SelectPrimitive.Popup.Props &
   Pick<
