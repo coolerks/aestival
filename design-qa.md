@@ -1,6 +1,6 @@
 # Aestival UI 设计验收
 
-> 验收时间：2026-07-25 23:31  
+> 验收时间：2026-07-26 09:16
 > 时区：Asia/Shanghai  
 > 任务：UI-001、BE-001  
 > 最终结果：通过
@@ -23,6 +23,9 @@ final result: passed
 - 第四轮浏览器实现：`docs/协作同步/design-qa-sidebar-glass-states-1280x720.png`
 - 第四轮原生窗口实现：`docs/协作同步/design-qa-sidebar-native-1327x768.jpg`
 - 第四轮并排对照：`docs/协作同步/design-qa-sidebar-glass-states-comparison.png`
+- 第十一轮标注参考：`/var/folders/jz/v6ymlznd733_t1sqjwrc4zdm0000gn/T/codex-clipboard-cab0a081-8f59-488c-900c-35054e85c52b.png`
+- 第十一轮浏览器实现：`docs/协作同步/design-qa-titlebar-drag-1280x720.jpg`
+- 第十一轮全屏/标题栏聚焦对照：`docs/协作同步/design-qa-titlebar-drag-comparison.png`
 - 标准视口：1440 × 900
 - 窄窗口视口：960 × 640
 
@@ -58,6 +61,43 @@ final result: passed
 17. 第四轮标注指出整列毛玻璃仍偏不透明，Sidebar tab、hover 和选中状态不够清晰，且边缘 hover 线只在标题栏下方变粗。
 18. 将整列材质层调整为 60% 侧栏色，使用半透明语义色重新区分 tab 轨道、hover、选中与导航 active；`SidebarRail` 向上延伸至窗口顶端。
 19. 左上方向缩放抖动与标题栏拖拽区域覆盖原生缩放边缘、WebView fixed/动态视口层在窗口原点变化时重复重排的组合风险一致；已增加 8px 原生缩放安全区，并改用稳定的根高度和工作区绝对定位。
+20. 后续源码与用户实测确认，真正的角落抖动来自 `InvisibleTitleBarHeight` 强制拖拽与 AppKit 原生缩放竞争；已移除该配置，用户确认四角缩放不再抖动/跑位。
+21. 接入 `@wailsio/runtime` 后，标题栏中央仍被左右两组大范围 `no-drag` 容器遮挡；第十一轮将 `drag` 语义放到完整标题栏，仅四个真实按钮保留 `no-drag`，用户确认整条标题栏均可移动窗口。
+
+## 第十一轮设计 QA
+
+### 对照证据
+
+- 源视觉真值：`/var/folders/jz/v6ymlznd733_t1sqjwrc4zdm0000gn/T/codex-clipboard-cab0a081-8f59-488c-900c-35054e85c52b.png`。
+- 源图像素：2144 × 1672；内容为 macOS 原生窗口和红色标题栏可拖动范围标注。
+- 实现截图：`docs/协作同步/design-qa-titlebar-drag-1280x720.jpg`，像素/CSS 视口均为 1280 × 720，deviceScaleFactor 1。
+- 合并对照：`docs/协作同步/design-qa-titlebar-drag-comparison.png`，2560 × 870；上半部为源图等比缩放/补边与实现全屏并排，下半部为标题栏聚焦区域并排。
+- 状态：浅色、新建任务、Sidebar 展开，右侧栏与底部面板关闭。源图窗口更高，建议动作因实现视口高度为 720px 而按既有响应式规则隐藏；该差异不属于本轮标题栏范围。
+
+### Findings 与修复
+
+- [P1] 标题栏只有上下窄缝可拖动：大范围 `flex-1` 标题容器和右侧动作容器整体标记为 `no-drag`，遮住了底层拖拽面。已移除大容器的 `no-drag`/指针命中，仅在四个真实按钮上保留。
+- [P2] 拖拽语义依赖独立覆盖层，容易再次被更高层内容遮挡：已由完整 53px `header` 自身承载 `app-drag-region`，布局子节点继承拖动语义。
+
+### 修复后证据
+
+- 1280×720 命中矩阵中，x=4、40、145、300、640、1120 且 y=4/25/51 的标题栏空白均计算为 `--wails-draggable: drag`。
+- 侧栏、搜索、右侧栏和底部面板按钮分别计算为 `no-drag`，原有点击能力保持；y=55 已离开标题栏且不继承拖动。
+- 页面 `scrollWidth/scrollHeight` 为 1280×720，无布局溢出；全屏和聚焦对照未出现字体、间距、颜色、图标、品牌 SVG 或文案回归。
+- 用户在原生应用中实测确认完整标题栏移动窗口正常；此前已确认的四角缩放无抖动/跑位修复保持有效。
+
+### 必查视觉面
+
+- 字体与文案：Geist、中文系统回退、字号、字重、标题截断和所有可见文案未改动。
+- 间距与布局：标题栏仍为 53px，72px macOS 安全区、Sidebar 宽度和右侧按钮间距均未改变。
+- 颜色与 token：背景、底边、Sidebar 材质和状态色未改动，继续使用语义 token。
+- 图像与图标：应用品牌 SVG 与 Lucide 图标未替换、未栅格化或降质。
+- 交互与可访问性：纯图标按钮仍有 `aria-label` 与 Tooltip；标题栏空白不再拦截拖动，按钮保持键盘和鼠标交互。
+- 控制台：无新增 error；仅存在浏览器环境下 Wails 运行时的预期 UI 预览提示。
+
+### 第十一轮结论
+
+本轮早期 P1/P2 命中问题均已修复，修复后合并对照与计算样式检查未发现剩余 P0/P1/P2 视觉或交互回归，原生核心行为已由用户确认。
 
 ## 第四轮设计 QA
 
@@ -140,7 +180,7 @@ final result: passed
 - [x] 侧栏右边框从窗口顶部连续到底部，且不存在重复边框。
 - [x] 整列材质层使用 60% 侧栏语义色；tab、hover、选中和 active 状态均为可辨识的半透明表面。
 - [x] Sidebar 可拖拽边缘与 hover 线从标题栏顶部连续到底部。
-- [x] 标题栏拖拽区域避让顶部、左右边缘和左上角的 8px 原生缩放安全区。
+- [x] 完整标题栏继承 Wails `drag`，仅四个真实交互按钮为 `no-drag`；四边和四角继续由 AppKit 原生缩放优先处理。
 - [x] 根节点使用稳定的 100% 宽高，Sidebar 和材质层不再依赖 fixed 或动态视口高度。
 - [x] WebView 侧栏不再使用 CSS `backdrop-filter`，Wails 原生 backdrop 继续启用。
 - [x] 无 Card 嵌套，当前页面没有 Card 墙。

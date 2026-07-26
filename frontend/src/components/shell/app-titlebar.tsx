@@ -24,7 +24,7 @@ export function AppTitlebar() {
     navigationItems.find((item) => item.id === activePage)?.label ?? "Aestival"
 
   return (
-    <header className="app-no-drag relative z-20 flex h-[53px] shrink-0">
+    <header className="app-drag-region relative z-20 flex h-[53px] shrink-0">
       {/* 实体背景层：左缘与侧栏/材质层同步滑动，保证整列回缩统一 */}
       <div
         aria-hidden="true"
@@ -35,24 +35,25 @@ export function AppTitlebar() {
             : "left-0"
         )}
       />
-      <div
-        aria-hidden="true"
-        className="app-drag-region absolute inset-x-2 top-2 bottom-0 z-0"
-      />
       <div className="pointer-events-none relative z-10 flex min-w-0 flex-1 items-center px-2">
         <div className="h-full w-[72px] shrink-0" aria-hidden="true" />
-        <div className="app-no-drag pointer-events-auto flex min-w-0 flex-1 items-center gap-1">
-          <SidebarTrigger aria-label="显示或隐藏左侧栏" />
+        <div className="flex min-w-0 flex-1 items-center gap-1">
+          <SidebarTrigger
+            className="app-no-drag pointer-events-auto"
+            aria-label="显示或隐藏左侧栏"
+          />
           <p className="ml-1 min-w-0 truncate text-sm font-medium">{title}</p>
         </div>
-        <div className="app-no-drag pointer-events-auto flex shrink-0 items-center gap-1">
+        <div className="flex shrink-0 items-center gap-1">
           <IconButton
+            className="app-no-drag pointer-events-auto"
             label="全局搜索"
             onClick={() => setCommandOpen(true)}
           >
             <SearchIcon />
           </IconButton>
           <IconButton
+            className="app-no-drag pointer-events-auto"
             label={rightPanelOpen ? "关闭右侧栏" : "打开右侧栏"}
             aria-pressed={rightPanelOpen}
             onClick={toggleRightPanel}
@@ -60,6 +61,7 @@ export function AppTitlebar() {
             <PanelRightIcon />
           </IconButton>
           <IconButton
+            className="app-no-drag pointer-events-auto"
             label={bottomPanelOpen ? "关闭底部面板" : "打开底部面板"}
             aria-pressed={bottomPanelOpen}
             onClick={toggleBottomPanel}
