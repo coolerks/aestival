@@ -2,11 +2,16 @@ import {
   PanelBottomIcon,
   PanelRightIcon,
   SearchIcon,
+  ShieldQuestionIcon,
+  TimerIcon,
 } from "lucide-react"
 import type { MouseEvent } from "react"
 import { toast } from "sonner"
 
+import { ConversationTitleMenu } from "@/components/chat/conversation-title-menu"
 import { IconButton } from "@/components/shell/icon-button"
+import { Badge } from "@/components/ui/badge"
+import { Spinner } from "@/components/ui/spinner"
 import { SidebarTrigger, useSidebar } from "@/components/ui/sidebar"
 import { navigationItems } from "@/data/mock-workspace"
 import { cn } from "@/lib/utils"
@@ -16,6 +21,15 @@ import { useWorkspaceStore } from "@/store/workspace-store"
 export function AppTitlebar() {
   const { state: sidebarState } = useSidebar()
   const activePage = useWorkspaceStore((state) => state.activePage)
+  const conversationId = useWorkspaceStore((state) => state.conversationId)
+  const conversationTitle = useWorkspaceStore(
+    (state) => state.conversationTitle
+  )
+  const runState = useWorkspaceStore((state) => state.runState)
+  const isTemporaryConversation = useWorkspaceStore(
+    (state) => state.isTemporaryConversation
+  )
+  const mockAppDraft = useWorkspaceStore((state) => state.mockAppDraft)
   const setCommandOpen = useWorkspaceStore((state) => state.setCommandOpen)
   const toggleRightPanel = useWorkspaceStore((state) => state.toggleRightPanel)
   const toggleBottomPanel = useWorkspaceStore(
@@ -24,7 +38,16 @@ export function AppTitlebar() {
   const rightPanelOpen = useWorkspaceStore((state) => state.rightPanelOpen)
   const bottomPanelOpen = useWorkspaceStore((state) => state.bottomPanelOpen)
   const title =
-    navigationItems.find((item) => item.id === activePage)?.label ?? "Aestival"
+    activePage === "new-task" && conversationId
+      ? conversationTitle
+      : activePage === "apps" && mockAppDraft
+        ? mockAppDraft.name
+      : navigationItems.find((item) => item.id === activePage)?.label ??
+        "Aestival"
+  const running =
+    runState === "waiting" ||
+    runState === "thinking" ||
+    runState === "streaming"
 
   const handleTitlebarDoubleClick = (event: MouseEvent<HTMLElement>) => {
     if (event.button !== 0) {
@@ -44,37 +67,52 @@ export function AppTitlebar() {
 
   return (
     <header
-      className="app-drag-region relative z-20 flex h-[53px] shrink-0"
+      className={cn(
+        "app-drag-region relative z-20 grid h-[53px] shrink-0 transition-[grid-template-columns] duration-200 ease-linear",
+        sidebarState === "expanded"
+          ? "grid-cols-[var(--sidebar-width)_minmax(0,1fr)]"
+          : "grid-cols-[124px_minmax(0,1fr)]"
+      )}
       onDoubleClick={handleTitlebarDoubleClick}
     >
-      {/* 实体背景层：左缘与侧栏/材质层同步滑动，保证整列回缩统一 */}
-      <div
-        aria-hidden="true"
-        className={cn(
-          "absolute inset-y-0 right-0 border-b bg-background transition-[left] duration-200 ease-linear",
-          sidebarState === "expanded"
-            ? "left-[var(--sidebar-width)]"
-            : "left-0"
-        )}
-      />
-      <div
-        className={cn(
-          "pointer-events-none absolute inset-y-0 right-[116px] z-10 flex min-w-0 items-center transition-[left] duration-200 ease-linear",
-          sidebarState === "expanded"
-            ? "left-[calc(var(--sidebar-width)+1rem)]"
-            : "left-[124px]"
-        )}
-      >
-        <p className="min-w-0 truncate text-sm font-medium">{title}</p>
-      </div>
-      <div className="pointer-events-none relative z-10 flex min-w-0 flex-1 items-center px-4">
+      {/* 左段属于侧栏：只承载窗口控件安全区和侧栏开关，不显示页面名称。 */}
+      <div className="pointer-events-none relative z-10 flex h-full min-w-0 items-center px-4">
         <div className="h-full w-[72px] shrink-0" aria-hidden="true" />
-        <div className="flex min-w-0 flex-1 items-center gap-1">
-          <SidebarTrigger
-            className="app-no-drag pointer-events-auto"
-            aria-label="显示或隐藏左侧栏"
-          />
-        </div>
+        <SidebarTrigger
+          className="app-no-drag pointer-events-auto"
+          aria-label="显示或隐藏左侧栏"
+        />
+      </div>
+      {/* 右段属于主内容：页面、会话或文件名称统一从主内容左缘开始。 */}
+      <div className="pointer-events-none relative z-10 flex min-w-0 items-center gap-2 border-b bg-background px-4">
+        <p className="min-w-0 max-w-[min(36rem,50vw)] truncate text-sm font-medium">
+          {title}
+        </p>
+        {activePage === "new-task" && conversationId ? (
+          <ConversationTitleMenu />
+        ) : null}
+        <span className="min-w-0 flex-1" aria-hidden="true" />
+        {activePage === "new-task" && conversationId ? (
+          <span className="flex shrink-0 items-center gap-2">
+            {isTemporaryConversation ? (
+              <Badge variant="secondary">
+                <TimerIcon data-icon="inline-start" />
+                临时
+              </Badge>
+            ) : null}
+            {runState === "awaiting-approval" ? (
+              <span className="flex items-center gap-1 text-xs text-muted-foreground">
+                <ShieldQuestionIcon className="size-3.5" aria-hidden="true" />
+                等待审批
+              </span>
+            ) : running ? (
+              <span className="flex items-center gap-1 text-xs text-muted-foreground">
+                <Spinner aria-label="Mock 会话运行中" className="size-3.5" />
+                运行中
+              </span>
+            ) : null}
+          </span>
+        ) : null}
         <div className="flex shrink-0 items-center gap-1">
           <IconButton
             className="app-no-drag pointer-events-auto"

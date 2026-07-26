@@ -22,9 +22,58 @@ function AestivalWorkspace() {
       event.preventDefault()
     }
     const handleKeyboardShortcuts = (event: KeyboardEvent) => {
-      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+      const modifier = event.metaKey || event.ctrlKey
+      const key = event.key.toLowerCase()
+      if (modifier && key === "k") {
         event.preventDefault()
         setCommandOpen(true)
+        return
+      }
+
+      const target = event.target
+      const editing =
+        target instanceof HTMLInputElement ||
+        target instanceof HTMLTextAreaElement ||
+        (target instanceof HTMLElement && target.isContentEditable)
+      if (editing) {
+        return
+      }
+
+      const state = useWorkspaceStore.getState()
+      const session = state.sessions.find(
+        (item) => item.id === state.conversationId
+      )
+      if (!session) {
+        return
+      }
+
+      if (event.key === "F2") {
+        event.preventDefault()
+        state.openSessionDialog("rename", session.id)
+      } else if (modifier && event.shiftKey && key === "s") {
+        event.preventDefault()
+        state.toggleSessionStar(session.id)
+      } else if (modifier && event.shiftKey && key === "a") {
+        event.preventDefault()
+        state.setSessionArchived(session.id, !session.archived)
+      } else if (modifier && event.key === "Backspace") {
+        event.preventDefault()
+        state.openSessionDialog("delete", session.id)
+      } else if (modifier && event.altKey && key === "n") {
+        event.preventDefault()
+        state.openSessionDialog("schedule", session.id)
+      } else if (modifier && event.altKey && key === "i") {
+        event.preventDefault()
+        state.setStatsOpen(true)
+      } else if (modifier && event.altKey && key === "f") {
+        event.preventDefault()
+        state.setForkDialogOpen(
+          true,
+          state.messages[state.messages.length - 1]?.id
+        )
+      } else if (modifier && event.shiftKey && key === "e") {
+        event.preventDefault()
+        state.setExportDialogOpen(true, "conversation")
       }
     }
 

@@ -1,13 +1,11 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import {
   ArchiveIcon,
   BookOpenIcon,
   BotIcon,
   ChevronDownIcon,
-  ChevronRightIcon,
   ChevronUpIcon,
   DownloadIcon,
-  FolderIcon,
   FolderOpenIcon,
   FolderPlusIcon,
   ImportIcon,
@@ -15,7 +13,6 @@ import {
   KeyboardIcon,
   LogOutIcon,
   MessageCircleIcon,
-  MoreHorizontalIcon,
   RefreshCwIcon,
   SearchIcon,
   SettingsIcon,
@@ -23,11 +20,7 @@ import {
 } from "lucide-react"
 
 import appIcon from "@/assets/icons/application/icon.svg"
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible"
+import { SessionProjectGroup } from "@/components/session/session-project-group"
 import {
   ContextMenu,
   ContextMenuCheckboxItem,
@@ -56,29 +49,76 @@ import {
   SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
-  SidebarMenuAction,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
   SidebarRail,
 } from "@/components/ui/sidebar"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { mockSessions, navigationItems } from "@/data/mock-workspace"
+import {
+  mockSessionProjects,
+  type MockSessionProjectId,
+} from "@/data/mock-session-management"
+import { navigationItems } from "@/data/mock-workspace"
 import {
   type AgentMode,
   useWorkspaceStore,
 } from "@/store/workspace-store"
 
 export function AppSidebar() {
-  const [projectOpen, setProjectOpen] = useState(false)
-  const [showArchived, setShowArchived] = useState(false)
+  const [openProjects, setOpenProjects] = useState<
+    Record<MockSessionProjectId, boolean>
+  >({
+    task: false,
+    aestival: false,
+    "ai-ui": false,
+  })
   const mode = useWorkspaceStore((state) => state.mode)
   const setMode = useWorkspaceStore((state) => state.setMode)
   const activePage = useWorkspaceStore((state) => state.activePage)
   const setActivePage = useWorkspaceStore((state) => state.setActivePage)
+  const isTemporaryConversation = useWorkspaceStore(
+    (state) => state.isTemporaryConversation
+  )
+  const setTemporaryCloseOpen = useWorkspaceStore(
+    (state) => state.setTemporaryCloseOpen
+  )
+  const resetConversation = useWorkspaceStore(
+    (state) => state.resetConversation
+  )
   const setCommandOpen = useWorkspaceStore((state) => state.setCommandOpen)
+  const conversationId = useWorkspaceStore((state) => state.conversationId)
+  const sessions = useWorkspaceStore((state) => state.sessions)
+  const showArchivedSessions = useWorkspaceStore(
+    (state) => state.showArchivedSessions
+  )
+  const setShowArchivedSessions = useWorkspaceStore(
+    (state) => state.setShowArchivedSessions
+  )
+
+  const setAllProjectsOpen = (open: boolean) => {
+    setOpenProjects({
+      task: open,
+      aestival: open,
+      "ai-ui": open,
+    })
+  }
+
+  useEffect(() => {
+    if (!conversationId) {
+      return
+    }
+
+    const projectId = sessions.find(
+      (session) => session.id === conversationId
+    )?.projectId
+    if (!projectId) {
+      return
+    }
+
+    setOpenProjects((current) =>
+      current[projectId] ? current : { ...current, [projectId]: true }
+    )
+  }, [conversationId, sessions])
 
   return (
     <Sidebar
@@ -116,8 +156,20 @@ export function AppSidebar() {
                   <SidebarMenuItem key={item.id}>
                     <SidebarMenuButton
                       tooltip={item.label}
-                      isActive={activePage === item.id}
-                      onClick={() => setActivePage(item.id)}
+                      isActive={
+                        activePage === item.id &&
+                        (item.id !== "new-task" || !conversationId)
+                      }
+                      onClick={() => {
+                        if (item.id === "new-task") {
+                          if (isTemporaryConversation) {
+                            setTemporaryCloseOpen(true)
+                            return
+                          }
+                          resetConversation()
+                        }
+                        setActivePage(item.id)
+                      }}
                     >
                       <Icon />
                       <span>{item.label}</span>
@@ -129,57 +181,23 @@ export function AppSidebar() {
           </SidebarHeader>
 
           <SidebarContent>
-            <SidebarGroup>
+            <SidebarGroup className="gap-2">
               <SidebarGroupLabel>项目</SidebarGroupLabel>
               <SidebarGroupContent>
-                <SidebarMenu>
-                  <Collapsible open={projectOpen} onOpenChange={setProjectOpen}>
-                    <SidebarMenuItem>
-                      <CollapsibleTrigger
-                        render={
-                          <SidebarMenuButton
-                            tooltip="任务"
-                            isActive={activePage === "new-task"}
-                            onClick={() => setActivePage("new-task")}
-                          />
-                        }
-                      >
-                        {projectOpen ? <ChevronDownIcon /> : <ChevronRightIcon />}
-                        <FolderIcon />
-                        <span>任务</span>
-                      </CollapsibleTrigger>
-                      <SidebarMenuAction
-                        aria-label="任务项目更多操作"
-                        showOnHover
-                      >
-                        <MoreHorizontalIcon />
-                      </SidebarMenuAction>
-                      <CollapsibleContent>
-                        <SidebarMenuSub className="mx-3 border-l-0 px-2.5">
-                          {mockSessions.map((session) => (
-                            <SidebarMenuSubItem key={session.id}>
-                              <SidebarMenuSubButton
-                                href="#"
-                                onClick={(event) => event.preventDefault()}
-                              >
-                                <span>{session.title}</span>
-                              </SidebarMenuSubButton>
-                            </SidebarMenuSubItem>
-                          ))}
-                          <SidebarMenuSubItem>
-                            <SidebarMenuSubButton
-                              href="#"
-                              onClick={(event) => event.preventDefault()}
-                              className="text-muted-foreground"
-                            >
-                              <span>展开更多</span>
-                            </SidebarMenuSubButton>
-                          </SidebarMenuSubItem>
-                        </SidebarMenuSub>
-                      </CollapsibleContent>
-                    </SidebarMenuItem>
-                  </Collapsible>
-                </SidebarMenu>
+                {mockSessionProjects.map((project) => (
+                  <SessionProjectGroup
+                    key={project.id}
+                    projectId={project.id}
+                    label={project.label}
+                    open={openProjects[project.id]}
+                    onOpenChange={(open) =>
+                      setOpenProjects((current) => ({
+                        ...current,
+                        [project.id]: open,
+                      }))
+                    }
+                  />
+                ))}
               </SidebarGroupContent>
             </SidebarGroup>
           </SidebarContent>
@@ -281,17 +299,17 @@ export function AppSidebar() {
           </ContextMenuGroup>
           <ContextMenuSeparator />
           <ContextMenuGroup>
-            <ContextMenuItem onClick={() => setProjectOpen(true)}>
+            <ContextMenuItem onClick={() => setAllProjectsOpen(true)}>
               <ChevronDownIcon />
               全部展开
             </ContextMenuItem>
-            <ContextMenuItem onClick={() => setProjectOpen(false)}>
+            <ContextMenuItem onClick={() => setAllProjectsOpen(false)}>
               <ChevronUpIcon />
               全部收起
             </ContextMenuItem>
             <ContextMenuCheckboxItem
-              checked={showArchived}
-              onCheckedChange={setShowArchived}
+              checked={showArchivedSessions}
+              onCheckedChange={setShowArchivedSessions}
             >
               <ArchiveIcon />
               显示已归档会话

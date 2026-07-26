@@ -8,7 +8,6 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Separator } from "@/components/ui/separator"
-import { IconButton } from "@/components/shell/icon-button"
 import {
   Sheet,
   SheetContent,
@@ -258,25 +257,28 @@ function SidebarTrigger({
   const { toggleSidebar, open } = useSidebar()
 
   return (
-    <Button
-      data-sidebar="trigger"
-      data-slot="sidebar-trigger"
-      variant="ghost"
-      size="icon-sm"
-      className={cn(className)}
-      onClick={(event) => {
-        onClick?.(event)
-        toggleSidebar()
-      }}
-      {...props}
-    >
-      <IconButton
-        className="app-no-drag pointer-events-auto"
-        label={open ? '收起侧栏' : '展开侧栏'}
+    <Tooltip>
+      <TooltipTrigger
+        render={
+          <Button
+            data-sidebar="trigger"
+            data-slot="sidebar-trigger"
+            aria-label={open ? "收起侧栏" : "展开侧栏"}
+            variant="ghost"
+            size="icon-sm"
+            className={cn(className)}
+            onClick={(event) => {
+              onClick?.(event)
+              toggleSidebar()
+            }}
+            {...props}
+          />
+        }
       >
         <PanelLeftIcon />
-      </IconButton>
-    </Button>
+      </TooltipTrigger>
+      <TooltipContent>{open ? "收起侧栏" : "展开侧栏"}</TooltipContent>
+    </Tooltip>
   )
 }
 

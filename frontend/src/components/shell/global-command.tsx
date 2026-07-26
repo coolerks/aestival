@@ -1,4 +1,17 @@
 import { useMemo } from "react"
+import {
+  ArchiveIcon,
+  CalendarClockIcon,
+  ChartNoAxesCombinedIcon,
+  DownloadIcon,
+  FolderInputIcon,
+  GitForkIcon,
+  LibraryBigIcon,
+  MessageSquareIcon,
+  PencilIcon,
+  StarIcon,
+  Trash2Icon,
+} from "lucide-react"
 
 import {
   Command,
@@ -11,7 +24,12 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "@/components/ui/command"
+import {
+  sessionActionLabels,
+  sortMockSessions,
+} from "@/data/mock-session-management"
 import { commandItems } from "@/data/mock-workspace"
+import { useKnowledgeStore } from "@/store/knowledge-store"
 import {
   type AppPage,
   useWorkspaceStore,
@@ -29,6 +47,39 @@ export function GlobalCommand() {
   const open = useWorkspaceStore((state) => state.commandOpen)
   const setOpen = useWorkspaceStore((state) => state.setCommandOpen)
   const setActivePage = useWorkspaceStore((state) => state.setActivePage)
+  const sessions = useWorkspaceStore((state) => state.sessions)
+  const conversationId = useWorkspaceStore((state) => state.conversationId)
+  const messages = useWorkspaceStore((state) => state.messages)
+  const openMockConversation = useWorkspaceStore(
+    (state) => state.openMockConversation
+  )
+  const toggleSessionStar = useWorkspaceStore(
+    (state) => state.toggleSessionStar
+  )
+  const setSessionArchived = useWorkspaceStore(
+    (state) => state.setSessionArchived
+  )
+  const openSessionDialog = useWorkspaceStore(
+    (state) => state.openSessionDialog
+  )
+  const setStatsOpen = useWorkspaceStore((state) => state.setStatsOpen)
+  const setForkDialogOpen = useWorkspaceStore(
+    (state) => state.setForkDialogOpen
+  )
+  const setExportDialogOpen = useWorkspaceStore(
+    (state) => state.setExportDialogOpen
+  )
+  const knowledgeBases = useKnowledgeStore((state) => state.knowledgeBases)
+  const setKnowledgeTab = useKnowledgeStore((state) => state.setActiveTab)
+  const openKnowledgeDetails = useKnowledgeStore(
+    (state) => state.openKnowledgeDetails
+  )
+  const currentSession = sessions.find(
+    (session) => session.id === conversationId
+  )
+  const visibleSessions = sortMockSessions(
+    sessions.filter((session) => !session.archived)
+  )
 
   const groupedItems = useMemo(
     () =>
@@ -50,12 +101,17 @@ export function GlobalCommand() {
     setOpen(false)
   }
 
+  const runSessionCommand = (action: () => void) => {
+    action()
+    setOpen(false)
+  }
+
   return (
     <CommandDialog
       open={open}
       onOpenChange={setOpen}
       title="全局搜索"
-      description="搜索功能、会话、聊天记录与本地文件"
+      description="搜索功能、会话、聊天记录、本地文件与知识库"
       className="sm:max-w-xl"
     >
       <Command>
@@ -85,6 +141,212 @@ export function GlobalCommand() {
               </CommandGroup>
             </div>
           ))}
+          {currentSession ? (
+            <>
+              <CommandSeparator />
+              <CommandGroup heading="当前会话">
+                <CommandItem
+                  value={`${currentSession.starred
+                    ? sessionActionLabels.unstar
+                    : sessionActionLabels.star} 当前会话`}
+                  onSelect={() =>
+                    runSessionCommand(() =>
+                      toggleSessionStar(currentSession.id)
+                    )
+                  }
+                >
+                  <StarIcon />
+                  <span>
+                    {currentSession.starred
+                      ? sessionActionLabels.unstar
+                      : sessionActionLabels.star}
+                  </span>
+                  <CommandShortcut>⌘⇧S</CommandShortcut>
+                </CommandItem>
+                <CommandItem
+                  value={`${sessionActionLabels.rename} 当前会话`}
+                  onSelect={() =>
+                    runSessionCommand(() =>
+                      openSessionDialog("rename", currentSession.id)
+                    )
+                  }
+                >
+                  <PencilIcon />
+                  <span>{sessionActionLabels.rename}</span>
+                  <CommandShortcut>F2</CommandShortcut>
+                </CommandItem>
+                <CommandItem
+                  value={`${sessionActionLabels.fork} 当前会话`}
+                  onSelect={() =>
+                    runSessionCommand(() =>
+                      setForkDialogOpen(
+                        true,
+                        messages[messages.length - 1]?.id
+                      )
+                    )
+                  }
+                >
+                  <GitForkIcon />
+                  <span>{sessionActionLabels.fork}</span>
+                </CommandItem>
+                <CommandItem
+                  value={`${sessionActionLabels.move} 当前会话`}
+                  onSelect={() =>
+                    runSessionCommand(() =>
+                      openSessionDialog("move", currentSession.id)
+                    )
+                  }
+                >
+                  <FolderInputIcon />
+                  <span>{sessionActionLabels.move}</span>
+                </CommandItem>
+                <CommandItem
+                  value={`${sessionActionLabels.schedule} 当前会话`}
+                  onSelect={() =>
+                    runSessionCommand(() =>
+                      openSessionDialog("schedule", currentSession.id)
+                    )
+                  }
+                >
+                  <CalendarClockIcon />
+                  <span>{sessionActionLabels.schedule}</span>
+                  <CommandShortcut>⌘⌥N</CommandShortcut>
+                </CommandItem>
+                <CommandItem
+                  value={`${sessionActionLabels.stats} 当前会话`}
+                  onSelect={() =>
+                    runSessionCommand(() => setStatsOpen(true))
+                  }
+                >
+                  <ChartNoAxesCombinedIcon />
+                  <span>{sessionActionLabels.stats}</span>
+                  <CommandShortcut>⌘⌥I</CommandShortcut>
+                </CommandItem>
+                <CommandItem
+                  value={`${sessionActionLabels.export} 当前会话`}
+                  onSelect={() =>
+                    runSessionCommand(() =>
+                      setExportDialogOpen(true, "conversation")
+                    )
+                  }
+                >
+                  <DownloadIcon />
+                  <span>{sessionActionLabels.export}</span>
+                  <CommandShortcut>⌘⇧E</CommandShortcut>
+                </CommandItem>
+                <CommandItem
+                  value={`${currentSession.archived
+                    ? sessionActionLabels.unarchive
+                    : sessionActionLabels.archive} 当前会话`}
+                  onSelect={() =>
+                    runSessionCommand(() =>
+                      setSessionArchived(
+                        currentSession.id,
+                        !currentSession.archived
+                      )
+                    )
+                  }
+                >
+                  <ArchiveIcon />
+                  <span>
+                    {currentSession.archived
+                      ? sessionActionLabels.unarchive
+                      : sessionActionLabels.archive}
+                  </span>
+                  <CommandShortcut>⌘⇧A</CommandShortcut>
+                </CommandItem>
+                <CommandItem
+                  value={`${sessionActionLabels.delete} 当前会话`}
+                  onSelect={() =>
+                    runSessionCommand(() =>
+                      openSessionDialog("delete", currentSession.id)
+                    )
+                  }
+                >
+                  <Trash2Icon />
+                  <span>{sessionActionLabels.delete}</span>
+                  <CommandShortcut>⌘⌫</CommandShortcut>
+                </CommandItem>
+              </CommandGroup>
+            </>
+          ) : null}
+          <CommandSeparator />
+          <CommandGroup heading="会话">
+            {visibleSessions.map((session) => (
+              <CommandItem
+                key={session.id}
+                value={`${session.title} 会话`}
+                onSelect={() =>
+                  runSessionCommand(() => openMockConversation(session.id))
+                }
+              >
+                <MessageSquareIcon />
+                <span className="min-w-0 flex-1 truncate">
+                  {session.title}
+                </span>
+                {session.starred ? (
+                  <StarIcon
+                    className="text-muted-foreground"
+                    fill="currentColor"
+                    aria-label="已 Star"
+                  />
+                ) : null}
+                <CommandShortcut>{session.relativeTime}</CommandShortcut>
+              </CommandItem>
+            ))}
+          </CommandGroup>
+          <CommandSeparator />
+          <CommandGroup heading="聊天记录">
+            {messages.slice(-5).map((message) => (
+              <CommandItem
+                key={message.id}
+                value={`${message.content} 聊天记录 ${message.role}`}
+                onSelect={() =>
+                  runSessionCommand(() => {
+                    if (currentSession) {
+                      openMockConversation(currentSession.id)
+                    }
+                  })
+                }
+              >
+                <MessageSquareIcon />
+                <div className="min-w-0 flex-1">
+                  <div className="truncate">
+                    {message.role === "user" ? "你" : "Aestival"}：{message.content}
+                  </div>
+                  <div className="truncate text-xs text-muted-foreground">
+                    {currentSession?.title ?? "当前 Mock 会话"}
+                  </div>
+                </div>
+                <CommandShortcut>{message.createdAt}</CommandShortcut>
+              </CommandItem>
+            ))}
+          </CommandGroup>
+          <CommandSeparator />
+          <CommandGroup heading="知识库">
+            {knowledgeBases.map((knowledgeBase) => (
+              <CommandItem
+                key={knowledgeBase.id}
+                value={`# ${knowledgeBase.name} ${knowledgeBase.description} ${knowledgeBase.sourceLabel} ${knowledgeBase.tags.join(" ")}`}
+                onSelect={() =>
+                  runSessionCommand(() => {
+                    setActivePage("knowledge")
+                    setKnowledgeTab("libraries")
+                    openKnowledgeDetails(knowledgeBase.id)
+                  })
+                }
+              >
+                <LibraryBigIcon />
+                <div className="min-w-0 flex-1">
+                  <div className="truncate">{knowledgeBase.name}</div>
+                  <div className="truncate text-xs text-muted-foreground">
+                    {knowledgeBase.sourceLabel} · {knowledgeBase.description}
+                  </div>
+                </div>
+                <CommandShortcut>#</CommandShortcut>
+              </CommandItem>
+            ))}
+          </CommandGroup>
         </CommandList>
       </Command>
     </CommandDialog>
