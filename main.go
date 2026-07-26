@@ -39,6 +39,7 @@ func main() {
 		BackgroundColour: application.NewRGBA(255, 255, 255, 0),
 		URL:              "/",
 	})
+	// installTrafficLightOffset(window, 0, 3)
 
 	if err := app.Run(); err != nil {
 		log.Fatal(err)

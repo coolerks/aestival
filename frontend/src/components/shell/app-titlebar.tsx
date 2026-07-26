@@ -35,14 +35,14 @@ export function AppTitlebar() {
             : "left-0"
         )}
       />
-      <div className="pointer-events-none relative z-10 flex min-w-0 flex-1 items-center px-2">
+      <div className="pointer-events-none relative z-10 flex min-w-0 flex-1 items-center px-4">
         <div className="h-full w-[72px] shrink-0" aria-hidden="true" />
         <div className="flex min-w-0 flex-1 items-center gap-1">
           <SidebarTrigger
             className="app-no-drag pointer-events-auto"
             aria-label="显示或隐藏左侧栏"
           />
-          <p className="ml-1 min-w-0 truncate text-sm font-medium">{title}</p>
+          {/* <p className="ml-1 min-w-0 truncate text-sm font-medium">{title}</p> */}
         </div>
         <div className="flex shrink-0 items-center gap-1">
           <IconButton
@@ -54,19 +54,19 @@ export function AppTitlebar() {
           </IconButton>
           <IconButton
             className="app-no-drag pointer-events-auto"
-            label={rightPanelOpen ? "关闭右侧栏" : "打开右侧栏"}
-            aria-pressed={rightPanelOpen}
-            onClick={toggleRightPanel}
-          >
-            <PanelRightIcon />
-          </IconButton>
-          <IconButton
-            className="app-no-drag pointer-events-auto"
             label={bottomPanelOpen ? "关闭底部面板" : "打开底部面板"}
             aria-pressed={bottomPanelOpen}
             onClick={toggleBottomPanel}
           >
             <PanelBottomIcon />
+          </IconButton>
+          <IconButton
+            className="app-no-drag pointer-events-auto"
+            label={rightPanelOpen ? "关闭右侧栏" : "打开右侧栏"}
+            aria-pressed={rightPanelOpen}
+            onClick={toggleRightPanel}
+          >
+            <PanelRightIcon />
           </IconButton>
         </div>
       </div>
