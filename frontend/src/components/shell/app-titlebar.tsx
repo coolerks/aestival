@@ -6,13 +6,11 @@ import {
 
 import { IconButton } from "@/components/shell/icon-button"
 import { SidebarTrigger, useSidebar } from "@/components/ui/sidebar"
-import { navigationItems } from "@/data/mock-workspace"
 import { cn } from "@/lib/utils"
 import { useWorkspaceStore } from "@/store/workspace-store"
 
 export function AppTitlebar() {
   const { state: sidebarState } = useSidebar()
-  const activePage = useWorkspaceStore((state) => state.activePage)
   const setCommandOpen = useWorkspaceStore((state) => state.setCommandOpen)
   const toggleRightPanel = useWorkspaceStore((state) => state.toggleRightPanel)
   const toggleBottomPanel = useWorkspaceStore(
@@ -20,8 +18,6 @@ export function AppTitlebar() {
   )
   const rightPanelOpen = useWorkspaceStore((state) => state.rightPanelOpen)
   const bottomPanelOpen = useWorkspaceStore((state) => state.bottomPanelOpen)
-  const title =
-    navigationItems.find((item) => item.id === activePage)?.label ?? "Aestival"
 
   return (
     <header className="app-drag-region relative z-20 flex h-[53px] shrink-0">
@@ -42,7 +38,6 @@ export function AppTitlebar() {
             className="app-no-drag pointer-events-auto"
             aria-label="显示或隐藏左侧栏"
           />
-          {/* <p className="ml-1 min-w-0 truncate text-sm font-medium">{title}</p> */}
         </div>
         <div className="flex shrink-0 items-center gap-1">
           <IconButton

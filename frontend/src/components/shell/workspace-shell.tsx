@@ -21,7 +21,7 @@ function CurrentPage() {
   const activePage = useWorkspaceStore((state) => state.activePage)
 
   return (
-    <div className="flex size-full min-h-0">
+    <div className="app-selectable-content flex size-full min-h-0">
       {activePage === "new-task" ? (
         <NewTaskView />
       ) : (

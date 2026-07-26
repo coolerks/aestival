@@ -134,6 +134,8 @@
     background: transparent;
     min-width: 320px;
     overflow: hidden;
+    -webkit-user-select: none;
+    user-select: none;
     font-size: 13px;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
@@ -152,12 +154,26 @@
 
 .app-drag-region {
   --wails-draggable: drag;
+  cursor: default;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .app-no-drag,
 .app-drag-region button,
 .app-drag-region input {
   --wails-draggable: no-drag;
+}
+
+/* 应用外壳默认不可框选；正文、预览和编辑表面通过此边界显式恢复文本选择。 */
+.app-selectable-content,
+[data-app-selectable-content="true"],
+input,
+textarea,
+[contenteditable="true"],
+[role="textbox"] {
+  -webkit-user-select: text;
+  user-select: text;
 }
 
 @media (prefers-reduced-motion: reduce) {
