@@ -317,7 +317,7 @@ export function KnowledgeOverview() {
         <DropdownMenu>
           <DropdownMenuTrigger
             render={
-              <Button variant="outline" size="sm">
+              <Button variant="outline">
                 {sort === "name" ? (
                   <ArrowDownAZIcon data-icon="inline-start" />
                 ) : (
@@ -355,7 +355,7 @@ export function KnowledgeOverview() {
             if (next === "list" || next === "grid") setViewMode(next)
           }}
           variant="outline"
-          size="sm"
+          size="default"
           spacing={0}
           aria-label="知识库视图"
         >
@@ -366,7 +366,7 @@ export function KnowledgeOverview() {
             <Grid2X2Icon />
           </ToggleGroupItem>
         </ToggleGroup>
-        <Button size="sm" onClick={() => setNewKnowledgeOpen(true)}>
+        <Button onClick={() => setNewKnowledgeOpen(true)}>
           <PlusIcon data-icon="inline-start" />
           新建知识库
         </Button>

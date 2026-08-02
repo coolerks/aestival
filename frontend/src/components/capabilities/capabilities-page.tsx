@@ -170,7 +170,7 @@ export function CapabilitiesPage() {
               <SelectTrigger aria-label="筛选状态"><SelectValue>{statusFilter === "all" ? "全部状态" : statusLabels[statusFilter]}</SelectValue></SelectTrigger>
               <SelectContent><SelectGroup><SelectItem value="all">全部状态</SelectItem>{Object.entries(statusLabels).map(([value, label]) => <SelectItem key={value} value={value}>{label}</SelectItem>)}</SelectGroup></SelectContent>
             </Select>
-            <Button size="sm" onClick={() => setDialog("create")}><PlusIcon data-icon="inline-start" />{tab.action}</Button>
+            <Button onClick={() => setDialog("create")}><PlusIcon data-icon="inline-start" />{tab.action}</Button>
           </ManagementToolbar>
 
           {filteredRecords.length === 0 ? (
