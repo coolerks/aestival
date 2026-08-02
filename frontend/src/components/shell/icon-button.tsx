@@ -1,6 +1,7 @@
 import type { ComponentProps, ReactNode } from "react"
 
 import { Button } from "@/components/ui/button"
+import { DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import {
   Tooltip,
   TooltipContent,
@@ -26,6 +27,34 @@ export function IconButton({
             size="icon-sm"
             variant="ghost"
             {...props}
+          />
+        }
+      >
+        {children}
+      </TooltipTrigger>
+      <TooltipContent>{label}</TooltipContent>
+    </Tooltip>
+  )
+}
+
+export function DropdownMenuIconTrigger({
+  label,
+  children,
+  ...props
+}: IconButtonProps) {
+  return (
+    <Tooltip>
+      <TooltipTrigger
+        render={
+          <DropdownMenuTrigger
+            render={
+              <Button
+                aria-label={label}
+                size="icon-sm"
+                variant="ghost"
+                {...props}
+              />
+            }
           />
         }
       >

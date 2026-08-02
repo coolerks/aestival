@@ -9,19 +9,24 @@ import {
   PlayIcon,
   PlusIcon,
   RefreshCwIcon,
-  SearchIcon,
   Trash2Icon,
 } from "lucide-react"
 import { toast } from "sonner"
 
 import {
   KnowledgeBaseStatusBadge,
-  KnowledgeMetric,
   KnowledgeSourceIcon,
   formatCount,
   knowledgeBaseStatusCopy,
   knowledgeSearchText,
 } from "@/components/knowledge/knowledge-shared"
+import {
+  ManagementEmpty,
+  ManagementListFrame,
+  ManagementMetricBand,
+  ManagementToolbar,
+} from "@/components/shared/management-page"
+import { ManagementSearch } from "@/components/shared/management-search"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -36,19 +41,17 @@ import {
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import {
-  Empty,
   EmptyDescription,
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
 } from "@/components/ui/empty"
-import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group"
-import { Separator } from "@/components/ui/separator"
 import {
   Select,
   SelectContent,
@@ -113,6 +116,7 @@ function KnowledgeActions({ id }: { id: string }) {
         <TooltipContent>更多操作</TooltipContent>
       </Tooltip>
       <DropdownMenuContent align="end">
+        <DropdownMenuGroup>
         <DropdownMenuItem onClick={() => openKnowledgeDetails(id)}>
           <BoxesIcon />
           打开详情
@@ -135,7 +139,9 @@ function KnowledgeActions({ id }: { id: string }) {
           <RefreshCwIcon />
           立即同步
         </DropdownMenuItem>
+        </DropdownMenuGroup>
         <DropdownMenuSeparator />
+        <DropdownMenuGroup>
         <DropdownMenuItem
           variant="destructive"
           onClick={() => requestDeleteKnowledge(id)}
@@ -143,6 +149,7 @@ function KnowledgeActions({ id }: { id: string }) {
           <Trash2Icon />
           删除知识库
         </DropdownMenuItem>
+        </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
   )
@@ -231,40 +238,34 @@ export function KnowledgeOverview() {
         </Alert>
       ) : null}
 
-      <div className="flex items-stretch rounded-lg border">
-        <KnowledgeMetric
-          label="知识库总数"
-          value={String(knowledgeBases.length)}
-          onClick={() => setStatusFilter("all")}
-        />
-        <Separator orientation="vertical" className="h-auto" />
-        <KnowledgeMetric label="已索引条目" value={formatCount(recordCount)} />
-        <Separator orientation="vertical" className="h-auto" />
-        <KnowledgeMetric
-          label="待同步来源"
-          value={String(pendingCount)}
-          onClick={() => setStatusFilter("needs-update")}
-        />
-        <Separator orientation="vertical" className="h-auto" />
-        <KnowledgeMetric
-          label="24 小时检索"
-          value={formatCount(retrievalCount)}
-          onClick={() => setSort("retrievals")}
-        />
-      </div>
+      <ManagementMetricBand
+        items={[
+          {
+            label: "知识库总数",
+            value: String(knowledgeBases.length),
+            onClick: () => setStatusFilter("all"),
+          },
+          { label: "已索引条目", value: formatCount(recordCount) },
+          {
+            label: "待同步来源",
+            value: String(pendingCount),
+            onClick: () => setStatusFilter("needs-update"),
+          },
+          {
+            label: "24 小时检索",
+            value: formatCount(retrievalCount),
+            onClick: () => setSort("retrievals"),
+          },
+        ]}
+      />
 
-      <div className="flex flex-wrap items-center gap-2">
-        <InputGroup className="min-w-52 flex-1">
-          <InputGroupAddon>
-            <SearchIcon />
-          </InputGroupAddon>
-          <InputGroupInput
-            value={searchQuery}
-            onChange={(event) => setSearchQuery(event.target.value)}
-            placeholder="搜索名称、来源或标签"
-            aria-label="搜索知识库"
-          />
-        </InputGroup>
+      <ManagementToolbar>
+        <ManagementSearch
+          value={searchQuery}
+          onValueChange={setSearchQuery}
+          placeholder="搜索名称、来源或标签"
+          label="搜索知识库"
+        />
         <Select
           value={typeFilter}
           onValueChange={(value) =>
@@ -327,18 +328,24 @@ export function KnowledgeOverview() {
             }
           />
           <DropdownMenuContent align="end">
+            <DropdownMenuGroup>
             <DropdownMenuItem onClick={() => setSort("recent")}>
+              <ArrowDownWideNarrowIcon />
               最近更新
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => setSort("name")}>
+              <ArrowDownAZIcon />
               名称
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => setSort("records")}>
+              <DatabaseIcon />
               条目数
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => setSort("retrievals")}>
+              <PlayIcon />
               检索次数
             </DropdownMenuItem>
+            </DropdownMenuGroup>
           </DropdownMenuContent>
         </DropdownMenu>
         <ToggleGroup
@@ -363,10 +370,10 @@ export function KnowledgeOverview() {
           <PlusIcon data-icon="inline-start" />
           新建知识库
         </Button>
-      </div>
+      </ManagementToolbar>
 
       {filtered.length === 0 ? (
-        <Empty className="min-h-72 rounded-lg border">
+        <ManagementEmpty className="min-h-72">
           <EmptyHeader>
             <EmptyMedia variant="icon">
               <DatabaseIcon />
@@ -376,7 +383,7 @@ export function KnowledgeOverview() {
               调整搜索或筛选条件，也可以新建一个知识库。
             </EmptyDescription>
           </EmptyHeader>
-        </Empty>
+        </ManagementEmpty>
       ) : viewMode === "grid" ? (
         <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
           {filtered.map((item) => (
@@ -429,7 +436,7 @@ export function KnowledgeOverview() {
           ))}
         </div>
       ) : (
-        <div className="overflow-x-auto rounded-lg border">
+        <ManagementListFrame>
           <Table>
             <TableHeader>
               <TableRow>
@@ -448,8 +455,16 @@ export function KnowledgeOverview() {
               {filtered.map((item) => (
                 <TableRow
                   key={item.id}
+                  tabIndex={0}
                   className="cursor-pointer"
                   onClick={() => openKnowledgeDetails(item.id)}
+                  onKeyDown={(event) => {
+                    if (event.target !== event.currentTarget) return
+                    if (event.key === "Enter" || event.key === " ") {
+                      event.preventDefault()
+                      openKnowledgeDetails(item.id)
+                    }
+                  }}
                 >
                   <TableCell>
                     <div className="flex max-w-64 items-start gap-2">
@@ -488,7 +503,7 @@ export function KnowledgeOverview() {
               ))}
             </TableBody>
           </Table>
-        </div>
+        </ManagementListFrame>
       )}
     </div>
   )

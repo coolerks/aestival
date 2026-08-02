@@ -75,27 +75,6 @@ export function ConnectionStatusBadge({
   return <Badge variant={copy.variant}>{copy.label}</Badge>
 }
 
-export function KnowledgeMetric({
-  label,
-  value,
-  onClick,
-}: {
-  label: string
-  value: string
-  onClick?: () => void
-}) {
-  return (
-    <button
-      type="button"
-      className="flex min-w-0 flex-1 flex-col items-start gap-0.5 rounded-md px-3 py-2 text-left outline-none transition-colors hover:bg-muted/60 focus-visible:ring-2 focus-visible:ring-ring/50"
-      onClick={onClick}
-    >
-      <span className="text-xs text-muted-foreground">{label}</span>
-      <span className="text-base font-medium tabular-nums">{value}</span>
-    </button>
-  )
-}
-
 export function knowledgeSearchText(item: MockKnowledgeBase) {
   return [
     item.name,

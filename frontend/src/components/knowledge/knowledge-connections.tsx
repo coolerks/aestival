@@ -19,6 +19,7 @@ import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
@@ -226,6 +227,7 @@ export function KnowledgeConnections() {
                           <TooltipContent>更多操作</TooltipContent>
                         </Tooltip>
                         <DropdownMenuContent align="end">
+                          <DropdownMenuGroup>
                           <DropdownMenuItem
                             onClick={() =>
                               openConnectionDetails(connection.id)
@@ -244,7 +246,9 @@ export function KnowledgeConnections() {
                             <ShieldCheckIcon />
                             测试连接
                           </DropdownMenuItem>
+                          </DropdownMenuGroup>
                           <DropdownMenuSeparator />
+                          <DropdownMenuGroup>
                           <DropdownMenuItem
                             variant="destructive"
                             onClick={() =>
@@ -254,6 +258,7 @@ export function KnowledgeConnections() {
                             <CirclePowerIcon />
                             断开连接
                           </DropdownMenuItem>
+                          </DropdownMenuGroup>
                         </DropdownMenuContent>
                       </DropdownMenu>
                     </TableCell>

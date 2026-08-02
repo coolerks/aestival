@@ -30,6 +30,7 @@ import {
 } from "@/components/ui/select"
 import { Separator } from "@/components/ui/separator"
 import { Switch } from "@/components/ui/switch"
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 import { useWorkspaceStore } from "@/store/workspace-store"
 
 const contextChartConfig = {
@@ -61,16 +62,8 @@ export function ContextUsagePopover() {
 
   return (
     <Popover>
-      <PopoverTrigger
-        render={
-          <Button
-            variant="ghost"
-            size="icon-sm"
-            aria-label={`上下文已使用 ${contextPercent}%，估算`}
-            className="relative rounded-full p-0"
-          />
-        }
-      >
+      <Tooltip>
+        <TooltipTrigger render={<PopoverTrigger render={<Button variant="ghost" size="icon-sm" aria-label={`上下文已使用 ${contextPercent}%，估算`} className="relative rounded-full p-0" />} />}>
         <ChartContainer
           config={contextChartConfig}
           className="pointer-events-none size-7 aspect-square"
@@ -95,7 +88,9 @@ export function ContextUsagePopover() {
         <span className="pointer-events-none absolute text-[8px] font-medium tabular-nums">
           {contextPercent}%
         </span>
-      </PopoverTrigger>
+        </TooltipTrigger>
+        <TooltipContent>上下文已使用 {contextPercent}%（估算）</TooltipContent>
+      </Tooltip>
 
       <PopoverContent side="top" align="end" className="w-80">
         <PopoverHeader>

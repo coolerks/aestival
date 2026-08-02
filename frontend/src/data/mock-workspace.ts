@@ -58,4 +58,8 @@ export const pageCopy: Record<Exclude<AppPage, "new-task">, { title: string; des
     title: "任务",
     description: "安排定时运行并查看执行记录与待审批事项。",
   },
+  settings: {
+    title: "设置",
+    description: "管理模型、统计、外部连接、通知、外观与快捷键。",
+  },
 }

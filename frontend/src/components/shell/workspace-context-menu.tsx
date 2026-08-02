@@ -1,6 +1,7 @@
 import type { ReactNode } from "react"
 import {
   CommandIcon,
+  Maximize2Icon,
   PanelBottomIcon,
   PanelLeftIcon,
   PanelRightIcon,
@@ -106,8 +107,14 @@ export function WorkspaceContextMenu({
             </ContextMenuSubTrigger>
             <ContextMenuSubContent>
               <ContextMenuGroup>
-                <ContextMenuItem>默认布局</ContextMenuItem>
-                <ContextMenuItem>专注模式</ContextMenuItem>
+                <ContextMenuItem>
+                  <PanelsTopLeftIcon />
+                  默认布局
+                </ContextMenuItem>
+                <ContextMenuItem>
+                  <Maximize2Icon />
+                  专注模式
+                </ContextMenuItem>
                 <ContextMenuItem>
                   <RotateCcwIcon />
                   重置布局

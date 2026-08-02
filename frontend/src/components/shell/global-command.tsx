@@ -1,6 +1,7 @@
 import { useMemo } from "react"
 import {
   ArchiveIcon,
+  AppWindowIcon,
   CalendarClockIcon,
   ChartNoAxesCombinedIcon,
   DownloadIcon,
@@ -11,6 +12,7 @@ import {
   PencilIcon,
   StarIcon,
   Trash2Icon,
+  BlocksIcon,
 } from "lucide-react"
 
 import {
@@ -30,6 +32,8 @@ import {
 } from "@/data/mock-session-management"
 import { commandItems } from "@/data/mock-workspace"
 import { useKnowledgeStore } from "@/store/knowledge-store"
+import { useAppStore } from "@/store/app-store"
+import { useCapabilityStore } from "@/store/capability-store"
 import {
   type AppPage,
   useWorkspaceStore,
@@ -41,6 +45,7 @@ const navigablePages = new Set<AppPage>([
   "apps",
   "capabilities",
   "tasks",
+  "settings",
 ])
 
 export function GlobalCommand() {
@@ -347,8 +352,80 @@ export function GlobalCommand() {
               </CommandItem>
             ))}
           </CommandGroup>
+          {open ? <LocalAppCommandGroup /> : null}
+          {open ? <LocalCapabilityCommandGroup /> : null}
         </CommandList>
       </Command>
     </CommandDialog>
+  )
+}
+
+function LocalCapabilityCommandGroup() {
+  const records = useCapabilityStore((state) => state.records)
+  const setCapabilityTab = useCapabilityStore((state) => state.setActiveTab)
+  const openDetails = useCapabilityStore((state) => state.openDetails)
+  const setActivePage = useWorkspaceStore((state) => state.setActivePage)
+  const setOpen = useWorkspaceStore((state) => state.setCommandOpen)
+
+  return (
+    <>
+      <CommandSeparator />
+      <CommandGroup heading="能力">
+        {records.map((record) => (
+          <CommandItem
+            key={record.id}
+            value={`${record.name} ${record.description} ${record.source} ${record.type}`}
+            onSelect={() => {
+              setActivePage("capabilities")
+              setCapabilityTab(record.tab)
+              openDetails(record.id)
+              setOpen(false)
+            }}
+          >
+            <BlocksIcon />
+            <div className="min-w-0 flex-1">
+              <div className="truncate">{record.name}</div>
+              <div className="truncate text-xs text-muted-foreground">{record.description}</div>
+            </div>
+            <CommandShortcut>能力</CommandShortcut>
+          </CommandItem>
+        ))}
+      </CommandGroup>
+    </>
+  )
+}
+
+function LocalAppCommandGroup() {
+  const apps = useAppStore((state) => state.apps)
+  const openAppEditor = useAppStore((state) => state.openEditor)
+  const setActivePage = useWorkspaceStore((state) => state.setActivePage)
+  const setOpen = useWorkspaceStore((state) => state.setCommandOpen)
+
+  return (
+    <>
+      <CommandSeparator />
+      <CommandGroup heading="本地应用">
+        {apps.map((app) => (
+          <CommandItem
+            key={app.id}
+            value={`${app.name} ${app.description} 本地应用`}
+            onSelect={() => {
+              setActivePage("apps")
+              openAppEditor(app.id)
+              setOpen(false)
+            }}
+          >
+            <AppWindowIcon />
+            <div className="min-w-0 flex-1">
+              <div className="truncate">{app.name}</div>
+              <div className="truncate text-xs text-muted-foreground">
+                {app.description}
+              </div>
+            </div>
+            <CommandShortcut>应用</CommandShortcut>
+          </CommandItem>
+        ))}
+      </CommandGroup>
+    </>
   )
 }

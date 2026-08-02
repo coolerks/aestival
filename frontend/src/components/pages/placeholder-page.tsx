@@ -17,20 +17,35 @@ import {
 } from "@/components/ui/empty"
 import { Skeleton } from "@/components/ui/skeleton"
 import { pageCopy } from "@/data/mock-workspace"
-import {
-  type AppPage,
-  useWorkspaceStore,
-} from "@/store/workspace-store"
+import { type AppPage } from "@/store/workspace-store"
 
-const MockAppDraftPage = lazy(() =>
-  import("@/components/pages/mock-app-draft-page").then((module) => ({
-    default: module.MockAppDraftPage,
+const AppsPage = lazy(() =>
+  import("@/components/apps/apps-page").then((module) => ({
+    default: module.AppsPage,
   }))
 )
 
 const KnowledgePage = lazy(() =>
   import("@/components/knowledge/knowledge-page").then((module) => ({
     default: module.KnowledgePage,
+  }))
+)
+
+const CapabilitiesPage = lazy(() =>
+  import("@/components/capabilities/capabilities-page").then((module) => ({
+    default: module.CapabilitiesPage,
+  }))
+)
+
+const TasksPage = lazy(() =>
+  import("@/components/tasks/tasks-page").then((module) => ({
+    default: module.TasksPage,
+  }))
+)
+
+const SettingsPage = lazy(() =>
+  import("@/components/settings/settings-page").then((module) => ({
+    default: module.SettingsPage,
   }))
 )
 
@@ -82,9 +97,16 @@ class PageErrorBoundary extends Component<
 
 export function PlaceholderPage({ page }: PlaceholderPageProps) {
   const copy = pageCopy[page]
-  const mockAppDraft = useWorkspaceStore((state) => state.mockAppDraft)
-
-  if (page === "apps" && mockAppDraft) {
+  if (page === "tasks" || page === "settings") {
+    const Page = page === "tasks" ? TasksPage : SettingsPage
+    const name = page === "tasks" ? "任务" : "设置"
+    return (
+      <Suspense fallback={<div className="flex min-h-0 flex-1 flex-col gap-3 p-4"><Skeleton className="h-8 w-72" /><Skeleton className="min-h-0 flex-1 rounded-xl" /></div>}>
+        <PageErrorBoundary pageName={name}><Page /></PageErrorBoundary>
+      </Suspense>
+    )
+  }
+  if (page === "apps") {
     return (
       <Suspense
         fallback={
@@ -94,7 +116,9 @@ export function PlaceholderPage({ page }: PlaceholderPageProps) {
           </div>
         }
       >
-        <MockAppDraftPage draft={mockAppDraft} />
+        <PageErrorBoundary pageName="应用">
+          <AppsPage />
+        </PageErrorBoundary>
       </Suspense>
     )
   }
@@ -112,6 +136,24 @@ export function PlaceholderPage({ page }: PlaceholderPageProps) {
       >
         <PageErrorBoundary pageName="知识库">
           <KnowledgePage />
+        </PageErrorBoundary>
+      </Suspense>
+    )
+  }
+
+  if (page === "capabilities") {
+    return (
+      <Suspense
+        fallback={
+          <div className="flex min-h-0 flex-1 flex-col gap-3 p-4">
+            <Skeleton className="h-8 w-96 max-w-full" />
+            <Skeleton className="h-16 rounded-lg" />
+            <Skeleton className="min-h-0 flex-1 rounded-lg" />
+          </div>
+        }
+      >
+        <PageErrorBoundary pageName="能力">
+          <CapabilitiesPage />
         </PageErrorBoundary>
       </Suspense>
     )

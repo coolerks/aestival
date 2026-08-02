@@ -59,6 +59,7 @@ import {
   type MockSessionProjectId,
 } from "@/data/mock-session-management"
 import { navigationItems } from "@/data/mock-workspace"
+import { useSettingsStore } from "@/store/settings-store"
 import {
   type AgentMode,
   useWorkspaceStore,
@@ -231,12 +232,12 @@ export function AppSidebar() {
                         全局搜索
                         <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
                       </DropdownMenuItem>
-                      <DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => setActivePage("settings")}>
                         <SettingsIcon />
                         打开设置
                         <DropdownMenuShortcut>⌘,</DropdownMenuShortcut>
                       </DropdownMenuItem>
-                      <DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => { useSettingsStore.getState().setActiveCategory("shortcuts"); setActivePage("settings") }}>
                         <KeyboardIcon />
                         键盘快捷键
                       </DropdownMenuItem>
@@ -262,7 +263,7 @@ export function AppSidebar() {
                         <BookOpenIcon />
                         文档
                       </DropdownMenuItem>
-                      <DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => { useSettingsStore.getState().setActiveCategory("about"); setActivePage("settings") }}>
                         <InfoIcon />
                         关于 Aestival
                       </DropdownMenuItem>

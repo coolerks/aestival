@@ -1,4 +1,4 @@
-import type { RefObject } from "react"
+import { useState, type RefObject } from "react"
 import {
   ClipboardCopyIcon,
   CopyIcon,
@@ -12,6 +12,17 @@ import { toast } from "sonner"
 import { ComposerAttachments } from "@/components/chat/composer-attachments"
 import { IconButton } from "@/components/shell/icon-button"
 import { Button } from "@/components/ui/button"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogMedia,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog"
 import {
   Dialog,
   DialogContent,
@@ -52,6 +63,7 @@ export function ComposerOptions({
   const restoreComposer = useWorkspaceStore(
     (state) => state.restoreComposer
   )
+  const [clearConfirmOpen, setClearConfirmOpen] = useState(false)
 
   const selectedText = () => {
     const textarea = textareaRef.current
@@ -140,7 +152,7 @@ export function ComposerOptions({
             </DropdownMenuItem>
             <DropdownMenuItem
               disabled={!draft && attachments.length === 0}
-              onClick={clearWithUndo}
+              onClick={() => setClearConfirmOpen(true)}
             >
               <Trash2Icon />
               清空
@@ -186,6 +198,24 @@ export function ComposerOptions({
           </DialogFooter>
         </DialogContent>
       </Dialog>
+
+      <AlertDialog open={clearConfirmOpen} onOpenChange={setClearConfirmOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogMedia><Trash2Icon /></AlertDialogMedia>
+            <AlertDialogTitle>清空当前输入？</AlertDialogTitle>
+            <AlertDialogDescription>
+              将清空草稿和未发送附件。确认后仍可通过底部提示撤销本次操作。
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>取消</AlertDialogCancel>
+            <AlertDialogAction variant="destructive" onClick={clearWithUndo}>
+              清空输入
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </>
   )
 }

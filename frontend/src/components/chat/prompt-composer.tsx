@@ -10,6 +10,8 @@ import {
 import {
   ArrowUpIcon,
   BlocksIcon,
+  ClipboardPasteIcon,
+  CopyIcon,
   FilePlusIcon,
   FolderPlusIcon,
   ImagePlusIcon,
@@ -20,8 +22,10 @@ import {
   ShieldCheckIcon,
   ShieldOffIcon,
   ShieldQuestionIcon,
+  ScissorsIcon,
   SquareIcon,
   TargetIcon,
+  TextSelectIcon,
   TimerIcon,
   XIcon,
 } from "lucide-react"
@@ -45,6 +49,14 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog"
 import { Button } from "@/components/ui/button"
+import {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuGroup,
+  ContextMenuItem,
+  ContextMenuShortcut,
+  ContextMenuTrigger,
+} from "@/components/ui/context-menu"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -308,8 +320,39 @@ export function PromptComposer() {
     setComposerMode(composerMode === nextMode ? "standard" : nextMode)
   }
 
+  const copySelection = async (cut = false) => {
+    const textarea = textareaRef.current
+    if (!textarea) return
+    const start = textarea.selectionStart
+    const end = textarea.selectionEnd
+    const selected = draft.slice(start, end)
+    if (!selected) {
+      toast.info("请先选择要复制的文本")
+      return
+    }
+    await navigator.clipboard.writeText(selected)
+    if (cut) {
+      setDraft(`${draft.slice(0, start)}${draft.slice(end)}`)
+    }
+  }
+
+  const pasteFromClipboard = async () => {
+    const textarea = textareaRef.current
+    if (!textarea) return
+    try {
+      const content = await navigator.clipboard.readText()
+      const start = textarea.selectionStart
+      const end = textarea.selectionEnd
+      setDraft(`${draft.slice(0, start)}${content}${draft.slice(end)}`)
+    } catch {
+      toast.warning("无法读取剪贴板，请使用系统粘贴快捷键")
+    }
+  }
+
   return (
     <div className="w-full max-w-[840px]">
+      <ContextMenu>
+      <ContextMenuTrigger className="block">
       <InputGroup className="min-h-[126px] flex-col items-stretch rounded-xl bg-background shadow-sm has-[[data-slot=input-group-control]:focus-visible]:border-input has-[[data-slot=input-group-control]:focus-visible]:ring-0 has-disabled:bg-background has-disabled:opacity-100">
         {attachments.length > 0 || composerMode !== "standard" ? (
           <InputGroupAddon
@@ -548,9 +591,10 @@ export function PromptComposer() {
             >
               <MicIcon />
             </IconButton>
-            <Button
+            <IconButton
+              label={isRunning ? "停止 Mock 运行" : "发送任务"}
               size="icon"
-              aria-label={isRunning ? "停止 Mock 运行" : "发送任务"}
+              variant="default"
               disabled={
                 !isRunning && !draft.trim() && attachments.length === 0
               }
@@ -558,10 +602,20 @@ export function PromptComposer() {
               className="rounded-full"
             >
               {isRunning ? <SquareIcon /> : <ArrowUpIcon />}
-            </Button>
+            </IconButton>
           </div>
         </InputGroupAddon>
       </InputGroup>
+      </ContextMenuTrigger>
+      <ContextMenuContent>
+        <ContextMenuGroup>
+          <ContextMenuItem onClick={() => void copySelection()}><CopyIcon />复制<ContextMenuShortcut>⌘C</ContextMenuShortcut></ContextMenuItem>
+          <ContextMenuItem onClick={() => void copySelection(true)}><ScissorsIcon />剪切<ContextMenuShortcut>⌘X</ContextMenuShortcut></ContextMenuItem>
+          <ContextMenuItem onClick={() => void pasteFromClipboard()}><ClipboardPasteIcon />粘贴<ContextMenuShortcut>⌘V</ContextMenuShortcut></ContextMenuItem>
+          <ContextMenuItem onClick={() => { textareaRef.current?.focus(); textareaRef.current?.select() }}><TextSelectIcon />全选<ContextMenuShortcut>⌘A</ContextMenuShortcut></ContextMenuItem>
+        </ContextMenuGroup>
+      </ContextMenuContent>
+      </ContextMenu>
 
       <AlertDialog
         open={bypassConfirmOpen}

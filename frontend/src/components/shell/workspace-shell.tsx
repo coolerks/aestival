@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react"
 
 import { NewTaskView } from "@/components/chat/new-task-view"
 import { WorkspacePanel } from "@/components/panels/workspace-panel"
+import { WorkspaceMainTabs } from "@/components/panels/workspace-main-tabs"
 import { PlaceholderPage } from "@/components/pages/placeholder-page"
 import { WorkspaceContextMenu } from "@/components/shell/workspace-context-menu"
 import {
@@ -19,6 +20,7 @@ import {
 import { Skeleton } from "@/components/ui/skeleton"
 import { useNarrowWorkspace } from "@/hooks/use-narrow-workspace"
 import { useWorkspaceStore } from "@/store/workspace-store"
+import { useWorkspacePanelStore } from "@/store/workspace-panel-store"
 
 const ConversationView = lazy(() =>
   import("@/components/chat/conversation-view").then((module) => ({
@@ -38,7 +40,7 @@ const SessionManagementDialogs = lazy(() =>
   }))
 )
 
-function CurrentPage() {
+function CurrentAppPage() {
   const activePage = useWorkspaceStore((state) => state.activePage)
   const conversationId = useWorkspaceStore((state) => state.conversationId)
 
@@ -68,6 +70,12 @@ function CurrentPage() {
       )}
     </div>
   )
+}
+
+function CurrentPage() {
+  const openFileCount = useWorkspacePanelStore((state) => state.openFiles.length)
+  const content = <CurrentAppPage />
+  return openFileCount > 0 ? <WorkspaceMainTabs chat={content} /> : content
 }
 
 function HorizontalWorkspace() {

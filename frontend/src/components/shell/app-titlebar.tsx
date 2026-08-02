@@ -14,9 +14,12 @@ import { Badge } from "@/components/ui/badge"
 import { Spinner } from "@/components/ui/spinner"
 import { SidebarTrigger, useSidebar } from "@/components/ui/sidebar"
 import { navigationItems } from "@/data/mock-workspace"
+import { mockFiles } from "@/data/mock-workspace-panels"
 import { cn } from "@/lib/utils"
 import { toggleWindowMaximise } from "@/services/window-service"
+import { useAppStore } from "@/store/app-store"
 import { useWorkspaceStore } from "@/store/workspace-store"
+import { useWorkspacePanelStore } from "@/store/workspace-panel-store"
 
 export function AppTitlebar() {
   const { state: sidebarState } = useSidebar()
@@ -30,6 +33,11 @@ export function AppTitlebar() {
     (state) => state.isTemporaryConversation
   )
   const mockAppDraft = useWorkspaceStore((state) => state.mockAppDraft)
+  const appCenterView = useAppStore((state) => state.view)
+  const selectedAppName = useAppStore(
+    (state) =>
+      state.apps.find((app) => app.id === state.selectedAppId)?.name
+  )
   const setCommandOpen = useWorkspaceStore((state) => state.setCommandOpen)
   const toggleRightPanel = useWorkspaceStore((state) => state.toggleRightPanel)
   const toggleBottomPanel = useWorkspaceStore(
@@ -37,13 +45,17 @@ export function AppTitlebar() {
   )
   const rightPanelOpen = useWorkspaceStore((state) => state.rightPanelOpen)
   const bottomPanelOpen = useWorkspaceStore((state) => state.bottomPanelOpen)
+  const activeMainTab = useWorkspacePanelStore((state) => state.activeMainTab)
+  const activeFileName = mockFiles.find((file) => file.id === activeMainTab)?.name
   const title =
-    activePage === "new-task" && conversationId
+    activeFileName ?? (activePage === "new-task" && conversationId
       ? conversationTitle
-      : activePage === "apps" && mockAppDraft
-        ? mockAppDraft.name
+      : activePage === "apps" && appCenterView === "editor"
+        ? selectedAppName ?? mockAppDraft?.name ?? "应用"
+      : activePage === "settings"
+        ? "设置"
       : navigationItems.find((item) => item.id === activePage)?.label ??
-        "Aestival"
+        "Aestival")
   const running =
     runState === "waiting" ||
     runState === "thinking" ||

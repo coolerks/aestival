@@ -50,7 +50,7 @@ import {
 } from "@/data/mock-session-management"
 
 export type AgentMode = "agent" | "chat"
-export type AppPage = "new-task" | "knowledge" | "apps" | "capabilities" | "tasks"
+export type AppPage = "new-task" | "knowledge" | "apps" | "capabilities" | "tasks" | "settings"
 
 function createEmptyConversationPatch() {
   return {

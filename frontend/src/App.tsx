@@ -29,6 +29,11 @@ function AestivalWorkspace() {
         setCommandOpen(true)
         return
       }
+      if (modifier && key === ",") {
+        event.preventDefault()
+        useWorkspaceStore.getState().setActivePage("settings")
+        return
+      }
 
       const target = event.target
       const editing =

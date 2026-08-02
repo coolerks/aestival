@@ -15,9 +15,8 @@ import { toast } from "sonner"
 
 import { AiCodeBundle } from "@/components/chat/ai-code-bundle"
 import { ComposerAttachments } from "@/components/chat/composer-attachments"
-import { IconButton } from "@/components/shell/icon-button"
+import { DropdownMenuIconTrigger, IconButton } from "@/components/shell/icon-button"
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
 import {
   ContextMenu,
   ContextMenuContent,
@@ -32,7 +31,6 @@ import {
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import {
   mockAiCodeBundle,
@@ -209,18 +207,13 @@ export function ConversationMessage({
               </>
             )}
             <DropdownMenu>
-              <DropdownMenuTrigger
-                render={
-                  <Button
-                    className="pointer-events-auto"
-                    variant="ghost"
-                    size="icon-xs"
-                    aria-label="更多消息操作"
-                  />
-                }
+              <DropdownMenuIconTrigger
+                className="pointer-events-auto"
+                label="更多消息操作"
+                size="icon-xs"
               >
                 <MoreHorizontalIcon />
-              </DropdownMenuTrigger>
+              </DropdownMenuIconTrigger>
               <DropdownMenuContent align={isUser ? "end" : "start"}>
                 <DropdownMenuGroup>
                   <DropdownMenuItem onClick={() => onFork(message.id)}>
