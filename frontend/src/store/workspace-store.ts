@@ -32,10 +32,8 @@ import {
   createMockConversationTitle,
   createMockMessage,
   mockAssistantCopy,
-  mockProjectReadTool,
   type ConversationRunState,
   type MockConversationMessage,
-  type MockToolCall,
 } from "@/data/mock-conversation"
 import {
   createMockScheduledTask,
@@ -58,7 +56,6 @@ function createEmptyConversationPatch() {
     conversationTitle: "新建任务",
     messages: [],
     runState: "idle" as const,
-    toolCall: null,
     multiModelEnabled: false,
     statsOpen: false,
     compressionEvent: null,
@@ -73,6 +70,17 @@ function createEmptyConversationPatch() {
     forkRelation: null,
     draft: "",
     attachments: [],
+  }
+}
+
+function updateMessageContent(
+  message: MockConversationMessage,
+  content: string
+): MockConversationMessage {
+  return {
+    ...message,
+    content,
+    lastDeltaSequence: message.lastDeltaSequence ?? 0,
   }
 }
 
@@ -108,7 +116,6 @@ type WorkspaceState = {
   conversationTitle: string
   messages: MockConversationMessage[]
   runState: ConversationRunState
-  toolCall: MockToolCall | null
   sessions: MockSessionRecord[]
   sessionSearchQuery: string
   showArchivedSessions: boolean
@@ -173,9 +180,10 @@ type WorkspaceState = {
   setMockRunState: (
     state: Exclude<ConversationRunState, "idle">
   ) => void
-  requestMockApproval: () => void
-  decideMockApproval: (
-    decision: "once" | "session" | "reject"
+  appendMockDelta: (
+    messageId: string,
+    sequence: number,
+    text: string
   ) => void
   completeMockRun: () => void
   stopMockRun: () => void
@@ -232,7 +240,6 @@ export const useWorkspaceStore = create<WorkspaceState>((set) => ({
   conversationTitle: "新建任务",
   messages: [],
   runState: "idle",
-  toolCall: null,
   sessions: initialMockSessions,
   sessionSearchQuery: "",
   showArchivedSessions: false,
@@ -304,7 +311,6 @@ export const useWorkspaceStore = create<WorkspaceState>((set) => ({
         ),
       ],
       runState: "completed",
-      toolCall: null,
       multiModelEnabled: false,
       statsOpen: false,
       compressionEvent: null,
@@ -389,7 +395,6 @@ export const useWorkspaceStore = create<WorkspaceState>((set) => ({
         conversationTitle: title,
         messages: branchMessages,
         runState: "completed",
-        toolCall: null,
         forkDialogOpen: false,
         forkMessageId: null,
         forkRelation: relation,
@@ -594,7 +599,6 @@ export const useWorkspaceStore = create<WorkspaceState>((set) => ({
           createMockMessage("assistant", mockAssistantCopy.waiting),
         ],
         runState: "waiting",
-        toolCall: null,
         compressionEvent: null,
         versionSet: null,
         forkRelation: null,
@@ -620,11 +624,10 @@ export const useWorkspaceStore = create<WorkspaceState>((set) => ({
           ),
           createMockMessage(
             "assistant",
-            "这是只读的本地 Mock 会话。消息操作、状态和审批展示可交互，但不会调用模型或访问真实项目数据。"
+            "这是只读的本地 Mock 会话。消息操作和状态展示可交互，但不会调用模型或访问真实项目数据。"
           ),
         ],
         runState: "completed",
-        toolCall: null,
         compressionEvent: null,
         isTemporaryConversation: false,
         versionSet: null,
@@ -642,118 +645,79 @@ export const useWorkspaceStore = create<WorkspaceState>((set) => ({
           : state.messages.map((message, index) =>
               index === state.messages.length - 1 &&
               message.role === "assistant"
-                ? { ...message, content: mockAssistantCopy[runState] }
+                ? {
+                    ...updateMessageContent(
+                      message,
+                      runState === "streaming"
+                        ? ""
+                        : mockAssistantCopy[runState]
+                    ),
+                    lastDeltaSequence:
+                      runState === "streaming"
+                        ? 0
+                        : message.lastDeltaSequence ?? 0,
+                  }
                 : message
             ),
     })),
-  requestMockApproval: () =>
+  appendMockDelta: (messageId, sequence, text) =>
     set((state) => {
-      if (state.mode === "chat") {
-        return {
-          runState: "streaming",
-          toolCall: null,
-          messages: state.messages.map((message, index) =>
-            index === state.messages.length - 1 &&
-            message.role === "assistant"
-              ? {
-                  ...message,
-                  content:
-                    "当前是聊天模式，不会调用工具。正在直接生成本地 Mock 回复。",
-                }
-              : message
-          ),
-        }
-      }
-
-      return {
-        runState: "awaiting-approval",
-        toolCall: { ...mockProjectReadTool },
-        messages: state.messages.map((message, index) =>
-          index === state.messages.length - 1 &&
-          message.role === "assistant"
-            ? { ...message, content: mockAssistantCopy["awaiting-approval"] }
-            : message
-        ),
-      }
-    }),
-  decideMockApproval: (decision) =>
-    set((state) => {
-      if (!state.toolCall || state.runState !== "awaiting-approval") {
+      const message = state.messages.find((item) => item.id === messageId)
+      const lastSequence = message?.lastDeltaSequence ?? 0
+      if (!message || message.role !== "assistant" || sequence <= lastSequence) {
         return state
       }
 
-      if (decision === "reject") {
-        return {
-          toolCall: {
-            ...state.toolCall,
-            state: "rejected",
-            decision,
-          },
-          runState: "completed",
-          messages: state.messages.map((message, index) =>
-            index === state.messages.length - 1 &&
-            message.role === "assistant"
-              ? {
-                  ...message,
-                  content:
-                    "已拒绝本次 Mock 工具调用。没有读取文件，现有会话内容保持不变。",
-                }
-              : message
-          ),
-        }
-      }
-
       return {
-        toolCall: {
-          ...state.toolCall,
-          state: "running",
-          decision,
-        },
-        runState: "streaming",
-        messages: state.messages.map((message, index) =>
-          index === state.messages.length - 1 &&
-          message.role === "assistant"
-            ? { ...message, content: mockAssistantCopy.streaming }
-            : message
+        messages: state.messages.map((item) =>
+          item.id === messageId
+            ? updateMessageContent(
+                { ...item, lastDeltaSequence: sequence },
+                `${item.content}${text}`
+              )
+            : item
         ),
       }
     }),
   completeMockRun: () =>
     set((state) => ({
       runState: "completed",
-      toolCall: state.toolCall
-        ? { ...state.toolCall, state: "succeeded" }
-        : null,
       messages: state.messages.map((message, index) =>
         index === state.messages.length - 1 && message.role === "assistant"
-          ? { ...message, content: mockAssistantCopy.completed }
+          ? updateMessageContent(
+              message,
+              message.content.trim()
+                ? message.content
+                : mockAssistantCopy.completed
+            )
           : message
       ),
     })),
   stopMockRun: () =>
     set((state) => ({
       runState: "cancelled",
-      toolCall:
-        state.toolCall?.state === "running"
-          ? { ...state.toolCall, state: "rejected" }
-          : state.toolCall,
       messages: state.messages.map((message, index) =>
         index === state.messages.length - 1 && message.role === "assistant"
-          ? { ...message, content: mockAssistantCopy.cancelled }
+          ? updateMessageContent(
+              message,
+              message.content.trim() ? message.content : mockAssistantCopy.cancelled
+            )
           : message
       ),
     })),
   retryMockRun: () =>
     set((state) => ({
       runState: "waiting",
-      toolCall: null,
       multiModelEnabled: false,
       statsOpen: false,
       compressionEvent: null,
       versionSet: null,
       messages: state.messages.map((message, index) =>
         index === state.messages.length - 1 && message.role === "assistant"
-          ? { ...message, content: mockAssistantCopy.waiting }
+          ? {
+              ...updateMessageContent(message, mockAssistantCopy.waiting),
+              lastDeltaSequence: 0,
+            }
           : message
       ),
     })),

@@ -17,14 +17,16 @@
 | --- | --- | --- |
 | `Attachment` | 对话附件兼容层 | 当当前 registry 尚未提供 `AttachmentNew` 时承载文件、图片、文档引用 |
 | `AttachmentNew` | 输入框、用户消息、知识库来源 | 当前首选附件组件；展示名称、类型、大小、解析与上传/引用状态 |
-| `Bubble` | 对话气泡兼容层 | `BubbleNew` 不可用时使用，不与新版重复 |
-| `BubbleNew` | 用户消息、简短系统回执 | 当前首选气泡；AI 长回复仍采用较平的 Message 布局 |
-| `Marker` | 流式/引用兼容层 | `MarkerNew` 不可用时使用 |
-| `MarkerNew` | 流式输出、引用、运行状态 | 当前流式光标、搜索引用与消息状态标记 |
-| `Message` | 消息兼容层 | `MessageNew` 不可用时使用 |
-| `MessageNew` | 用户/AI/系统/工具消息 | 当前首选消息容器 |
-| `Message Scroller` | 会话滚动兼容层 | `Message ScrollerNew` 不可用时使用 |
-| `Message ScrollerNew` | 聊天主滚动区域 | 唯一消息滚动容器、回到底部、未读新增 |
+| `Bubble` | 用户消息、简短系统回执 | 当前官方聊天组件基线；AI 长回复仍采用较平的 Message 布局 |
+| `BubbleNew` | 对话气泡兼容层 | registry 只提供 `New` 变体时使用；与 `Bubble` 二选一 |
+| `Marker` | 流式/引用、运行状态 | 当前官方聊天组件基线；活动状态使用 `role="status"` |
+| `MarkerNew` | 流式/引用兼容层 | registry 只提供 `New` 变体时使用；不与 `Marker` 并行渲染 |
+| `Message` | 用户/AI/系统/工具消息 | 当前官方聊天组件基线；消息本体不是 Card |
+| `MessageNew` | 消息兼容层 | registry 只提供 `New` 变体时使用；与 `Message` 二选一 |
+| `Message Scroller` | 聊天主滚动区域 | 当前官方聊天组件基线；Provider 统一承载滚动状态 |
+| `Message ScrollerNew` | 会话滚动兼容层 | registry 只提供 `New` 变体时使用；不与 `Message Scroller` 并行渲染 |
+| `MessageScrollerItem` | 消息/系统事件锚点 | 每个直接子项必须有稳定 `messageId`，支持历史加载与跳转 |
+| `MessageScrollerButton` | 回到最新消息 | 用户离开底部后显示未读数量与键盘可操作的恢复入口 |
 
 ## 3. 布局与导航
 
@@ -95,6 +97,15 @@
 
 ## 7. 内容、数据与媒体
 
+聊天内容渲染由业务组合组件承载，基础交互仍必须由 shadcn/ui 组件组成：
+
+| 业务组合 | 使用位置 | 具体用途 |
+| --- | --- | --- |
+| `MarkdownRenderer` | AI 消息正文 | `react-markdown`、GFM、数学、受控 HTML、代码和附件节点的统一入口；只接收源文本 |
+| `CodeBlock` | Markdown fenced code | Shiki token、语言标签、复制、保存 Mock、横向 ScrollArea；闭合前降级为纯文本 |
+| `MermaidBlock` | `mermaid` fenced code | 源码/预览 Tabs、缩放、复制、SVG/PNG Mock 导出、最近成功预览和错误降级 |
+| `MathBlock` | KaTeX 失败回退 | 公式源码、错误提示和复制入口；正常公式由 `rehype-katex` 生成 |
+
 | 组件 | 使用位置 | 具体用途 |
 | --- | --- | --- |
 | `Card` | 独立应用、知识库网格项、单次工具调用、主题预览 | 仅用于可独立识别或整体操作的对象；禁止嵌套，禁止作为所有区块的默认外框 |
@@ -117,7 +128,7 @@
 | 业务组合 | 必须由以下 shadcn/ui 组件组成 |
 | --- | --- |
 | 会话输入区 | InputGroup、Textarea、AttachmentNew、Button、DropdownMenu、Combobox、Chart、Popover、Tooltip |
-| 工具调用卡 | 单层 Card、Badge、MarkerNew、Collapsible、Button、Alert；内部只用普通分区 |
+| 工具调用卡 | 单层 Card、Badge、Marker、Collapsible、Button、Alert；内部只用普通分区 |
 | 项目会话侧栏 | Sidebar、Collapsible、HoverCard、ScrollArea、ContextMenu、Skeleton |
 | 全局搜索 | Dialog、Command、Badge、Kbd、ScrollArea、Empty |
 | 连接向导 | Dialog/Sheet/Drawer、Field、Input/InputGroup/InputOTP、Select、RadioGroup、Checkbox、Accordion、Progress、Badge、Alert |

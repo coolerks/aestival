@@ -18,6 +18,7 @@ export type MockConversationMessage = {
   content: string
   createdAt: string
   attachments?: MockComposerAttachment[]
+  lastDeltaSequence?: number
 }
 
 export type MockToolCallState =
@@ -46,13 +47,46 @@ export const mockAssistantCopy: Record<
   "awaiting-approval":
     "实现路径已经整理完成。下一步需要模拟读取当前项目目录结构，请确认是否允许。",
   streaming:
-    "已收到审批决定，正在生成本地 Mock 结果。这个过程不会读取真实文件或调用模型。",
+    "正在生成本地 Mock 结果。这个过程不会读取真实文件或调用模型。",
   completed:
-    "Mock 流程已完成：消息状态、审批决定和结果展示均只存在于前端内存中。",
+    "Mock 流程已完成：消息状态和结果展示均只存在于前端内存中。",
   failed:
     "Mock 流程遇到可恢复错误。草稿和已生成内容均已保留，可以重试。",
   cancelled: "已停止本次 Mock 运行，已生成内容会继续保留。",
 }
+
+export const mockStreamingMarkdown = `## Mock 流式结果
+
+已按设计文档整理聊天渲染链路：**Markdown、公式、代码和 Mermaid** 都只在前端渲染，不会调用真实模型或写入文件。
+
+- GFM 任务列表：
+  - [x] 保留原始 Markdown 源文本
+  - [x] 运行状态进入消息流
+  - [ ] 等待后续接入真实事件
+- 数学公式：$E = mc^2$
+
+块级公式：
+
+$$
+\\int_0^1 x^2 dx = \\frac{1}{3}
+$$
+
+\`\`\`tsx
+type StreamEvent = { sequence: number; text: string }
+
+export function appendDelta(source: string, event: StreamEvent) {
+  return source + event.text
+}
+\`\`\`
+
+\`\`\`mermaid
+flowchart LR
+  A[消息 delta] --> B[UI 适配器]
+  B --> C[Markdown 渲染]
+  C --> D[MessageScroller]
+\`\`\`
+
+流式过程中，已经闭合的内容块保持稳定；用户上滑时不会被强制拉回底部。`
 
 export const mockProjectReadTool: MockToolCall = {
   id: "tool-read-project",
@@ -79,6 +113,7 @@ export function createMockMessage(
     role,
     content,
     attachments,
+    lastDeltaSequence: 0,
     createdAt: new Intl.DateTimeFormat("zh-CN", {
       hour: "2-digit",
       minute: "2-digit",
