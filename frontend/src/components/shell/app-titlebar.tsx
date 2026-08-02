@@ -87,8 +87,20 @@ export function AppTitlebar() {
       )}
       onDoubleClick={handleTitlebarDoubleClick}
     >
+      {/* 主标题栏背景边界与侧栏材质层使用同一条 256px ↔ 0px 轨迹，避免收起/展开时分离。 */}
+      <div
+        aria-hidden="true"
+        className={cn(
+          "pointer-events-none absolute inset-y-0 right-0 z-0 border-b bg-background transition-[left] duration-200 ease-linear",
+          sidebarState === "expanded"
+            ? "left-[var(--sidebar-width)]"
+            : "left-0"
+        )}
+      />
       {/* 左段属于侧栏：只承载窗口控件安全区和侧栏开关，不显示页面名称。 */}
-      <div className="pointer-events-none relative z-10 flex h-full min-w-0 items-center px-4">
+      <div
+        className="pointer-events-none relative z-10 flex h-full min-w-0 items-center px-4"
+      >
         <div className="h-full w-[72px] shrink-0" aria-hidden="true" />
         <SidebarTrigger
           className="app-no-drag pointer-events-auto"
