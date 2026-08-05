@@ -72,7 +72,7 @@ export function NewTaskView() {
                   className="h-auto min-h-24 items-start rounded-2xl shadow-xs justify-start whitespace-normal p-4 text-left"
                   onClick={() => setDraft(suggestion.prompt)}
                 >
-                  <span className="flex flex-col items-start gap-4">
+                  <span className="flex flex-col items-start gap-4 p-2">
                     <Icon data-icon="inline-start" />
                     <span>{suggestion.title}</span>
                   </span>
