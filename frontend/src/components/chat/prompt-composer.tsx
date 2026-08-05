@@ -362,7 +362,7 @@ export function PromptComposer({
     <div className="w-full max-w-[840px]">
       <ContextMenu>
       <ContextMenuTrigger className="block">
-      <InputGroup className="min-h-[108px] flex-col items-stretch rounded-xl bg-background shadow-sm has-[[data-slot=input-group-control]:focus-visible]:border-input has-[[data-slot=input-group-control]:focus-visible]:ring-0 has-disabled:bg-background has-disabled:opacity-100">
+      <InputGroup className="min-h-[108px] flex-col items-stretch rounded-2xl bg-background shadow-sm has-[[data-slot=input-group-control]:focus-visible]:border-input has-[[data-slot=input-group-control]:focus-visible]:ring-0 has-disabled:bg-background has-disabled:opacity-100">
         {attachments.length > 0 || composerMode !== "standard" ? (
           <InputGroupAddon
             align="block-start"

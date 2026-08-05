@@ -56,9 +56,8 @@ export function NewTaskView() {
             <img
               src={appIcon}
               alt="Aestival"
-              className="size-12"
+              className="size-24"
             />
-            <p className="text-sm text-muted-foreground">Aestival 默认任务</p>
             <h1 className="text-balance text-2xl font-medium tracking-tight sm:text-3xl">
               {formatWelcomePoem(welcomePoem, poemMetadataMode)}
             </h1>
@@ -70,7 +69,7 @@ export function NewTaskView() {
                 <Button
                   key={suggestion.title}
                   variant="outline"
-                  className="h-auto min-h-24 items-start justify-start whitespace-normal p-4 text-left"
+                  className="h-auto min-h-24 items-start rounded-2xl shadow-xs justify-start whitespace-normal p-4 text-left"
                   onClick={() => setDraft(suggestion.prompt)}
                 >
                   <span className="flex flex-col items-start gap-4">
