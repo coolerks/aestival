@@ -128,7 +128,7 @@ export function AppSidebar() {
     >
       <ContextMenu>
         <ContextMenuTrigger className="flex min-h-0 flex-1 flex-col">
-          <SidebarHeader className="gap-2 border-b p-2">
+          <SidebarHeader className="gap-2 p-2" style={{borderBottom: 'rgb(140, 140, 140, 0.3) 1px solid'}}>
             <Tabs
               value={mode}
               onValueChange={(value) => setMode(value as AgentMode)}
@@ -203,7 +203,7 @@ export function AppSidebar() {
             </SidebarGroup>
           </SidebarContent>
 
-          <SidebarFooter className="border-t p-2">
+          <SidebarFooter className="p-2" style={{borderTop: 'rgb(140, 140, 140, 0.3) 1px solid'}}>
             <SidebarMenu>
               <SidebarMenuItem>
                 <DropdownMenu>

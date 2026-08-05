@@ -146,7 +146,10 @@ export function AppTitlebar() {
             <SearchIcon />
           </IconButton>
           <IconButton
-            className="app-no-drag pointer-events-auto"
+            className={cn(
+              "app-no-drag pointer-events-auto",
+              bottomPanelOpen && "bg-muted text-foreground"
+            )}
             label={bottomPanelOpen ? "关闭底部面板" : "打开底部面板"}
             aria-pressed={bottomPanelOpen}
             onClick={toggleBottomPanel}
@@ -154,7 +157,10 @@ export function AppTitlebar() {
             <PanelBottomIcon />
           </IconButton>
           <IconButton
-            className="app-no-drag pointer-events-auto"
+            className={cn(
+              "app-no-drag pointer-events-auto",
+              rightPanelOpen && "bg-muted text-foreground"
+            )}
             label={rightPanelOpen ? "关闭右侧栏" : "打开右侧栏"}
             aria-pressed={rightPanelOpen}
             onClick={toggleRightPanel}
