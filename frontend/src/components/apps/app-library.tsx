@@ -1,4 +1,4 @@
-import { useMemo } from "react"
+import {useMemo} from "react"
 import {
   AppWindowIcon,
   ArrowDownAZIcon,
@@ -19,21 +19,20 @@ import {
   ShieldCheckIcon,
   Trash2Icon,
 } from "lucide-react"
-import { toast } from "sonner"
+import {toast} from "sonner"
 
 import appIcon from "@/assets/icons/application/icon.svg"
 import {
   ManagementEmpty,
   ManagementListFrame,
   ManagementMetricBand,
-  ManagementPageHeader,
   ManagementToolbar,
 } from "@/components/shared/management-page"
-import { ManagementSearch } from "@/components/shared/management-search"
-import { AspectRatio } from "@/components/ui/aspect-ratio"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import {ManagementSearch} from "@/components/shared/management-search"
+import {AspectRatio} from "@/components/ui/aspect-ratio"
+import {Badge} from "@/components/ui/badge"
+import {Button} from "@/components/ui/button"
+import {Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card"
 import {
   ContextMenu,
   ContextMenuContent,
@@ -49,19 +48,19 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from "@/components/ui/empty"
-import { Item, ItemContent, ItemDescription, ItemGroup, ItemSeparator, ItemTitle } from "@/components/ui/item"
-import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
+import {EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle} from "@/components/ui/empty"
+import {Item, ItemContent, ItemDescription, ItemGroup, ItemSeparator, ItemTitle} from "@/components/ui/item"
+import {Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select"
+import {ToggleGroup, ToggleGroupItem} from "@/components/ui/toggle-group"
+import {Tooltip, TooltipContent, TooltipTrigger} from "@/components/ui/tooltip"
 import {
   appPermissionLabels,
+  type AppPermissions,
   appSourceLabels,
   appStatusLabels,
-  type AppPermissions,
   type MockLocalApp,
 } from "@/data/mock-app-center"
-import { useAppStore } from "@/store/app-store"
+import {useAppStore} from "@/store/app-store"
 
 const statusVariant = {
   runnable: "secondary",
@@ -227,7 +226,6 @@ export function AppLibrary() {
 
   return (
     <section className="flex size-full min-h-0 flex-col" aria-label="应用中心">
-      <ManagementPageHeader description="创建、导入和管理仅在本地运行的 HTML、CSS 与 JavaScript 应用。" />
       <div className="min-h-0 flex-1 overflow-y-auto p-4">
         <div className="flex flex-col gap-4">
       <ManagementMetricBand

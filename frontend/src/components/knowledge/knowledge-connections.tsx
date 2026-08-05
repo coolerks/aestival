@@ -1,6 +1,7 @@
 import {
   CableIcon,
   CirclePowerIcon,
+  CopyIcon,
   MoreHorizontalIcon,
   PencilIcon,
   PlusIcon,
@@ -16,6 +17,14 @@ import {
 } from "@/components/knowledge/knowledge-shared"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuGroup,
+  ContextMenuItem,
+  ContextMenuSeparator,
+  ContextMenuTrigger,
+} from "@/components/ui/context-menu"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -168,11 +177,23 @@ export function KnowledgeConnections() {
               {filtered.map((connection) => {
                 const definition = getKnowledgeSourceDefinition(connection.type)
                 return (
-                  <TableRow
-                    key={connection.id}
-                    className="cursor-pointer"
-                    onClick={() => openConnectionDetails(connection.id)}
-                  >
+                  <ContextMenu key={connection.id}>
+                    <ContextMenuTrigger
+                      render={
+                        <TableRow
+                          tabIndex={0}
+                          className="cursor-pointer"
+                          onClick={() => openConnectionDetails(connection.id)}
+                          onKeyDown={(event) => {
+                            if (event.target !== event.currentTarget) return
+                            if (event.key === "Enter" || event.key === " ") {
+                              event.preventDefault()
+                              openConnectionDetails(connection.id)
+                            }
+                          }}
+                        />
+                      }
+                    >
                     <TableCell>
                       <div className="flex items-center gap-2">
                         <KnowledgeSourceIcon
@@ -262,7 +283,44 @@ export function KnowledgeConnections() {
                         </DropdownMenuContent>
                       </DropdownMenu>
                     </TableCell>
-                  </TableRow>
+                    </ContextMenuTrigger>
+                    <ContextMenuContent className="w-60">
+                      <ContextMenuGroup>
+                        <ContextMenuItem
+                          onClick={() => openConnectionDetails(connection.id)}
+                        >
+                          <PencilIcon />
+                          查看与编辑
+                        </ContextMenuItem>
+                        <ContextMenuItem
+                          onClick={() =>
+                            toast.success("连接地址已复制（前端 Mock）")
+                          }
+                        >
+                          <CopyIcon />
+                          复制连接地址
+                        </ContextMenuItem>
+                        <ContextMenuItem
+                          onClick={() =>
+                            toast.success("前端 Mock 测试完成，未发起网络请求")
+                          }
+                        >
+                          <ShieldCheckIcon />
+                          测试连接
+                        </ContextMenuItem>
+                      </ContextMenuGroup>
+                      <ContextMenuSeparator />
+                      <ContextMenuItem
+                        variant="destructive"
+                        onClick={() =>
+                          requestDisconnectConnection(connection.id)
+                        }
+                      >
+                        <CirclePowerIcon />
+                        断开连接
+                      </ContextMenuItem>
+                    </ContextMenuContent>
+                  </ContextMenu>
                 )
               })}
             </TableBody>

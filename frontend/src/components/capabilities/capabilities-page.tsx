@@ -210,7 +210,6 @@ function HookTimeline({ value, onChange }: { value: string; onChange: (value: st
 function CapabilityRow({ record, separated }: { record: CapabilityRecord; separated: boolean }) {
   const openDetails = useCapabilityStore((state) => state.openDetails)
   const toggleEnabled = useCapabilityStore((state) => state.toggleEnabled)
-  const setDialog = useCapabilityStore((state) => state.setDialog)
   const Icon = tabIcons[record.tab]
   const StatusIcon = statusIcons[record.status]
   return (
@@ -229,10 +228,43 @@ function CapabilityRow({ record, separated }: { record: CapabilityRecord; separa
             <Tooltip><TooltipTrigger render={<Button variant="ghost" size="icon-sm" aria-label={`查看${record.name}详情`} onClick={() => openDetails(record.id)} />}><EyeIcon /></TooltipTrigger><TooltipContent>查看详情</TooltipContent></Tooltip>
             <RecordMenu record={record} />
           </ItemActions>
-        </Item>
-      </ContextMenuTrigger>
-      <ContextMenuContent><ContextMenuGroup><ContextMenuItem onClick={() => openDetails(record.id)}><EyeIcon />查看详情</ContextMenuItem><ContextMenuItem onClick={() => toast.info("已复制为前端 Mock 草稿")}><CopyIcon />复制配置</ContextMenuItem><ContextMenuItem onClick={() => toggleEnabled(record.id)}>{record.enabled ? <PauseCircleIcon /> : <PlayIcon />}{record.enabled ? "停用" : "启用"}</ContextMenuItem></ContextMenuGroup><ContextMenuSeparator /><ContextMenuItem variant="destructive" onClick={() => setDialog("delete", record.id)}><Trash2Icon />删除</ContextMenuItem></ContextMenuContent>
+          </Item>
+        </ContextMenuTrigger>
+      <CapabilityContextMenuContent record={record} />
     </ContextMenu>
+  )
+}
+
+function CapabilityContextMenuContent({ record }: { record: CapabilityRecord }) {
+  const openDetails = useCapabilityStore((state) => state.openDetails)
+  const toggleEnabled = useCapabilityStore((state) => state.toggleEnabled)
+  const setDialog = useCapabilityStore((state) => state.setDialog)
+
+  return (
+    <ContextMenuContent>
+      <ContextMenuGroup>
+        <ContextMenuItem onClick={() => openDetails(record.id)}>
+          <EyeIcon />
+          查看详情
+        </ContextMenuItem>
+        <ContextMenuItem onClick={() => toast.info("已复制为前端 Mock 草稿")}>
+          <CopyIcon />
+          复制配置
+        </ContextMenuItem>
+        <ContextMenuItem onClick={() => toggleEnabled(record.id)}>
+          {record.enabled ? <PauseCircleIcon /> : <PlayIcon />}
+          {record.enabled ? "停用" : "启用"}
+        </ContextMenuItem>
+      </ContextMenuGroup>
+      <ContextMenuSeparator />
+      <ContextMenuItem
+        variant="destructive"
+        onClick={() => setDialog("delete", record.id)}
+      >
+        <Trash2Icon />
+        删除
+      </ContextMenuItem>
+    </ContextMenuContent>
   )
 }
 
@@ -243,12 +275,11 @@ function RecordMenu({ record }: { record: CapabilityRecord }) {
 }
 
 function CapabilityTable({ records }: { records: CapabilityRecord[] }) {
-  const openDetails = useCapabilityStore((state) => state.openDetails)
   const toggleEnabled = useCapabilityStore((state) => state.toggleEnabled)
   return (
     <ManagementListFrame>
       <Table><TableHeader><TableRow><TableHead>名称</TableHead><TableHead>分类 / 阶段</TableHead><TableHead>作用域</TableHead><TableHead className="hidden lg:table-cell">信息</TableHead><TableHead>状态</TableHead><TableHead className="w-20 text-right">操作</TableHead></TableRow></TableHeader><TableBody>
-        {records.map((record) => { const StatusIcon = statusIcons[record.status]; return <TableRow key={record.id} tabIndex={0} className="cursor-default" onDoubleClick={() => openDetails(record.id)} onKeyDown={(event) => { if (event.target !== event.currentTarget) return; if (event.key === "Enter" || event.key === " ") { event.preventDefault(); openDetails(record.id) } }}><TableCell><div className="font-medium">{record.name}</div><div className="max-w-72 truncate text-xs text-muted-foreground">{record.description}</div></TableCell><TableCell><Badge variant="outline">{record.type}</Badge></TableCell><TableCell>{record.source}</TableCell><TableCell className="hidden text-xs text-muted-foreground lg:table-cell">{record.meta.join(" · ")}</TableCell><TableCell><Badge variant={statusVariants[record.status]}><StatusIcon />{statusLabels[record.status]}</Badge></TableCell><TableCell><div className="flex justify-end gap-1"><Switch checked={record.enabled} onCheckedChange={() => toggleEnabled(record.id)} aria-label={`${record.enabled ? "停用" : "启用"}${record.name}`} /><RecordMenu record={record} /></div></TableCell></TableRow> })}
+        {records.map((record) => { const StatusIcon = statusIcons[record.status]; return <ContextMenu key={record.id}><ContextMenuTrigger render={<TableRow tabIndex={0} className="cursor-default" onDoubleClick={() => useCapabilityStore.getState().openDetails(record.id)} onKeyDown={(event) => { if (event.target !== event.currentTarget) return; if (event.key === "Enter" || event.key === " ") { event.preventDefault(); useCapabilityStore.getState().openDetails(record.id) } }} />}><TableCell><div className="font-medium">{record.name}</div><div className="max-w-72 truncate text-xs text-muted-foreground">{record.description}</div></TableCell><TableCell><Badge variant="outline">{record.type}</Badge></TableCell><TableCell>{record.source}</TableCell><TableCell className="hidden text-xs text-muted-foreground lg:table-cell">{record.meta.join(" · ")}</TableCell><TableCell><Badge variant={statusVariants[record.status]}><StatusIcon />{statusLabels[record.status]}</Badge></TableCell><TableCell><div className="flex justify-end gap-1"><Switch checked={record.enabled} onCheckedChange={() => toggleEnabled(record.id)} aria-label={`${record.enabled ? "停用" : "启用"}${record.name}`} /><RecordMenu record={record} /></div></TableCell></ContextMenuTrigger><CapabilityContextMenuContent record={record} /></ContextMenu> })}
       </TableBody></Table>
     </ManagementListFrame>
   )

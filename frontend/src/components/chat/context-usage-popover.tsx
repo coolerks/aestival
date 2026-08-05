@@ -1,17 +1,10 @@
-import { useMemo } from "react"
-import { MessageSquareTextIcon, ShrinkIcon } from "lucide-react"
-import {
-  PolarAngleAxis,
-  RadialBar,
-  RadialBarChart,
-} from "recharts"
-import { toast } from "sonner"
+import {useMemo} from "react"
+import {ShrinkIcon} from "lucide-react"
+import {PolarAngleAxis, RadialBar, RadialBarChart,} from "recharts"
+import {toast} from "sonner"
 
-import { Button } from "@/components/ui/button"
-import {
-  ChartContainer,
-  type ChartConfig,
-} from "@/components/ui/chart"
+import {Button} from "@/components/ui/button"
+import {type ChartConfig, ChartContainer,} from "@/components/ui/chart"
 import {
   Popover,
   PopoverContent,
@@ -20,18 +13,11 @@ import {
   PopoverTitle,
   PopoverTrigger,
 } from "@/components/ui/popover"
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
-import { Separator } from "@/components/ui/separator"
-import { Switch } from "@/components/ui/switch"
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
-import { useWorkspaceStore } from "@/store/workspace-store"
+import {Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue,} from "@/components/ui/select"
+import {Separator} from "@/components/ui/separator"
+import {Switch} from "@/components/ui/switch"
+import {Tooltip, TooltipContent, TooltipTrigger} from "@/components/ui/tooltip"
+import {useWorkspaceStore} from "@/store/workspace-store"
 
 const contextChartConfig = {
   used: {
@@ -103,7 +89,6 @@ export function ContextUsagePopover() {
         <div className="flex flex-col gap-2 text-xs">
           <div className="flex items-center justify-between">
             <span className="flex items-center gap-1.5 text-muted-foreground">
-              <MessageSquareTextIcon aria-hidden="true" />
               消息
             </span>
             <span className="tabular-nums">{messages.length * 620} token</span>

@@ -1,3 +1,4 @@
+import { useState } from "react"
 import {
   BanIcon,
   BotIcon,
@@ -10,6 +11,7 @@ import {
   PauseIcon,
   PencilLineIcon,
   RefreshCwIcon,
+  QuoteIcon,
   ShareIcon,
   Volume2Icon,
 } from "lucide-react"
@@ -59,6 +61,7 @@ import {
   type ConversationMessageStatus,
 } from "@/data/conversation-ui"
 import { cn } from "@/lib/utils"
+import { copyTextToClipboard, selectedText } from "@/lib/context-menu-utils"
 
 type ConversationMessageProps = {
   message: MockConversationMessage
@@ -156,19 +159,18 @@ export function ConversationMessage({
     (part): part is Extract<(typeof uiMessage.parts)[number], { type: "markdown" }> =>
       part.type === "markdown"
   )
-  const copyMessage = async () => {
-    if (!navigator.clipboard) {
-      toast.error("当前环境不支持剪贴板")
-      return
-    }
-    await navigator.clipboard.writeText(message.content)
-    toast.success("已复制消息")
+  const [contextSelection, setContextSelection] = useState("")
+  const copyMessage = async (text = message.content) => {
+    const copied = await copyTextToClipboard(text)
+    if (copied) toast.success(text === message.content ? "已复制消息" : "已复制选中文本")
+    else toast.warning("无法写入剪贴板")
   }
 
   return (
     <ContextMenu>
       <ContextMenuTrigger
         className="group/message relative flex w-full"
+        onContextMenu={() => setContextSelection(selectedText())}
       >
         <Message
           align={isUser ? "end" : "start"}
@@ -292,10 +294,18 @@ export function ConversationMessage({
 
       <ContextMenuContent className="w-56">
         <ContextMenuGroup>
-          <ContextMenuItem onClick={() => void copyMessage()}>
+          <ContextMenuItem onClick={() => void copyMessage(contextSelection || message.content)}>
             <CopyIcon />
-            复制纯文本
+            {contextSelection ? "复制选中文本" : "复制纯文本"}
             <ContextMenuShortcut>⌘C</ContextMenuShortcut>
+          </ContextMenuItem>
+          <ContextMenuItem onClick={() => void copyMessage(message.content)}>
+            <CopyIcon />
+            复制 Markdown
+          </ContextMenuItem>
+          <ContextMenuItem onClick={() => mockAction("引用到输入框")}>
+            <QuoteIcon />
+            引用到输入框
           </ContextMenuItem>
           <ContextMenuItem onClick={() => onFork(message.id)}>
             <GitForkIcon />

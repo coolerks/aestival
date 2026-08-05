@@ -1,7 +1,9 @@
+import type { ReactNode } from "react"
 import {
   ArrowDownAZIcon,
   ArrowDownWideNarrowIcon,
   BoxesIcon,
+  CopyIcon,
   DatabaseIcon,
   Grid2X2Icon,
   ListIcon,
@@ -38,6 +40,14 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuGroup,
+  ContextMenuItem,
+  ContextMenuSeparator,
+  ContextMenuTrigger,
+} from "@/components/ui/context-menu"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -152,6 +162,73 @@ function KnowledgeActions({ id }: { id: string }) {
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
+  )
+}
+
+function KnowledgeContextMenu({
+  id,
+  children,
+}: {
+  id: string
+  children: ReactNode
+}) {
+  const openKnowledgeDetails = useKnowledgeStore(
+    (state) => state.openKnowledgeDetails,
+  )
+  const setActiveTab = useKnowledgeStore((state) => state.setActiveTab)
+  const syncKnowledgeBase = useKnowledgeStore(
+    (state) => state.syncKnowledgeBase,
+  )
+  const requestDeleteKnowledge = useKnowledgeStore(
+    (state) => state.requestDeleteKnowledge,
+  )
+
+  return (
+    <ContextMenu>
+      <ContextMenuTrigger className="block h-full">
+        {children}
+      </ContextMenuTrigger>
+      <ContextMenuContent className="w-56">
+        <ContextMenuGroup>
+          <ContextMenuItem onClick={() => openKnowledgeDetails(id)}>
+            <BoxesIcon />
+            打开详情
+          </ContextMenuItem>
+          <ContextMenuItem
+            onClick={() => {
+              setActiveTab("retrieval")
+              toast.info("已带入检索测试（前端 Mock）")
+            }}
+          >
+            <PlayIcon />
+            测试检索
+          </ContextMenuItem>
+          <ContextMenuItem
+            onClick={() => {
+              syncKnowledgeBase(id)
+              toast.success("已开始前端 Mock 同步")
+            }}
+          >
+            <RefreshCwIcon />
+            立即同步
+          </ContextMenuItem>
+          <ContextMenuItem
+            onClick={() => toast.success("知识库名称已复制（Mock）")}
+          >
+            <CopyIcon />
+            复制名称
+          </ContextMenuItem>
+        </ContextMenuGroup>
+        <ContextMenuSeparator />
+        <ContextMenuItem
+          variant="destructive"
+          onClick={() => requestDeleteKnowledge(id)}
+        >
+          <Trash2Icon />
+          删除知识库
+        </ContextMenuItem>
+      </ContextMenuContent>
+    </ContextMenu>
   )
 }
 
@@ -387,7 +464,8 @@ export function KnowledgeOverview() {
       ) : viewMode === "grid" ? (
         <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
           {filtered.map((item) => (
-            <Card key={item.id} className="gap-3 py-4">
+            <KnowledgeContextMenu key={item.id} id={item.id}>
+              <Card className="h-full gap-3 py-4">
               <CardHeader className="gap-1 px-4">
                 <div className="flex items-start justify-between gap-2">
                   <div className="flex min-w-0 items-start gap-2">
@@ -432,7 +510,8 @@ export function KnowledgeOverview() {
                   查看
                 </Button>
               </CardFooter>
-            </Card>
+              </Card>
+            </KnowledgeContextMenu>
           ))}
         </div>
       ) : (
@@ -453,19 +532,23 @@ export function KnowledgeOverview() {
             </TableHeader>
             <TableBody>
               {filtered.map((item) => (
-                <TableRow
-                  key={item.id}
-                  tabIndex={0}
-                  className="cursor-pointer"
-                  onClick={() => openKnowledgeDetails(item.id)}
-                  onKeyDown={(event) => {
-                    if (event.target !== event.currentTarget) return
-                    if (event.key === "Enter" || event.key === " ") {
-                      event.preventDefault()
-                      openKnowledgeDetails(item.id)
+                <ContextMenu key={item.id}>
+                  <ContextMenuTrigger
+                    render={
+                      <TableRow
+                        tabIndex={0}
+                        className="cursor-pointer"
+                        onClick={() => openKnowledgeDetails(item.id)}
+                        onKeyDown={(event) => {
+                          if (event.target !== event.currentTarget) return
+                          if (event.key === "Enter" || event.key === " ") {
+                            event.preventDefault()
+                            openKnowledgeDetails(item.id)
+                          }
+                        }}
+                      />
                     }
-                  }}
-                >
+                  >
                   <TableCell>
                     <div className="flex max-w-64 items-start gap-2">
                       <KnowledgeSourceIcon
@@ -499,7 +582,29 @@ export function KnowledgeOverview() {
                   <TableCell onClick={(event) => event.stopPropagation()}>
                     <KnowledgeActions id={item.id} />
                   </TableCell>
-                </TableRow>
+                  </ContextMenuTrigger>
+                  <ContextMenuContent className="w-56">
+                    <ContextMenuGroup>
+                      <ContextMenuItem onClick={() => openKnowledgeDetails(item.id)}>
+                        <BoxesIcon />
+                        打开详情
+                      </ContextMenuItem>
+                      <ContextMenuItem onClick={() => toast.info("已带入检索测试（前端 Mock）")}>
+                        <PlayIcon />
+                        测试检索
+                      </ContextMenuItem>
+                      <ContextMenuItem onClick={() => toast.success("已开始前端 Mock 同步")}>
+                        <RefreshCwIcon />
+                        立即同步
+                      </ContextMenuItem>
+                    </ContextMenuGroup>
+                    <ContextMenuSeparator />
+                    <ContextMenuItem variant="destructive" onClick={() => useKnowledgeStore.getState().requestDeleteKnowledge(item.id)}>
+                      <Trash2Icon />
+                      删除知识库
+                    </ContextMenuItem>
+                  </ContextMenuContent>
+                </ContextMenu>
               ))}
             </TableBody>
           </Table>

@@ -4,10 +4,19 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
   CircleAlertIcon,
+  CopyIcon,
   EllipsisIcon,
+  FilesIcon,
   FolderIcon,
+  FolderMinusIcon,
+  FolderOpenIcon,
+  MessageSquareIcon,
+  PencilIcon,
+  Settings2Icon,
   ShieldQuestionIcon,
+  SquarePenIcon,
   StarIcon,
+  TerminalSquareIcon,
 } from "lucide-react"
 import { toast } from "sonner"
 
@@ -33,6 +42,14 @@ import {
 } from "@/components/ui/collapsible"
 import {
   ContextMenu,
+  ContextMenuContent,
+  ContextMenuGroup,
+  ContextMenuItem,
+  ContextMenuSeparator,
+  ContextMenuShortcut,
+  ContextMenuSub,
+  ContextMenuSubContent,
+  ContextMenuSubTrigger,
   ContextMenuTrigger,
 } from "@/components/ui/context-menu"
 import {
@@ -62,6 +79,7 @@ import {
   sortMockSessions,
   type MockSessionProjectId,
 } from "@/data/mock-session-management"
+import { useWorkspacePanelStore } from "@/store/workspace-panel-store"
 import { useWorkspaceStore } from "@/store/workspace-store"
 
 type SessionProjectGroupProps = {
@@ -69,6 +87,119 @@ type SessionProjectGroupProps = {
   label: string
   open: boolean
   onOpenChange: (open: boolean) => void
+}
+
+function ProjectContextMenuContent({
+  projectId,
+  onOpenChange,
+}: {
+  projectId: MockSessionProjectId
+  onOpenChange: (open: boolean) => void
+}) {
+  const sessions = useWorkspaceStore((state) => state.sessions)
+  const setSessionArchived = useWorkspaceStore(
+    (state) => state.setSessionArchived,
+  )
+  const setActivePage = useWorkspaceStore((state) => state.setActivePage)
+  const fixedProject = projectId === "task"
+  const projectSessions = sessions.filter(
+    (session) => session.projectId === projectId && !session.archived,
+  )
+
+  return (
+    <ContextMenuContent className="w-64">
+      <ContextMenuGroup>
+        <ContextMenuItem
+          onClick={() => {
+            const panels = useWorkspacePanelStore.getState()
+            panels.openMockWorkspace()
+            panels.openPanel("files", "right")
+          }}
+        >
+          <FilesIcon />
+          在文件面板中显示
+        </ContextMenuItem>
+        <ContextMenuItem
+          onClick={() => toast.info("系统文件管理器入口仍为前端 Mock")}
+        >
+          <FolderOpenIcon />
+          在系统文件管理器中显示
+        </ContextMenuItem>
+        <ContextMenuItem onClick={() => setActivePage("new-task")}>
+          <SquarePenIcon />
+          在此项目中新建任务
+          <ContextMenuShortcut>⌘N</ContextMenuShortcut>
+        </ContextMenuItem>
+        <ContextMenuItem
+          onClick={() => useWorkspacePanelStore.getState().openPanel("terminal", "right")}
+        >
+          <TerminalSquareIcon />
+          新建终端
+        </ContextMenuItem>
+      </ContextMenuGroup>
+      <ContextMenuSeparator />
+      <ContextMenuGroup>
+        <ContextMenuItem
+          disabled={fixedProject}
+          onClick={() => toast.info("项目重命名仍为前端 Mock")}
+        >
+          <PencilIcon />
+          重命名
+          <ContextMenuShortcut>F2</ContextMenuShortcut>
+        </ContextMenuItem>
+        <ContextMenuItem
+          disabled={fixedProject}
+          onClick={() => toast.info("项目设置仍为前端 Mock")}
+        >
+          <Settings2Icon />
+          项目设置
+        </ContextMenuItem>
+        <ContextMenuItem
+          onClick={() => toast.success("项目路径已复制（Mock）")}
+        >
+          <CopyIcon />
+          复制路径
+        </ContextMenuItem>
+        <ContextMenuSub>
+          <ContextMenuSubTrigger>
+            <MessageSquareIcon />
+            会话
+          </ContextMenuSubTrigger>
+          <ContextMenuSubContent className="w-48">
+            <ContextMenuItem onClick={() => onOpenChange(true)}>
+              <ChevronDownIcon />
+              全部展开
+            </ContextMenuItem>
+            <ContextMenuItem onClick={() => onOpenChange(false)}>
+              <ChevronRightIcon />
+              全部收起
+            </ContextMenuItem>
+            <ContextMenuItem
+              disabled={projectSessions.length === 0}
+              onClick={() => {
+                projectSessions.forEach((session) =>
+                  setSessionArchived(session.id, true),
+                )
+                toast.success("项目会话已归档（Mock）")
+              }}
+            >
+              <ArchiveIcon />
+              全部归档
+            </ContextMenuItem>
+          </ContextMenuSubContent>
+        </ContextMenuSub>
+      </ContextMenuGroup>
+      <ContextMenuSeparator />
+      <ContextMenuItem
+        disabled={fixedProject}
+        variant="destructive"
+        onClick={() => toast.info("从侧栏移除仍为前端 Mock，未删除本地目录")}
+      >
+        <FolderMinusIcon />
+        从侧栏移除
+      </ContextMenuItem>
+    </ContextMenuContent>
+  )
 }
 
 export function SessionProjectGroup({
@@ -121,15 +252,23 @@ export function SessionProjectGroup({
     <SidebarMenu>
       <Collapsible open={effectiveOpen} onOpenChange={onOpenChange}>
         <SidebarMenuItem>
-          <CollapsibleTrigger
-            render={
-              <SidebarMenuButton tooltip={label} />
-            }
-          >
-            {effectiveOpen ? <ChevronDownIcon /> : <ChevronRightIcon />}
-            <FolderIcon />
-            <span>{label}</span>
-          </CollapsibleTrigger>
+          <ContextMenu>
+            <ContextMenuTrigger className="block w-full">
+              <CollapsibleTrigger
+                render={
+                  <SidebarMenuButton tooltip={label} />
+                }
+              >
+                {effectiveOpen ? <ChevronDownIcon /> : <ChevronRightIcon />}
+                <FolderIcon />
+                <span>{label}</span>
+              </CollapsibleTrigger>
+            </ContextMenuTrigger>
+            <ProjectContextMenuContent
+              projectId={projectId}
+              onOpenChange={onOpenChange}
+            />
+          </ContextMenu>
           <CollapsibleContent>
             <SidebarMenuSub className="mx-0 w-full border-l-0 px-0 py-0.5">
               {visibleSessions.map((session) => {

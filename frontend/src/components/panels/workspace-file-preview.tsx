@@ -1,3 +1,4 @@
+import { useRef } from "react"
 import Editor from "@monaco-editor/react"
 import { useTheme } from "next-themes"
 import {
@@ -9,11 +10,14 @@ import {
   LockIcon,
   RefreshCwIcon,
   SaveIcon,
+  SearchIcon,
+  TextSelectIcon,
   XIcon,
 } from "lucide-react"
 import { toast } from "sonner"
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { MonacoContextMenu, type MonacoEditorInstance } from "@/components/shared/monaco-context-menu"
 import { IconButton } from "@/components/shell/icon-button"
 import {
   AlertDialog,
@@ -33,6 +37,7 @@ import {
   ContextMenuContent,
   ContextMenuGroup,
   ContextMenuItem,
+  ContextMenuSeparator,
   ContextMenuShortcut,
   ContextMenuTrigger,
 } from "@/components/ui/context-menu"
@@ -40,6 +45,7 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { mockFiles, type MockFile } from "@/data/mock-workspace-panels"
+import { copyTextToClipboard, selectElementContents, selectedText } from "@/lib/context-menu-utils"
 import "@/lib/monaco-environment"
 import { useWorkspacePanelStore } from "@/store/workspace-panel-store"
 
@@ -47,8 +53,9 @@ import appIcon from "@/assets/icons/application/logo.svg"
 
 function CodePreview({ file }: { file: MockFile }) {
   const { resolvedTheme } = useTheme()
+  const editorRef = useRef<MonacoEditorInstance | null>(null)
   const language = file.kind === "json" ? "json" : file.name.endsWith(".tsx") ? "typescript" : "plaintext"
-  return <Editor path={`mock://${file.path}`} language={language} defaultValue={file.content} theme={resolvedTheme === "dark" ? "vs-dark" : "vs"} loading={<div className="grid size-full place-items-center text-xs text-muted-foreground">正在加载本地代码编辑器…</div>} options={{ ariaLabel: `预览 ${file.name}`, automaticLayout: true, contextmenu: false, fontFamily: "Geist Mono, ui-monospace, monospace", fontSize: 12, lineNumbersMinChars: 3, minimap: { enabled: false }, overviewRulerLanes: 0, padding: { top: 12, bottom: 12 }, readOnly: file.readonly, scrollBeyondLastLine: false, tabSize: 2, wordWrap: "on" }} />
+  return <MonacoContextMenu editorRef={editorRef} readOnly={file.readonly}><Editor path={`mock://${file.path}`} language={language} defaultValue={file.content} onMount={(editor) => { editorRef.current = editor }} theme={resolvedTheme === "dark" ? "vs-dark" : "vs"} loading={<div className="grid size-full place-items-center text-xs text-muted-foreground">正在加载本地代码编辑器…</div>} options={{ ariaLabel: `预览 ${file.name}`, automaticLayout: true, contextmenu: false, fontFamily: "Geist Mono, ui-monospace, monospace", fontSize: 12, lineNumbersMinChars: 3, minimap: { enabled: false }, overviewRulerLanes: 0, padding: { top: 12, bottom: 12 }, readOnly: file.readonly, scrollBeyondLastLine: false, tabSize: 2, wordWrap: "on" }} /></MonacoContextMenu>
 }
 
 function MarkdownPreview({ file }: { file: MockFile }) {
@@ -76,10 +83,19 @@ function FileSurface({ file }: { file: MockFile }) {
 export function WorkspaceFilePreview({ fileId }: { fileId: string }) {
   const file = mockFiles.find((item) => item.id === fileId)
   const closeId = useWorkspacePanelStore((state) => state.closeFileDialogId)
+  const surfaceRef = useRef<HTMLDivElement>(null)
   if (!file) return null
+  const copySurfaceText = () => {
+    const selection = selectedText()
+    const text = selection || file.content
+    void copyTextToClipboard(text).then((copied) => {
+      if (copied) toast.success(selection ? "已复制选中文本" : "已复制文件内容")
+      else toast.warning("无法写入剪贴板")
+    })
+  }
   return <div className="flex size-full min-h-0 flex-col">
     <div className="flex h-9 shrink-0 items-center gap-1 border-b px-3 text-xs"><span className="text-muted-foreground">Aestival</span><span>/</span><span className="text-muted-foreground">{file.parent}</span><span>/</span><span className="font-medium">{file.name}</span><span className="flex-1" />{file.readonly ? <Badge variant="outline"><LockIcon />只读</Badge> : null}{file.dirty ? <Badge variant="secondary">未保存</Badge> : null}{file.externalChange ? <Badge variant="outline"><AlertTriangleIcon />外部变更</Badge> : null}<IconButton label="保存文件" onClick={() => toast.info("Mock：不会写入本地文件")}><SaveIcon /></IconButton></div>
-    <ContextMenu><ContextMenuTrigger className="app-selectable-content min-h-0 flex-1"><FileSurface file={file} /></ContextMenuTrigger><ContextMenuContent><ContextMenuGroup><ContextMenuItem onClick={() => toast.success("文件路径已复制（Mock）")}><CopyIcon />复制路径<ContextMenuShortcut>⌥⌘C</ContextMenuShortcut></ContextMenuItem><ContextMenuItem onClick={() => toast.info("Mock：不会写入本地文件")}><SaveIcon />保存<ContextMenuShortcut>⌘S</ContextMenuShortcut></ContextMenuItem><ContextMenuItem onClick={() => useWorkspacePanelStore.getState().requestCloseFile(file.id)}><XIcon />关闭文件<ContextMenuShortcut>⌘W</ContextMenuShortcut></ContextMenuItem></ContextMenuGroup></ContextMenuContent></ContextMenu>
+    <ContextMenu><ContextMenuTrigger className="min-h-0 flex-1"><div ref={surfaceRef} className="app-selectable-content size-full"><FileSurface file={file} /></div></ContextMenuTrigger><ContextMenuContent><ContextMenuGroup><ContextMenuItem onClick={() => toast.success("文件路径已复制（Mock）")}><CopyIcon />复制路径<ContextMenuShortcut>⌥⌘C</ContextMenuShortcut></ContextMenuItem><ContextMenuItem onClick={() => toast.info("Mock：不会写入本地文件")}><SaveIcon />保存<ContextMenuShortcut>⌘S</ContextMenuShortcut></ContextMenuItem><ContextMenuItem onClick={() => useWorkspacePanelStore.getState().requestCloseFile(file.id)}><XIcon />关闭文件<ContextMenuShortcut>⌘W</ContextMenuShortcut></ContextMenuItem></ContextMenuGroup><ContextMenuSeparator /><ContextMenuGroup><ContextMenuItem onClick={copySurfaceText}><CopyIcon />复制选中文本/文件内容<ContextMenuShortcut>⌘C</ContextMenuShortcut></ContextMenuItem><ContextMenuItem onClick={() => toast.info("请在当前文件预览中使用系统查找") }><SearchIcon />查找文本<ContextMenuShortcut>⌘F</ContextMenuShortcut></ContextMenuItem><ContextMenuItem onClick={() => { if (surfaceRef.current) selectElementContents(surfaceRef.current) }}><TextSelectIcon />全选内容<ContextMenuShortcut>⌘A</ContextMenuShortcut></ContextMenuItem></ContextMenuGroup></ContextMenuContent></ContextMenu>
     <div className="flex h-7 shrink-0 items-center gap-3 border-t px-3 text-[11px] text-muted-foreground"><span>{file.language}</span><span>{file.encoding}</span><span>{file.lineEnding}</span><span className="ml-auto">{file.size} · {file.modifiedAt}</span></div>
     <AlertDialog open={closeId === file.id} onOpenChange={(open) => { if (!open) useWorkspacePanelStore.getState().setCloseFileDialogId(null) }}><AlertDialogContent><AlertDialogHeader><AlertDialogTitle>{file.externalChange ? "文件已在外部改变" : "保存文件更改？"}</AlertDialogTitle><AlertDialogDescription>{file.externalChange ? "可比较、重新载入或覆盖。当前 Mock 不会读写真实文件。" : "关闭前请选择如何处理未保存内容；当前操作只改变 Mock 标签状态。"}</AlertDialogDescription></AlertDialogHeader><AlertDialogFooter><AlertDialogCancel>取消</AlertDialogCancel>{file.externalChange ? <><Button variant="outline" onClick={() => toast.info("Mock：打开差异比较视图")}><Columns2Icon data-icon="inline-start" />比较</Button><Button variant="outline" onClick={() => useWorkspacePanelStore.getState().closeFile(file.id)}><RefreshCwIcon data-icon="inline-start" />重新载入</Button></> : <Button variant="outline" onClick={() => useWorkspacePanelStore.getState().closeFile(file.id)}>不保存</Button>}<AlertDialogAction variant={file.externalChange ? "destructive" : "default"} onClick={() => { toast.success(file.externalChange ? "Mock：未覆盖本地文件" : "Mock：未写入本地文件"); useWorkspacePanelStore.getState().closeFile(file.id) }}>{file.externalChange ? "覆盖" : "保存"}</AlertDialogAction></AlertDialogFooter></AlertDialogContent></AlertDialog>
   </div>

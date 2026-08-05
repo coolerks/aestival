@@ -1,6 +1,7 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import {
   BugIcon,
+  ClipboardPasteIcon,
   ChevronDownIcon,
   CircleStopIcon,
   CopyIcon,
@@ -50,6 +51,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { mockDebugEvents, mockLogs, mockSearchMatches } from "@/data/mock-workspace-panels"
 import { cn } from "@/lib/utils"
+import { copyTextToClipboard, readTextFromClipboard, selectElementContents, selectedText } from "@/lib/context-menu-utils"
 import { useWorkspacePanelStore } from "@/store/workspace-panel-store"
 
 function ClearPanelDialog({ open, onOpenChange, title, description, onConfirm }: { open: boolean; onOpenChange: (open: boolean) => void; title: string; description: string; onConfirm: () => void }) {
@@ -59,6 +61,16 @@ function ClearPanelDialog({ open, onOpenChange, title, description, onConfirm }:
 export function TerminalPanel() {
   const [command, setCommand] = useState("")
   const [clearOpen, setClearOpen] = useState(false)
+  const terminalSurfaceRef = useRef<HTMLDivElement>(null)
+  const copyTerminal = () => {
+    const surfaceText = terminalSurfaceRef.current?.textContent?.trim() ?? ""
+    const selection = selectedText()
+    const text = selection || surfaceText
+    void copyTextToClipboard(text).then((copied) => {
+      if (copied) toast.success(selection ? "已复制选中的终端文本" : "已复制终端内容")
+      else toast.warning("无法写入剪贴板")
+    })
+  }
   return (
     <div className="flex size-full min-h-0 flex-col bg-background">
       <div className="flex h-9 shrink-0 items-center gap-1 border-b px-2">
@@ -70,12 +82,14 @@ export function TerminalPanel() {
         <Badge variant="outline" className="ml-auto">Mock</Badge>
       </div>
       <ContextMenu><ContextMenuTrigger className="min-h-0 flex-1">
+        <div ref={terminalSurfaceRef} className="size-full min-h-0">
         <ScrollArea className="app-selectable-content size-full bg-muted/15 p-3 font-mono text-xs" tabIndex={0}>
           <p className="text-muted-foreground">Aestival Mock Terminal · 不会执行任何命令</p>
           <p className="mt-3">$ pwd</p><p>/mock/Aestival</p>
           <p className="mt-2">$ npm run build</p><p className="text-muted-foreground">等待接入真实终端服务…</p>
         </ScrollArea>
-      </ContextMenuTrigger><ContextMenuContent><ContextMenuGroup><ContextMenuItem onClick={() => toast.success("终端内容已复制（Mock）")}><CopyIcon />复制<ContextMenuShortcut>⌘C</ContextMenuShortcut></ContextMenuItem><ContextMenuItem onClick={() => toast.info("已选择当前 Mock 终端内容")}><TextSelectIcon />全选<ContextMenuShortcut>⌘A</ContextMenuShortcut></ContextMenuItem><ContextMenuItem variant="destructive" onClick={() => setClearOpen(true)}><EraserIcon />清空视图<ContextMenuShortcut>⌘K</ContextMenuShortcut></ContextMenuItem></ContextMenuGroup></ContextMenuContent></ContextMenu>
+        </div>
+      </ContextMenuTrigger><ContextMenuContent><ContextMenuGroup><ContextMenuItem onClick={copyTerminal}><CopyIcon />复制选中内容/终端内容<ContextMenuShortcut>⌘C</ContextMenuShortcut></ContextMenuItem><ContextMenuItem onClick={() => { if (terminalSurfaceRef.current) selectElementContents(terminalSurfaceRef.current) }}><TextSelectIcon />全选<ContextMenuShortcut>⌘A</ContextMenuShortcut></ContextMenuItem><ContextMenuItem onClick={() => { void readTextFromClipboard().then((value) => { if (value === null) toast.warning("无法读取剪贴板"); else { setCommand((current) => `${current}${value}`); toast.success("已粘贴到命令输入框") } }) }}><ClipboardPasteIcon />粘贴到命令输入框<ContextMenuShortcut>⌘V</ContextMenuShortcut></ContextMenuItem></ContextMenuGroup><ContextMenuItem variant="destructive" onClick={() => setClearOpen(true)}><EraserIcon />清空视图<ContextMenuShortcut>⌘K</ContextMenuShortcut></ContextMenuItem></ContextMenuContent></ContextMenu>
       <form className="flex items-center gap-2 border-t p-2" onSubmit={(event) => { event.preventDefault(); if (!command.trim()) return; toast.info(`Mock：未执行 “${command.trim()}”`); setCommand("") }}>
         <TerminalIcon className="size-4 text-muted-foreground" />
         <Input className="h-7 border-0 font-mono text-xs shadow-none" value={command} onChange={(event) => setCommand(event.target.value)} placeholder="输入命令（仅 Mock，不执行）" aria-label="Mock 终端命令" />

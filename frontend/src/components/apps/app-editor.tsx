@@ -1,4 +1,4 @@
-import { useDeferredValue, useMemo } from "react"
+import { useDeferredValue, useMemo, useRef } from "react"
 import Editor from "@monaco-editor/react"
 import {
   ArrowLeftIcon,
@@ -26,6 +26,7 @@ import { toast } from "sonner"
 import { useTheme } from "next-themes"
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { MonacoContextMenu, type MonacoEditorInstance } from "@/components/shared/monaco-context-menu"
 import { DropdownMenuIconTrigger } from "@/components/shell/icon-button"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -68,7 +69,8 @@ function FilePanel({ appId, files, activeFileId, onSelect }: { appId: string; fi
 
 function CodeSurface({ name, language, content, onChange }: { name: string; language: string; content: string; onChange: (value: string) => void }) {
   const { resolvedTheme } = useTheme()
-  return <div className="flex size-full min-h-0 flex-col"><div className="flex h-10 shrink-0 items-center gap-2 border-b px-3"><FileCode2Icon className="size-4" /><span className="truncate text-sm font-medium">{name}</span><Badge variant="outline">{language}</Badge><span className="flex-1" /><ToolButton label="撤销"><Undo2Icon /></ToolButton><ToolButton label="重做"><Redo2Icon /></ToolButton></div><div className="app-selectable-content min-h-0 flex-1"><Editor path={name} language={language} value={content} onChange={(value) => onChange(value ?? "")} theme={resolvedTheme === "dark" ? "vs-dark" : "vs"} loading={<div className="grid size-full place-items-center text-xs text-muted-foreground">正在加载本地代码编辑器…</div>} options={{ ariaLabel: `编辑 ${name}`, automaticLayout: true, fontFamily: "Geist Mono, ui-monospace, monospace", fontSize: 12, lineNumbersMinChars: 3, minimap: { enabled: false }, overviewRulerLanes: 0, padding: { top: 12, bottom: 12 }, scrollBeyondLastLine: false, tabSize: 2, wordWrap: "on" }} /></div><div className="flex h-7 shrink-0 items-center justify-between border-t px-3 text-[11px] text-muted-foreground"><span>{language} · UTF-8 · 空格: 2</span><span>{content.split("\n").length} 行</span></div></div>
+  const editorRef = useRef<MonacoEditorInstance | null>(null)
+  return <div className="flex size-full min-h-0 flex-col"><div className="flex h-10 shrink-0 items-center gap-2 border-b px-3"><FileCode2Icon className="size-4" /><span className="truncate text-sm font-medium">{name}</span><Badge variant="outline">{language}</Badge><span className="flex-1" /><ToolButton label="撤销"><Undo2Icon /></ToolButton><ToolButton label="重做"><Redo2Icon /></ToolButton></div><div className="app-selectable-content min-h-0 flex-1"><MonacoContextMenu editorRef={editorRef}><Editor path={name} language={language} value={content} onChange={(value) => onChange(value ?? "")} onMount={(editor) => { editorRef.current = editor }} theme={resolvedTheme === "dark" ? "vs-dark" : "vs"} loading={<div className="grid size-full place-items-center text-xs text-muted-foreground">正在加载本地代码编辑器…</div>} options={{ ariaLabel: `编辑 ${name}`, automaticLayout: true, contextmenu: false, fontFamily: "Geist Mono, ui-monospace, monospace", fontSize: 12, lineNumbersMinChars: 3, minimap: { enabled: false }, overviewRulerLanes: 0, padding: { top: 12, bottom: 12 }, scrollBeyondLastLine: false, tabSize: 2, wordWrap: "on" }} /></MonacoContextMenu></div><div className="flex h-7 shrink-0 items-center justify-between border-t px-3 text-[11px] text-muted-foreground"><span>{language} · UTF-8 · 空格: 2</span><span>{content.split("\n").length} 行</span></div></div>
 }
 
 function DebugPanel({ appName }: { appName: string }) {
