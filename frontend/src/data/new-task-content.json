@@ -1,0 +1,7533 @@
+{
+  "version": 2,
+  "periods": {
+    "00:00-04:59": [
+      "period-01-001",
+      "period-01-002",
+      "period-01-003",
+      "period-01-004",
+      "period-01-005",
+      "period-01-006",
+      "period-01-007",
+      "period-01-008",
+      "period-01-009",
+      "period-01-010",
+      "period-01-011",
+      "period-01-012",
+      "period-01-013",
+      "period-01-014",
+      "period-01-015",
+      "period-01-016",
+      "period-01-017",
+      "period-01-018",
+      "period-01-019",
+      "period-01-020",
+      "period-01-021",
+      "period-01-022",
+      "period-01-023",
+      "period-01-024",
+      "period-01-025",
+      "period-01-026",
+      "period-01-027",
+      "period-01-028",
+      "period-01-029",
+      "period-01-030",
+      "period-01-031",
+      "period-01-032",
+      "period-01-033",
+      "period-01-034",
+      "period-01-035",
+      "period-01-036",
+      "period-01-037",
+      "period-01-038",
+      "period-01-039",
+      "period-01-040",
+      "period-01-041",
+      "period-01-042",
+      "period-01-043",
+      "period-01-044",
+      "period-01-045",
+      "period-01-046",
+      "period-01-047",
+      "period-01-048",
+      "period-01-049",
+      "period-01-050",
+      "period-01-051",
+      "period-01-052",
+      "period-01-053",
+      "period-01-054",
+      "period-01-055",
+      "period-01-056",
+      "period-01-057",
+      "period-01-058",
+      "period-01-059",
+      "period-01-060",
+      "period-01-061",
+      "period-01-062",
+      "period-01-063",
+      "period-01-064",
+      "period-01-065",
+      "period-01-066",
+      "period-01-067",
+      "period-01-068",
+      "period-01-069",
+      "period-01-070",
+      "period-01-071",
+      "period-01-072",
+      "period-01-073",
+      "period-01-074",
+      "period-01-075",
+      "period-01-076",
+      "period-01-077",
+      "period-01-078",
+      "period-01-079",
+      "period-01-080",
+      "period-01-081",
+      "period-01-082",
+      "period-01-083",
+      "period-01-084",
+      "period-01-085",
+      "period-01-086",
+      "period-01-087",
+      "period-01-088",
+      "period-01-089",
+      "period-01-090",
+      "period-01-091",
+      "period-01-092",
+      "period-01-093",
+      "period-01-094",
+      "period-01-095",
+      "period-01-096",
+      "period-01-097",
+      "period-01-098",
+      "period-01-099",
+      "period-01-100",
+      "period-01-101",
+      "period-01-102",
+      "period-01-103",
+      "period-01-104",
+      "period-01-105",
+      "period-01-106",
+      "period-01-107",
+      "period-01-108",
+      "period-01-109",
+      "period-01-110",
+      "period-01-111",
+      "period-01-112",
+      "period-01-113",
+      "period-01-114",
+      "period-01-115",
+      "period-01-116",
+      "period-01-117",
+      "period-01-118",
+      "period-01-119",
+      "period-01-120",
+      "period-01-121",
+      "period-01-122",
+      "period-01-123",
+      "period-01-124",
+      "period-01-125",
+      "period-01-126",
+      "period-01-127",
+      "period-01-128",
+      "period-01-129",
+      "period-01-130",
+      "period-01-131",
+      "period-01-132",
+      "period-01-133",
+      "period-01-134",
+      "period-01-135",
+      "period-01-136",
+      "period-01-137",
+      "period-01-138",
+      "period-01-139",
+      "period-01-140",
+      "period-01-141",
+      "period-01-142",
+      "period-01-143",
+      "period-01-144",
+      "period-01-145",
+      "period-01-146",
+      "period-01-147",
+      "period-01-148",
+      "period-01-149",
+      "period-01-150"
+    ],
+    "05:00-07:59": [
+      "period-02-001",
+      "period-02-002",
+      "period-02-003",
+      "period-02-004",
+      "period-02-005",
+      "period-02-006",
+      "period-02-007",
+      "period-02-008",
+      "period-02-009",
+      "period-02-010",
+      "period-02-011",
+      "period-02-012",
+      "period-02-013",
+      "period-02-014",
+      "period-02-015",
+      "period-02-016",
+      "period-02-017",
+      "period-02-018",
+      "period-02-019",
+      "period-02-020",
+      "period-02-021",
+      "period-02-022",
+      "period-02-023",
+      "period-02-024",
+      "period-02-025",
+      "period-02-026",
+      "period-02-027",
+      "period-02-028",
+      "period-02-029",
+      "period-02-030",
+      "period-02-031",
+      "period-02-032",
+      "period-02-033",
+      "period-02-034",
+      "period-02-035",
+      "period-02-036",
+      "period-02-037",
+      "period-02-038",
+      "period-02-039",
+      "period-02-040",
+      "period-02-041",
+      "period-02-042",
+      "period-02-043",
+      "period-02-044",
+      "period-02-045",
+      "period-02-046",
+      "period-02-047",
+      "period-02-048",
+      "period-02-049",
+      "period-02-050",
+      "period-02-051",
+      "period-02-052",
+      "period-02-053",
+      "period-02-054",
+      "period-02-055",
+      "period-02-056",
+      "period-02-057",
+      "period-02-058",
+      "period-02-059",
+      "period-02-060",
+      "period-02-061",
+      "period-02-062",
+      "period-02-063",
+      "period-02-064",
+      "period-02-065",
+      "period-02-066",
+      "period-02-067",
+      "period-02-068",
+      "period-02-069",
+      "period-02-070",
+      "period-02-071",
+      "period-02-072",
+      "period-02-073",
+      "period-02-074",
+      "period-02-075",
+      "period-02-076",
+      "period-02-077",
+      "period-02-078",
+      "period-02-079",
+      "period-02-080",
+      "period-02-081",
+      "period-02-082",
+      "period-02-083",
+      "period-02-084",
+      "period-02-085",
+      "period-02-086",
+      "period-02-087",
+      "period-02-088",
+      "period-02-089",
+      "period-02-090",
+      "period-02-091",
+      "period-02-092",
+      "period-02-093",
+      "period-02-094",
+      "period-02-095",
+      "period-02-096",
+      "period-02-097",
+      "period-02-098",
+      "period-02-099",
+      "period-02-100",
+      "period-02-101",
+      "period-02-102",
+      "period-02-103",
+      "period-02-104",
+      "period-02-105",
+      "period-02-106",
+      "period-02-107",
+      "period-02-108",
+      "period-02-109",
+      "period-02-110",
+      "period-02-111",
+      "period-02-112",
+      "period-02-113",
+      "period-02-114",
+      "period-02-115",
+      "period-02-116",
+      "period-02-117",
+      "period-02-118",
+      "period-02-119",
+      "period-02-120",
+      "period-02-121",
+      "period-02-122",
+      "period-02-123",
+      "period-02-124",
+      "period-02-125",
+      "period-02-126",
+      "period-02-127",
+      "period-02-128",
+      "period-02-129",
+      "period-02-130",
+      "period-02-131",
+      "period-02-132",
+      "period-02-133",
+      "period-02-134",
+      "period-02-135",
+      "period-02-136",
+      "period-02-137",
+      "period-02-138",
+      "period-02-139",
+      "period-02-140",
+      "period-02-141",
+      "period-02-142",
+      "period-02-143",
+      "period-02-144",
+      "period-02-145",
+      "period-02-146",
+      "period-02-147",
+      "period-02-148",
+      "period-02-149",
+      "period-02-150"
+    ],
+    "08:00-11:59": [
+      "period-03-001",
+      "period-03-002",
+      "period-03-003",
+      "period-03-004",
+      "period-03-005",
+      "period-03-006",
+      "period-03-007",
+      "period-03-008",
+      "period-03-009",
+      "period-03-010",
+      "period-03-011",
+      "period-03-012",
+      "period-03-013",
+      "period-03-014",
+      "period-03-015",
+      "period-03-016",
+      "period-03-017",
+      "period-03-018",
+      "period-03-019",
+      "period-03-020",
+      "period-03-021",
+      "period-03-022",
+      "period-03-023",
+      "period-03-024",
+      "period-03-025",
+      "period-03-026",
+      "period-03-027",
+      "period-03-028",
+      "period-03-029",
+      "period-03-030",
+      "period-03-031",
+      "period-03-032",
+      "period-03-033",
+      "period-03-034",
+      "period-03-035",
+      "period-03-036",
+      "period-03-037",
+      "period-03-038",
+      "period-03-039",
+      "period-03-040",
+      "period-03-041",
+      "period-03-042",
+      "period-03-043",
+      "period-03-044",
+      "period-03-045",
+      "period-03-046",
+      "period-03-047",
+      "period-03-048",
+      "period-03-049",
+      "period-03-050",
+      "period-03-051",
+      "period-03-052",
+      "period-03-053",
+      "period-03-054",
+      "period-03-055",
+      "period-03-056",
+      "period-03-057",
+      "period-03-058",
+      "period-03-059",
+      "period-03-060",
+      "period-03-061",
+      "period-03-062",
+      "period-03-063",
+      "period-03-064",
+      "period-03-065",
+      "period-03-066",
+      "period-03-067",
+      "period-03-068",
+      "period-03-069",
+      "period-03-070",
+      "period-03-071",
+      "period-03-072",
+      "period-03-073",
+      "period-03-074",
+      "period-03-075",
+      "period-03-076",
+      "period-03-077",
+      "period-03-078",
+      "period-03-079",
+      "period-03-080",
+      "period-03-081",
+      "period-03-082",
+      "period-03-083",
+      "period-03-084",
+      "period-03-085",
+      "period-03-086",
+      "period-03-087",
+      "period-03-088",
+      "period-03-089",
+      "period-03-090",
+      "period-03-091",
+      "period-03-092",
+      "period-03-093",
+      "period-03-094",
+      "period-03-095",
+      "period-03-096",
+      "period-03-097",
+      "period-03-098",
+      "period-03-099",
+      "period-03-100",
+      "period-03-101",
+      "period-03-102",
+      "period-03-103",
+      "period-03-104",
+      "period-03-105",
+      "period-03-106",
+      "period-03-107",
+      "period-03-108",
+      "period-03-109",
+      "period-03-110",
+      "period-03-111",
+      "period-03-112",
+      "period-03-113",
+      "period-03-114",
+      "period-03-115",
+      "period-03-116",
+      "period-03-117",
+      "period-03-118",
+      "period-03-119",
+      "period-03-120",
+      "period-03-121",
+      "period-03-122",
+      "period-03-123",
+      "period-03-124",
+      "period-03-125",
+      "period-03-126",
+      "period-03-127",
+      "period-03-128",
+      "period-03-129",
+      "period-03-130",
+      "period-03-131",
+      "period-03-132",
+      "period-03-133",
+      "period-03-134",
+      "period-03-135",
+      "period-03-136",
+      "period-03-137",
+      "period-03-138",
+      "period-03-139",
+      "period-03-140",
+      "period-03-141",
+      "period-03-142",
+      "period-03-143",
+      "period-03-144",
+      "period-03-145",
+      "period-03-146",
+      "period-03-147",
+      "period-03-148",
+      "period-03-149",
+      "period-03-150"
+    ],
+    "12:00-13:59": [
+      "period-04-001",
+      "period-04-002",
+      "period-04-003",
+      "period-04-004",
+      "period-04-005",
+      "period-04-006",
+      "period-04-007",
+      "period-04-008",
+      "period-04-009",
+      "period-04-010",
+      "period-04-011",
+      "period-04-012",
+      "period-04-013",
+      "period-04-014",
+      "period-04-015",
+      "period-04-016",
+      "period-04-017",
+      "period-04-018",
+      "period-04-019",
+      "period-04-020",
+      "period-04-021",
+      "period-04-022",
+      "period-04-023",
+      "period-04-024",
+      "period-04-025",
+      "period-04-026",
+      "period-04-027",
+      "period-04-028",
+      "period-04-029",
+      "period-04-030",
+      "period-04-031",
+      "period-04-032",
+      "period-04-033",
+      "period-04-034",
+      "period-04-035",
+      "period-04-036",
+      "period-04-037",
+      "period-04-038",
+      "period-04-039",
+      "period-04-040",
+      "period-04-041",
+      "period-04-042",
+      "period-04-043",
+      "period-04-044",
+      "period-04-045",
+      "period-04-046",
+      "period-04-047",
+      "period-04-048",
+      "period-04-049",
+      "period-04-050",
+      "period-04-051",
+      "period-04-052",
+      "period-04-053",
+      "period-04-054",
+      "period-04-055",
+      "period-04-056",
+      "period-04-057",
+      "period-04-058",
+      "period-04-059",
+      "period-04-060",
+      "period-04-061",
+      "period-04-062",
+      "period-04-063",
+      "period-04-064",
+      "period-04-065",
+      "period-04-066",
+      "period-04-067",
+      "period-04-068",
+      "period-04-069",
+      "period-04-070",
+      "period-04-071",
+      "period-04-072",
+      "period-04-073",
+      "period-04-074",
+      "period-04-075",
+      "period-04-076",
+      "period-04-077",
+      "period-04-078",
+      "period-04-079",
+      "period-04-080",
+      "period-04-081",
+      "period-04-082",
+      "period-04-083",
+      "period-04-084",
+      "period-04-085",
+      "period-04-086",
+      "period-04-087",
+      "period-04-088",
+      "period-04-089",
+      "period-04-090",
+      "period-04-091",
+      "period-04-092",
+      "period-04-093",
+      "period-04-094",
+      "period-04-095",
+      "period-04-096",
+      "period-04-097",
+      "period-04-098",
+      "period-04-099",
+      "period-04-100",
+      "period-04-101",
+      "period-04-102",
+      "period-04-103",
+      "period-04-104",
+      "period-04-105",
+      "period-04-106",
+      "period-04-107",
+      "period-04-108",
+      "period-04-109",
+      "period-04-110",
+      "period-04-111",
+      "period-04-112",
+      "period-04-113",
+      "period-04-114",
+      "period-04-115",
+      "period-04-116",
+      "period-04-117",
+      "period-04-118",
+      "period-04-119",
+      "period-04-120",
+      "period-04-121",
+      "period-04-122",
+      "period-04-123",
+      "period-04-124",
+      "period-04-125",
+      "period-04-126",
+      "period-04-127",
+      "period-04-128",
+      "period-04-129",
+      "period-04-130",
+      "period-04-131",
+      "period-04-132",
+      "period-04-133",
+      "period-04-134",
+      "period-04-135",
+      "period-04-136",
+      "period-04-137",
+      "period-04-138",
+      "period-04-139",
+      "period-04-140",
+      "period-04-141",
+      "period-04-142",
+      "period-04-143",
+      "period-04-144",
+      "period-04-145",
+      "period-04-146",
+      "period-04-147",
+      "period-04-148",
+      "period-04-149",
+      "period-04-150"
+    ],
+    "14:00-17:59": [
+      "period-05-001",
+      "period-05-002",
+      "period-05-003",
+      "period-05-004",
+      "period-05-005",
+      "period-05-006",
+      "period-05-007",
+      "period-05-008",
+      "period-05-009",
+      "period-05-010",
+      "period-05-011",
+      "period-05-012",
+      "period-05-013",
+      "period-05-014",
+      "period-05-015",
+      "period-05-016",
+      "period-05-017",
+      "period-05-018",
+      "period-05-019",
+      "period-05-020",
+      "period-05-021",
+      "period-05-022",
+      "period-05-023",
+      "period-05-024",
+      "period-05-025",
+      "period-05-026",
+      "period-05-027",
+      "period-05-028",
+      "period-05-029",
+      "period-05-030",
+      "period-05-031",
+      "period-05-032",
+      "period-05-033",
+      "period-05-034",
+      "period-05-035",
+      "period-05-036",
+      "period-05-037",
+      "period-05-038",
+      "period-05-039",
+      "period-05-040",
+      "period-05-041",
+      "period-05-042",
+      "period-05-043",
+      "period-05-044",
+      "period-05-045",
+      "period-05-046",
+      "period-05-047",
+      "period-05-048",
+      "period-05-049",
+      "period-05-050",
+      "period-05-051",
+      "period-05-052",
+      "period-05-053",
+      "period-05-054",
+      "period-05-055",
+      "period-05-056",
+      "period-05-057",
+      "period-05-058",
+      "period-05-059",
+      "period-05-060",
+      "period-05-061",
+      "period-05-062",
+      "period-05-063",
+      "period-05-064",
+      "period-05-065",
+      "period-05-066",
+      "period-05-067",
+      "period-05-068",
+      "period-05-069",
+      "period-05-070",
+      "period-05-071",
+      "period-05-072",
+      "period-05-073",
+      "period-05-074",
+      "period-05-075",
+      "period-05-076",
+      "period-05-077",
+      "period-05-078",
+      "period-05-079",
+      "period-05-080",
+      "period-05-081",
+      "period-05-082",
+      "period-05-083",
+      "period-05-084",
+      "period-05-085",
+      "period-05-086",
+      "period-05-087",
+      "period-05-088",
+      "period-05-089",
+      "period-05-090",
+      "period-05-091",
+      "period-05-092",
+      "period-05-093",
+      "period-05-094",
+      "period-05-095",
+      "period-05-096",
+      "period-05-097",
+      "period-05-098",
+      "period-05-099",
+      "period-05-100",
+      "period-05-101",
+      "period-05-102",
+      "period-05-103",
+      "period-05-104",
+      "period-05-105",
+      "period-05-106",
+      "period-05-107",
+      "period-05-108",
+      "period-05-109",
+      "period-05-110",
+      "period-05-111",
+      "period-05-112",
+      "period-05-113",
+      "period-05-114",
+      "period-05-115",
+      "period-05-116",
+      "period-05-117",
+      "period-05-118",
+      "period-05-119",
+      "period-05-120",
+      "period-05-121",
+      "period-05-122",
+      "period-05-123",
+      "period-05-124",
+      "period-05-125",
+      "period-05-126",
+      "period-05-127",
+      "period-05-128",
+      "period-05-129",
+      "period-05-130",
+      "period-05-131",
+      "period-05-132",
+      "period-05-133",
+      "period-05-134",
+      "period-05-135",
+      "period-05-136",
+      "period-05-137",
+      "period-05-138",
+      "period-05-139",
+      "period-05-140",
+      "period-05-141",
+      "period-05-142",
+      "period-05-143",
+      "period-05-144",
+      "period-05-145",
+      "period-05-146",
+      "period-05-147",
+      "period-05-148",
+      "period-05-149",
+      "period-05-150"
+    ],
+    "18:00-20:59": [
+      "period-06-001",
+      "period-06-002",
+      "period-06-003",
+      "period-06-004",
+      "period-06-005",
+      "period-06-006",
+      "period-06-007",
+      "period-06-008",
+      "period-06-009",
+      "period-06-010",
+      "period-06-011",
+      "period-06-012",
+      "period-06-013",
+      "period-06-014",
+      "period-06-015",
+      "period-06-016",
+      "period-06-017",
+      "period-06-018",
+      "period-06-019",
+      "period-06-020",
+      "period-06-021",
+      "period-06-022",
+      "period-06-023",
+      "period-06-024",
+      "period-06-025",
+      "period-06-026",
+      "period-06-027",
+      "period-06-028",
+      "period-06-029",
+      "period-06-030",
+      "period-06-031",
+      "period-06-032",
+      "period-06-033",
+      "period-06-034",
+      "period-06-035",
+      "period-06-036",
+      "period-06-037",
+      "period-06-038",
+      "period-06-039",
+      "period-06-040",
+      "period-06-041",
+      "period-06-042",
+      "period-06-043",
+      "period-06-044",
+      "period-06-045",
+      "period-06-046",
+      "period-06-047",
+      "period-06-048",
+      "period-06-049",
+      "period-06-050",
+      "period-06-051",
+      "period-06-052",
+      "period-06-053",
+      "period-06-054",
+      "period-06-055",
+      "period-06-056",
+      "period-06-057",
+      "period-06-058",
+      "period-06-059",
+      "period-06-060",
+      "period-06-061",
+      "period-06-062",
+      "period-06-063",
+      "period-06-064",
+      "period-06-065",
+      "period-06-066",
+      "period-06-067",
+      "period-06-068",
+      "period-06-069",
+      "period-06-070",
+      "period-06-071",
+      "period-06-072",
+      "period-06-073",
+      "period-06-074",
+      "period-06-075",
+      "period-06-076",
+      "period-06-077",
+      "period-06-078",
+      "period-06-079",
+      "period-06-080",
+      "period-06-081",
+      "period-06-082",
+      "period-06-083",
+      "period-06-084",
+      "period-06-085",
+      "period-06-086",
+      "period-06-087",
+      "period-06-088",
+      "period-06-089",
+      "period-06-090",
+      "period-06-091",
+      "period-06-092",
+      "period-06-093",
+      "period-06-094",
+      "period-06-095",
+      "period-06-096",
+      "period-06-097",
+      "period-06-098",
+      "period-06-099",
+      "period-06-100",
+      "period-06-101",
+      "period-06-102",
+      "period-06-103",
+      "period-06-104",
+      "period-06-105",
+      "period-06-106",
+      "period-06-107",
+      "period-06-108",
+      "period-06-109",
+      "period-06-110",
+      "period-06-111",
+      "period-06-112",
+      "period-06-113",
+      "period-06-114",
+      "period-06-115",
+      "period-06-116",
+      "period-06-117",
+      "period-06-118",
+      "period-06-119",
+      "period-06-120",
+      "period-06-121",
+      "period-06-122",
+      "period-06-123",
+      "period-06-124",
+      "period-06-125",
+      "period-06-126",
+      "period-06-127",
+      "period-06-128",
+      "period-06-129",
+      "period-06-130",
+      "period-06-131",
+      "period-06-132",
+      "period-06-133",
+      "period-06-134",
+      "period-06-135",
+      "period-06-136",
+      "period-06-137",
+      "period-06-138",
+      "period-06-139",
+      "period-06-140",
+      "period-06-141",
+      "period-06-142",
+      "period-06-143",
+      "period-06-144",
+      "period-06-145",
+      "period-06-146",
+      "period-06-147",
+      "period-06-148",
+      "period-06-149",
+      "period-06-150"
+    ],
+    "21:00-23:59": [
+      "period-07-001",
+      "period-07-002",
+      "period-07-003",
+      "period-07-004",
+      "period-07-005",
+      "period-07-006",
+      "period-07-007",
+      "period-07-008",
+      "period-07-009",
+      "period-07-010",
+      "period-07-011",
+      "period-07-012",
+      "period-07-013",
+      "period-07-014",
+      "period-07-015",
+      "period-07-016",
+      "period-07-017",
+      "period-07-018",
+      "period-07-019",
+      "period-07-020",
+      "period-07-021",
+      "period-07-022",
+      "period-07-023",
+      "period-07-024",
+      "period-07-025",
+      "period-07-026",
+      "period-07-027",
+      "period-07-028",
+      "period-07-029",
+      "period-07-030",
+      "period-07-031",
+      "period-07-032",
+      "period-07-033",
+      "period-07-034",
+      "period-07-035",
+      "period-07-036",
+      "period-07-037",
+      "period-07-038",
+      "period-07-039",
+      "period-07-040",
+      "period-07-041",
+      "period-07-042",
+      "period-07-043",
+      "period-07-044",
+      "period-07-045",
+      "period-07-046",
+      "period-07-047",
+      "period-07-048",
+      "period-07-049",
+      "period-07-050",
+      "period-07-051",
+      "period-07-052",
+      "period-07-053",
+      "period-07-054",
+      "period-07-055",
+      "period-07-056",
+      "period-07-057",
+      "period-07-058",
+      "period-07-059",
+      "period-07-060",
+      "period-07-061",
+      "period-07-062",
+      "period-07-063",
+      "period-07-064",
+      "period-07-065",
+      "period-07-066",
+      "period-07-067",
+      "period-07-068",
+      "period-07-069",
+      "period-07-070",
+      "period-07-071",
+      "period-07-072",
+      "period-07-073",
+      "period-07-074",
+      "period-07-075",
+      "period-07-076",
+      "period-07-077",
+      "period-07-078",
+      "period-07-079",
+      "period-07-080",
+      "period-07-081",
+      "period-07-082",
+      "period-07-083",
+      "period-07-084",
+      "period-07-085",
+      "period-07-086",
+      "period-07-087",
+      "period-07-088",
+      "period-07-089",
+      "period-07-090",
+      "period-07-091",
+      "period-07-092",
+      "period-07-093",
+      "period-07-094",
+      "period-07-095",
+      "period-07-096",
+      "period-07-097",
+      "period-07-098",
+      "period-07-099",
+      "period-07-100",
+      "period-07-101",
+      "period-07-102",
+      "period-07-103",
+      "period-07-104",
+      "period-07-105",
+      "period-07-106",
+      "period-07-107",
+      "period-07-108",
+      "period-07-109",
+      "period-07-110",
+      "period-07-111",
+      "period-07-112",
+      "period-07-113",
+      "period-07-114",
+      "period-07-115",
+      "period-07-116",
+      "period-07-117",
+      "period-07-118",
+      "period-07-119",
+      "period-07-120",
+      "period-07-121",
+      "period-07-122",
+      "period-07-123",
+      "period-07-124",
+      "period-07-125",
+      "period-07-126",
+      "period-07-127",
+      "period-07-128",
+      "period-07-129",
+      "period-07-130",
+      "period-07-131",
+      "period-07-132",
+      "period-07-133",
+      "period-07-134",
+      "period-07-135",
+      "period-07-136",
+      "period-07-137",
+      "period-07-138",
+      "period-07-139",
+      "period-07-140",
+      "period-07-141",
+      "period-07-142",
+      "period-07-143",
+      "period-07-144",
+      "period-07-145",
+      "period-07-146",
+      "period-07-147",
+      "period-07-148",
+      "period-07-149",
+      "period-07-150"
+    ]
+  },
+  "poems": [
+    {
+      "id": "period-01-001",
+      "text": "星垂平野阔，月涌大江流。",
+      "author": "杜甫",
+      "title": "旅夜书怀"
+    },
+    {
+      "id": "period-01-002",
+      "text": "月落乌啼霜满天，江枫渔火对愁眠。",
+      "author": "张继",
+      "title": "枫桥夜泊"
+    },
+    {
+      "id": "period-01-003",
+      "text": "明月松间照，清泉石上流。",
+      "author": "王维",
+      "title": "山居秋暝"
+    },
+    {
+      "id": "period-01-004",
+      "text": "海上生明月，天涯共此时。",
+      "author": "张九龄",
+      "title": "望月怀远"
+    },
+    {
+      "id": "period-01-005",
+      "text": "何当共剪西窗烛，却话巴山夜雨时。",
+      "author": "李商隐",
+      "title": "夜雨寄北"
+    },
+    {
+      "id": "period-01-006",
+      "text": "今人不见古时月，今月曾经照古人。",
+      "author": "李白",
+      "title": "把酒问月"
+    },
+    {
+      "id": "period-01-007",
+      "text": "举头望明月，低头思故乡。",
+      "author": "李白",
+      "title": "静夜思"
+    },
+    {
+      "id": "period-01-008",
+      "text": "床前明月光，疑是地上霜。",
+      "author": "李白",
+      "title": "静夜思"
+    },
+    {
+      "id": "period-01-009",
+      "text": "露从今夜白，月是故乡明。",
+      "author": "杜甫",
+      "title": "月夜忆舍弟"
+    },
+    {
+      "id": "period-01-010",
+      "text": "我寄愁心与明月，随君直到夜郎西。",
+      "author": "李白",
+      "title": "闻王昌龄左迁龙标遥有此寄"
+    },
+    {
+      "id": "period-01-011",
+      "text": "月出惊山鸟，时鸣春涧中。",
+      "author": "王维",
+      "title": "鸟鸣涧"
+    },
+    {
+      "id": "period-01-012",
+      "text": "深林人不知，明月来相照。",
+      "author": "王维",
+      "title": "竹里馆"
+    },
+    {
+      "id": "period-01-013",
+      "text": "春风又绿江南岸，明月何时照我还。",
+      "author": "王安石",
+      "title": "泊船瓜洲"
+    },
+    {
+      "id": "period-01-014",
+      "text": "春江潮水连海平，海上明月共潮生。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-01-015",
+      "text": "江畔何人初见月，江月何年初照人。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-01-016",
+      "text": "白云一片去悠悠，青枫浦上不胜愁。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-01-017",
+      "text": "鸿雁长飞光不度，鱼龙潜跃水成文。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-01-018",
+      "text": "玉户帘中卷不去，捣衣砧上拂还来。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-01-019",
+      "text": "此时相望不相闻，愿逐月华流照君。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-01-020",
+      "text": "明月几时有？把酒问青天。",
+      "author": "苏轼",
+      "title": "水调歌头"
+    },
+    {
+      "id": "period-01-021",
+      "text": "不应有恨，何事长向别时圆？",
+      "author": "苏轼",
+      "title": "水调歌头"
+    },
+    {
+      "id": "period-01-022",
+      "text": "起舞弄清影，何似在人间。",
+      "author": "苏轼",
+      "title": "水调歌头"
+    },
+    {
+      "id": "period-01-023",
+      "text": "小楼昨夜又东风，故国不堪回首月明中。",
+      "author": "李煜",
+      "title": "虞美人"
+    },
+    {
+      "id": "period-01-024",
+      "text": "无言独上西楼，月如钩。",
+      "author": "李煜",
+      "title": "相见欢"
+    },
+    {
+      "id": "period-01-025",
+      "text": "雁字回时，月满西楼。",
+      "author": "李清照",
+      "title": "一剪梅"
+    },
+    {
+      "id": "period-01-026",
+      "text": "何处望神州？满眼风光北固楼。",
+      "author": "辛弃疾",
+      "title": "南乡子·登京口北固亭有怀"
+    },
+    {
+      "id": "period-01-027",
+      "text": "斜阳草树，寻常巷陌，人道寄奴曾住。",
+      "author": "辛弃疾",
+      "title": "永遇乐·京口北固亭怀古"
+    },
+    {
+      "id": "period-01-028",
+      "text": "长安一片月，万户捣衣声。",
+      "author": "李白",
+      "title": "子夜吴歌·秋歌"
+    },
+    {
+      "id": "period-01-029",
+      "text": "烽火连三月，家书抵万金。",
+      "author": "杜甫",
+      "title": "春望"
+    },
+    {
+      "id": "period-01-030",
+      "text": "感时花溅泪，恨别鸟惊心。",
+      "author": "杜甫",
+      "title": "春望"
+    },
+    {
+      "id": "period-01-031",
+      "text": "国破山河在，城春草木深。",
+      "author": "杜甫",
+      "title": "春望"
+    },
+    {
+      "id": "period-01-032",
+      "text": "会当凌绝顶，一览众山小。",
+      "author": "杜甫",
+      "title": "望岳"
+    },
+    {
+      "id": "period-01-033",
+      "text": "无边落木萧萧下，不尽长江滚滚来。",
+      "author": "杜甫",
+      "title": "登高"
+    },
+    {
+      "id": "period-01-034",
+      "text": "万里悲秋常作客，百年多病独登台。",
+      "author": "杜甫",
+      "title": "登高"
+    },
+    {
+      "id": "period-01-035",
+      "text": "安得广厦千万间，大庇天下寒士俱欢颜。",
+      "author": "杜甫",
+      "title": "茅屋为秋风所破歌"
+    },
+    {
+      "id": "period-01-036",
+      "text": "白日放歌须纵酒，青春作伴好还乡。",
+      "author": "杜甫",
+      "title": "闻官军收河南河北"
+    },
+    {
+      "id": "period-01-037",
+      "text": "即从巴峡穿巫峡，便下襄阳向洛阳。",
+      "author": "杜甫",
+      "title": "闻官军收河南河北"
+    },
+    {
+      "id": "period-01-038",
+      "text": "两个黄鹂鸣翠柳，一行白鹭上青天。",
+      "author": "杜甫",
+      "title": "绝句"
+    },
+    {
+      "id": "period-01-039",
+      "text": "窗含西岭千秋雪，门泊东吴万里船。",
+      "author": "杜甫",
+      "title": "绝句"
+    },
+    {
+      "id": "period-01-040",
+      "text": "黄四娘家花满蹊，千朵万朵压枝低。",
+      "author": "杜甫",
+      "title": "江畔独步寻花"
+    },
+    {
+      "id": "period-01-041",
+      "text": "留连戏蝶时时舞，自在娇莺恰恰啼。",
+      "author": "杜甫",
+      "title": "江畔独步寻花"
+    },
+    {
+      "id": "period-01-042",
+      "text": "随风潜入夜，润物细无声。",
+      "author": "杜甫",
+      "title": "春夜喜雨"
+    },
+    {
+      "id": "period-01-043",
+      "text": "野径云俱黑，江船火独明。",
+      "author": "杜甫",
+      "title": "春夜喜雨"
+    },
+    {
+      "id": "period-01-044",
+      "text": "好雨知时节，当春乃发生。",
+      "author": "杜甫",
+      "title": "春夜喜雨"
+    },
+    {
+      "id": "period-01-045",
+      "text": "晓看红湿处，花重锦官城。",
+      "author": "杜甫",
+      "title": "春夜喜雨"
+    },
+    {
+      "id": "period-01-046",
+      "text": "碧玉妆成一树高，万条垂下绿丝绦。",
+      "author": "贺知章",
+      "title": "咏柳"
+    },
+    {
+      "id": "period-01-047",
+      "text": "不知细叶谁裁出，二月春风似剪刀。",
+      "author": "贺知章",
+      "title": "咏柳"
+    },
+    {
+      "id": "period-01-048",
+      "text": "竹外桃花三两枝，春江水暖鸭先知。",
+      "author": "苏轼",
+      "title": "惠崇春江晚景"
+    },
+    {
+      "id": "period-01-049",
+      "text": "蒌蒿满地芦芽短，正是河豚欲上时。",
+      "author": "苏轼",
+      "title": "惠崇春江晚景"
+    },
+    {
+      "id": "period-01-050",
+      "text": "欲把西湖比西子，淡妆浓抹总相宜。",
+      "author": "苏轼",
+      "title": "饮湖上初晴后雨"
+    },
+    {
+      "id": "period-01-051",
+      "text": "山外青山楼外楼，西湖歌舞几时休？",
+      "author": "林升",
+      "title": "题临安邸"
+    },
+    {
+      "id": "period-01-052",
+      "text": "接天莲叶无穷碧，映日荷花别样红。",
+      "author": "杨万里",
+      "title": "晓出净慈寺送林子方"
+    },
+    {
+      "id": "period-01-053",
+      "text": "小荷才露尖尖角，早有蜻蜓立上头。",
+      "author": "杨万里",
+      "title": "小池"
+    },
+    {
+      "id": "period-01-054",
+      "text": "欲穷千里目，更上一层楼。",
+      "author": "王之涣",
+      "title": "登鹳雀楼"
+    },
+    {
+      "id": "period-01-055",
+      "text": "海内存知己，天涯若比邻。",
+      "author": "王勃",
+      "title": "送杜少府之任蜀州"
+    },
+    {
+      "id": "period-01-056",
+      "text": "长风破浪会有时，直挂云帆济沧海。",
+      "author": "李白",
+      "title": "行路难"
+    },
+    {
+      "id": "period-01-057",
+      "text": "沉舟侧畔千帆过，病树前头万木春。",
+      "author": "刘禹锡",
+      "title": "酬乐天扬州初逢席上见赠"
+    },
+    {
+      "id": "period-01-058",
+      "text": "晴空一鹤排云上，便引诗情到碧霄。",
+      "author": "刘禹锡",
+      "title": "秋词"
+    },
+    {
+      "id": "period-01-059",
+      "text": "莫愁前路无知己，天下谁人不识君。",
+      "author": "高适",
+      "title": "别董大"
+    },
+    {
+      "id": "period-01-060",
+      "text": "天生我材必有用，千金散尽还复来。",
+      "author": "李白",
+      "title": "将进酒"
+    },
+    {
+      "id": "period-01-061",
+      "text": "桃花潭水深千尺，不及汪伦送我情。",
+      "author": "李白",
+      "title": "赠汪伦"
+    },
+    {
+      "id": "period-01-062",
+      "text": "飞流直下三千尺，疑是银河落九天。",
+      "author": "李白",
+      "title": "望庐山瀑布"
+    },
+    {
+      "id": "period-01-063",
+      "text": "两岸猿声啼不住，轻舟已过万重山。",
+      "author": "李白",
+      "title": "早发白帝城"
+    },
+    {
+      "id": "period-01-064",
+      "text": "孤帆远影碧空尽，唯见长江天际流。",
+      "author": "李白",
+      "title": "黄鹤楼送孟浩然之广陵"
+    },
+    {
+      "id": "period-01-065",
+      "text": "山随平野尽，江入大荒流。",
+      "author": "李白",
+      "title": "渡荆门送别"
+    },
+    {
+      "id": "period-01-066",
+      "text": "青山横北郭，白水绕东城。",
+      "author": "李白",
+      "title": "送友人"
+    },
+    {
+      "id": "period-01-067",
+      "text": "仍怜故乡水，万里送行舟。",
+      "author": "李白",
+      "title": "渡荆门送别"
+    },
+    {
+      "id": "period-01-068",
+      "text": "天门中断楚江开，碧水东流至此回。",
+      "author": "李白",
+      "title": "望天门山"
+    },
+    {
+      "id": "period-01-069",
+      "text": "但使龙城飞将在，不教胡马度阴山。",
+      "author": "王昌龄",
+      "title": "出塞"
+    },
+    {
+      "id": "period-01-070",
+      "text": "秦时明月汉时关，万里长征人未还。",
+      "author": "王昌龄",
+      "title": "出塞"
+    },
+    {
+      "id": "period-01-071",
+      "text": "黄沙百战穿金甲，不破楼兰终不还。",
+      "author": "王昌龄",
+      "title": "从军行"
+    },
+    {
+      "id": "period-01-072",
+      "text": "羌笛何须怨杨柳，春风不度玉门关。",
+      "author": "王之涣",
+      "title": "凉州词"
+    },
+    {
+      "id": "period-01-073",
+      "text": "葡萄美酒夜光杯，欲饮琵琶马上催。",
+      "author": "王翰",
+      "title": "凉州词"
+    },
+    {
+      "id": "period-01-074",
+      "text": "古来征战几人回？",
+      "author": "王翰",
+      "title": "凉州词"
+    },
+    {
+      "id": "period-01-075",
+      "text": "劝君更尽一杯酒，西出阳关无故人。",
+      "author": "王维",
+      "title": "渭城曲"
+    },
+    {
+      "id": "period-01-076",
+      "text": "大漠孤烟直，长河落日圆。",
+      "author": "王维",
+      "title": "使至塞上"
+    },
+    {
+      "id": "period-01-077",
+      "text": "孤山寺北贾亭西，水面初平云脚低。",
+      "author": "白居易",
+      "title": "钱塘湖春行"
+    },
+    {
+      "id": "period-01-078",
+      "text": "几处早莺争暖树，谁家新燕啄春泥。",
+      "author": "白居易",
+      "title": "钱塘湖春行"
+    },
+    {
+      "id": "period-01-079",
+      "text": "浅草才能没马蹄，最爱湖东行不足。",
+      "author": "白居易",
+      "title": "钱塘湖春行"
+    },
+    {
+      "id": "period-01-080",
+      "text": "一道残阳铺水中，半江瑟瑟半江红。",
+      "author": "白居易",
+      "title": "暮江吟"
+    },
+    {
+      "id": "period-01-081",
+      "text": "日出江花红胜火，春来江水绿如蓝。",
+      "author": "白居易",
+      "title": "忆江南"
+    },
+    {
+      "id": "period-01-082",
+      "text": "野火烧不尽，春风吹又生。",
+      "author": "白居易",
+      "title": "赋得古原草送别"
+    },
+    {
+      "id": "period-01-083",
+      "text": "同是天涯沦落人，相逢何必曾相识。",
+      "author": "白居易",
+      "title": "琵琶行"
+    },
+    {
+      "id": "period-01-084",
+      "text": "在天愿作比翼鸟，在地愿为连理枝。",
+      "author": "白居易",
+      "title": "长恨歌"
+    },
+    {
+      "id": "period-01-085",
+      "text": "山重水复疑无路，柳暗花明又一村。",
+      "author": "陆游",
+      "title": "游山西村"
+    },
+    {
+      "id": "period-01-086",
+      "text": "纸上得来终觉浅，绝知此事要躬行。",
+      "author": "陆游",
+      "title": "冬夜读书示子聿"
+    },
+    {
+      "id": "period-01-087",
+      "text": "王师北定中原日，家祭无忘告乃翁。",
+      "author": "陆游",
+      "title": "示儿"
+    },
+    {
+      "id": "period-01-088",
+      "text": "位卑未敢忘忧国。",
+      "author": "陆游",
+      "title": "病起书怀"
+    },
+    {
+      "id": "period-01-089",
+      "text": "先天下之忧而忧，后天下之乐而乐。",
+      "author": "范仲淹",
+      "title": "岳阳楼记"
+    },
+    {
+      "id": "period-01-090",
+      "text": "醉翁之意不在酒，在乎山水之间也。",
+      "author": "欧阳修",
+      "title": "醉翁亭记"
+    },
+    {
+      "id": "period-01-091",
+      "text": "不畏浮云遮望眼，自缘身在最高层。",
+      "author": "王安石",
+      "title": "登飞来峰"
+    },
+    {
+      "id": "period-01-092",
+      "text": "欲渡黄河冰塞川，将登太行雪满山。",
+      "author": "李白",
+      "title": "行路难"
+    },
+    {
+      "id": "period-01-093",
+      "text": "多歧路，今安在？",
+      "author": "李白",
+      "title": "行路难"
+    },
+    {
+      "id": "period-01-094",
+      "text": "山河破碎风飘絮，身世浮沉雨打萍。",
+      "author": "文天祥",
+      "title": "过零丁洋"
+    },
+    {
+      "id": "period-01-095",
+      "text": "人生自古谁无死？留取丹心照汗青。",
+      "author": "文天祥",
+      "title": "过零丁洋"
+    },
+    {
+      "id": "period-01-096",
+      "text": "醉里挑灯看剑，梦回吹角连营。",
+      "author": "辛弃疾",
+      "title": "破阵子·为陈同甫赋壮词以寄之"
+    },
+    {
+      "id": "period-01-097",
+      "text": "八百里分麾下炙，五十弦翻塞外声。",
+      "author": "辛弃疾",
+      "title": "破阵子·为陈同甫赋壮词以寄之"
+    },
+    {
+      "id": "period-01-098",
+      "text": "了却君王天下事，赢得生前身后名。",
+      "author": "辛弃疾",
+      "title": "破阵子·为陈同甫赋壮词以寄之"
+    },
+    {
+      "id": "period-01-099",
+      "text": "可怜楼上月徘徊，应照离人妆镜台。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-01-100",
+      "text": "不知乘月几人归，落月摇情满江树。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-01-101",
+      "text": "采菊东篱下，悠然见南山。",
+      "author": "陶渊明",
+      "title": "饮酒·其五"
+    },
+    {
+      "id": "period-01-102",
+      "text": "晨兴理荒秽，带月荷锄归。",
+      "author": "陶渊明",
+      "title": "归园田居·其三"
+    },
+    {
+      "id": "period-01-103",
+      "text": "木欣欣以向荣，泉涓涓而始流。",
+      "author": "陶渊明",
+      "title": "归去来兮辞"
+    },
+    {
+      "id": "period-01-104",
+      "text": "清晨入古寺，初日照高林。",
+      "author": "常建",
+      "title": "题破山寺后禅院"
+    },
+    {
+      "id": "period-01-105",
+      "text": "曲径通幽处，禅房花木深。",
+      "author": "常建",
+      "title": "题破山寺后禅院"
+    },
+    {
+      "id": "period-01-106",
+      "text": "山光悦鸟性，潭影空人心。",
+      "author": "常建",
+      "title": "题破山寺后禅院"
+    },
+    {
+      "id": "period-01-107",
+      "text": "万籁此俱寂，但余钟磬音。",
+      "author": "常建",
+      "title": "题破山寺后禅院"
+    },
+    {
+      "id": "period-01-108",
+      "text": "绿树村边合，青山郭外斜。",
+      "author": "孟浩然",
+      "title": "过故人庄"
+    },
+    {
+      "id": "period-01-109",
+      "text": "开轩面场圃，把酒话桑麻。",
+      "author": "孟浩然",
+      "title": "过故人庄"
+    },
+    {
+      "id": "period-01-110",
+      "text": "两岸青山相对出，孤帆一片日边来。",
+      "author": "李白",
+      "title": "望天门山"
+    },
+    {
+      "id": "period-01-111",
+      "text": "孤舟蓑笠翁，独钓寒江雪。",
+      "author": "柳宗元",
+      "title": "江雪"
+    },
+    {
+      "id": "period-01-112",
+      "text": "千山鸟飞绝，万径人踪灭。",
+      "author": "柳宗元",
+      "title": "江雪"
+    },
+    {
+      "id": "period-01-113",
+      "text": "江流天地外，山色有无中。",
+      "author": "王维",
+      "title": "汉江临泛"
+    },
+    {
+      "id": "period-01-114",
+      "text": "行到水穷处，坐看云起时。",
+      "author": "王维",
+      "title": "终南别业"
+    },
+    {
+      "id": "period-01-115",
+      "text": "随意春芳歇，王孙自可留。",
+      "author": "王维",
+      "title": "山居秋暝"
+    },
+    {
+      "id": "period-01-116",
+      "text": "蒹葭苍苍，白露为霜。",
+      "author": "《诗经》",
+      "title": "蒹葭"
+    },
+    {
+      "id": "period-01-117",
+      "text": "所谓伊人，在水一方。",
+      "author": "《诗经》",
+      "title": "蒹葭"
+    },
+    {
+      "id": "period-01-118",
+      "text": "关关雎鸠，在河之洲。",
+      "author": "《诗经》",
+      "title": "关雎"
+    },
+    {
+      "id": "period-01-119",
+      "text": "窈窕淑女，君子好逑。",
+      "author": "《诗经》",
+      "title": "关雎"
+    },
+    {
+      "id": "period-01-120",
+      "text": "路漫漫其修远兮，吾将上下而求索。",
+      "author": "屈原",
+      "title": "离骚"
+    },
+    {
+      "id": "period-01-121",
+      "text": "长太息以掩涕兮，哀民生之多艰。",
+      "author": "屈原",
+      "title": "离骚"
+    },
+    {
+      "id": "period-01-122",
+      "text": "青青子衿，悠悠我心。",
+      "author": "《诗经》",
+      "title": "子衿"
+    },
+    {
+      "id": "period-01-123",
+      "text": "山不厌高，海不厌深。",
+      "author": "曹操",
+      "title": "短歌行"
+    },
+    {
+      "id": "period-01-124",
+      "text": "老骥伏枥，志在千里。",
+      "author": "曹操",
+      "title": "龟虽寿"
+    },
+    {
+      "id": "period-01-125",
+      "text": "烈士暮年，壮心不已。",
+      "author": "曹操",
+      "title": "龟虽寿"
+    },
+    {
+      "id": "period-01-126",
+      "text": "少壮不努力，老大徒伤悲。",
+      "author": "汉乐府",
+      "title": "长歌行"
+    },
+    {
+      "id": "period-01-127",
+      "text": "举杯邀明月，对影成三人。",
+      "author": "李白",
+      "title": "月下独酌"
+    },
+    {
+      "id": "period-01-128",
+      "text": "花间一壶酒，独酌无相亲。",
+      "author": "李白",
+      "title": "月下独酌"
+    },
+    {
+      "id": "period-01-129",
+      "text": "人生得意须尽欢，莫使金樽空对月。",
+      "author": "李白",
+      "title": "将进酒"
+    },
+    {
+      "id": "period-01-130",
+      "text": "两情若是久长时，又岂在朝朝暮暮。",
+      "author": "秦观",
+      "title": "鹊桥仙"
+    },
+    {
+      "id": "period-01-131",
+      "text": "自在飞花轻似梦，无边丝雨细如愁。",
+      "author": "秦观",
+      "title": "浣溪沙"
+    },
+    {
+      "id": "period-01-132",
+      "text": "人有悲欢离合，月有阴晴圆缺。",
+      "author": "苏轼",
+      "title": "水调歌头"
+    },
+    {
+      "id": "period-01-133",
+      "text": "枝上柳绵吹又少，天涯何处无芳草。",
+      "author": "苏轼",
+      "title": "蝶恋花·春景"
+    },
+    {
+      "id": "period-01-134",
+      "text": "人生如梦，一尊还酹江月。",
+      "author": "苏轼",
+      "title": "念奴娇·赤壁怀古"
+    },
+    {
+      "id": "period-01-135",
+      "text": "大江东去，浪淘尽，千古风流人物。",
+      "author": "苏轼",
+      "title": "念奴娇·赤壁怀古"
+    },
+    {
+      "id": "period-01-136",
+      "text": "乱石穿空，惊涛拍岸，卷起千堆雪。",
+      "author": "苏轼",
+      "title": "念奴娇·赤壁怀古"
+    },
+    {
+      "id": "period-01-137",
+      "text": "小桥流水人家，古道西风瘦马。",
+      "author": "马致远",
+      "title": "天净沙·秋思"
+    },
+    {
+      "id": "period-01-138",
+      "text": "夕阳西下，断肠人在天涯。",
+      "author": "马致远",
+      "title": "天净沙·秋思"
+    },
+    {
+      "id": "period-01-139",
+      "text": "枯藤老树昏鸦，小桥流水人家。",
+      "author": "马致远",
+      "title": "天净沙·秋思"
+    },
+    {
+      "id": "period-01-140",
+      "text": "落霞与孤鹜齐飞，秋水共长天一色。",
+      "author": "王勃",
+      "title": "滕王阁序"
+    },
+    {
+      "id": "period-01-141",
+      "text": "穷且益坚，不坠青云之志。",
+      "author": "王勃",
+      "title": "滕王阁序"
+    },
+    {
+      "id": "period-01-142",
+      "text": "宁为百夫长，胜作一书生。",
+      "author": "杨炯",
+      "title": "从军行"
+    },
+    {
+      "id": "period-01-143",
+      "text": "黄河远上白云间，一片孤城万仞山。",
+      "author": "王之涣",
+      "title": "凉州词"
+    },
+    {
+      "id": "period-01-144",
+      "text": "长恨人心不如水，等闲平地起波澜。",
+      "author": "刘禹锡",
+      "title": "竹枝词"
+    },
+    {
+      "id": "period-01-145",
+      "text": "东边日出西边雨，道是无晴却有晴。",
+      "author": "刘禹锡",
+      "title": "竹枝词"
+    },
+    {
+      "id": "period-01-146",
+      "text": "杨柳青青江水平，闻郎江上唱歌声。",
+      "author": "刘禹锡",
+      "title": "竹枝词"
+    },
+    {
+      "id": "period-01-147",
+      "text": "停车坐爱枫林晚，霜叶红于二月花。",
+      "author": "杜牧",
+      "title": "山行"
+    },
+    {
+      "id": "period-01-148",
+      "text": "借问酒家何处有？牧童遥指杏花村。",
+      "author": "杜牧",
+      "title": "清明"
+    },
+    {
+      "id": "period-01-149",
+      "text": "清明时节雨纷纷，路上行人欲断魂。",
+      "author": "杜牧",
+      "title": "清明"
+    },
+    {
+      "id": "period-01-150",
+      "text": "商女不知亡国恨，隔江犹唱后庭花。",
+      "author": "杜牧",
+      "title": "泊秦淮"
+    },
+    {
+      "id": "period-02-001",
+      "text": "月出惊山鸟，时鸣春涧中。",
+      "author": "王维",
+      "title": "鸟鸣涧"
+    },
+    {
+      "id": "period-02-002",
+      "text": "深林人不知，明月来相照。",
+      "author": "王维",
+      "title": "竹里馆"
+    },
+    {
+      "id": "period-02-003",
+      "text": "春风又绿江南岸，明月何时照我还。",
+      "author": "王安石",
+      "title": "泊船瓜洲"
+    },
+    {
+      "id": "period-02-004",
+      "text": "春江潮水连海平，海上明月共潮生。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-02-005",
+      "text": "江畔何人初见月，江月何年初照人。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-02-006",
+      "text": "白云一片去悠悠，青枫浦上不胜愁。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-02-007",
+      "text": "鸿雁长飞光不度，鱼龙潜跃水成文。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-02-008",
+      "text": "玉户帘中卷不去，捣衣砧上拂还来。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-02-009",
+      "text": "此时相望不相闻，愿逐月华流照君。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-02-010",
+      "text": "明月几时有？把酒问青天。",
+      "author": "苏轼",
+      "title": "水调歌头"
+    },
+    {
+      "id": "period-02-011",
+      "text": "不应有恨，何事长向别时圆？",
+      "author": "苏轼",
+      "title": "水调歌头"
+    },
+    {
+      "id": "period-02-012",
+      "text": "起舞弄清影，何似在人间。",
+      "author": "苏轼",
+      "title": "水调歌头"
+    },
+    {
+      "id": "period-02-013",
+      "text": "小楼昨夜又东风，故国不堪回首月明中。",
+      "author": "李煜",
+      "title": "虞美人"
+    },
+    {
+      "id": "period-02-014",
+      "text": "无言独上西楼，月如钩。",
+      "author": "李煜",
+      "title": "相见欢"
+    },
+    {
+      "id": "period-02-015",
+      "text": "雁字回时，月满西楼。",
+      "author": "李清照",
+      "title": "一剪梅"
+    },
+    {
+      "id": "period-02-016",
+      "text": "何处望神州？满眼风光北固楼。",
+      "author": "辛弃疾",
+      "title": "南乡子·登京口北固亭有怀"
+    },
+    {
+      "id": "period-02-017",
+      "text": "斜阳草树，寻常巷陌，人道寄奴曾住。",
+      "author": "辛弃疾",
+      "title": "永遇乐·京口北固亭怀古"
+    },
+    {
+      "id": "period-02-018",
+      "text": "长安一片月，万户捣衣声。",
+      "author": "李白",
+      "title": "子夜吴歌·秋歌"
+    },
+    {
+      "id": "period-02-019",
+      "text": "烽火连三月，家书抵万金。",
+      "author": "杜甫",
+      "title": "春望"
+    },
+    {
+      "id": "period-02-020",
+      "text": "感时花溅泪，恨别鸟惊心。",
+      "author": "杜甫",
+      "title": "春望"
+    },
+    {
+      "id": "period-02-021",
+      "text": "国破山河在，城春草木深。",
+      "author": "杜甫",
+      "title": "春望"
+    },
+    {
+      "id": "period-02-022",
+      "text": "会当凌绝顶，一览众山小。",
+      "author": "杜甫",
+      "title": "望岳"
+    },
+    {
+      "id": "period-02-023",
+      "text": "无边落木萧萧下，不尽长江滚滚来。",
+      "author": "杜甫",
+      "title": "登高"
+    },
+    {
+      "id": "period-02-024",
+      "text": "万里悲秋常作客，百年多病独登台。",
+      "author": "杜甫",
+      "title": "登高"
+    },
+    {
+      "id": "period-02-025",
+      "text": "安得广厦千万间，大庇天下寒士俱欢颜。",
+      "author": "杜甫",
+      "title": "茅屋为秋风所破歌"
+    },
+    {
+      "id": "period-02-026",
+      "text": "白日放歌须纵酒，青春作伴好还乡。",
+      "author": "杜甫",
+      "title": "闻官军收河南河北"
+    },
+    {
+      "id": "period-02-027",
+      "text": "即从巴峡穿巫峡，便下襄阳向洛阳。",
+      "author": "杜甫",
+      "title": "闻官军收河南河北"
+    },
+    {
+      "id": "period-02-028",
+      "text": "两个黄鹂鸣翠柳，一行白鹭上青天。",
+      "author": "杜甫",
+      "title": "绝句"
+    },
+    {
+      "id": "period-02-029",
+      "text": "窗含西岭千秋雪，门泊东吴万里船。",
+      "author": "杜甫",
+      "title": "绝句"
+    },
+    {
+      "id": "period-02-030",
+      "text": "黄四娘家花满蹊，千朵万朵压枝低。",
+      "author": "杜甫",
+      "title": "江畔独步寻花"
+    },
+    {
+      "id": "period-02-031",
+      "text": "留连戏蝶时时舞，自在娇莺恰恰啼。",
+      "author": "杜甫",
+      "title": "江畔独步寻花"
+    },
+    {
+      "id": "period-02-032",
+      "text": "随风潜入夜，润物细无声。",
+      "author": "杜甫",
+      "title": "春夜喜雨"
+    },
+    {
+      "id": "period-02-033",
+      "text": "野径云俱黑，江船火独明。",
+      "author": "杜甫",
+      "title": "春夜喜雨"
+    },
+    {
+      "id": "period-02-034",
+      "text": "好雨知时节，当春乃发生。",
+      "author": "杜甫",
+      "title": "春夜喜雨"
+    },
+    {
+      "id": "period-02-035",
+      "text": "晓看红湿处，花重锦官城。",
+      "author": "杜甫",
+      "title": "春夜喜雨"
+    },
+    {
+      "id": "period-02-036",
+      "text": "碧玉妆成一树高，万条垂下绿丝绦。",
+      "author": "贺知章",
+      "title": "咏柳"
+    },
+    {
+      "id": "period-02-037",
+      "text": "不知细叶谁裁出，二月春风似剪刀。",
+      "author": "贺知章",
+      "title": "咏柳"
+    },
+    {
+      "id": "period-02-038",
+      "text": "竹外桃花三两枝，春江水暖鸭先知。",
+      "author": "苏轼",
+      "title": "惠崇春江晚景"
+    },
+    {
+      "id": "period-02-039",
+      "text": "蒌蒿满地芦芽短，正是河豚欲上时。",
+      "author": "苏轼",
+      "title": "惠崇春江晚景"
+    },
+    {
+      "id": "period-02-040",
+      "text": "欲把西湖比西子，淡妆浓抹总相宜。",
+      "author": "苏轼",
+      "title": "饮湖上初晴后雨"
+    },
+    {
+      "id": "period-02-041",
+      "text": "山外青山楼外楼，西湖歌舞几时休？",
+      "author": "林升",
+      "title": "题临安邸"
+    },
+    {
+      "id": "period-02-042",
+      "text": "接天莲叶无穷碧，映日荷花别样红。",
+      "author": "杨万里",
+      "title": "晓出净慈寺送林子方"
+    },
+    {
+      "id": "period-02-043",
+      "text": "小荷才露尖尖角，早有蜻蜓立上头。",
+      "author": "杨万里",
+      "title": "小池"
+    },
+    {
+      "id": "period-02-044",
+      "text": "欲穷千里目，更上一层楼。",
+      "author": "王之涣",
+      "title": "登鹳雀楼"
+    },
+    {
+      "id": "period-02-045",
+      "text": "海内存知己，天涯若比邻。",
+      "author": "王勃",
+      "title": "送杜少府之任蜀州"
+    },
+    {
+      "id": "period-02-046",
+      "text": "长风破浪会有时，直挂云帆济沧海。",
+      "author": "李白",
+      "title": "行路难"
+    },
+    {
+      "id": "period-02-047",
+      "text": "沉舟侧畔千帆过，病树前头万木春。",
+      "author": "刘禹锡",
+      "title": "酬乐天扬州初逢席上见赠"
+    },
+    {
+      "id": "period-02-048",
+      "text": "晴空一鹤排云上，便引诗情到碧霄。",
+      "author": "刘禹锡",
+      "title": "秋词"
+    },
+    {
+      "id": "period-02-049",
+      "text": "莫愁前路无知己，天下谁人不识君。",
+      "author": "高适",
+      "title": "别董大"
+    },
+    {
+      "id": "period-02-050",
+      "text": "天生我材必有用，千金散尽还复来。",
+      "author": "李白",
+      "title": "将进酒"
+    },
+    {
+      "id": "period-02-051",
+      "text": "桃花潭水深千尺，不及汪伦送我情。",
+      "author": "李白",
+      "title": "赠汪伦"
+    },
+    {
+      "id": "period-02-052",
+      "text": "飞流直下三千尺，疑是银河落九天。",
+      "author": "李白",
+      "title": "望庐山瀑布"
+    },
+    {
+      "id": "period-02-053",
+      "text": "两岸猿声啼不住，轻舟已过万重山。",
+      "author": "李白",
+      "title": "早发白帝城"
+    },
+    {
+      "id": "period-02-054",
+      "text": "孤帆远影碧空尽，唯见长江天际流。",
+      "author": "李白",
+      "title": "黄鹤楼送孟浩然之广陵"
+    },
+    {
+      "id": "period-02-055",
+      "text": "山随平野尽，江入大荒流。",
+      "author": "李白",
+      "title": "渡荆门送别"
+    },
+    {
+      "id": "period-02-056",
+      "text": "青山横北郭，白水绕东城。",
+      "author": "李白",
+      "title": "送友人"
+    },
+    {
+      "id": "period-02-057",
+      "text": "仍怜故乡水，万里送行舟。",
+      "author": "李白",
+      "title": "渡荆门送别"
+    },
+    {
+      "id": "period-02-058",
+      "text": "天门中断楚江开，碧水东流至此回。",
+      "author": "李白",
+      "title": "望天门山"
+    },
+    {
+      "id": "period-02-059",
+      "text": "但使龙城飞将在，不教胡马度阴山。",
+      "author": "王昌龄",
+      "title": "出塞"
+    },
+    {
+      "id": "period-02-060",
+      "text": "秦时明月汉时关，万里长征人未还。",
+      "author": "王昌龄",
+      "title": "出塞"
+    },
+    {
+      "id": "period-02-061",
+      "text": "黄沙百战穿金甲，不破楼兰终不还。",
+      "author": "王昌龄",
+      "title": "从军行"
+    },
+    {
+      "id": "period-02-062",
+      "text": "羌笛何须怨杨柳，春风不度玉门关。",
+      "author": "王之涣",
+      "title": "凉州词"
+    },
+    {
+      "id": "period-02-063",
+      "text": "葡萄美酒夜光杯，欲饮琵琶马上催。",
+      "author": "王翰",
+      "title": "凉州词"
+    },
+    {
+      "id": "period-02-064",
+      "text": "古来征战几人回？",
+      "author": "王翰",
+      "title": "凉州词"
+    },
+    {
+      "id": "period-02-065",
+      "text": "劝君更尽一杯酒，西出阳关无故人。",
+      "author": "王维",
+      "title": "渭城曲"
+    },
+    {
+      "id": "period-02-066",
+      "text": "大漠孤烟直，长河落日圆。",
+      "author": "王维",
+      "title": "使至塞上"
+    },
+    {
+      "id": "period-02-067",
+      "text": "孤山寺北贾亭西，水面初平云脚低。",
+      "author": "白居易",
+      "title": "钱塘湖春行"
+    },
+    {
+      "id": "period-02-068",
+      "text": "几处早莺争暖树，谁家新燕啄春泥。",
+      "author": "白居易",
+      "title": "钱塘湖春行"
+    },
+    {
+      "id": "period-02-069",
+      "text": "浅草才能没马蹄，最爱湖东行不足。",
+      "author": "白居易",
+      "title": "钱塘湖春行"
+    },
+    {
+      "id": "period-02-070",
+      "text": "一道残阳铺水中，半江瑟瑟半江红。",
+      "author": "白居易",
+      "title": "暮江吟"
+    },
+    {
+      "id": "period-02-071",
+      "text": "日出江花红胜火，春来江水绿如蓝。",
+      "author": "白居易",
+      "title": "忆江南"
+    },
+    {
+      "id": "period-02-072",
+      "text": "野火烧不尽，春风吹又生。",
+      "author": "白居易",
+      "title": "赋得古原草送别"
+    },
+    {
+      "id": "period-02-073",
+      "text": "同是天涯沦落人，相逢何必曾相识。",
+      "author": "白居易",
+      "title": "琵琶行"
+    },
+    {
+      "id": "period-02-074",
+      "text": "在天愿作比翼鸟，在地愿为连理枝。",
+      "author": "白居易",
+      "title": "长恨歌"
+    },
+    {
+      "id": "period-02-075",
+      "text": "山重水复疑无路，柳暗花明又一村。",
+      "author": "陆游",
+      "title": "游山西村"
+    },
+    {
+      "id": "period-02-076",
+      "text": "纸上得来终觉浅，绝知此事要躬行。",
+      "author": "陆游",
+      "title": "冬夜读书示子聿"
+    },
+    {
+      "id": "period-02-077",
+      "text": "王师北定中原日，家祭无忘告乃翁。",
+      "author": "陆游",
+      "title": "示儿"
+    },
+    {
+      "id": "period-02-078",
+      "text": "位卑未敢忘忧国。",
+      "author": "陆游",
+      "title": "病起书怀"
+    },
+    {
+      "id": "period-02-079",
+      "text": "先天下之忧而忧，后天下之乐而乐。",
+      "author": "范仲淹",
+      "title": "岳阳楼记"
+    },
+    {
+      "id": "period-02-080",
+      "text": "醉翁之意不在酒，在乎山水之间也。",
+      "author": "欧阳修",
+      "title": "醉翁亭记"
+    },
+    {
+      "id": "period-02-081",
+      "text": "不畏浮云遮望眼，自缘身在最高层。",
+      "author": "王安石",
+      "title": "登飞来峰"
+    },
+    {
+      "id": "period-02-082",
+      "text": "欲渡黄河冰塞川，将登太行雪满山。",
+      "author": "李白",
+      "title": "行路难"
+    },
+    {
+      "id": "period-02-083",
+      "text": "多歧路，今安在？",
+      "author": "李白",
+      "title": "行路难"
+    },
+    {
+      "id": "period-02-084",
+      "text": "山河破碎风飘絮，身世浮沉雨打萍。",
+      "author": "文天祥",
+      "title": "过零丁洋"
+    },
+    {
+      "id": "period-02-085",
+      "text": "人生自古谁无死？留取丹心照汗青。",
+      "author": "文天祥",
+      "title": "过零丁洋"
+    },
+    {
+      "id": "period-02-086",
+      "text": "醉里挑灯看剑，梦回吹角连营。",
+      "author": "辛弃疾",
+      "title": "破阵子·为陈同甫赋壮词以寄之"
+    },
+    {
+      "id": "period-02-087",
+      "text": "八百里分麾下炙，五十弦翻塞外声。",
+      "author": "辛弃疾",
+      "title": "破阵子·为陈同甫赋壮词以寄之"
+    },
+    {
+      "id": "period-02-088",
+      "text": "了却君王天下事，赢得生前身后名。",
+      "author": "辛弃疾",
+      "title": "破阵子·为陈同甫赋壮词以寄之"
+    },
+    {
+      "id": "period-02-089",
+      "text": "可怜楼上月徘徊，应照离人妆镜台。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-02-090",
+      "text": "不知乘月几人归，落月摇情满江树。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-02-091",
+      "text": "采菊东篱下，悠然见南山。",
+      "author": "陶渊明",
+      "title": "饮酒·其五"
+    },
+    {
+      "id": "period-02-092",
+      "text": "晨兴理荒秽，带月荷锄归。",
+      "author": "陶渊明",
+      "title": "归园田居·其三"
+    },
+    {
+      "id": "period-02-093",
+      "text": "木欣欣以向荣，泉涓涓而始流。",
+      "author": "陶渊明",
+      "title": "归去来兮辞"
+    },
+    {
+      "id": "period-02-094",
+      "text": "清晨入古寺，初日照高林。",
+      "author": "常建",
+      "title": "题破山寺后禅院"
+    },
+    {
+      "id": "period-02-095",
+      "text": "曲径通幽处，禅房花木深。",
+      "author": "常建",
+      "title": "题破山寺后禅院"
+    },
+    {
+      "id": "period-02-096",
+      "text": "山光悦鸟性，潭影空人心。",
+      "author": "常建",
+      "title": "题破山寺后禅院"
+    },
+    {
+      "id": "period-02-097",
+      "text": "万籁此俱寂，但余钟磬音。",
+      "author": "常建",
+      "title": "题破山寺后禅院"
+    },
+    {
+      "id": "period-02-098",
+      "text": "绿树村边合，青山郭外斜。",
+      "author": "孟浩然",
+      "title": "过故人庄"
+    },
+    {
+      "id": "period-02-099",
+      "text": "开轩面场圃，把酒话桑麻。",
+      "author": "孟浩然",
+      "title": "过故人庄"
+    },
+    {
+      "id": "period-02-100",
+      "text": "两岸青山相对出，孤帆一片日边来。",
+      "author": "李白",
+      "title": "望天门山"
+    },
+    {
+      "id": "period-02-101",
+      "text": "孤舟蓑笠翁，独钓寒江雪。",
+      "author": "柳宗元",
+      "title": "江雪"
+    },
+    {
+      "id": "period-02-102",
+      "text": "千山鸟飞绝，万径人踪灭。",
+      "author": "柳宗元",
+      "title": "江雪"
+    },
+    {
+      "id": "period-02-103",
+      "text": "江流天地外，山色有无中。",
+      "author": "王维",
+      "title": "汉江临泛"
+    },
+    {
+      "id": "period-02-104",
+      "text": "行到水穷处，坐看云起时。",
+      "author": "王维",
+      "title": "终南别业"
+    },
+    {
+      "id": "period-02-105",
+      "text": "随意春芳歇，王孙自可留。",
+      "author": "王维",
+      "title": "山居秋暝"
+    },
+    {
+      "id": "period-02-106",
+      "text": "蒹葭苍苍，白露为霜。",
+      "author": "《诗经》",
+      "title": "蒹葭"
+    },
+    {
+      "id": "period-02-107",
+      "text": "所谓伊人，在水一方。",
+      "author": "《诗经》",
+      "title": "蒹葭"
+    },
+    {
+      "id": "period-02-108",
+      "text": "关关雎鸠，在河之洲。",
+      "author": "《诗经》",
+      "title": "关雎"
+    },
+    {
+      "id": "period-02-109",
+      "text": "窈窕淑女，君子好逑。",
+      "author": "《诗经》",
+      "title": "关雎"
+    },
+    {
+      "id": "period-02-110",
+      "text": "路漫漫其修远兮，吾将上下而求索。",
+      "author": "屈原",
+      "title": "离骚"
+    },
+    {
+      "id": "period-02-111",
+      "text": "长太息以掩涕兮，哀民生之多艰。",
+      "author": "屈原",
+      "title": "离骚"
+    },
+    {
+      "id": "period-02-112",
+      "text": "青青子衿，悠悠我心。",
+      "author": "《诗经》",
+      "title": "子衿"
+    },
+    {
+      "id": "period-02-113",
+      "text": "山不厌高，海不厌深。",
+      "author": "曹操",
+      "title": "短歌行"
+    },
+    {
+      "id": "period-02-114",
+      "text": "老骥伏枥，志在千里。",
+      "author": "曹操",
+      "title": "龟虽寿"
+    },
+    {
+      "id": "period-02-115",
+      "text": "烈士暮年，壮心不已。",
+      "author": "曹操",
+      "title": "龟虽寿"
+    },
+    {
+      "id": "period-02-116",
+      "text": "少壮不努力，老大徒伤悲。",
+      "author": "汉乐府",
+      "title": "长歌行"
+    },
+    {
+      "id": "period-02-117",
+      "text": "举杯邀明月，对影成三人。",
+      "author": "李白",
+      "title": "月下独酌"
+    },
+    {
+      "id": "period-02-118",
+      "text": "花间一壶酒，独酌无相亲。",
+      "author": "李白",
+      "title": "月下独酌"
+    },
+    {
+      "id": "period-02-119",
+      "text": "人生得意须尽欢，莫使金樽空对月。",
+      "author": "李白",
+      "title": "将进酒"
+    },
+    {
+      "id": "period-02-120",
+      "text": "两情若是久长时，又岂在朝朝暮暮。",
+      "author": "秦观",
+      "title": "鹊桥仙"
+    },
+    {
+      "id": "period-02-121",
+      "text": "自在飞花轻似梦，无边丝雨细如愁。",
+      "author": "秦观",
+      "title": "浣溪沙"
+    },
+    {
+      "id": "period-02-122",
+      "text": "人有悲欢离合，月有阴晴圆缺。",
+      "author": "苏轼",
+      "title": "水调歌头"
+    },
+    {
+      "id": "period-02-123",
+      "text": "枝上柳绵吹又少，天涯何处无芳草。",
+      "author": "苏轼",
+      "title": "蝶恋花·春景"
+    },
+    {
+      "id": "period-02-124",
+      "text": "人生如梦，一尊还酹江月。",
+      "author": "苏轼",
+      "title": "念奴娇·赤壁怀古"
+    },
+    {
+      "id": "period-02-125",
+      "text": "大江东去，浪淘尽，千古风流人物。",
+      "author": "苏轼",
+      "title": "念奴娇·赤壁怀古"
+    },
+    {
+      "id": "period-02-126",
+      "text": "乱石穿空，惊涛拍岸，卷起千堆雪。",
+      "author": "苏轼",
+      "title": "念奴娇·赤壁怀古"
+    },
+    {
+      "id": "period-02-127",
+      "text": "小桥流水人家，古道西风瘦马。",
+      "author": "马致远",
+      "title": "天净沙·秋思"
+    },
+    {
+      "id": "period-02-128",
+      "text": "夕阳西下，断肠人在天涯。",
+      "author": "马致远",
+      "title": "天净沙·秋思"
+    },
+    {
+      "id": "period-02-129",
+      "text": "枯藤老树昏鸦，小桥流水人家。",
+      "author": "马致远",
+      "title": "天净沙·秋思"
+    },
+    {
+      "id": "period-02-130",
+      "text": "落霞与孤鹜齐飞，秋水共长天一色。",
+      "author": "王勃",
+      "title": "滕王阁序"
+    },
+    {
+      "id": "period-02-131",
+      "text": "穷且益坚，不坠青云之志。",
+      "author": "王勃",
+      "title": "滕王阁序"
+    },
+    {
+      "id": "period-02-132",
+      "text": "宁为百夫长，胜作一书生。",
+      "author": "杨炯",
+      "title": "从军行"
+    },
+    {
+      "id": "period-02-133",
+      "text": "黄河远上白云间，一片孤城万仞山。",
+      "author": "王之涣",
+      "title": "凉州词"
+    },
+    {
+      "id": "period-02-134",
+      "text": "长恨人心不如水，等闲平地起波澜。",
+      "author": "刘禹锡",
+      "title": "竹枝词"
+    },
+    {
+      "id": "period-02-135",
+      "text": "东边日出西边雨，道是无晴却有晴。",
+      "author": "刘禹锡",
+      "title": "竹枝词"
+    },
+    {
+      "id": "period-02-136",
+      "text": "杨柳青青江水平，闻郎江上唱歌声。",
+      "author": "刘禹锡",
+      "title": "竹枝词"
+    },
+    {
+      "id": "period-02-137",
+      "text": "停车坐爱枫林晚，霜叶红于二月花。",
+      "author": "杜牧",
+      "title": "山行"
+    },
+    {
+      "id": "period-02-138",
+      "text": "借问酒家何处有？牧童遥指杏花村。",
+      "author": "杜牧",
+      "title": "清明"
+    },
+    {
+      "id": "period-02-139",
+      "text": "清明时节雨纷纷，路上行人欲断魂。",
+      "author": "杜牧",
+      "title": "清明"
+    },
+    {
+      "id": "period-02-140",
+      "text": "商女不知亡国恨，隔江犹唱后庭花。",
+      "author": "杜牧",
+      "title": "泊秦淮"
+    },
+    {
+      "id": "period-02-141",
+      "text": "东船西舫悄无言，唯见江心秋月白。",
+      "author": "白居易",
+      "title": "琵琶行"
+    },
+    {
+      "id": "period-02-142",
+      "text": "千呼万唤始出来，犹抱琵琶半遮面。",
+      "author": "白居易",
+      "title": "琵琶行"
+    },
+    {
+      "id": "period-02-143",
+      "text": "同来望月人何处？风景依稀似去年。",
+      "author": "赵嘏",
+      "title": "江楼旧感"
+    },
+    {
+      "id": "period-02-144",
+      "text": "桃李不言，下自成蹊。",
+      "author": "司马迁",
+      "title": "史记·李将军列传"
+    },
+    {
+      "id": "period-02-145",
+      "text": "无可奈何花落去，似曾相识燕归来。",
+      "author": "晏殊",
+      "title": "浣溪沙"
+    },
+    {
+      "id": "period-02-146",
+      "text": "昨夜西风凋碧树，独上高楼，望尽天涯路。",
+      "author": "晏殊",
+      "title": "蝶恋花"
+    },
+    {
+      "id": "period-02-147",
+      "text": "衣带渐宽终不悔，为伊消得人憔悴。",
+      "author": "柳永",
+      "title": "凤栖梧"
+    },
+    {
+      "id": "period-02-148",
+      "text": "今宵酒醒何处？杨柳岸晓风残月。",
+      "author": "柳永",
+      "title": "雨霖铃"
+    },
+    {
+      "id": "period-02-149",
+      "text": "念去去，千里烟波，暮霭沉沉楚天阔。",
+      "author": "柳永",
+      "title": "雨霖铃"
+    },
+    {
+      "id": "period-02-150",
+      "text": "莫道不销魂，帘卷西风，人比黄花瘦。",
+      "author": "李清照",
+      "title": "醉花阴"
+    },
+    {
+      "id": "period-03-001",
+      "text": "不应有恨，何事长向别时圆？",
+      "author": "苏轼",
+      "title": "水调歌头"
+    },
+    {
+      "id": "period-03-002",
+      "text": "起舞弄清影，何似在人间。",
+      "author": "苏轼",
+      "title": "水调歌头"
+    },
+    {
+      "id": "period-03-003",
+      "text": "小楼昨夜又东风，故国不堪回首月明中。",
+      "author": "李煜",
+      "title": "虞美人"
+    },
+    {
+      "id": "period-03-004",
+      "text": "无言独上西楼，月如钩。",
+      "author": "李煜",
+      "title": "相见欢"
+    },
+    {
+      "id": "period-03-005",
+      "text": "雁字回时，月满西楼。",
+      "author": "李清照",
+      "title": "一剪梅"
+    },
+    {
+      "id": "period-03-006",
+      "text": "何处望神州？满眼风光北固楼。",
+      "author": "辛弃疾",
+      "title": "南乡子·登京口北固亭有怀"
+    },
+    {
+      "id": "period-03-007",
+      "text": "斜阳草树，寻常巷陌，人道寄奴曾住。",
+      "author": "辛弃疾",
+      "title": "永遇乐·京口北固亭怀古"
+    },
+    {
+      "id": "period-03-008",
+      "text": "长安一片月，万户捣衣声。",
+      "author": "李白",
+      "title": "子夜吴歌·秋歌"
+    },
+    {
+      "id": "period-03-009",
+      "text": "烽火连三月，家书抵万金。",
+      "author": "杜甫",
+      "title": "春望"
+    },
+    {
+      "id": "period-03-010",
+      "text": "感时花溅泪，恨别鸟惊心。",
+      "author": "杜甫",
+      "title": "春望"
+    },
+    {
+      "id": "period-03-011",
+      "text": "国破山河在，城春草木深。",
+      "author": "杜甫",
+      "title": "春望"
+    },
+    {
+      "id": "period-03-012",
+      "text": "会当凌绝顶，一览众山小。",
+      "author": "杜甫",
+      "title": "望岳"
+    },
+    {
+      "id": "period-03-013",
+      "text": "无边落木萧萧下，不尽长江滚滚来。",
+      "author": "杜甫",
+      "title": "登高"
+    },
+    {
+      "id": "period-03-014",
+      "text": "万里悲秋常作客，百年多病独登台。",
+      "author": "杜甫",
+      "title": "登高"
+    },
+    {
+      "id": "period-03-015",
+      "text": "安得广厦千万间，大庇天下寒士俱欢颜。",
+      "author": "杜甫",
+      "title": "茅屋为秋风所破歌"
+    },
+    {
+      "id": "period-03-016",
+      "text": "白日放歌须纵酒，青春作伴好还乡。",
+      "author": "杜甫",
+      "title": "闻官军收河南河北"
+    },
+    {
+      "id": "period-03-017",
+      "text": "即从巴峡穿巫峡，便下襄阳向洛阳。",
+      "author": "杜甫",
+      "title": "闻官军收河南河北"
+    },
+    {
+      "id": "period-03-018",
+      "text": "两个黄鹂鸣翠柳，一行白鹭上青天。",
+      "author": "杜甫",
+      "title": "绝句"
+    },
+    {
+      "id": "period-03-019",
+      "text": "窗含西岭千秋雪，门泊东吴万里船。",
+      "author": "杜甫",
+      "title": "绝句"
+    },
+    {
+      "id": "period-03-020",
+      "text": "黄四娘家花满蹊，千朵万朵压枝低。",
+      "author": "杜甫",
+      "title": "江畔独步寻花"
+    },
+    {
+      "id": "period-03-021",
+      "text": "留连戏蝶时时舞，自在娇莺恰恰啼。",
+      "author": "杜甫",
+      "title": "江畔独步寻花"
+    },
+    {
+      "id": "period-03-022",
+      "text": "随风潜入夜，润物细无声。",
+      "author": "杜甫",
+      "title": "春夜喜雨"
+    },
+    {
+      "id": "period-03-023",
+      "text": "野径云俱黑，江船火独明。",
+      "author": "杜甫",
+      "title": "春夜喜雨"
+    },
+    {
+      "id": "period-03-024",
+      "text": "好雨知时节，当春乃发生。",
+      "author": "杜甫",
+      "title": "春夜喜雨"
+    },
+    {
+      "id": "period-03-025",
+      "text": "晓看红湿处，花重锦官城。",
+      "author": "杜甫",
+      "title": "春夜喜雨"
+    },
+    {
+      "id": "period-03-026",
+      "text": "碧玉妆成一树高，万条垂下绿丝绦。",
+      "author": "贺知章",
+      "title": "咏柳"
+    },
+    {
+      "id": "period-03-027",
+      "text": "不知细叶谁裁出，二月春风似剪刀。",
+      "author": "贺知章",
+      "title": "咏柳"
+    },
+    {
+      "id": "period-03-028",
+      "text": "竹外桃花三两枝，春江水暖鸭先知。",
+      "author": "苏轼",
+      "title": "惠崇春江晚景"
+    },
+    {
+      "id": "period-03-029",
+      "text": "蒌蒿满地芦芽短，正是河豚欲上时。",
+      "author": "苏轼",
+      "title": "惠崇春江晚景"
+    },
+    {
+      "id": "period-03-030",
+      "text": "欲把西湖比西子，淡妆浓抹总相宜。",
+      "author": "苏轼",
+      "title": "饮湖上初晴后雨"
+    },
+    {
+      "id": "period-03-031",
+      "text": "山外青山楼外楼，西湖歌舞几时休？",
+      "author": "林升",
+      "title": "题临安邸"
+    },
+    {
+      "id": "period-03-032",
+      "text": "接天莲叶无穷碧，映日荷花别样红。",
+      "author": "杨万里",
+      "title": "晓出净慈寺送林子方"
+    },
+    {
+      "id": "period-03-033",
+      "text": "小荷才露尖尖角，早有蜻蜓立上头。",
+      "author": "杨万里",
+      "title": "小池"
+    },
+    {
+      "id": "period-03-034",
+      "text": "欲穷千里目，更上一层楼。",
+      "author": "王之涣",
+      "title": "登鹳雀楼"
+    },
+    {
+      "id": "period-03-035",
+      "text": "海内存知己，天涯若比邻。",
+      "author": "王勃",
+      "title": "送杜少府之任蜀州"
+    },
+    {
+      "id": "period-03-036",
+      "text": "长风破浪会有时，直挂云帆济沧海。",
+      "author": "李白",
+      "title": "行路难"
+    },
+    {
+      "id": "period-03-037",
+      "text": "沉舟侧畔千帆过，病树前头万木春。",
+      "author": "刘禹锡",
+      "title": "酬乐天扬州初逢席上见赠"
+    },
+    {
+      "id": "period-03-038",
+      "text": "晴空一鹤排云上，便引诗情到碧霄。",
+      "author": "刘禹锡",
+      "title": "秋词"
+    },
+    {
+      "id": "period-03-039",
+      "text": "莫愁前路无知己，天下谁人不识君。",
+      "author": "高适",
+      "title": "别董大"
+    },
+    {
+      "id": "period-03-040",
+      "text": "天生我材必有用，千金散尽还复来。",
+      "author": "李白",
+      "title": "将进酒"
+    },
+    {
+      "id": "period-03-041",
+      "text": "桃花潭水深千尺，不及汪伦送我情。",
+      "author": "李白",
+      "title": "赠汪伦"
+    },
+    {
+      "id": "period-03-042",
+      "text": "飞流直下三千尺，疑是银河落九天。",
+      "author": "李白",
+      "title": "望庐山瀑布"
+    },
+    {
+      "id": "period-03-043",
+      "text": "两岸猿声啼不住，轻舟已过万重山。",
+      "author": "李白",
+      "title": "早发白帝城"
+    },
+    {
+      "id": "period-03-044",
+      "text": "孤帆远影碧空尽，唯见长江天际流。",
+      "author": "李白",
+      "title": "黄鹤楼送孟浩然之广陵"
+    },
+    {
+      "id": "period-03-045",
+      "text": "山随平野尽，江入大荒流。",
+      "author": "李白",
+      "title": "渡荆门送别"
+    },
+    {
+      "id": "period-03-046",
+      "text": "青山横北郭，白水绕东城。",
+      "author": "李白",
+      "title": "送友人"
+    },
+    {
+      "id": "period-03-047",
+      "text": "仍怜故乡水，万里送行舟。",
+      "author": "李白",
+      "title": "渡荆门送别"
+    },
+    {
+      "id": "period-03-048",
+      "text": "天门中断楚江开，碧水东流至此回。",
+      "author": "李白",
+      "title": "望天门山"
+    },
+    {
+      "id": "period-03-049",
+      "text": "但使龙城飞将在，不教胡马度阴山。",
+      "author": "王昌龄",
+      "title": "出塞"
+    },
+    {
+      "id": "period-03-050",
+      "text": "秦时明月汉时关，万里长征人未还。",
+      "author": "王昌龄",
+      "title": "出塞"
+    },
+    {
+      "id": "period-03-051",
+      "text": "黄沙百战穿金甲，不破楼兰终不还。",
+      "author": "王昌龄",
+      "title": "从军行"
+    },
+    {
+      "id": "period-03-052",
+      "text": "羌笛何须怨杨柳，春风不度玉门关。",
+      "author": "王之涣",
+      "title": "凉州词"
+    },
+    {
+      "id": "period-03-053",
+      "text": "葡萄美酒夜光杯，欲饮琵琶马上催。",
+      "author": "王翰",
+      "title": "凉州词"
+    },
+    {
+      "id": "period-03-054",
+      "text": "古来征战几人回？",
+      "author": "王翰",
+      "title": "凉州词"
+    },
+    {
+      "id": "period-03-055",
+      "text": "劝君更尽一杯酒，西出阳关无故人。",
+      "author": "王维",
+      "title": "渭城曲"
+    },
+    {
+      "id": "period-03-056",
+      "text": "大漠孤烟直，长河落日圆。",
+      "author": "王维",
+      "title": "使至塞上"
+    },
+    {
+      "id": "period-03-057",
+      "text": "孤山寺北贾亭西，水面初平云脚低。",
+      "author": "白居易",
+      "title": "钱塘湖春行"
+    },
+    {
+      "id": "period-03-058",
+      "text": "几处早莺争暖树，谁家新燕啄春泥。",
+      "author": "白居易",
+      "title": "钱塘湖春行"
+    },
+    {
+      "id": "period-03-059",
+      "text": "浅草才能没马蹄，最爱湖东行不足。",
+      "author": "白居易",
+      "title": "钱塘湖春行"
+    },
+    {
+      "id": "period-03-060",
+      "text": "一道残阳铺水中，半江瑟瑟半江红。",
+      "author": "白居易",
+      "title": "暮江吟"
+    },
+    {
+      "id": "period-03-061",
+      "text": "日出江花红胜火，春来江水绿如蓝。",
+      "author": "白居易",
+      "title": "忆江南"
+    },
+    {
+      "id": "period-03-062",
+      "text": "野火烧不尽，春风吹又生。",
+      "author": "白居易",
+      "title": "赋得古原草送别"
+    },
+    {
+      "id": "period-03-063",
+      "text": "同是天涯沦落人，相逢何必曾相识。",
+      "author": "白居易",
+      "title": "琵琶行"
+    },
+    {
+      "id": "period-03-064",
+      "text": "在天愿作比翼鸟，在地愿为连理枝。",
+      "author": "白居易",
+      "title": "长恨歌"
+    },
+    {
+      "id": "period-03-065",
+      "text": "山重水复疑无路，柳暗花明又一村。",
+      "author": "陆游",
+      "title": "游山西村"
+    },
+    {
+      "id": "period-03-066",
+      "text": "纸上得来终觉浅，绝知此事要躬行。",
+      "author": "陆游",
+      "title": "冬夜读书示子聿"
+    },
+    {
+      "id": "period-03-067",
+      "text": "王师北定中原日，家祭无忘告乃翁。",
+      "author": "陆游",
+      "title": "示儿"
+    },
+    {
+      "id": "period-03-068",
+      "text": "位卑未敢忘忧国。",
+      "author": "陆游",
+      "title": "病起书怀"
+    },
+    {
+      "id": "period-03-069",
+      "text": "先天下之忧而忧，后天下之乐而乐。",
+      "author": "范仲淹",
+      "title": "岳阳楼记"
+    },
+    {
+      "id": "period-03-070",
+      "text": "醉翁之意不在酒，在乎山水之间也。",
+      "author": "欧阳修",
+      "title": "醉翁亭记"
+    },
+    {
+      "id": "period-03-071",
+      "text": "不畏浮云遮望眼，自缘身在最高层。",
+      "author": "王安石",
+      "title": "登飞来峰"
+    },
+    {
+      "id": "period-03-072",
+      "text": "欲渡黄河冰塞川，将登太行雪满山。",
+      "author": "李白",
+      "title": "行路难"
+    },
+    {
+      "id": "period-03-073",
+      "text": "多歧路，今安在？",
+      "author": "李白",
+      "title": "行路难"
+    },
+    {
+      "id": "period-03-074",
+      "text": "山河破碎风飘絮，身世浮沉雨打萍。",
+      "author": "文天祥",
+      "title": "过零丁洋"
+    },
+    {
+      "id": "period-03-075",
+      "text": "人生自古谁无死？留取丹心照汗青。",
+      "author": "文天祥",
+      "title": "过零丁洋"
+    },
+    {
+      "id": "period-03-076",
+      "text": "醉里挑灯看剑，梦回吹角连营。",
+      "author": "辛弃疾",
+      "title": "破阵子·为陈同甫赋壮词以寄之"
+    },
+    {
+      "id": "period-03-077",
+      "text": "八百里分麾下炙，五十弦翻塞外声。",
+      "author": "辛弃疾",
+      "title": "破阵子·为陈同甫赋壮词以寄之"
+    },
+    {
+      "id": "period-03-078",
+      "text": "了却君王天下事，赢得生前身后名。",
+      "author": "辛弃疾",
+      "title": "破阵子·为陈同甫赋壮词以寄之"
+    },
+    {
+      "id": "period-03-079",
+      "text": "可怜楼上月徘徊，应照离人妆镜台。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-03-080",
+      "text": "不知乘月几人归，落月摇情满江树。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-03-081",
+      "text": "采菊东篱下，悠然见南山。",
+      "author": "陶渊明",
+      "title": "饮酒·其五"
+    },
+    {
+      "id": "period-03-082",
+      "text": "晨兴理荒秽，带月荷锄归。",
+      "author": "陶渊明",
+      "title": "归园田居·其三"
+    },
+    {
+      "id": "period-03-083",
+      "text": "木欣欣以向荣，泉涓涓而始流。",
+      "author": "陶渊明",
+      "title": "归去来兮辞"
+    },
+    {
+      "id": "period-03-084",
+      "text": "清晨入古寺，初日照高林。",
+      "author": "常建",
+      "title": "题破山寺后禅院"
+    },
+    {
+      "id": "period-03-085",
+      "text": "曲径通幽处，禅房花木深。",
+      "author": "常建",
+      "title": "题破山寺后禅院"
+    },
+    {
+      "id": "period-03-086",
+      "text": "山光悦鸟性，潭影空人心。",
+      "author": "常建",
+      "title": "题破山寺后禅院"
+    },
+    {
+      "id": "period-03-087",
+      "text": "万籁此俱寂，但余钟磬音。",
+      "author": "常建",
+      "title": "题破山寺后禅院"
+    },
+    {
+      "id": "period-03-088",
+      "text": "绿树村边合，青山郭外斜。",
+      "author": "孟浩然",
+      "title": "过故人庄"
+    },
+    {
+      "id": "period-03-089",
+      "text": "开轩面场圃，把酒话桑麻。",
+      "author": "孟浩然",
+      "title": "过故人庄"
+    },
+    {
+      "id": "period-03-090",
+      "text": "两岸青山相对出，孤帆一片日边来。",
+      "author": "李白",
+      "title": "望天门山"
+    },
+    {
+      "id": "period-03-091",
+      "text": "孤舟蓑笠翁，独钓寒江雪。",
+      "author": "柳宗元",
+      "title": "江雪"
+    },
+    {
+      "id": "period-03-092",
+      "text": "千山鸟飞绝，万径人踪灭。",
+      "author": "柳宗元",
+      "title": "江雪"
+    },
+    {
+      "id": "period-03-093",
+      "text": "江流天地外，山色有无中。",
+      "author": "王维",
+      "title": "汉江临泛"
+    },
+    {
+      "id": "period-03-094",
+      "text": "行到水穷处，坐看云起时。",
+      "author": "王维",
+      "title": "终南别业"
+    },
+    {
+      "id": "period-03-095",
+      "text": "随意春芳歇，王孙自可留。",
+      "author": "王维",
+      "title": "山居秋暝"
+    },
+    {
+      "id": "period-03-096",
+      "text": "蒹葭苍苍，白露为霜。",
+      "author": "《诗经》",
+      "title": "蒹葭"
+    },
+    {
+      "id": "period-03-097",
+      "text": "所谓伊人，在水一方。",
+      "author": "《诗经》",
+      "title": "蒹葭"
+    },
+    {
+      "id": "period-03-098",
+      "text": "关关雎鸠，在河之洲。",
+      "author": "《诗经》",
+      "title": "关雎"
+    },
+    {
+      "id": "period-03-099",
+      "text": "窈窕淑女，君子好逑。",
+      "author": "《诗经》",
+      "title": "关雎"
+    },
+    {
+      "id": "period-03-100",
+      "text": "路漫漫其修远兮，吾将上下而求索。",
+      "author": "屈原",
+      "title": "离骚"
+    },
+    {
+      "id": "period-03-101",
+      "text": "长太息以掩涕兮，哀民生之多艰。",
+      "author": "屈原",
+      "title": "离骚"
+    },
+    {
+      "id": "period-03-102",
+      "text": "青青子衿，悠悠我心。",
+      "author": "《诗经》",
+      "title": "子衿"
+    },
+    {
+      "id": "period-03-103",
+      "text": "山不厌高，海不厌深。",
+      "author": "曹操",
+      "title": "短歌行"
+    },
+    {
+      "id": "period-03-104",
+      "text": "老骥伏枥，志在千里。",
+      "author": "曹操",
+      "title": "龟虽寿"
+    },
+    {
+      "id": "period-03-105",
+      "text": "烈士暮年，壮心不已。",
+      "author": "曹操",
+      "title": "龟虽寿"
+    },
+    {
+      "id": "period-03-106",
+      "text": "少壮不努力，老大徒伤悲。",
+      "author": "汉乐府",
+      "title": "长歌行"
+    },
+    {
+      "id": "period-03-107",
+      "text": "举杯邀明月，对影成三人。",
+      "author": "李白",
+      "title": "月下独酌"
+    },
+    {
+      "id": "period-03-108",
+      "text": "花间一壶酒，独酌无相亲。",
+      "author": "李白",
+      "title": "月下独酌"
+    },
+    {
+      "id": "period-03-109",
+      "text": "人生得意须尽欢，莫使金樽空对月。",
+      "author": "李白",
+      "title": "将进酒"
+    },
+    {
+      "id": "period-03-110",
+      "text": "两情若是久长时，又岂在朝朝暮暮。",
+      "author": "秦观",
+      "title": "鹊桥仙"
+    },
+    {
+      "id": "period-03-111",
+      "text": "自在飞花轻似梦，无边丝雨细如愁。",
+      "author": "秦观",
+      "title": "浣溪沙"
+    },
+    {
+      "id": "period-03-112",
+      "text": "人有悲欢离合，月有阴晴圆缺。",
+      "author": "苏轼",
+      "title": "水调歌头"
+    },
+    {
+      "id": "period-03-113",
+      "text": "枝上柳绵吹又少，天涯何处无芳草。",
+      "author": "苏轼",
+      "title": "蝶恋花·春景"
+    },
+    {
+      "id": "period-03-114",
+      "text": "人生如梦，一尊还酹江月。",
+      "author": "苏轼",
+      "title": "念奴娇·赤壁怀古"
+    },
+    {
+      "id": "period-03-115",
+      "text": "大江东去，浪淘尽，千古风流人物。",
+      "author": "苏轼",
+      "title": "念奴娇·赤壁怀古"
+    },
+    {
+      "id": "period-03-116",
+      "text": "乱石穿空，惊涛拍岸，卷起千堆雪。",
+      "author": "苏轼",
+      "title": "念奴娇·赤壁怀古"
+    },
+    {
+      "id": "period-03-117",
+      "text": "小桥流水人家，古道西风瘦马。",
+      "author": "马致远",
+      "title": "天净沙·秋思"
+    },
+    {
+      "id": "period-03-118",
+      "text": "夕阳西下，断肠人在天涯。",
+      "author": "马致远",
+      "title": "天净沙·秋思"
+    },
+    {
+      "id": "period-03-119",
+      "text": "枯藤老树昏鸦，小桥流水人家。",
+      "author": "马致远",
+      "title": "天净沙·秋思"
+    },
+    {
+      "id": "period-03-120",
+      "text": "落霞与孤鹜齐飞，秋水共长天一色。",
+      "author": "王勃",
+      "title": "滕王阁序"
+    },
+    {
+      "id": "period-03-121",
+      "text": "穷且益坚，不坠青云之志。",
+      "author": "王勃",
+      "title": "滕王阁序"
+    },
+    {
+      "id": "period-03-122",
+      "text": "宁为百夫长，胜作一书生。",
+      "author": "杨炯",
+      "title": "从军行"
+    },
+    {
+      "id": "period-03-123",
+      "text": "黄河远上白云间，一片孤城万仞山。",
+      "author": "王之涣",
+      "title": "凉州词"
+    },
+    {
+      "id": "period-03-124",
+      "text": "长恨人心不如水，等闲平地起波澜。",
+      "author": "刘禹锡",
+      "title": "竹枝词"
+    },
+    {
+      "id": "period-03-125",
+      "text": "东边日出西边雨，道是无晴却有晴。",
+      "author": "刘禹锡",
+      "title": "竹枝词"
+    },
+    {
+      "id": "period-03-126",
+      "text": "杨柳青青江水平，闻郎江上唱歌声。",
+      "author": "刘禹锡",
+      "title": "竹枝词"
+    },
+    {
+      "id": "period-03-127",
+      "text": "停车坐爱枫林晚，霜叶红于二月花。",
+      "author": "杜牧",
+      "title": "山行"
+    },
+    {
+      "id": "period-03-128",
+      "text": "借问酒家何处有？牧童遥指杏花村。",
+      "author": "杜牧",
+      "title": "清明"
+    },
+    {
+      "id": "period-03-129",
+      "text": "清明时节雨纷纷，路上行人欲断魂。",
+      "author": "杜牧",
+      "title": "清明"
+    },
+    {
+      "id": "period-03-130",
+      "text": "商女不知亡国恨，隔江犹唱后庭花。",
+      "author": "杜牧",
+      "title": "泊秦淮"
+    },
+    {
+      "id": "period-03-131",
+      "text": "东船西舫悄无言，唯见江心秋月白。",
+      "author": "白居易",
+      "title": "琵琶行"
+    },
+    {
+      "id": "period-03-132",
+      "text": "千呼万唤始出来，犹抱琵琶半遮面。",
+      "author": "白居易",
+      "title": "琵琶行"
+    },
+    {
+      "id": "period-03-133",
+      "text": "同来望月人何处？风景依稀似去年。",
+      "author": "赵嘏",
+      "title": "江楼旧感"
+    },
+    {
+      "id": "period-03-134",
+      "text": "桃李不言，下自成蹊。",
+      "author": "司马迁",
+      "title": "史记·李将军列传"
+    },
+    {
+      "id": "period-03-135",
+      "text": "无可奈何花落去，似曾相识燕归来。",
+      "author": "晏殊",
+      "title": "浣溪沙"
+    },
+    {
+      "id": "period-03-136",
+      "text": "昨夜西风凋碧树，独上高楼，望尽天涯路。",
+      "author": "晏殊",
+      "title": "蝶恋花"
+    },
+    {
+      "id": "period-03-137",
+      "text": "衣带渐宽终不悔，为伊消得人憔悴。",
+      "author": "柳永",
+      "title": "凤栖梧"
+    },
+    {
+      "id": "period-03-138",
+      "text": "今宵酒醒何处？杨柳岸晓风残月。",
+      "author": "柳永",
+      "title": "雨霖铃"
+    },
+    {
+      "id": "period-03-139",
+      "text": "念去去，千里烟波，暮霭沉沉楚天阔。",
+      "author": "柳永",
+      "title": "雨霖铃"
+    },
+    {
+      "id": "period-03-140",
+      "text": "莫道不销魂，帘卷西风，人比黄花瘦。",
+      "author": "李清照",
+      "title": "醉花阴"
+    },
+    {
+      "id": "period-03-141",
+      "text": "知否？知否？应是绿肥红瘦。",
+      "author": "李清照",
+      "title": "如梦令"
+    },
+    {
+      "id": "period-03-142",
+      "text": "寻寻觅觅，冷冷清清，凄凄惨惨戚戚。",
+      "author": "李清照",
+      "title": "声声慢"
+    },
+    {
+      "id": "period-03-143",
+      "text": "众里寻他千百度，蓦然回首，那人却在灯火阑珊处。",
+      "author": "辛弃疾",
+      "title": "青玉案·元夕"
+    },
+    {
+      "id": "period-03-144",
+      "text": "东风夜放花千树，更吹落、星如雨。",
+      "author": "辛弃疾",
+      "title": "青玉案·元夕"
+    },
+    {
+      "id": "period-03-145",
+      "text": "青山遮不住，毕竟东流去。",
+      "author": "辛弃疾",
+      "title": "菩萨蛮·书江西造口壁"
+    },
+    {
+      "id": "period-03-146",
+      "text": "一水护田将绿绕，两山排闼送青来。",
+      "author": "王安石",
+      "title": "书湖阴先生壁"
+    },
+    {
+      "id": "period-03-147",
+      "text": "千门万户曈曈日，总把新桃换旧符。",
+      "author": "王安石",
+      "title": "元日"
+    },
+    {
+      "id": "period-03-148",
+      "text": "爆竹声中一岁除，春风送暖入屠苏。",
+      "author": "王安石",
+      "title": "元日"
+    },
+    {
+      "id": "period-03-149",
+      "text": "接汉疑星落，依楼似月悬。",
+      "author": "卢照邻",
+      "title": "十五夜观灯"
+    },
+    {
+      "id": "period-03-150",
+      "text": "春眠不觉晓，处处闻啼鸟。",
+      "author": "孟浩然",
+      "title": "春晓"
+    },
+    {
+      "id": "period-04-001",
+      "text": "国破山河在，城春草木深。",
+      "author": "杜甫",
+      "title": "春望"
+    },
+    {
+      "id": "period-04-002",
+      "text": "会当凌绝顶，一览众山小。",
+      "author": "杜甫",
+      "title": "望岳"
+    },
+    {
+      "id": "period-04-003",
+      "text": "无边落木萧萧下，不尽长江滚滚来。",
+      "author": "杜甫",
+      "title": "登高"
+    },
+    {
+      "id": "period-04-004",
+      "text": "万里悲秋常作客，百年多病独登台。",
+      "author": "杜甫",
+      "title": "登高"
+    },
+    {
+      "id": "period-04-005",
+      "text": "安得广厦千万间，大庇天下寒士俱欢颜。",
+      "author": "杜甫",
+      "title": "茅屋为秋风所破歌"
+    },
+    {
+      "id": "period-04-006",
+      "text": "白日放歌须纵酒，青春作伴好还乡。",
+      "author": "杜甫",
+      "title": "闻官军收河南河北"
+    },
+    {
+      "id": "period-04-007",
+      "text": "即从巴峡穿巫峡，便下襄阳向洛阳。",
+      "author": "杜甫",
+      "title": "闻官军收河南河北"
+    },
+    {
+      "id": "period-04-008",
+      "text": "两个黄鹂鸣翠柳，一行白鹭上青天。",
+      "author": "杜甫",
+      "title": "绝句"
+    },
+    {
+      "id": "period-04-009",
+      "text": "窗含西岭千秋雪，门泊东吴万里船。",
+      "author": "杜甫",
+      "title": "绝句"
+    },
+    {
+      "id": "period-04-010",
+      "text": "黄四娘家花满蹊，千朵万朵压枝低。",
+      "author": "杜甫",
+      "title": "江畔独步寻花"
+    },
+    {
+      "id": "period-04-011",
+      "text": "留连戏蝶时时舞，自在娇莺恰恰啼。",
+      "author": "杜甫",
+      "title": "江畔独步寻花"
+    },
+    {
+      "id": "period-04-012",
+      "text": "随风潜入夜，润物细无声。",
+      "author": "杜甫",
+      "title": "春夜喜雨"
+    },
+    {
+      "id": "period-04-013",
+      "text": "野径云俱黑，江船火独明。",
+      "author": "杜甫",
+      "title": "春夜喜雨"
+    },
+    {
+      "id": "period-04-014",
+      "text": "好雨知时节，当春乃发生。",
+      "author": "杜甫",
+      "title": "春夜喜雨"
+    },
+    {
+      "id": "period-04-015",
+      "text": "晓看红湿处，花重锦官城。",
+      "author": "杜甫",
+      "title": "春夜喜雨"
+    },
+    {
+      "id": "period-04-016",
+      "text": "碧玉妆成一树高，万条垂下绿丝绦。",
+      "author": "贺知章",
+      "title": "咏柳"
+    },
+    {
+      "id": "period-04-017",
+      "text": "不知细叶谁裁出，二月春风似剪刀。",
+      "author": "贺知章",
+      "title": "咏柳"
+    },
+    {
+      "id": "period-04-018",
+      "text": "竹外桃花三两枝，春江水暖鸭先知。",
+      "author": "苏轼",
+      "title": "惠崇春江晚景"
+    },
+    {
+      "id": "period-04-019",
+      "text": "蒌蒿满地芦芽短，正是河豚欲上时。",
+      "author": "苏轼",
+      "title": "惠崇春江晚景"
+    },
+    {
+      "id": "period-04-020",
+      "text": "欲把西湖比西子，淡妆浓抹总相宜。",
+      "author": "苏轼",
+      "title": "饮湖上初晴后雨"
+    },
+    {
+      "id": "period-04-021",
+      "text": "山外青山楼外楼，西湖歌舞几时休？",
+      "author": "林升",
+      "title": "题临安邸"
+    },
+    {
+      "id": "period-04-022",
+      "text": "接天莲叶无穷碧，映日荷花别样红。",
+      "author": "杨万里",
+      "title": "晓出净慈寺送林子方"
+    },
+    {
+      "id": "period-04-023",
+      "text": "小荷才露尖尖角，早有蜻蜓立上头。",
+      "author": "杨万里",
+      "title": "小池"
+    },
+    {
+      "id": "period-04-024",
+      "text": "欲穷千里目，更上一层楼。",
+      "author": "王之涣",
+      "title": "登鹳雀楼"
+    },
+    {
+      "id": "period-04-025",
+      "text": "海内存知己，天涯若比邻。",
+      "author": "王勃",
+      "title": "送杜少府之任蜀州"
+    },
+    {
+      "id": "period-04-026",
+      "text": "长风破浪会有时，直挂云帆济沧海。",
+      "author": "李白",
+      "title": "行路难"
+    },
+    {
+      "id": "period-04-027",
+      "text": "沉舟侧畔千帆过，病树前头万木春。",
+      "author": "刘禹锡",
+      "title": "酬乐天扬州初逢席上见赠"
+    },
+    {
+      "id": "period-04-028",
+      "text": "晴空一鹤排云上，便引诗情到碧霄。",
+      "author": "刘禹锡",
+      "title": "秋词"
+    },
+    {
+      "id": "period-04-029",
+      "text": "莫愁前路无知己，天下谁人不识君。",
+      "author": "高适",
+      "title": "别董大"
+    },
+    {
+      "id": "period-04-030",
+      "text": "天生我材必有用，千金散尽还复来。",
+      "author": "李白",
+      "title": "将进酒"
+    },
+    {
+      "id": "period-04-031",
+      "text": "桃花潭水深千尺，不及汪伦送我情。",
+      "author": "李白",
+      "title": "赠汪伦"
+    },
+    {
+      "id": "period-04-032",
+      "text": "飞流直下三千尺，疑是银河落九天。",
+      "author": "李白",
+      "title": "望庐山瀑布"
+    },
+    {
+      "id": "period-04-033",
+      "text": "两岸猿声啼不住，轻舟已过万重山。",
+      "author": "李白",
+      "title": "早发白帝城"
+    },
+    {
+      "id": "period-04-034",
+      "text": "孤帆远影碧空尽，唯见长江天际流。",
+      "author": "李白",
+      "title": "黄鹤楼送孟浩然之广陵"
+    },
+    {
+      "id": "period-04-035",
+      "text": "山随平野尽，江入大荒流。",
+      "author": "李白",
+      "title": "渡荆门送别"
+    },
+    {
+      "id": "period-04-036",
+      "text": "青山横北郭，白水绕东城。",
+      "author": "李白",
+      "title": "送友人"
+    },
+    {
+      "id": "period-04-037",
+      "text": "仍怜故乡水，万里送行舟。",
+      "author": "李白",
+      "title": "渡荆门送别"
+    },
+    {
+      "id": "period-04-038",
+      "text": "天门中断楚江开，碧水东流至此回。",
+      "author": "李白",
+      "title": "望天门山"
+    },
+    {
+      "id": "period-04-039",
+      "text": "但使龙城飞将在，不教胡马度阴山。",
+      "author": "王昌龄",
+      "title": "出塞"
+    },
+    {
+      "id": "period-04-040",
+      "text": "秦时明月汉时关，万里长征人未还。",
+      "author": "王昌龄",
+      "title": "出塞"
+    },
+    {
+      "id": "period-04-041",
+      "text": "黄沙百战穿金甲，不破楼兰终不还。",
+      "author": "王昌龄",
+      "title": "从军行"
+    },
+    {
+      "id": "period-04-042",
+      "text": "羌笛何须怨杨柳，春风不度玉门关。",
+      "author": "王之涣",
+      "title": "凉州词"
+    },
+    {
+      "id": "period-04-043",
+      "text": "葡萄美酒夜光杯，欲饮琵琶马上催。",
+      "author": "王翰",
+      "title": "凉州词"
+    },
+    {
+      "id": "period-04-044",
+      "text": "古来征战几人回？",
+      "author": "王翰",
+      "title": "凉州词"
+    },
+    {
+      "id": "period-04-045",
+      "text": "劝君更尽一杯酒，西出阳关无故人。",
+      "author": "王维",
+      "title": "渭城曲"
+    },
+    {
+      "id": "period-04-046",
+      "text": "大漠孤烟直，长河落日圆。",
+      "author": "王维",
+      "title": "使至塞上"
+    },
+    {
+      "id": "period-04-047",
+      "text": "孤山寺北贾亭西，水面初平云脚低。",
+      "author": "白居易",
+      "title": "钱塘湖春行"
+    },
+    {
+      "id": "period-04-048",
+      "text": "几处早莺争暖树，谁家新燕啄春泥。",
+      "author": "白居易",
+      "title": "钱塘湖春行"
+    },
+    {
+      "id": "period-04-049",
+      "text": "浅草才能没马蹄，最爱湖东行不足。",
+      "author": "白居易",
+      "title": "钱塘湖春行"
+    },
+    {
+      "id": "period-04-050",
+      "text": "一道残阳铺水中，半江瑟瑟半江红。",
+      "author": "白居易",
+      "title": "暮江吟"
+    },
+    {
+      "id": "period-04-051",
+      "text": "日出江花红胜火，春来江水绿如蓝。",
+      "author": "白居易",
+      "title": "忆江南"
+    },
+    {
+      "id": "period-04-052",
+      "text": "野火烧不尽，春风吹又生。",
+      "author": "白居易",
+      "title": "赋得古原草送别"
+    },
+    {
+      "id": "period-04-053",
+      "text": "同是天涯沦落人，相逢何必曾相识。",
+      "author": "白居易",
+      "title": "琵琶行"
+    },
+    {
+      "id": "period-04-054",
+      "text": "在天愿作比翼鸟，在地愿为连理枝。",
+      "author": "白居易",
+      "title": "长恨歌"
+    },
+    {
+      "id": "period-04-055",
+      "text": "山重水复疑无路，柳暗花明又一村。",
+      "author": "陆游",
+      "title": "游山西村"
+    },
+    {
+      "id": "period-04-056",
+      "text": "纸上得来终觉浅，绝知此事要躬行。",
+      "author": "陆游",
+      "title": "冬夜读书示子聿"
+    },
+    {
+      "id": "period-04-057",
+      "text": "王师北定中原日，家祭无忘告乃翁。",
+      "author": "陆游",
+      "title": "示儿"
+    },
+    {
+      "id": "period-04-058",
+      "text": "位卑未敢忘忧国。",
+      "author": "陆游",
+      "title": "病起书怀"
+    },
+    {
+      "id": "period-04-059",
+      "text": "先天下之忧而忧，后天下之乐而乐。",
+      "author": "范仲淹",
+      "title": "岳阳楼记"
+    },
+    {
+      "id": "period-04-060",
+      "text": "醉翁之意不在酒，在乎山水之间也。",
+      "author": "欧阳修",
+      "title": "醉翁亭记"
+    },
+    {
+      "id": "period-04-061",
+      "text": "不畏浮云遮望眼，自缘身在最高层。",
+      "author": "王安石",
+      "title": "登飞来峰"
+    },
+    {
+      "id": "period-04-062",
+      "text": "欲渡黄河冰塞川，将登太行雪满山。",
+      "author": "李白",
+      "title": "行路难"
+    },
+    {
+      "id": "period-04-063",
+      "text": "多歧路，今安在？",
+      "author": "李白",
+      "title": "行路难"
+    },
+    {
+      "id": "period-04-064",
+      "text": "山河破碎风飘絮，身世浮沉雨打萍。",
+      "author": "文天祥",
+      "title": "过零丁洋"
+    },
+    {
+      "id": "period-04-065",
+      "text": "人生自古谁无死？留取丹心照汗青。",
+      "author": "文天祥",
+      "title": "过零丁洋"
+    },
+    {
+      "id": "period-04-066",
+      "text": "醉里挑灯看剑，梦回吹角连营。",
+      "author": "辛弃疾",
+      "title": "破阵子·为陈同甫赋壮词以寄之"
+    },
+    {
+      "id": "period-04-067",
+      "text": "八百里分麾下炙，五十弦翻塞外声。",
+      "author": "辛弃疾",
+      "title": "破阵子·为陈同甫赋壮词以寄之"
+    },
+    {
+      "id": "period-04-068",
+      "text": "了却君王天下事，赢得生前身后名。",
+      "author": "辛弃疾",
+      "title": "破阵子·为陈同甫赋壮词以寄之"
+    },
+    {
+      "id": "period-04-069",
+      "text": "可怜楼上月徘徊，应照离人妆镜台。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-04-070",
+      "text": "不知乘月几人归，落月摇情满江树。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-04-071",
+      "text": "采菊东篱下，悠然见南山。",
+      "author": "陶渊明",
+      "title": "饮酒·其五"
+    },
+    {
+      "id": "period-04-072",
+      "text": "晨兴理荒秽，带月荷锄归。",
+      "author": "陶渊明",
+      "title": "归园田居·其三"
+    },
+    {
+      "id": "period-04-073",
+      "text": "木欣欣以向荣，泉涓涓而始流。",
+      "author": "陶渊明",
+      "title": "归去来兮辞"
+    },
+    {
+      "id": "period-04-074",
+      "text": "清晨入古寺，初日照高林。",
+      "author": "常建",
+      "title": "题破山寺后禅院"
+    },
+    {
+      "id": "period-04-075",
+      "text": "曲径通幽处，禅房花木深。",
+      "author": "常建",
+      "title": "题破山寺后禅院"
+    },
+    {
+      "id": "period-04-076",
+      "text": "山光悦鸟性，潭影空人心。",
+      "author": "常建",
+      "title": "题破山寺后禅院"
+    },
+    {
+      "id": "period-04-077",
+      "text": "万籁此俱寂，但余钟磬音。",
+      "author": "常建",
+      "title": "题破山寺后禅院"
+    },
+    {
+      "id": "period-04-078",
+      "text": "绿树村边合，青山郭外斜。",
+      "author": "孟浩然",
+      "title": "过故人庄"
+    },
+    {
+      "id": "period-04-079",
+      "text": "开轩面场圃，把酒话桑麻。",
+      "author": "孟浩然",
+      "title": "过故人庄"
+    },
+    {
+      "id": "period-04-080",
+      "text": "两岸青山相对出，孤帆一片日边来。",
+      "author": "李白",
+      "title": "望天门山"
+    },
+    {
+      "id": "period-04-081",
+      "text": "孤舟蓑笠翁，独钓寒江雪。",
+      "author": "柳宗元",
+      "title": "江雪"
+    },
+    {
+      "id": "period-04-082",
+      "text": "千山鸟飞绝，万径人踪灭。",
+      "author": "柳宗元",
+      "title": "江雪"
+    },
+    {
+      "id": "period-04-083",
+      "text": "江流天地外，山色有无中。",
+      "author": "王维",
+      "title": "汉江临泛"
+    },
+    {
+      "id": "period-04-084",
+      "text": "行到水穷处，坐看云起时。",
+      "author": "王维",
+      "title": "终南别业"
+    },
+    {
+      "id": "period-04-085",
+      "text": "随意春芳歇，王孙自可留。",
+      "author": "王维",
+      "title": "山居秋暝"
+    },
+    {
+      "id": "period-04-086",
+      "text": "蒹葭苍苍，白露为霜。",
+      "author": "《诗经》",
+      "title": "蒹葭"
+    },
+    {
+      "id": "period-04-087",
+      "text": "所谓伊人，在水一方。",
+      "author": "《诗经》",
+      "title": "蒹葭"
+    },
+    {
+      "id": "period-04-088",
+      "text": "关关雎鸠，在河之洲。",
+      "author": "《诗经》",
+      "title": "关雎"
+    },
+    {
+      "id": "period-04-089",
+      "text": "窈窕淑女，君子好逑。",
+      "author": "《诗经》",
+      "title": "关雎"
+    },
+    {
+      "id": "period-04-090",
+      "text": "路漫漫其修远兮，吾将上下而求索。",
+      "author": "屈原",
+      "title": "离骚"
+    },
+    {
+      "id": "period-04-091",
+      "text": "长太息以掩涕兮，哀民生之多艰。",
+      "author": "屈原",
+      "title": "离骚"
+    },
+    {
+      "id": "period-04-092",
+      "text": "青青子衿，悠悠我心。",
+      "author": "《诗经》",
+      "title": "子衿"
+    },
+    {
+      "id": "period-04-093",
+      "text": "山不厌高，海不厌深。",
+      "author": "曹操",
+      "title": "短歌行"
+    },
+    {
+      "id": "period-04-094",
+      "text": "老骥伏枥，志在千里。",
+      "author": "曹操",
+      "title": "龟虽寿"
+    },
+    {
+      "id": "period-04-095",
+      "text": "烈士暮年，壮心不已。",
+      "author": "曹操",
+      "title": "龟虽寿"
+    },
+    {
+      "id": "period-04-096",
+      "text": "少壮不努力，老大徒伤悲。",
+      "author": "汉乐府",
+      "title": "长歌行"
+    },
+    {
+      "id": "period-04-097",
+      "text": "举杯邀明月，对影成三人。",
+      "author": "李白",
+      "title": "月下独酌"
+    },
+    {
+      "id": "period-04-098",
+      "text": "花间一壶酒，独酌无相亲。",
+      "author": "李白",
+      "title": "月下独酌"
+    },
+    {
+      "id": "period-04-099",
+      "text": "人生得意须尽欢，莫使金樽空对月。",
+      "author": "李白",
+      "title": "将进酒"
+    },
+    {
+      "id": "period-04-100",
+      "text": "两情若是久长时，又岂在朝朝暮暮。",
+      "author": "秦观",
+      "title": "鹊桥仙"
+    },
+    {
+      "id": "period-04-101",
+      "text": "自在飞花轻似梦，无边丝雨细如愁。",
+      "author": "秦观",
+      "title": "浣溪沙"
+    },
+    {
+      "id": "period-04-102",
+      "text": "人有悲欢离合，月有阴晴圆缺。",
+      "author": "苏轼",
+      "title": "水调歌头"
+    },
+    {
+      "id": "period-04-103",
+      "text": "枝上柳绵吹又少，天涯何处无芳草。",
+      "author": "苏轼",
+      "title": "蝶恋花·春景"
+    },
+    {
+      "id": "period-04-104",
+      "text": "人生如梦，一尊还酹江月。",
+      "author": "苏轼",
+      "title": "念奴娇·赤壁怀古"
+    },
+    {
+      "id": "period-04-105",
+      "text": "大江东去，浪淘尽，千古风流人物。",
+      "author": "苏轼",
+      "title": "念奴娇·赤壁怀古"
+    },
+    {
+      "id": "period-04-106",
+      "text": "乱石穿空，惊涛拍岸，卷起千堆雪。",
+      "author": "苏轼",
+      "title": "念奴娇·赤壁怀古"
+    },
+    {
+      "id": "period-04-107",
+      "text": "小桥流水人家，古道西风瘦马。",
+      "author": "马致远",
+      "title": "天净沙·秋思"
+    },
+    {
+      "id": "period-04-108",
+      "text": "夕阳西下，断肠人在天涯。",
+      "author": "马致远",
+      "title": "天净沙·秋思"
+    },
+    {
+      "id": "period-04-109",
+      "text": "枯藤老树昏鸦，小桥流水人家。",
+      "author": "马致远",
+      "title": "天净沙·秋思"
+    },
+    {
+      "id": "period-04-110",
+      "text": "落霞与孤鹜齐飞，秋水共长天一色。",
+      "author": "王勃",
+      "title": "滕王阁序"
+    },
+    {
+      "id": "period-04-111",
+      "text": "穷且益坚，不坠青云之志。",
+      "author": "王勃",
+      "title": "滕王阁序"
+    },
+    {
+      "id": "period-04-112",
+      "text": "宁为百夫长，胜作一书生。",
+      "author": "杨炯",
+      "title": "从军行"
+    },
+    {
+      "id": "period-04-113",
+      "text": "黄河远上白云间，一片孤城万仞山。",
+      "author": "王之涣",
+      "title": "凉州词"
+    },
+    {
+      "id": "period-04-114",
+      "text": "长恨人心不如水，等闲平地起波澜。",
+      "author": "刘禹锡",
+      "title": "竹枝词"
+    },
+    {
+      "id": "period-04-115",
+      "text": "东边日出西边雨，道是无晴却有晴。",
+      "author": "刘禹锡",
+      "title": "竹枝词"
+    },
+    {
+      "id": "period-04-116",
+      "text": "杨柳青青江水平，闻郎江上唱歌声。",
+      "author": "刘禹锡",
+      "title": "竹枝词"
+    },
+    {
+      "id": "period-04-117",
+      "text": "停车坐爱枫林晚，霜叶红于二月花。",
+      "author": "杜牧",
+      "title": "山行"
+    },
+    {
+      "id": "period-04-118",
+      "text": "借问酒家何处有？牧童遥指杏花村。",
+      "author": "杜牧",
+      "title": "清明"
+    },
+    {
+      "id": "period-04-119",
+      "text": "清明时节雨纷纷，路上行人欲断魂。",
+      "author": "杜牧",
+      "title": "清明"
+    },
+    {
+      "id": "period-04-120",
+      "text": "商女不知亡国恨，隔江犹唱后庭花。",
+      "author": "杜牧",
+      "title": "泊秦淮"
+    },
+    {
+      "id": "period-04-121",
+      "text": "东船西舫悄无言，唯见江心秋月白。",
+      "author": "白居易",
+      "title": "琵琶行"
+    },
+    {
+      "id": "period-04-122",
+      "text": "千呼万唤始出来，犹抱琵琶半遮面。",
+      "author": "白居易",
+      "title": "琵琶行"
+    },
+    {
+      "id": "period-04-123",
+      "text": "同来望月人何处？风景依稀似去年。",
+      "author": "赵嘏",
+      "title": "江楼旧感"
+    },
+    {
+      "id": "period-04-124",
+      "text": "桃李不言，下自成蹊。",
+      "author": "司马迁",
+      "title": "史记·李将军列传"
+    },
+    {
+      "id": "period-04-125",
+      "text": "无可奈何花落去，似曾相识燕归来。",
+      "author": "晏殊",
+      "title": "浣溪沙"
+    },
+    {
+      "id": "period-04-126",
+      "text": "昨夜西风凋碧树，独上高楼，望尽天涯路。",
+      "author": "晏殊",
+      "title": "蝶恋花"
+    },
+    {
+      "id": "period-04-127",
+      "text": "衣带渐宽终不悔，为伊消得人憔悴。",
+      "author": "柳永",
+      "title": "凤栖梧"
+    },
+    {
+      "id": "period-04-128",
+      "text": "今宵酒醒何处？杨柳岸晓风残月。",
+      "author": "柳永",
+      "title": "雨霖铃"
+    },
+    {
+      "id": "period-04-129",
+      "text": "念去去，千里烟波，暮霭沉沉楚天阔。",
+      "author": "柳永",
+      "title": "雨霖铃"
+    },
+    {
+      "id": "period-04-130",
+      "text": "莫道不销魂，帘卷西风，人比黄花瘦。",
+      "author": "李清照",
+      "title": "醉花阴"
+    },
+    {
+      "id": "period-04-131",
+      "text": "知否？知否？应是绿肥红瘦。",
+      "author": "李清照",
+      "title": "如梦令"
+    },
+    {
+      "id": "period-04-132",
+      "text": "寻寻觅觅，冷冷清清，凄凄惨惨戚戚。",
+      "author": "李清照",
+      "title": "声声慢"
+    },
+    {
+      "id": "period-04-133",
+      "text": "众里寻他千百度，蓦然回首，那人却在灯火阑珊处。",
+      "author": "辛弃疾",
+      "title": "青玉案·元夕"
+    },
+    {
+      "id": "period-04-134",
+      "text": "东风夜放花千树，更吹落、星如雨。",
+      "author": "辛弃疾",
+      "title": "青玉案·元夕"
+    },
+    {
+      "id": "period-04-135",
+      "text": "青山遮不住，毕竟东流去。",
+      "author": "辛弃疾",
+      "title": "菩萨蛮·书江西造口壁"
+    },
+    {
+      "id": "period-04-136",
+      "text": "一水护田将绿绕，两山排闼送青来。",
+      "author": "王安石",
+      "title": "书湖阴先生壁"
+    },
+    {
+      "id": "period-04-137",
+      "text": "千门万户曈曈日，总把新桃换旧符。",
+      "author": "王安石",
+      "title": "元日"
+    },
+    {
+      "id": "period-04-138",
+      "text": "爆竹声中一岁除，春风送暖入屠苏。",
+      "author": "王安石",
+      "title": "元日"
+    },
+    {
+      "id": "period-04-139",
+      "text": "接汉疑星落，依楼似月悬。",
+      "author": "卢照邻",
+      "title": "十五夜观灯"
+    },
+    {
+      "id": "period-04-140",
+      "text": "春眠不觉晓，处处闻啼鸟。",
+      "author": "孟浩然",
+      "title": "春晓"
+    },
+    {
+      "id": "period-04-141",
+      "text": "夜来风雨声，花落知多少。",
+      "author": "孟浩然",
+      "title": "春晓"
+    },
+    {
+      "id": "period-04-142",
+      "text": "月上柳梢头，人约黄昏后。",
+      "author": "欧阳修",
+      "title": "生查子·元夕"
+    },
+    {
+      "id": "period-04-143",
+      "text": "去年元夜时，花市灯如昼。",
+      "author": "欧阳修",
+      "title": "生查子·元夕"
+    },
+    {
+      "id": "period-04-144",
+      "text": "海棠未雨，梨花先雪，一半春休。",
+      "author": "王雱",
+      "title": "眼儿媚"
+    },
+    {
+      "id": "period-04-145",
+      "text": "绿杨烟外晓寒轻，红杏枝头春意闹。",
+      "author": "宋祁",
+      "title": "玉楼春"
+    },
+    {
+      "id": "period-04-146",
+      "text": "人面不知何处去，桃花依旧笑春风。",
+      "author": "崔护",
+      "title": "题都城南庄"
+    },
+    {
+      "id": "period-04-147",
+      "text": "年年岁岁花相似，岁岁年年人不同。",
+      "author": "刘希夷",
+      "title": "代悲白头翁"
+    },
+    {
+      "id": "period-04-148",
+      "text": "白日依山尽，黄河入海流。",
+      "author": "王之涣",
+      "title": "登鹳雀楼"
+    },
+    {
+      "id": "period-04-149",
+      "text": "黄鹤一去不复返，白云千载空悠悠。",
+      "author": "崔颢",
+      "title": "黄鹤楼"
+    },
+    {
+      "id": "period-04-150",
+      "text": "日暮乡关何处是？烟波江上使人愁。",
+      "author": "崔颢",
+      "title": "黄鹤楼"
+    },
+    {
+      "id": "period-05-001",
+      "text": "留连戏蝶时时舞，自在娇莺恰恰啼。",
+      "author": "杜甫",
+      "title": "江畔独步寻花"
+    },
+    {
+      "id": "period-05-002",
+      "text": "随风潜入夜，润物细无声。",
+      "author": "杜甫",
+      "title": "春夜喜雨"
+    },
+    {
+      "id": "period-05-003",
+      "text": "野径云俱黑，江船火独明。",
+      "author": "杜甫",
+      "title": "春夜喜雨"
+    },
+    {
+      "id": "period-05-004",
+      "text": "好雨知时节，当春乃发生。",
+      "author": "杜甫",
+      "title": "春夜喜雨"
+    },
+    {
+      "id": "period-05-005",
+      "text": "晓看红湿处，花重锦官城。",
+      "author": "杜甫",
+      "title": "春夜喜雨"
+    },
+    {
+      "id": "period-05-006",
+      "text": "碧玉妆成一树高，万条垂下绿丝绦。",
+      "author": "贺知章",
+      "title": "咏柳"
+    },
+    {
+      "id": "period-05-007",
+      "text": "不知细叶谁裁出，二月春风似剪刀。",
+      "author": "贺知章",
+      "title": "咏柳"
+    },
+    {
+      "id": "period-05-008",
+      "text": "竹外桃花三两枝，春江水暖鸭先知。",
+      "author": "苏轼",
+      "title": "惠崇春江晚景"
+    },
+    {
+      "id": "period-05-009",
+      "text": "蒌蒿满地芦芽短，正是河豚欲上时。",
+      "author": "苏轼",
+      "title": "惠崇春江晚景"
+    },
+    {
+      "id": "period-05-010",
+      "text": "欲把西湖比西子，淡妆浓抹总相宜。",
+      "author": "苏轼",
+      "title": "饮湖上初晴后雨"
+    },
+    {
+      "id": "period-05-011",
+      "text": "山外青山楼外楼，西湖歌舞几时休？",
+      "author": "林升",
+      "title": "题临安邸"
+    },
+    {
+      "id": "period-05-012",
+      "text": "接天莲叶无穷碧，映日荷花别样红。",
+      "author": "杨万里",
+      "title": "晓出净慈寺送林子方"
+    },
+    {
+      "id": "period-05-013",
+      "text": "小荷才露尖尖角，早有蜻蜓立上头。",
+      "author": "杨万里",
+      "title": "小池"
+    },
+    {
+      "id": "period-05-014",
+      "text": "欲穷千里目，更上一层楼。",
+      "author": "王之涣",
+      "title": "登鹳雀楼"
+    },
+    {
+      "id": "period-05-015",
+      "text": "海内存知己，天涯若比邻。",
+      "author": "王勃",
+      "title": "送杜少府之任蜀州"
+    },
+    {
+      "id": "period-05-016",
+      "text": "长风破浪会有时，直挂云帆济沧海。",
+      "author": "李白",
+      "title": "行路难"
+    },
+    {
+      "id": "period-05-017",
+      "text": "沉舟侧畔千帆过，病树前头万木春。",
+      "author": "刘禹锡",
+      "title": "酬乐天扬州初逢席上见赠"
+    },
+    {
+      "id": "period-05-018",
+      "text": "晴空一鹤排云上，便引诗情到碧霄。",
+      "author": "刘禹锡",
+      "title": "秋词"
+    },
+    {
+      "id": "period-05-019",
+      "text": "莫愁前路无知己，天下谁人不识君。",
+      "author": "高适",
+      "title": "别董大"
+    },
+    {
+      "id": "period-05-020",
+      "text": "天生我材必有用，千金散尽还复来。",
+      "author": "李白",
+      "title": "将进酒"
+    },
+    {
+      "id": "period-05-021",
+      "text": "桃花潭水深千尺，不及汪伦送我情。",
+      "author": "李白",
+      "title": "赠汪伦"
+    },
+    {
+      "id": "period-05-022",
+      "text": "飞流直下三千尺，疑是银河落九天。",
+      "author": "李白",
+      "title": "望庐山瀑布"
+    },
+    {
+      "id": "period-05-023",
+      "text": "两岸猿声啼不住，轻舟已过万重山。",
+      "author": "李白",
+      "title": "早发白帝城"
+    },
+    {
+      "id": "period-05-024",
+      "text": "孤帆远影碧空尽，唯见长江天际流。",
+      "author": "李白",
+      "title": "黄鹤楼送孟浩然之广陵"
+    },
+    {
+      "id": "period-05-025",
+      "text": "山随平野尽，江入大荒流。",
+      "author": "李白",
+      "title": "渡荆门送别"
+    },
+    {
+      "id": "period-05-026",
+      "text": "青山横北郭，白水绕东城。",
+      "author": "李白",
+      "title": "送友人"
+    },
+    {
+      "id": "period-05-027",
+      "text": "仍怜故乡水，万里送行舟。",
+      "author": "李白",
+      "title": "渡荆门送别"
+    },
+    {
+      "id": "period-05-028",
+      "text": "天门中断楚江开，碧水东流至此回。",
+      "author": "李白",
+      "title": "望天门山"
+    },
+    {
+      "id": "period-05-029",
+      "text": "但使龙城飞将在，不教胡马度阴山。",
+      "author": "王昌龄",
+      "title": "出塞"
+    },
+    {
+      "id": "period-05-030",
+      "text": "秦时明月汉时关，万里长征人未还。",
+      "author": "王昌龄",
+      "title": "出塞"
+    },
+    {
+      "id": "period-05-031",
+      "text": "黄沙百战穿金甲，不破楼兰终不还。",
+      "author": "王昌龄",
+      "title": "从军行"
+    },
+    {
+      "id": "period-05-032",
+      "text": "羌笛何须怨杨柳，春风不度玉门关。",
+      "author": "王之涣",
+      "title": "凉州词"
+    },
+    {
+      "id": "period-05-033",
+      "text": "葡萄美酒夜光杯，欲饮琵琶马上催。",
+      "author": "王翰",
+      "title": "凉州词"
+    },
+    {
+      "id": "period-05-034",
+      "text": "古来征战几人回？",
+      "author": "王翰",
+      "title": "凉州词"
+    },
+    {
+      "id": "period-05-035",
+      "text": "劝君更尽一杯酒，西出阳关无故人。",
+      "author": "王维",
+      "title": "渭城曲"
+    },
+    {
+      "id": "period-05-036",
+      "text": "大漠孤烟直，长河落日圆。",
+      "author": "王维",
+      "title": "使至塞上"
+    },
+    {
+      "id": "period-05-037",
+      "text": "孤山寺北贾亭西，水面初平云脚低。",
+      "author": "白居易",
+      "title": "钱塘湖春行"
+    },
+    {
+      "id": "period-05-038",
+      "text": "几处早莺争暖树，谁家新燕啄春泥。",
+      "author": "白居易",
+      "title": "钱塘湖春行"
+    },
+    {
+      "id": "period-05-039",
+      "text": "浅草才能没马蹄，最爱湖东行不足。",
+      "author": "白居易",
+      "title": "钱塘湖春行"
+    },
+    {
+      "id": "period-05-040",
+      "text": "一道残阳铺水中，半江瑟瑟半江红。",
+      "author": "白居易",
+      "title": "暮江吟"
+    },
+    {
+      "id": "period-05-041",
+      "text": "日出江花红胜火，春来江水绿如蓝。",
+      "author": "白居易",
+      "title": "忆江南"
+    },
+    {
+      "id": "period-05-042",
+      "text": "野火烧不尽，春风吹又生。",
+      "author": "白居易",
+      "title": "赋得古原草送别"
+    },
+    {
+      "id": "period-05-043",
+      "text": "同是天涯沦落人，相逢何必曾相识。",
+      "author": "白居易",
+      "title": "琵琶行"
+    },
+    {
+      "id": "period-05-044",
+      "text": "在天愿作比翼鸟，在地愿为连理枝。",
+      "author": "白居易",
+      "title": "长恨歌"
+    },
+    {
+      "id": "period-05-045",
+      "text": "山重水复疑无路，柳暗花明又一村。",
+      "author": "陆游",
+      "title": "游山西村"
+    },
+    {
+      "id": "period-05-046",
+      "text": "纸上得来终觉浅，绝知此事要躬行。",
+      "author": "陆游",
+      "title": "冬夜读书示子聿"
+    },
+    {
+      "id": "period-05-047",
+      "text": "王师北定中原日，家祭无忘告乃翁。",
+      "author": "陆游",
+      "title": "示儿"
+    },
+    {
+      "id": "period-05-048",
+      "text": "位卑未敢忘忧国。",
+      "author": "陆游",
+      "title": "病起书怀"
+    },
+    {
+      "id": "period-05-049",
+      "text": "先天下之忧而忧，后天下之乐而乐。",
+      "author": "范仲淹",
+      "title": "岳阳楼记"
+    },
+    {
+      "id": "period-05-050",
+      "text": "醉翁之意不在酒，在乎山水之间也。",
+      "author": "欧阳修",
+      "title": "醉翁亭记"
+    },
+    {
+      "id": "period-05-051",
+      "text": "不畏浮云遮望眼，自缘身在最高层。",
+      "author": "王安石",
+      "title": "登飞来峰"
+    },
+    {
+      "id": "period-05-052",
+      "text": "欲渡黄河冰塞川，将登太行雪满山。",
+      "author": "李白",
+      "title": "行路难"
+    },
+    {
+      "id": "period-05-053",
+      "text": "多歧路，今安在？",
+      "author": "李白",
+      "title": "行路难"
+    },
+    {
+      "id": "period-05-054",
+      "text": "山河破碎风飘絮，身世浮沉雨打萍。",
+      "author": "文天祥",
+      "title": "过零丁洋"
+    },
+    {
+      "id": "period-05-055",
+      "text": "人生自古谁无死？留取丹心照汗青。",
+      "author": "文天祥",
+      "title": "过零丁洋"
+    },
+    {
+      "id": "period-05-056",
+      "text": "醉里挑灯看剑，梦回吹角连营。",
+      "author": "辛弃疾",
+      "title": "破阵子·为陈同甫赋壮词以寄之"
+    },
+    {
+      "id": "period-05-057",
+      "text": "八百里分麾下炙，五十弦翻塞外声。",
+      "author": "辛弃疾",
+      "title": "破阵子·为陈同甫赋壮词以寄之"
+    },
+    {
+      "id": "period-05-058",
+      "text": "了却君王天下事，赢得生前身后名。",
+      "author": "辛弃疾",
+      "title": "破阵子·为陈同甫赋壮词以寄之"
+    },
+    {
+      "id": "period-05-059",
+      "text": "可怜楼上月徘徊，应照离人妆镜台。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-05-060",
+      "text": "不知乘月几人归，落月摇情满江树。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-05-061",
+      "text": "采菊东篱下，悠然见南山。",
+      "author": "陶渊明",
+      "title": "饮酒·其五"
+    },
+    {
+      "id": "period-05-062",
+      "text": "晨兴理荒秽，带月荷锄归。",
+      "author": "陶渊明",
+      "title": "归园田居·其三"
+    },
+    {
+      "id": "period-05-063",
+      "text": "木欣欣以向荣，泉涓涓而始流。",
+      "author": "陶渊明",
+      "title": "归去来兮辞"
+    },
+    {
+      "id": "period-05-064",
+      "text": "清晨入古寺，初日照高林。",
+      "author": "常建",
+      "title": "题破山寺后禅院"
+    },
+    {
+      "id": "period-05-065",
+      "text": "曲径通幽处，禅房花木深。",
+      "author": "常建",
+      "title": "题破山寺后禅院"
+    },
+    {
+      "id": "period-05-066",
+      "text": "山光悦鸟性，潭影空人心。",
+      "author": "常建",
+      "title": "题破山寺后禅院"
+    },
+    {
+      "id": "period-05-067",
+      "text": "万籁此俱寂，但余钟磬音。",
+      "author": "常建",
+      "title": "题破山寺后禅院"
+    },
+    {
+      "id": "period-05-068",
+      "text": "绿树村边合，青山郭外斜。",
+      "author": "孟浩然",
+      "title": "过故人庄"
+    },
+    {
+      "id": "period-05-069",
+      "text": "开轩面场圃，把酒话桑麻。",
+      "author": "孟浩然",
+      "title": "过故人庄"
+    },
+    {
+      "id": "period-05-070",
+      "text": "两岸青山相对出，孤帆一片日边来。",
+      "author": "李白",
+      "title": "望天门山"
+    },
+    {
+      "id": "period-05-071",
+      "text": "孤舟蓑笠翁，独钓寒江雪。",
+      "author": "柳宗元",
+      "title": "江雪"
+    },
+    {
+      "id": "period-05-072",
+      "text": "千山鸟飞绝，万径人踪灭。",
+      "author": "柳宗元",
+      "title": "江雪"
+    },
+    {
+      "id": "period-05-073",
+      "text": "江流天地外，山色有无中。",
+      "author": "王维",
+      "title": "汉江临泛"
+    },
+    {
+      "id": "period-05-074",
+      "text": "行到水穷处，坐看云起时。",
+      "author": "王维",
+      "title": "终南别业"
+    },
+    {
+      "id": "period-05-075",
+      "text": "随意春芳歇，王孙自可留。",
+      "author": "王维",
+      "title": "山居秋暝"
+    },
+    {
+      "id": "period-05-076",
+      "text": "蒹葭苍苍，白露为霜。",
+      "author": "《诗经》",
+      "title": "蒹葭"
+    },
+    {
+      "id": "period-05-077",
+      "text": "所谓伊人，在水一方。",
+      "author": "《诗经》",
+      "title": "蒹葭"
+    },
+    {
+      "id": "period-05-078",
+      "text": "关关雎鸠，在河之洲。",
+      "author": "《诗经》",
+      "title": "关雎"
+    },
+    {
+      "id": "period-05-079",
+      "text": "窈窕淑女，君子好逑。",
+      "author": "《诗经》",
+      "title": "关雎"
+    },
+    {
+      "id": "period-05-080",
+      "text": "路漫漫其修远兮，吾将上下而求索。",
+      "author": "屈原",
+      "title": "离骚"
+    },
+    {
+      "id": "period-05-081",
+      "text": "长太息以掩涕兮，哀民生之多艰。",
+      "author": "屈原",
+      "title": "离骚"
+    },
+    {
+      "id": "period-05-082",
+      "text": "青青子衿，悠悠我心。",
+      "author": "《诗经》",
+      "title": "子衿"
+    },
+    {
+      "id": "period-05-083",
+      "text": "山不厌高，海不厌深。",
+      "author": "曹操",
+      "title": "短歌行"
+    },
+    {
+      "id": "period-05-084",
+      "text": "老骥伏枥，志在千里。",
+      "author": "曹操",
+      "title": "龟虽寿"
+    },
+    {
+      "id": "period-05-085",
+      "text": "烈士暮年，壮心不已。",
+      "author": "曹操",
+      "title": "龟虽寿"
+    },
+    {
+      "id": "period-05-086",
+      "text": "少壮不努力，老大徒伤悲。",
+      "author": "汉乐府",
+      "title": "长歌行"
+    },
+    {
+      "id": "period-05-087",
+      "text": "举杯邀明月，对影成三人。",
+      "author": "李白",
+      "title": "月下独酌"
+    },
+    {
+      "id": "period-05-088",
+      "text": "花间一壶酒，独酌无相亲。",
+      "author": "李白",
+      "title": "月下独酌"
+    },
+    {
+      "id": "period-05-089",
+      "text": "人生得意须尽欢，莫使金樽空对月。",
+      "author": "李白",
+      "title": "将进酒"
+    },
+    {
+      "id": "period-05-090",
+      "text": "两情若是久长时，又岂在朝朝暮暮。",
+      "author": "秦观",
+      "title": "鹊桥仙"
+    },
+    {
+      "id": "period-05-091",
+      "text": "自在飞花轻似梦，无边丝雨细如愁。",
+      "author": "秦观",
+      "title": "浣溪沙"
+    },
+    {
+      "id": "period-05-092",
+      "text": "人有悲欢离合，月有阴晴圆缺。",
+      "author": "苏轼",
+      "title": "水调歌头"
+    },
+    {
+      "id": "period-05-093",
+      "text": "枝上柳绵吹又少，天涯何处无芳草。",
+      "author": "苏轼",
+      "title": "蝶恋花·春景"
+    },
+    {
+      "id": "period-05-094",
+      "text": "人生如梦，一尊还酹江月。",
+      "author": "苏轼",
+      "title": "念奴娇·赤壁怀古"
+    },
+    {
+      "id": "period-05-095",
+      "text": "大江东去，浪淘尽，千古风流人物。",
+      "author": "苏轼",
+      "title": "念奴娇·赤壁怀古"
+    },
+    {
+      "id": "period-05-096",
+      "text": "乱石穿空，惊涛拍岸，卷起千堆雪。",
+      "author": "苏轼",
+      "title": "念奴娇·赤壁怀古"
+    },
+    {
+      "id": "period-05-097",
+      "text": "小桥流水人家，古道西风瘦马。",
+      "author": "马致远",
+      "title": "天净沙·秋思"
+    },
+    {
+      "id": "period-05-098",
+      "text": "夕阳西下，断肠人在天涯。",
+      "author": "马致远",
+      "title": "天净沙·秋思"
+    },
+    {
+      "id": "period-05-099",
+      "text": "枯藤老树昏鸦，小桥流水人家。",
+      "author": "马致远",
+      "title": "天净沙·秋思"
+    },
+    {
+      "id": "period-05-100",
+      "text": "落霞与孤鹜齐飞，秋水共长天一色。",
+      "author": "王勃",
+      "title": "滕王阁序"
+    },
+    {
+      "id": "period-05-101",
+      "text": "穷且益坚，不坠青云之志。",
+      "author": "王勃",
+      "title": "滕王阁序"
+    },
+    {
+      "id": "period-05-102",
+      "text": "宁为百夫长，胜作一书生。",
+      "author": "杨炯",
+      "title": "从军行"
+    },
+    {
+      "id": "period-05-103",
+      "text": "黄河远上白云间，一片孤城万仞山。",
+      "author": "王之涣",
+      "title": "凉州词"
+    },
+    {
+      "id": "period-05-104",
+      "text": "长恨人心不如水，等闲平地起波澜。",
+      "author": "刘禹锡",
+      "title": "竹枝词"
+    },
+    {
+      "id": "period-05-105",
+      "text": "东边日出西边雨，道是无晴却有晴。",
+      "author": "刘禹锡",
+      "title": "竹枝词"
+    },
+    {
+      "id": "period-05-106",
+      "text": "杨柳青青江水平，闻郎江上唱歌声。",
+      "author": "刘禹锡",
+      "title": "竹枝词"
+    },
+    {
+      "id": "period-05-107",
+      "text": "停车坐爱枫林晚，霜叶红于二月花。",
+      "author": "杜牧",
+      "title": "山行"
+    },
+    {
+      "id": "period-05-108",
+      "text": "借问酒家何处有？牧童遥指杏花村。",
+      "author": "杜牧",
+      "title": "清明"
+    },
+    {
+      "id": "period-05-109",
+      "text": "清明时节雨纷纷，路上行人欲断魂。",
+      "author": "杜牧",
+      "title": "清明"
+    },
+    {
+      "id": "period-05-110",
+      "text": "商女不知亡国恨，隔江犹唱后庭花。",
+      "author": "杜牧",
+      "title": "泊秦淮"
+    },
+    {
+      "id": "period-05-111",
+      "text": "东船西舫悄无言，唯见江心秋月白。",
+      "author": "白居易",
+      "title": "琵琶行"
+    },
+    {
+      "id": "period-05-112",
+      "text": "千呼万唤始出来，犹抱琵琶半遮面。",
+      "author": "白居易",
+      "title": "琵琶行"
+    },
+    {
+      "id": "period-05-113",
+      "text": "同来望月人何处？风景依稀似去年。",
+      "author": "赵嘏",
+      "title": "江楼旧感"
+    },
+    {
+      "id": "period-05-114",
+      "text": "桃李不言，下自成蹊。",
+      "author": "司马迁",
+      "title": "史记·李将军列传"
+    },
+    {
+      "id": "period-05-115",
+      "text": "无可奈何花落去，似曾相识燕归来。",
+      "author": "晏殊",
+      "title": "浣溪沙"
+    },
+    {
+      "id": "period-05-116",
+      "text": "昨夜西风凋碧树，独上高楼，望尽天涯路。",
+      "author": "晏殊",
+      "title": "蝶恋花"
+    },
+    {
+      "id": "period-05-117",
+      "text": "衣带渐宽终不悔，为伊消得人憔悴。",
+      "author": "柳永",
+      "title": "凤栖梧"
+    },
+    {
+      "id": "period-05-118",
+      "text": "今宵酒醒何处？杨柳岸晓风残月。",
+      "author": "柳永",
+      "title": "雨霖铃"
+    },
+    {
+      "id": "period-05-119",
+      "text": "念去去，千里烟波，暮霭沉沉楚天阔。",
+      "author": "柳永",
+      "title": "雨霖铃"
+    },
+    {
+      "id": "period-05-120",
+      "text": "莫道不销魂，帘卷西风，人比黄花瘦。",
+      "author": "李清照",
+      "title": "醉花阴"
+    },
+    {
+      "id": "period-05-121",
+      "text": "知否？知否？应是绿肥红瘦。",
+      "author": "李清照",
+      "title": "如梦令"
+    },
+    {
+      "id": "period-05-122",
+      "text": "寻寻觅觅，冷冷清清，凄凄惨惨戚戚。",
+      "author": "李清照",
+      "title": "声声慢"
+    },
+    {
+      "id": "period-05-123",
+      "text": "众里寻他千百度，蓦然回首，那人却在灯火阑珊处。",
+      "author": "辛弃疾",
+      "title": "青玉案·元夕"
+    },
+    {
+      "id": "period-05-124",
+      "text": "东风夜放花千树，更吹落、星如雨。",
+      "author": "辛弃疾",
+      "title": "青玉案·元夕"
+    },
+    {
+      "id": "period-05-125",
+      "text": "青山遮不住，毕竟东流去。",
+      "author": "辛弃疾",
+      "title": "菩萨蛮·书江西造口壁"
+    },
+    {
+      "id": "period-05-126",
+      "text": "一水护田将绿绕，两山排闼送青来。",
+      "author": "王安石",
+      "title": "书湖阴先生壁"
+    },
+    {
+      "id": "period-05-127",
+      "text": "千门万户曈曈日，总把新桃换旧符。",
+      "author": "王安石",
+      "title": "元日"
+    },
+    {
+      "id": "period-05-128",
+      "text": "爆竹声中一岁除，春风送暖入屠苏。",
+      "author": "王安石",
+      "title": "元日"
+    },
+    {
+      "id": "period-05-129",
+      "text": "接汉疑星落，依楼似月悬。",
+      "author": "卢照邻",
+      "title": "十五夜观灯"
+    },
+    {
+      "id": "period-05-130",
+      "text": "春眠不觉晓，处处闻啼鸟。",
+      "author": "孟浩然",
+      "title": "春晓"
+    },
+    {
+      "id": "period-05-131",
+      "text": "夜来风雨声，花落知多少。",
+      "author": "孟浩然",
+      "title": "春晓"
+    },
+    {
+      "id": "period-05-132",
+      "text": "月上柳梢头，人约黄昏后。",
+      "author": "欧阳修",
+      "title": "生查子·元夕"
+    },
+    {
+      "id": "period-05-133",
+      "text": "去年元夜时，花市灯如昼。",
+      "author": "欧阳修",
+      "title": "生查子·元夕"
+    },
+    {
+      "id": "period-05-134",
+      "text": "海棠未雨，梨花先雪，一半春休。",
+      "author": "王雱",
+      "title": "眼儿媚"
+    },
+    {
+      "id": "period-05-135",
+      "text": "绿杨烟外晓寒轻，红杏枝头春意闹。",
+      "author": "宋祁",
+      "title": "玉楼春"
+    },
+    {
+      "id": "period-05-136",
+      "text": "人面不知何处去，桃花依旧笑春风。",
+      "author": "崔护",
+      "title": "题都城南庄"
+    },
+    {
+      "id": "period-05-137",
+      "text": "年年岁岁花相似，岁岁年年人不同。",
+      "author": "刘希夷",
+      "title": "代悲白头翁"
+    },
+    {
+      "id": "period-05-138",
+      "text": "白日依山尽，黄河入海流。",
+      "author": "王之涣",
+      "title": "登鹳雀楼"
+    },
+    {
+      "id": "period-05-139",
+      "text": "黄鹤一去不复返，白云千载空悠悠。",
+      "author": "崔颢",
+      "title": "黄鹤楼"
+    },
+    {
+      "id": "period-05-140",
+      "text": "日暮乡关何处是？烟波江上使人愁。",
+      "author": "崔颢",
+      "title": "黄鹤楼"
+    },
+    {
+      "id": "period-05-141",
+      "text": "孤帆一片日边来。",
+      "author": "李白",
+      "title": "望天门山"
+    },
+    {
+      "id": "period-05-142",
+      "text": "星垂平野阔，月涌大江流。",
+      "author": "杜甫",
+      "title": "旅夜书怀"
+    },
+    {
+      "id": "period-05-143",
+      "text": "月落乌啼霜满天，江枫渔火对愁眠。",
+      "author": "张继",
+      "title": "枫桥夜泊"
+    },
+    {
+      "id": "period-05-144",
+      "text": "明月松间照，清泉石上流。",
+      "author": "王维",
+      "title": "山居秋暝"
+    },
+    {
+      "id": "period-05-145",
+      "text": "海上生明月，天涯共此时。",
+      "author": "张九龄",
+      "title": "望月怀远"
+    },
+    {
+      "id": "period-05-146",
+      "text": "何当共剪西窗烛，却话巴山夜雨时。",
+      "author": "李商隐",
+      "title": "夜雨寄北"
+    },
+    {
+      "id": "period-05-147",
+      "text": "今人不见古时月，今月曾经照古人。",
+      "author": "李白",
+      "title": "把酒问月"
+    },
+    {
+      "id": "period-05-148",
+      "text": "举头望明月，低头思故乡。",
+      "author": "李白",
+      "title": "静夜思"
+    },
+    {
+      "id": "period-05-149",
+      "text": "床前明月光，疑是地上霜。",
+      "author": "李白",
+      "title": "静夜思"
+    },
+    {
+      "id": "period-05-150",
+      "text": "露从今夜白，月是故乡明。",
+      "author": "杜甫",
+      "title": "月夜忆舍弟"
+    },
+    {
+      "id": "period-06-001",
+      "text": "山外青山楼外楼，西湖歌舞几时休？",
+      "author": "林升",
+      "title": "题临安邸"
+    },
+    {
+      "id": "period-06-002",
+      "text": "接天莲叶无穷碧，映日荷花别样红。",
+      "author": "杨万里",
+      "title": "晓出净慈寺送林子方"
+    },
+    {
+      "id": "period-06-003",
+      "text": "小荷才露尖尖角，早有蜻蜓立上头。",
+      "author": "杨万里",
+      "title": "小池"
+    },
+    {
+      "id": "period-06-004",
+      "text": "欲穷千里目，更上一层楼。",
+      "author": "王之涣",
+      "title": "登鹳雀楼"
+    },
+    {
+      "id": "period-06-005",
+      "text": "海内存知己，天涯若比邻。",
+      "author": "王勃",
+      "title": "送杜少府之任蜀州"
+    },
+    {
+      "id": "period-06-006",
+      "text": "长风破浪会有时，直挂云帆济沧海。",
+      "author": "李白",
+      "title": "行路难"
+    },
+    {
+      "id": "period-06-007",
+      "text": "沉舟侧畔千帆过，病树前头万木春。",
+      "author": "刘禹锡",
+      "title": "酬乐天扬州初逢席上见赠"
+    },
+    {
+      "id": "period-06-008",
+      "text": "晴空一鹤排云上，便引诗情到碧霄。",
+      "author": "刘禹锡",
+      "title": "秋词"
+    },
+    {
+      "id": "period-06-009",
+      "text": "莫愁前路无知己，天下谁人不识君。",
+      "author": "高适",
+      "title": "别董大"
+    },
+    {
+      "id": "period-06-010",
+      "text": "天生我材必有用，千金散尽还复来。",
+      "author": "李白",
+      "title": "将进酒"
+    },
+    {
+      "id": "period-06-011",
+      "text": "桃花潭水深千尺，不及汪伦送我情。",
+      "author": "李白",
+      "title": "赠汪伦"
+    },
+    {
+      "id": "period-06-012",
+      "text": "飞流直下三千尺，疑是银河落九天。",
+      "author": "李白",
+      "title": "望庐山瀑布"
+    },
+    {
+      "id": "period-06-013",
+      "text": "两岸猿声啼不住，轻舟已过万重山。",
+      "author": "李白",
+      "title": "早发白帝城"
+    },
+    {
+      "id": "period-06-014",
+      "text": "孤帆远影碧空尽，唯见长江天际流。",
+      "author": "李白",
+      "title": "黄鹤楼送孟浩然之广陵"
+    },
+    {
+      "id": "period-06-015",
+      "text": "山随平野尽，江入大荒流。",
+      "author": "李白",
+      "title": "渡荆门送别"
+    },
+    {
+      "id": "period-06-016",
+      "text": "青山横北郭，白水绕东城。",
+      "author": "李白",
+      "title": "送友人"
+    },
+    {
+      "id": "period-06-017",
+      "text": "仍怜故乡水，万里送行舟。",
+      "author": "李白",
+      "title": "渡荆门送别"
+    },
+    {
+      "id": "period-06-018",
+      "text": "天门中断楚江开，碧水东流至此回。",
+      "author": "李白",
+      "title": "望天门山"
+    },
+    {
+      "id": "period-06-019",
+      "text": "但使龙城飞将在，不教胡马度阴山。",
+      "author": "王昌龄",
+      "title": "出塞"
+    },
+    {
+      "id": "period-06-020",
+      "text": "秦时明月汉时关，万里长征人未还。",
+      "author": "王昌龄",
+      "title": "出塞"
+    },
+    {
+      "id": "period-06-021",
+      "text": "黄沙百战穿金甲，不破楼兰终不还。",
+      "author": "王昌龄",
+      "title": "从军行"
+    },
+    {
+      "id": "period-06-022",
+      "text": "羌笛何须怨杨柳，春风不度玉门关。",
+      "author": "王之涣",
+      "title": "凉州词"
+    },
+    {
+      "id": "period-06-023",
+      "text": "葡萄美酒夜光杯，欲饮琵琶马上催。",
+      "author": "王翰",
+      "title": "凉州词"
+    },
+    {
+      "id": "period-06-024",
+      "text": "古来征战几人回？",
+      "author": "王翰",
+      "title": "凉州词"
+    },
+    {
+      "id": "period-06-025",
+      "text": "劝君更尽一杯酒，西出阳关无故人。",
+      "author": "王维",
+      "title": "渭城曲"
+    },
+    {
+      "id": "period-06-026",
+      "text": "大漠孤烟直，长河落日圆。",
+      "author": "王维",
+      "title": "使至塞上"
+    },
+    {
+      "id": "period-06-027",
+      "text": "孤山寺北贾亭西，水面初平云脚低。",
+      "author": "白居易",
+      "title": "钱塘湖春行"
+    },
+    {
+      "id": "period-06-028",
+      "text": "几处早莺争暖树，谁家新燕啄春泥。",
+      "author": "白居易",
+      "title": "钱塘湖春行"
+    },
+    {
+      "id": "period-06-029",
+      "text": "浅草才能没马蹄，最爱湖东行不足。",
+      "author": "白居易",
+      "title": "钱塘湖春行"
+    },
+    {
+      "id": "period-06-030",
+      "text": "一道残阳铺水中，半江瑟瑟半江红。",
+      "author": "白居易",
+      "title": "暮江吟"
+    },
+    {
+      "id": "period-06-031",
+      "text": "日出江花红胜火，春来江水绿如蓝。",
+      "author": "白居易",
+      "title": "忆江南"
+    },
+    {
+      "id": "period-06-032",
+      "text": "野火烧不尽，春风吹又生。",
+      "author": "白居易",
+      "title": "赋得古原草送别"
+    },
+    {
+      "id": "period-06-033",
+      "text": "同是天涯沦落人，相逢何必曾相识。",
+      "author": "白居易",
+      "title": "琵琶行"
+    },
+    {
+      "id": "period-06-034",
+      "text": "在天愿作比翼鸟，在地愿为连理枝。",
+      "author": "白居易",
+      "title": "长恨歌"
+    },
+    {
+      "id": "period-06-035",
+      "text": "山重水复疑无路，柳暗花明又一村。",
+      "author": "陆游",
+      "title": "游山西村"
+    },
+    {
+      "id": "period-06-036",
+      "text": "纸上得来终觉浅，绝知此事要躬行。",
+      "author": "陆游",
+      "title": "冬夜读书示子聿"
+    },
+    {
+      "id": "period-06-037",
+      "text": "王师北定中原日，家祭无忘告乃翁。",
+      "author": "陆游",
+      "title": "示儿"
+    },
+    {
+      "id": "period-06-038",
+      "text": "位卑未敢忘忧国。",
+      "author": "陆游",
+      "title": "病起书怀"
+    },
+    {
+      "id": "period-06-039",
+      "text": "先天下之忧而忧，后天下之乐而乐。",
+      "author": "范仲淹",
+      "title": "岳阳楼记"
+    },
+    {
+      "id": "period-06-040",
+      "text": "醉翁之意不在酒，在乎山水之间也。",
+      "author": "欧阳修",
+      "title": "醉翁亭记"
+    },
+    {
+      "id": "period-06-041",
+      "text": "不畏浮云遮望眼，自缘身在最高层。",
+      "author": "王安石",
+      "title": "登飞来峰"
+    },
+    {
+      "id": "period-06-042",
+      "text": "欲渡黄河冰塞川，将登太行雪满山。",
+      "author": "李白",
+      "title": "行路难"
+    },
+    {
+      "id": "period-06-043",
+      "text": "多歧路，今安在？",
+      "author": "李白",
+      "title": "行路难"
+    },
+    {
+      "id": "period-06-044",
+      "text": "山河破碎风飘絮，身世浮沉雨打萍。",
+      "author": "文天祥",
+      "title": "过零丁洋"
+    },
+    {
+      "id": "period-06-045",
+      "text": "人生自古谁无死？留取丹心照汗青。",
+      "author": "文天祥",
+      "title": "过零丁洋"
+    },
+    {
+      "id": "period-06-046",
+      "text": "醉里挑灯看剑，梦回吹角连营。",
+      "author": "辛弃疾",
+      "title": "破阵子·为陈同甫赋壮词以寄之"
+    },
+    {
+      "id": "period-06-047",
+      "text": "八百里分麾下炙，五十弦翻塞外声。",
+      "author": "辛弃疾",
+      "title": "破阵子·为陈同甫赋壮词以寄之"
+    },
+    {
+      "id": "period-06-048",
+      "text": "了却君王天下事，赢得生前身后名。",
+      "author": "辛弃疾",
+      "title": "破阵子·为陈同甫赋壮词以寄之"
+    },
+    {
+      "id": "period-06-049",
+      "text": "可怜楼上月徘徊，应照离人妆镜台。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-06-050",
+      "text": "不知乘月几人归，落月摇情满江树。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-06-051",
+      "text": "采菊东篱下，悠然见南山。",
+      "author": "陶渊明",
+      "title": "饮酒·其五"
+    },
+    {
+      "id": "period-06-052",
+      "text": "晨兴理荒秽，带月荷锄归。",
+      "author": "陶渊明",
+      "title": "归园田居·其三"
+    },
+    {
+      "id": "period-06-053",
+      "text": "木欣欣以向荣，泉涓涓而始流。",
+      "author": "陶渊明",
+      "title": "归去来兮辞"
+    },
+    {
+      "id": "period-06-054",
+      "text": "清晨入古寺，初日照高林。",
+      "author": "常建",
+      "title": "题破山寺后禅院"
+    },
+    {
+      "id": "period-06-055",
+      "text": "曲径通幽处，禅房花木深。",
+      "author": "常建",
+      "title": "题破山寺后禅院"
+    },
+    {
+      "id": "period-06-056",
+      "text": "山光悦鸟性，潭影空人心。",
+      "author": "常建",
+      "title": "题破山寺后禅院"
+    },
+    {
+      "id": "period-06-057",
+      "text": "万籁此俱寂，但余钟磬音。",
+      "author": "常建",
+      "title": "题破山寺后禅院"
+    },
+    {
+      "id": "period-06-058",
+      "text": "绿树村边合，青山郭外斜。",
+      "author": "孟浩然",
+      "title": "过故人庄"
+    },
+    {
+      "id": "period-06-059",
+      "text": "开轩面场圃，把酒话桑麻。",
+      "author": "孟浩然",
+      "title": "过故人庄"
+    },
+    {
+      "id": "period-06-060",
+      "text": "两岸青山相对出，孤帆一片日边来。",
+      "author": "李白",
+      "title": "望天门山"
+    },
+    {
+      "id": "period-06-061",
+      "text": "孤舟蓑笠翁，独钓寒江雪。",
+      "author": "柳宗元",
+      "title": "江雪"
+    },
+    {
+      "id": "period-06-062",
+      "text": "千山鸟飞绝，万径人踪灭。",
+      "author": "柳宗元",
+      "title": "江雪"
+    },
+    {
+      "id": "period-06-063",
+      "text": "江流天地外，山色有无中。",
+      "author": "王维",
+      "title": "汉江临泛"
+    },
+    {
+      "id": "period-06-064",
+      "text": "行到水穷处，坐看云起时。",
+      "author": "王维",
+      "title": "终南别业"
+    },
+    {
+      "id": "period-06-065",
+      "text": "随意春芳歇，王孙自可留。",
+      "author": "王维",
+      "title": "山居秋暝"
+    },
+    {
+      "id": "period-06-066",
+      "text": "蒹葭苍苍，白露为霜。",
+      "author": "《诗经》",
+      "title": "蒹葭"
+    },
+    {
+      "id": "period-06-067",
+      "text": "所谓伊人，在水一方。",
+      "author": "《诗经》",
+      "title": "蒹葭"
+    },
+    {
+      "id": "period-06-068",
+      "text": "关关雎鸠，在河之洲。",
+      "author": "《诗经》",
+      "title": "关雎"
+    },
+    {
+      "id": "period-06-069",
+      "text": "窈窕淑女，君子好逑。",
+      "author": "《诗经》",
+      "title": "关雎"
+    },
+    {
+      "id": "period-06-070",
+      "text": "路漫漫其修远兮，吾将上下而求索。",
+      "author": "屈原",
+      "title": "离骚"
+    },
+    {
+      "id": "period-06-071",
+      "text": "长太息以掩涕兮，哀民生之多艰。",
+      "author": "屈原",
+      "title": "离骚"
+    },
+    {
+      "id": "period-06-072",
+      "text": "青青子衿，悠悠我心。",
+      "author": "《诗经》",
+      "title": "子衿"
+    },
+    {
+      "id": "period-06-073",
+      "text": "山不厌高，海不厌深。",
+      "author": "曹操",
+      "title": "短歌行"
+    },
+    {
+      "id": "period-06-074",
+      "text": "老骥伏枥，志在千里。",
+      "author": "曹操",
+      "title": "龟虽寿"
+    },
+    {
+      "id": "period-06-075",
+      "text": "烈士暮年，壮心不已。",
+      "author": "曹操",
+      "title": "龟虽寿"
+    },
+    {
+      "id": "period-06-076",
+      "text": "少壮不努力，老大徒伤悲。",
+      "author": "汉乐府",
+      "title": "长歌行"
+    },
+    {
+      "id": "period-06-077",
+      "text": "举杯邀明月，对影成三人。",
+      "author": "李白",
+      "title": "月下独酌"
+    },
+    {
+      "id": "period-06-078",
+      "text": "花间一壶酒，独酌无相亲。",
+      "author": "李白",
+      "title": "月下独酌"
+    },
+    {
+      "id": "period-06-079",
+      "text": "人生得意须尽欢，莫使金樽空对月。",
+      "author": "李白",
+      "title": "将进酒"
+    },
+    {
+      "id": "period-06-080",
+      "text": "两情若是久长时，又岂在朝朝暮暮。",
+      "author": "秦观",
+      "title": "鹊桥仙"
+    },
+    {
+      "id": "period-06-081",
+      "text": "自在飞花轻似梦，无边丝雨细如愁。",
+      "author": "秦观",
+      "title": "浣溪沙"
+    },
+    {
+      "id": "period-06-082",
+      "text": "人有悲欢离合，月有阴晴圆缺。",
+      "author": "苏轼",
+      "title": "水调歌头"
+    },
+    {
+      "id": "period-06-083",
+      "text": "枝上柳绵吹又少，天涯何处无芳草。",
+      "author": "苏轼",
+      "title": "蝶恋花·春景"
+    },
+    {
+      "id": "period-06-084",
+      "text": "人生如梦，一尊还酹江月。",
+      "author": "苏轼",
+      "title": "念奴娇·赤壁怀古"
+    },
+    {
+      "id": "period-06-085",
+      "text": "大江东去，浪淘尽，千古风流人物。",
+      "author": "苏轼",
+      "title": "念奴娇·赤壁怀古"
+    },
+    {
+      "id": "period-06-086",
+      "text": "乱石穿空，惊涛拍岸，卷起千堆雪。",
+      "author": "苏轼",
+      "title": "念奴娇·赤壁怀古"
+    },
+    {
+      "id": "period-06-087",
+      "text": "小桥流水人家，古道西风瘦马。",
+      "author": "马致远",
+      "title": "天净沙·秋思"
+    },
+    {
+      "id": "period-06-088",
+      "text": "夕阳西下，断肠人在天涯。",
+      "author": "马致远",
+      "title": "天净沙·秋思"
+    },
+    {
+      "id": "period-06-089",
+      "text": "枯藤老树昏鸦，小桥流水人家。",
+      "author": "马致远",
+      "title": "天净沙·秋思"
+    },
+    {
+      "id": "period-06-090",
+      "text": "落霞与孤鹜齐飞，秋水共长天一色。",
+      "author": "王勃",
+      "title": "滕王阁序"
+    },
+    {
+      "id": "period-06-091",
+      "text": "穷且益坚，不坠青云之志。",
+      "author": "王勃",
+      "title": "滕王阁序"
+    },
+    {
+      "id": "period-06-092",
+      "text": "宁为百夫长，胜作一书生。",
+      "author": "杨炯",
+      "title": "从军行"
+    },
+    {
+      "id": "period-06-093",
+      "text": "黄河远上白云间，一片孤城万仞山。",
+      "author": "王之涣",
+      "title": "凉州词"
+    },
+    {
+      "id": "period-06-094",
+      "text": "长恨人心不如水，等闲平地起波澜。",
+      "author": "刘禹锡",
+      "title": "竹枝词"
+    },
+    {
+      "id": "period-06-095",
+      "text": "东边日出西边雨，道是无晴却有晴。",
+      "author": "刘禹锡",
+      "title": "竹枝词"
+    },
+    {
+      "id": "period-06-096",
+      "text": "杨柳青青江水平，闻郎江上唱歌声。",
+      "author": "刘禹锡",
+      "title": "竹枝词"
+    },
+    {
+      "id": "period-06-097",
+      "text": "停车坐爱枫林晚，霜叶红于二月花。",
+      "author": "杜牧",
+      "title": "山行"
+    },
+    {
+      "id": "period-06-098",
+      "text": "借问酒家何处有？牧童遥指杏花村。",
+      "author": "杜牧",
+      "title": "清明"
+    },
+    {
+      "id": "period-06-099",
+      "text": "清明时节雨纷纷，路上行人欲断魂。",
+      "author": "杜牧",
+      "title": "清明"
+    },
+    {
+      "id": "period-06-100",
+      "text": "商女不知亡国恨，隔江犹唱后庭花。",
+      "author": "杜牧",
+      "title": "泊秦淮"
+    },
+    {
+      "id": "period-06-101",
+      "text": "东船西舫悄无言，唯见江心秋月白。",
+      "author": "白居易",
+      "title": "琵琶行"
+    },
+    {
+      "id": "period-06-102",
+      "text": "千呼万唤始出来，犹抱琵琶半遮面。",
+      "author": "白居易",
+      "title": "琵琶行"
+    },
+    {
+      "id": "period-06-103",
+      "text": "同来望月人何处？风景依稀似去年。",
+      "author": "赵嘏",
+      "title": "江楼旧感"
+    },
+    {
+      "id": "period-06-104",
+      "text": "桃李不言，下自成蹊。",
+      "author": "司马迁",
+      "title": "史记·李将军列传"
+    },
+    {
+      "id": "period-06-105",
+      "text": "无可奈何花落去，似曾相识燕归来。",
+      "author": "晏殊",
+      "title": "浣溪沙"
+    },
+    {
+      "id": "period-06-106",
+      "text": "昨夜西风凋碧树，独上高楼，望尽天涯路。",
+      "author": "晏殊",
+      "title": "蝶恋花"
+    },
+    {
+      "id": "period-06-107",
+      "text": "衣带渐宽终不悔，为伊消得人憔悴。",
+      "author": "柳永",
+      "title": "凤栖梧"
+    },
+    {
+      "id": "period-06-108",
+      "text": "今宵酒醒何处？杨柳岸晓风残月。",
+      "author": "柳永",
+      "title": "雨霖铃"
+    },
+    {
+      "id": "period-06-109",
+      "text": "念去去，千里烟波，暮霭沉沉楚天阔。",
+      "author": "柳永",
+      "title": "雨霖铃"
+    },
+    {
+      "id": "period-06-110",
+      "text": "莫道不销魂，帘卷西风，人比黄花瘦。",
+      "author": "李清照",
+      "title": "醉花阴"
+    },
+    {
+      "id": "period-06-111",
+      "text": "知否？知否？应是绿肥红瘦。",
+      "author": "李清照",
+      "title": "如梦令"
+    },
+    {
+      "id": "period-06-112",
+      "text": "寻寻觅觅，冷冷清清，凄凄惨惨戚戚。",
+      "author": "李清照",
+      "title": "声声慢"
+    },
+    {
+      "id": "period-06-113",
+      "text": "众里寻他千百度，蓦然回首，那人却在灯火阑珊处。",
+      "author": "辛弃疾",
+      "title": "青玉案·元夕"
+    },
+    {
+      "id": "period-06-114",
+      "text": "东风夜放花千树，更吹落、星如雨。",
+      "author": "辛弃疾",
+      "title": "青玉案·元夕"
+    },
+    {
+      "id": "period-06-115",
+      "text": "青山遮不住，毕竟东流去。",
+      "author": "辛弃疾",
+      "title": "菩萨蛮·书江西造口壁"
+    },
+    {
+      "id": "period-06-116",
+      "text": "一水护田将绿绕，两山排闼送青来。",
+      "author": "王安石",
+      "title": "书湖阴先生壁"
+    },
+    {
+      "id": "period-06-117",
+      "text": "千门万户曈曈日，总把新桃换旧符。",
+      "author": "王安石",
+      "title": "元日"
+    },
+    {
+      "id": "period-06-118",
+      "text": "爆竹声中一岁除，春风送暖入屠苏。",
+      "author": "王安石",
+      "title": "元日"
+    },
+    {
+      "id": "period-06-119",
+      "text": "接汉疑星落，依楼似月悬。",
+      "author": "卢照邻",
+      "title": "十五夜观灯"
+    },
+    {
+      "id": "period-06-120",
+      "text": "春眠不觉晓，处处闻啼鸟。",
+      "author": "孟浩然",
+      "title": "春晓"
+    },
+    {
+      "id": "period-06-121",
+      "text": "夜来风雨声，花落知多少。",
+      "author": "孟浩然",
+      "title": "春晓"
+    },
+    {
+      "id": "period-06-122",
+      "text": "月上柳梢头，人约黄昏后。",
+      "author": "欧阳修",
+      "title": "生查子·元夕"
+    },
+    {
+      "id": "period-06-123",
+      "text": "去年元夜时，花市灯如昼。",
+      "author": "欧阳修",
+      "title": "生查子·元夕"
+    },
+    {
+      "id": "period-06-124",
+      "text": "海棠未雨，梨花先雪，一半春休。",
+      "author": "王雱",
+      "title": "眼儿媚"
+    },
+    {
+      "id": "period-06-125",
+      "text": "绿杨烟外晓寒轻，红杏枝头春意闹。",
+      "author": "宋祁",
+      "title": "玉楼春"
+    },
+    {
+      "id": "period-06-126",
+      "text": "人面不知何处去，桃花依旧笑春风。",
+      "author": "崔护",
+      "title": "题都城南庄"
+    },
+    {
+      "id": "period-06-127",
+      "text": "年年岁岁花相似，岁岁年年人不同。",
+      "author": "刘希夷",
+      "title": "代悲白头翁"
+    },
+    {
+      "id": "period-06-128",
+      "text": "白日依山尽，黄河入海流。",
+      "author": "王之涣",
+      "title": "登鹳雀楼"
+    },
+    {
+      "id": "period-06-129",
+      "text": "黄鹤一去不复返，白云千载空悠悠。",
+      "author": "崔颢",
+      "title": "黄鹤楼"
+    },
+    {
+      "id": "period-06-130",
+      "text": "日暮乡关何处是？烟波江上使人愁。",
+      "author": "崔颢",
+      "title": "黄鹤楼"
+    },
+    {
+      "id": "period-06-131",
+      "text": "孤帆一片日边来。",
+      "author": "李白",
+      "title": "望天门山"
+    },
+    {
+      "id": "period-06-132",
+      "text": "星垂平野阔，月涌大江流。",
+      "author": "杜甫",
+      "title": "旅夜书怀"
+    },
+    {
+      "id": "period-06-133",
+      "text": "月落乌啼霜满天，江枫渔火对愁眠。",
+      "author": "张继",
+      "title": "枫桥夜泊"
+    },
+    {
+      "id": "period-06-134",
+      "text": "明月松间照，清泉石上流。",
+      "author": "王维",
+      "title": "山居秋暝"
+    },
+    {
+      "id": "period-06-135",
+      "text": "海上生明月，天涯共此时。",
+      "author": "张九龄",
+      "title": "望月怀远"
+    },
+    {
+      "id": "period-06-136",
+      "text": "何当共剪西窗烛，却话巴山夜雨时。",
+      "author": "李商隐",
+      "title": "夜雨寄北"
+    },
+    {
+      "id": "period-06-137",
+      "text": "今人不见古时月，今月曾经照古人。",
+      "author": "李白",
+      "title": "把酒问月"
+    },
+    {
+      "id": "period-06-138",
+      "text": "举头望明月，低头思故乡。",
+      "author": "李白",
+      "title": "静夜思"
+    },
+    {
+      "id": "period-06-139",
+      "text": "床前明月光，疑是地上霜。",
+      "author": "李白",
+      "title": "静夜思"
+    },
+    {
+      "id": "period-06-140",
+      "text": "露从今夜白，月是故乡明。",
+      "author": "杜甫",
+      "title": "月夜忆舍弟"
+    },
+    {
+      "id": "period-06-141",
+      "text": "我寄愁心与明月，随君直到夜郎西。",
+      "author": "李白",
+      "title": "闻王昌龄左迁龙标遥有此寄"
+    },
+    {
+      "id": "period-06-142",
+      "text": "月出惊山鸟，时鸣春涧中。",
+      "author": "王维",
+      "title": "鸟鸣涧"
+    },
+    {
+      "id": "period-06-143",
+      "text": "深林人不知，明月来相照。",
+      "author": "王维",
+      "title": "竹里馆"
+    },
+    {
+      "id": "period-06-144",
+      "text": "春风又绿江南岸，明月何时照我还。",
+      "author": "王安石",
+      "title": "泊船瓜洲"
+    },
+    {
+      "id": "period-06-145",
+      "text": "春江潮水连海平，海上明月共潮生。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-06-146",
+      "text": "江畔何人初见月，江月何年初照人。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-06-147",
+      "text": "白云一片去悠悠，青枫浦上不胜愁。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-06-148",
+      "text": "鸿雁长飞光不度，鱼龙潜跃水成文。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-06-149",
+      "text": "玉户帘中卷不去，捣衣砧上拂还来。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-06-150",
+      "text": "此时相望不相闻，愿逐月华流照君。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-07-001",
+      "text": "桃花潭水深千尺，不及汪伦送我情。",
+      "author": "李白",
+      "title": "赠汪伦"
+    },
+    {
+      "id": "period-07-002",
+      "text": "飞流直下三千尺，疑是银河落九天。",
+      "author": "李白",
+      "title": "望庐山瀑布"
+    },
+    {
+      "id": "period-07-003",
+      "text": "两岸猿声啼不住，轻舟已过万重山。",
+      "author": "李白",
+      "title": "早发白帝城"
+    },
+    {
+      "id": "period-07-004",
+      "text": "孤帆远影碧空尽，唯见长江天际流。",
+      "author": "李白",
+      "title": "黄鹤楼送孟浩然之广陵"
+    },
+    {
+      "id": "period-07-005",
+      "text": "山随平野尽，江入大荒流。",
+      "author": "李白",
+      "title": "渡荆门送别"
+    },
+    {
+      "id": "period-07-006",
+      "text": "青山横北郭，白水绕东城。",
+      "author": "李白",
+      "title": "送友人"
+    },
+    {
+      "id": "period-07-007",
+      "text": "仍怜故乡水，万里送行舟。",
+      "author": "李白",
+      "title": "渡荆门送别"
+    },
+    {
+      "id": "period-07-008",
+      "text": "天门中断楚江开，碧水东流至此回。",
+      "author": "李白",
+      "title": "望天门山"
+    },
+    {
+      "id": "period-07-009",
+      "text": "但使龙城飞将在，不教胡马度阴山。",
+      "author": "王昌龄",
+      "title": "出塞"
+    },
+    {
+      "id": "period-07-010",
+      "text": "秦时明月汉时关，万里长征人未还。",
+      "author": "王昌龄",
+      "title": "出塞"
+    },
+    {
+      "id": "period-07-011",
+      "text": "黄沙百战穿金甲，不破楼兰终不还。",
+      "author": "王昌龄",
+      "title": "从军行"
+    },
+    {
+      "id": "period-07-012",
+      "text": "羌笛何须怨杨柳，春风不度玉门关。",
+      "author": "王之涣",
+      "title": "凉州词"
+    },
+    {
+      "id": "period-07-013",
+      "text": "葡萄美酒夜光杯，欲饮琵琶马上催。",
+      "author": "王翰",
+      "title": "凉州词"
+    },
+    {
+      "id": "period-07-014",
+      "text": "古来征战几人回？",
+      "author": "王翰",
+      "title": "凉州词"
+    },
+    {
+      "id": "period-07-015",
+      "text": "劝君更尽一杯酒，西出阳关无故人。",
+      "author": "王维",
+      "title": "渭城曲"
+    },
+    {
+      "id": "period-07-016",
+      "text": "大漠孤烟直，长河落日圆。",
+      "author": "王维",
+      "title": "使至塞上"
+    },
+    {
+      "id": "period-07-017",
+      "text": "孤山寺北贾亭西，水面初平云脚低。",
+      "author": "白居易",
+      "title": "钱塘湖春行"
+    },
+    {
+      "id": "period-07-018",
+      "text": "几处早莺争暖树，谁家新燕啄春泥。",
+      "author": "白居易",
+      "title": "钱塘湖春行"
+    },
+    {
+      "id": "period-07-019",
+      "text": "浅草才能没马蹄，最爱湖东行不足。",
+      "author": "白居易",
+      "title": "钱塘湖春行"
+    },
+    {
+      "id": "period-07-020",
+      "text": "一道残阳铺水中，半江瑟瑟半江红。",
+      "author": "白居易",
+      "title": "暮江吟"
+    },
+    {
+      "id": "period-07-021",
+      "text": "日出江花红胜火，春来江水绿如蓝。",
+      "author": "白居易",
+      "title": "忆江南"
+    },
+    {
+      "id": "period-07-022",
+      "text": "野火烧不尽，春风吹又生。",
+      "author": "白居易",
+      "title": "赋得古原草送别"
+    },
+    {
+      "id": "period-07-023",
+      "text": "同是天涯沦落人，相逢何必曾相识。",
+      "author": "白居易",
+      "title": "琵琶行"
+    },
+    {
+      "id": "period-07-024",
+      "text": "在天愿作比翼鸟，在地愿为连理枝。",
+      "author": "白居易",
+      "title": "长恨歌"
+    },
+    {
+      "id": "period-07-025",
+      "text": "山重水复疑无路，柳暗花明又一村。",
+      "author": "陆游",
+      "title": "游山西村"
+    },
+    {
+      "id": "period-07-026",
+      "text": "纸上得来终觉浅，绝知此事要躬行。",
+      "author": "陆游",
+      "title": "冬夜读书示子聿"
+    },
+    {
+      "id": "period-07-027",
+      "text": "王师北定中原日，家祭无忘告乃翁。",
+      "author": "陆游",
+      "title": "示儿"
+    },
+    {
+      "id": "period-07-028",
+      "text": "位卑未敢忘忧国。",
+      "author": "陆游",
+      "title": "病起书怀"
+    },
+    {
+      "id": "period-07-029",
+      "text": "先天下之忧而忧，后天下之乐而乐。",
+      "author": "范仲淹",
+      "title": "岳阳楼记"
+    },
+    {
+      "id": "period-07-030",
+      "text": "醉翁之意不在酒，在乎山水之间也。",
+      "author": "欧阳修",
+      "title": "醉翁亭记"
+    },
+    {
+      "id": "period-07-031",
+      "text": "不畏浮云遮望眼，自缘身在最高层。",
+      "author": "王安石",
+      "title": "登飞来峰"
+    },
+    {
+      "id": "period-07-032",
+      "text": "欲渡黄河冰塞川，将登太行雪满山。",
+      "author": "李白",
+      "title": "行路难"
+    },
+    {
+      "id": "period-07-033",
+      "text": "多歧路，今安在？",
+      "author": "李白",
+      "title": "行路难"
+    },
+    {
+      "id": "period-07-034",
+      "text": "山河破碎风飘絮，身世浮沉雨打萍。",
+      "author": "文天祥",
+      "title": "过零丁洋"
+    },
+    {
+      "id": "period-07-035",
+      "text": "人生自古谁无死？留取丹心照汗青。",
+      "author": "文天祥",
+      "title": "过零丁洋"
+    },
+    {
+      "id": "period-07-036",
+      "text": "醉里挑灯看剑，梦回吹角连营。",
+      "author": "辛弃疾",
+      "title": "破阵子·为陈同甫赋壮词以寄之"
+    },
+    {
+      "id": "period-07-037",
+      "text": "八百里分麾下炙，五十弦翻塞外声。",
+      "author": "辛弃疾",
+      "title": "破阵子·为陈同甫赋壮词以寄之"
+    },
+    {
+      "id": "period-07-038",
+      "text": "了却君王天下事，赢得生前身后名。",
+      "author": "辛弃疾",
+      "title": "破阵子·为陈同甫赋壮词以寄之"
+    },
+    {
+      "id": "period-07-039",
+      "text": "可怜楼上月徘徊，应照离人妆镜台。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-07-040",
+      "text": "不知乘月几人归，落月摇情满江树。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-07-041",
+      "text": "采菊东篱下，悠然见南山。",
+      "author": "陶渊明",
+      "title": "饮酒·其五"
+    },
+    {
+      "id": "period-07-042",
+      "text": "晨兴理荒秽，带月荷锄归。",
+      "author": "陶渊明",
+      "title": "归园田居·其三"
+    },
+    {
+      "id": "period-07-043",
+      "text": "木欣欣以向荣，泉涓涓而始流。",
+      "author": "陶渊明",
+      "title": "归去来兮辞"
+    },
+    {
+      "id": "period-07-044",
+      "text": "清晨入古寺，初日照高林。",
+      "author": "常建",
+      "title": "题破山寺后禅院"
+    },
+    {
+      "id": "period-07-045",
+      "text": "曲径通幽处，禅房花木深。",
+      "author": "常建",
+      "title": "题破山寺后禅院"
+    },
+    {
+      "id": "period-07-046",
+      "text": "山光悦鸟性，潭影空人心。",
+      "author": "常建",
+      "title": "题破山寺后禅院"
+    },
+    {
+      "id": "period-07-047",
+      "text": "万籁此俱寂，但余钟磬音。",
+      "author": "常建",
+      "title": "题破山寺后禅院"
+    },
+    {
+      "id": "period-07-048",
+      "text": "绿树村边合，青山郭外斜。",
+      "author": "孟浩然",
+      "title": "过故人庄"
+    },
+    {
+      "id": "period-07-049",
+      "text": "开轩面场圃，把酒话桑麻。",
+      "author": "孟浩然",
+      "title": "过故人庄"
+    },
+    {
+      "id": "period-07-050",
+      "text": "两岸青山相对出，孤帆一片日边来。",
+      "author": "李白",
+      "title": "望天门山"
+    },
+    {
+      "id": "period-07-051",
+      "text": "孤舟蓑笠翁，独钓寒江雪。",
+      "author": "柳宗元",
+      "title": "江雪"
+    },
+    {
+      "id": "period-07-052",
+      "text": "千山鸟飞绝，万径人踪灭。",
+      "author": "柳宗元",
+      "title": "江雪"
+    },
+    {
+      "id": "period-07-053",
+      "text": "江流天地外，山色有无中。",
+      "author": "王维",
+      "title": "汉江临泛"
+    },
+    {
+      "id": "period-07-054",
+      "text": "行到水穷处，坐看云起时。",
+      "author": "王维",
+      "title": "终南别业"
+    },
+    {
+      "id": "period-07-055",
+      "text": "随意春芳歇，王孙自可留。",
+      "author": "王维",
+      "title": "山居秋暝"
+    },
+    {
+      "id": "period-07-056",
+      "text": "蒹葭苍苍，白露为霜。",
+      "author": "《诗经》",
+      "title": "蒹葭"
+    },
+    {
+      "id": "period-07-057",
+      "text": "所谓伊人，在水一方。",
+      "author": "《诗经》",
+      "title": "蒹葭"
+    },
+    {
+      "id": "period-07-058",
+      "text": "关关雎鸠，在河之洲。",
+      "author": "《诗经》",
+      "title": "关雎"
+    },
+    {
+      "id": "period-07-059",
+      "text": "窈窕淑女，君子好逑。",
+      "author": "《诗经》",
+      "title": "关雎"
+    },
+    {
+      "id": "period-07-060",
+      "text": "路漫漫其修远兮，吾将上下而求索。",
+      "author": "屈原",
+      "title": "离骚"
+    },
+    {
+      "id": "period-07-061",
+      "text": "长太息以掩涕兮，哀民生之多艰。",
+      "author": "屈原",
+      "title": "离骚"
+    },
+    {
+      "id": "period-07-062",
+      "text": "青青子衿，悠悠我心。",
+      "author": "《诗经》",
+      "title": "子衿"
+    },
+    {
+      "id": "period-07-063",
+      "text": "山不厌高，海不厌深。",
+      "author": "曹操",
+      "title": "短歌行"
+    },
+    {
+      "id": "period-07-064",
+      "text": "老骥伏枥，志在千里。",
+      "author": "曹操",
+      "title": "龟虽寿"
+    },
+    {
+      "id": "period-07-065",
+      "text": "烈士暮年，壮心不已。",
+      "author": "曹操",
+      "title": "龟虽寿"
+    },
+    {
+      "id": "period-07-066",
+      "text": "少壮不努力，老大徒伤悲。",
+      "author": "汉乐府",
+      "title": "长歌行"
+    },
+    {
+      "id": "period-07-067",
+      "text": "举杯邀明月，对影成三人。",
+      "author": "李白",
+      "title": "月下独酌"
+    },
+    {
+      "id": "period-07-068",
+      "text": "花间一壶酒，独酌无相亲。",
+      "author": "李白",
+      "title": "月下独酌"
+    },
+    {
+      "id": "period-07-069",
+      "text": "人生得意须尽欢，莫使金樽空对月。",
+      "author": "李白",
+      "title": "将进酒"
+    },
+    {
+      "id": "period-07-070",
+      "text": "两情若是久长时，又岂在朝朝暮暮。",
+      "author": "秦观",
+      "title": "鹊桥仙"
+    },
+    {
+      "id": "period-07-071",
+      "text": "自在飞花轻似梦，无边丝雨细如愁。",
+      "author": "秦观",
+      "title": "浣溪沙"
+    },
+    {
+      "id": "period-07-072",
+      "text": "人有悲欢离合，月有阴晴圆缺。",
+      "author": "苏轼",
+      "title": "水调歌头"
+    },
+    {
+      "id": "period-07-073",
+      "text": "枝上柳绵吹又少，天涯何处无芳草。",
+      "author": "苏轼",
+      "title": "蝶恋花·春景"
+    },
+    {
+      "id": "period-07-074",
+      "text": "人生如梦，一尊还酹江月。",
+      "author": "苏轼",
+      "title": "念奴娇·赤壁怀古"
+    },
+    {
+      "id": "period-07-075",
+      "text": "大江东去，浪淘尽，千古风流人物。",
+      "author": "苏轼",
+      "title": "念奴娇·赤壁怀古"
+    },
+    {
+      "id": "period-07-076",
+      "text": "乱石穿空，惊涛拍岸，卷起千堆雪。",
+      "author": "苏轼",
+      "title": "念奴娇·赤壁怀古"
+    },
+    {
+      "id": "period-07-077",
+      "text": "小桥流水人家，古道西风瘦马。",
+      "author": "马致远",
+      "title": "天净沙·秋思"
+    },
+    {
+      "id": "period-07-078",
+      "text": "夕阳西下，断肠人在天涯。",
+      "author": "马致远",
+      "title": "天净沙·秋思"
+    },
+    {
+      "id": "period-07-079",
+      "text": "枯藤老树昏鸦，小桥流水人家。",
+      "author": "马致远",
+      "title": "天净沙·秋思"
+    },
+    {
+      "id": "period-07-080",
+      "text": "落霞与孤鹜齐飞，秋水共长天一色。",
+      "author": "王勃",
+      "title": "滕王阁序"
+    },
+    {
+      "id": "period-07-081",
+      "text": "穷且益坚，不坠青云之志。",
+      "author": "王勃",
+      "title": "滕王阁序"
+    },
+    {
+      "id": "period-07-082",
+      "text": "宁为百夫长，胜作一书生。",
+      "author": "杨炯",
+      "title": "从军行"
+    },
+    {
+      "id": "period-07-083",
+      "text": "黄河远上白云间，一片孤城万仞山。",
+      "author": "王之涣",
+      "title": "凉州词"
+    },
+    {
+      "id": "period-07-084",
+      "text": "长恨人心不如水，等闲平地起波澜。",
+      "author": "刘禹锡",
+      "title": "竹枝词"
+    },
+    {
+      "id": "period-07-085",
+      "text": "东边日出西边雨，道是无晴却有晴。",
+      "author": "刘禹锡",
+      "title": "竹枝词"
+    },
+    {
+      "id": "period-07-086",
+      "text": "杨柳青青江水平，闻郎江上唱歌声。",
+      "author": "刘禹锡",
+      "title": "竹枝词"
+    },
+    {
+      "id": "period-07-087",
+      "text": "停车坐爱枫林晚，霜叶红于二月花。",
+      "author": "杜牧",
+      "title": "山行"
+    },
+    {
+      "id": "period-07-088",
+      "text": "借问酒家何处有？牧童遥指杏花村。",
+      "author": "杜牧",
+      "title": "清明"
+    },
+    {
+      "id": "period-07-089",
+      "text": "清明时节雨纷纷，路上行人欲断魂。",
+      "author": "杜牧",
+      "title": "清明"
+    },
+    {
+      "id": "period-07-090",
+      "text": "商女不知亡国恨，隔江犹唱后庭花。",
+      "author": "杜牧",
+      "title": "泊秦淮"
+    },
+    {
+      "id": "period-07-091",
+      "text": "东船西舫悄无言，唯见江心秋月白。",
+      "author": "白居易",
+      "title": "琵琶行"
+    },
+    {
+      "id": "period-07-092",
+      "text": "千呼万唤始出来，犹抱琵琶半遮面。",
+      "author": "白居易",
+      "title": "琵琶行"
+    },
+    {
+      "id": "period-07-093",
+      "text": "同来望月人何处？风景依稀似去年。",
+      "author": "赵嘏",
+      "title": "江楼旧感"
+    },
+    {
+      "id": "period-07-094",
+      "text": "桃李不言，下自成蹊。",
+      "author": "司马迁",
+      "title": "史记·李将军列传"
+    },
+    {
+      "id": "period-07-095",
+      "text": "无可奈何花落去，似曾相识燕归来。",
+      "author": "晏殊",
+      "title": "浣溪沙"
+    },
+    {
+      "id": "period-07-096",
+      "text": "昨夜西风凋碧树，独上高楼，望尽天涯路。",
+      "author": "晏殊",
+      "title": "蝶恋花"
+    },
+    {
+      "id": "period-07-097",
+      "text": "衣带渐宽终不悔，为伊消得人憔悴。",
+      "author": "柳永",
+      "title": "凤栖梧"
+    },
+    {
+      "id": "period-07-098",
+      "text": "今宵酒醒何处？杨柳岸晓风残月。",
+      "author": "柳永",
+      "title": "雨霖铃"
+    },
+    {
+      "id": "period-07-099",
+      "text": "念去去，千里烟波，暮霭沉沉楚天阔。",
+      "author": "柳永",
+      "title": "雨霖铃"
+    },
+    {
+      "id": "period-07-100",
+      "text": "莫道不销魂，帘卷西风，人比黄花瘦。",
+      "author": "李清照",
+      "title": "醉花阴"
+    },
+    {
+      "id": "period-07-101",
+      "text": "知否？知否？应是绿肥红瘦。",
+      "author": "李清照",
+      "title": "如梦令"
+    },
+    {
+      "id": "period-07-102",
+      "text": "寻寻觅觅，冷冷清清，凄凄惨惨戚戚。",
+      "author": "李清照",
+      "title": "声声慢"
+    },
+    {
+      "id": "period-07-103",
+      "text": "众里寻他千百度，蓦然回首，那人却在灯火阑珊处。",
+      "author": "辛弃疾",
+      "title": "青玉案·元夕"
+    },
+    {
+      "id": "period-07-104",
+      "text": "东风夜放花千树，更吹落、星如雨。",
+      "author": "辛弃疾",
+      "title": "青玉案·元夕"
+    },
+    {
+      "id": "period-07-105",
+      "text": "青山遮不住，毕竟东流去。",
+      "author": "辛弃疾",
+      "title": "菩萨蛮·书江西造口壁"
+    },
+    {
+      "id": "period-07-106",
+      "text": "一水护田将绿绕，两山排闼送青来。",
+      "author": "王安石",
+      "title": "书湖阴先生壁"
+    },
+    {
+      "id": "period-07-107",
+      "text": "千门万户曈曈日，总把新桃换旧符。",
+      "author": "王安石",
+      "title": "元日"
+    },
+    {
+      "id": "period-07-108",
+      "text": "爆竹声中一岁除，春风送暖入屠苏。",
+      "author": "王安石",
+      "title": "元日"
+    },
+    {
+      "id": "period-07-109",
+      "text": "接汉疑星落，依楼似月悬。",
+      "author": "卢照邻",
+      "title": "十五夜观灯"
+    },
+    {
+      "id": "period-07-110",
+      "text": "春眠不觉晓，处处闻啼鸟。",
+      "author": "孟浩然",
+      "title": "春晓"
+    },
+    {
+      "id": "period-07-111",
+      "text": "夜来风雨声，花落知多少。",
+      "author": "孟浩然",
+      "title": "春晓"
+    },
+    {
+      "id": "period-07-112",
+      "text": "月上柳梢头，人约黄昏后。",
+      "author": "欧阳修",
+      "title": "生查子·元夕"
+    },
+    {
+      "id": "period-07-113",
+      "text": "去年元夜时，花市灯如昼。",
+      "author": "欧阳修",
+      "title": "生查子·元夕"
+    },
+    {
+      "id": "period-07-114",
+      "text": "海棠未雨，梨花先雪，一半春休。",
+      "author": "王雱",
+      "title": "眼儿媚"
+    },
+    {
+      "id": "period-07-115",
+      "text": "绿杨烟外晓寒轻，红杏枝头春意闹。",
+      "author": "宋祁",
+      "title": "玉楼春"
+    },
+    {
+      "id": "period-07-116",
+      "text": "人面不知何处去，桃花依旧笑春风。",
+      "author": "崔护",
+      "title": "题都城南庄"
+    },
+    {
+      "id": "period-07-117",
+      "text": "年年岁岁花相似，岁岁年年人不同。",
+      "author": "刘希夷",
+      "title": "代悲白头翁"
+    },
+    {
+      "id": "period-07-118",
+      "text": "白日依山尽，黄河入海流。",
+      "author": "王之涣",
+      "title": "登鹳雀楼"
+    },
+    {
+      "id": "period-07-119",
+      "text": "黄鹤一去不复返，白云千载空悠悠。",
+      "author": "崔颢",
+      "title": "黄鹤楼"
+    },
+    {
+      "id": "period-07-120",
+      "text": "日暮乡关何处是？烟波江上使人愁。",
+      "author": "崔颢",
+      "title": "黄鹤楼"
+    },
+    {
+      "id": "period-07-121",
+      "text": "孤帆一片日边来。",
+      "author": "李白",
+      "title": "望天门山"
+    },
+    {
+      "id": "period-07-122",
+      "text": "星垂平野阔，月涌大江流。",
+      "author": "杜甫",
+      "title": "旅夜书怀"
+    },
+    {
+      "id": "period-07-123",
+      "text": "月落乌啼霜满天，江枫渔火对愁眠。",
+      "author": "张继",
+      "title": "枫桥夜泊"
+    },
+    {
+      "id": "period-07-124",
+      "text": "明月松间照，清泉石上流。",
+      "author": "王维",
+      "title": "山居秋暝"
+    },
+    {
+      "id": "period-07-125",
+      "text": "海上生明月，天涯共此时。",
+      "author": "张九龄",
+      "title": "望月怀远"
+    },
+    {
+      "id": "period-07-126",
+      "text": "何当共剪西窗烛，却话巴山夜雨时。",
+      "author": "李商隐",
+      "title": "夜雨寄北"
+    },
+    {
+      "id": "period-07-127",
+      "text": "今人不见古时月，今月曾经照古人。",
+      "author": "李白",
+      "title": "把酒问月"
+    },
+    {
+      "id": "period-07-128",
+      "text": "举头望明月，低头思故乡。",
+      "author": "李白",
+      "title": "静夜思"
+    },
+    {
+      "id": "period-07-129",
+      "text": "床前明月光，疑是地上霜。",
+      "author": "李白",
+      "title": "静夜思"
+    },
+    {
+      "id": "period-07-130",
+      "text": "露从今夜白，月是故乡明。",
+      "author": "杜甫",
+      "title": "月夜忆舍弟"
+    },
+    {
+      "id": "period-07-131",
+      "text": "我寄愁心与明月，随君直到夜郎西。",
+      "author": "李白",
+      "title": "闻王昌龄左迁龙标遥有此寄"
+    },
+    {
+      "id": "period-07-132",
+      "text": "月出惊山鸟，时鸣春涧中。",
+      "author": "王维",
+      "title": "鸟鸣涧"
+    },
+    {
+      "id": "period-07-133",
+      "text": "深林人不知，明月来相照。",
+      "author": "王维",
+      "title": "竹里馆"
+    },
+    {
+      "id": "period-07-134",
+      "text": "春风又绿江南岸，明月何时照我还。",
+      "author": "王安石",
+      "title": "泊船瓜洲"
+    },
+    {
+      "id": "period-07-135",
+      "text": "春江潮水连海平，海上明月共潮生。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-07-136",
+      "text": "江畔何人初见月，江月何年初照人。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-07-137",
+      "text": "白云一片去悠悠，青枫浦上不胜愁。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-07-138",
+      "text": "鸿雁长飞光不度，鱼龙潜跃水成文。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-07-139",
+      "text": "玉户帘中卷不去，捣衣砧上拂还来。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-07-140",
+      "text": "此时相望不相闻，愿逐月华流照君。",
+      "author": "张若虚",
+      "title": "春江花月夜"
+    },
+    {
+      "id": "period-07-141",
+      "text": "明月几时有？把酒问青天。",
+      "author": "苏轼",
+      "title": "水调歌头"
+    },
+    {
+      "id": "period-07-142",
+      "text": "不应有恨，何事长向别时圆？",
+      "author": "苏轼",
+      "title": "水调歌头"
+    },
+    {
+      "id": "period-07-143",
+      "text": "起舞弄清影，何似在人间。",
+      "author": "苏轼",
+      "title": "水调歌头"
+    },
+    {
+      "id": "period-07-144",
+      "text": "小楼昨夜又东风，故国不堪回首月明中。",
+      "author": "李煜",
+      "title": "虞美人"
+    },
+    {
+      "id": "period-07-145",
+      "text": "无言独上西楼，月如钩。",
+      "author": "李煜",
+      "title": "相见欢"
+    },
+    {
+      "id": "period-07-146",
+      "text": "雁字回时，月满西楼。",
+      "author": "李清照",
+      "title": "一剪梅"
+    },
+    {
+      "id": "period-07-147",
+      "text": "何处望神州？满眼风光北固楼。",
+      "author": "辛弃疾",
+      "title": "南乡子·登京口北固亭有怀"
+    },
+    {
+      "id": "period-07-148",
+      "text": "斜阳草树，寻常巷陌，人道寄奴曾住。",
+      "author": "辛弃疾",
+      "title": "永遇乐·京口北固亭怀古"
+    },
+    {
+      "id": "period-07-149",
+      "text": "长安一片月，万户捣衣声。",
+      "author": "李白",
+      "title": "子夜吴歌·秋歌"
+    },
+    {
+      "id": "period-07-150",
+      "text": "烽火连三月，家书抵万金。",
+      "author": "杜甫",
+      "title": "春望"
+    }
+  ],
+  "placeholders": [
+    "从一缕晨光起笔，说说你想完成的事。",
+    "从一缕晨光起笔，我陪你把它理清。",
+    "从一缕晨光起笔，我们从此刻开始。",
+    "从一缕晨光起笔，愿这一步恰逢其时。",
+    "把心事写成清风，说说你想完成的事。",
+    "把心事写成清风，我陪你把它理清。",
+    "把心事写成清风，我们从此刻开始。",
+    "把心事写成清风，愿这一步恰逢其时。",
+    "让灵感泊在窗前，说说你想完成的事。",
+    "让灵感泊在窗前，我陪你把它理清。",
+    "让灵感泊在窗前，我们从此刻开始。",
+    "让灵感泊在窗前，愿这一步恰逢其时。",
+    "从眼前的小事开始，说说你想完成的事。",
+    "从眼前的小事开始，我陪你把它理清。",
+    "从眼前的小事开始，我们从此刻开始。",
+    "从眼前的小事开始，愿这一步恰逢其时。",
+    "把今日交给一束光，说说你想完成的事。",
+    "把今日交给一束光，我陪你把它理清。",
+    "把今日交给一束光，我们从此刻开始。",
+    "把今日交给一束光，愿这一步恰逢其时。",
+    "沿着思绪慢慢走，说说你想完成的事。",
+    "沿着思绪慢慢走，我陪你把它理清。",
+    "沿着思绪慢慢走，我们从此刻开始。",
+    "沿着思绪慢慢走，愿这一步恰逢其时。",
+    "让愿望落在纸上，说说你想完成的事。",
+    "让愿望落在纸上，我陪你把它理清。",
+    "让愿望落在纸上，我们从此刻开始。",
+    "让愿望落在纸上，愿这一步恰逢其时。",
+    "把纷乱理成一条路，说说你想完成的事。",
+    "把纷乱理成一条路，我陪你把它理清。",
+    "把纷乱理成一条路，我们从此刻开始。",
+    "把纷乱理成一条路，愿这一步恰逢其时。",
+    "从最想完成的那一步，说说你想完成的事。",
+    "从最想完成的那一步，我陪你把它理清。",
+    "从最想完成的那一步，我们从此刻开始。",
+    "从最想完成的那一步，愿这一步恰逢其时。",
+    "借一程微风启程，说说你想完成的事。",
+    "借一程微风启程，我陪你把它理清。",
+    "借一程微风启程，我们从此刻开始。",
+    "借一程微风启程，愿这一步恰逢其时。",
+    "把问题放在月色里，说说你想完成的事。",
+    "把问题放在月色里，我陪你把它理清。",
+    "把问题放在月色里，我们从此刻开始。",
+    "把问题放在月色里，愿这一步恰逢其时。",
+    "让计划长出枝叶，说说你想完成的事。",
+    "让计划长出枝叶，我陪你把它理清。",
+    "让计划长出枝叶，我们从此刻开始。",
+    "让计划长出枝叶，愿这一步恰逢其时。",
+    "从安静的一刻开始，说说你想完成的事。",
+    "从安静的一刻开始，我陪你把它理清。",
+    "从安静的一刻开始，我们从此刻开始。",
+    "从安静的一刻开始，愿这一步恰逢其时。",
+    "把想法托给远帆，说说你想完成的事。",
+    "把想法托给远帆，我陪你把它理清。",
+    "把想法托给远帆，我们从此刻开始。",
+    "把想法托给远帆，愿这一步恰逢其时。",
+    "在细雨声里说说看，说说你想完成的事。",
+    "在细雨声里说说看，我陪你把它理清。",
+    "在细雨声里说说看，我们从此刻开始。",
+    "在细雨声里说说看，愿这一步恰逢其时。",
+    "让行动先于犹豫，说说你想完成的事。",
+    "让行动先于犹豫，我陪你把它理清。",
+    "让行动先于犹豫，我们从此刻开始。",
+    "让行动先于犹豫，愿这一步恰逢其时。",
+    "从一页空白开始，说说你想完成的事。",
+    "从一页空白开始，我陪你把它理清。",
+    "从一页空白开始，我们从此刻开始。",
+    "从一页空白开始，愿这一步恰逢其时。",
+    "把目标写得轻一些，说说你想完成的事。",
+    "把目标写得轻一些，我陪你把它理清。",
+    "把目标写得轻一些，我们从此刻开始。",
+    "把目标写得轻一些，愿这一步恰逢其时。",
+    "借一缕桂香入梦，说说你想完成的事。",
+    "借一缕桂香入梦，我陪你把它理清。",
+    "借一缕桂香入梦，我们从此刻开始。",
+    "借一缕桂香入梦，愿这一步恰逢其时。",
+    "让今天有新的回声，说说你想完成的事。",
+    "让今天有新的回声，我陪你把它理清。",
+    "让今天有新的回声，我们从此刻开始。",
+    "让今天有新的回声，愿这一步恰逢其时。",
+    "把灵感藏进字里行间，说说你想完成的事。",
+    "把灵感藏进字里行间，我陪你把它理清。",
+    "把灵感藏进字里行间，我们从此刻开始。",
+    "把灵感藏进字里行间，愿这一步恰逢其时。",
+    "从山水之间找方向，说说你想完成的事。",
+    "从山水之间找方向，我陪你把它理清。",
+    "从山水之间找方向，我们从此刻开始。",
+    "从山水之间找方向，愿这一步恰逢其时。",
+    "让每个念头都有归处，说说你想完成的事。",
+    "让每个念头都有归处，我陪你把它理清。",
+    "让每个念头都有归处，我们从此刻开始。",
+    "让每个念头都有归处，愿这一步恰逢其时。",
+    "把小小愿望点亮，说说你想完成的事。",
+    "把小小愿望点亮，我陪你把它理清。",
+    "把小小愿望点亮，我们从此刻开始。",
+    "把小小愿望点亮，愿这一步恰逢其时。",
+    "从一声鸟鸣开始，说说你想完成的事。",
+    "从一声鸟鸣开始，我陪你把它理清。",
+    "从一声鸟鸣开始，我们从此刻开始。",
+    "从一声鸟鸣开始，愿这一步恰逢其时。",
+    "让时间替你见证，说说你想完成的事。",
+    "让时间替你见证，我陪你把它理清。",
+    "让时间替你见证，我们从此刻开始。",
+    "让时间替你见证，愿这一步恰逢其时。",
+    "把难题拆成清晨，说说你想完成的事。",
+    "把难题拆成清晨，我陪你把它理清。",
+    "把难题拆成清晨，我们从此刻开始。",
+    "把难题拆成清晨，愿这一步恰逢其时。",
+    "沿着星光整理思路，说说你想完成的事。",
+    "沿着星光整理思路，我陪你把它理清。",
+    "沿着星光整理思路，我们从此刻开始。",
+    "沿着星光整理思路，愿这一步恰逢其时。",
+    "让心里的风吹向远方，说说你想完成的事。",
+    "让心里的风吹向远方，我陪你把它理清。",
+    "让心里的风吹向远方，我们从此刻开始。",
+    "让心里的风吹向远方，愿这一步恰逢其时。",
+    "从一盏灯下慢慢说，说说你想完成的事。",
+    "从一盏灯下慢慢说，我陪你把它理清。",
+    "从一盏灯下慢慢说，我们从此刻开始。",
+    "从一盏灯下慢慢说，愿这一步恰逢其时。",
+    "把未竟之事写下来，说说你想完成的事。",
+    "把未竟之事写下来，我陪你把它理清。",
+    "把未竟之事写下来，我们从此刻开始。",
+    "把未竟之事写下来，愿这一步恰逢其时。",
+    "让一纸计划轻轻展开，说说你想完成的事。",
+    "让一纸计划轻轻展开，我陪你把它理清。",
+    "让一纸计划轻轻展开，我们从此刻开始。",
+    "让一纸计划轻轻展开，愿这一步恰逢其时。",
+    "从今天的片刻出发，说说你想完成的事。",
+    "从今天的片刻出发，我陪你把它理清。",
+    "从今天的片刻出发，我们从此刻开始。",
+    "从今天的片刻出发，愿这一步恰逢其时。",
+    "把远方收进眼前，说说你想完成的事。",
+    "把远方收进眼前，我陪你把它理清。",
+    "把远方收进眼前，我们从此刻开始。",
+    "把远方收进眼前，愿这一步恰逢其时。",
+    "借一叶扁舟渡过难处，说说你想完成的事。",
+    "借一叶扁舟渡过难处，我陪你把它理清。",
+    "借一叶扁舟渡过难处，我们从此刻开始。",
+    "借一叶扁舟渡过难处，愿这一步恰逢其时。",
+    "让想做的事有个开头，说说你想完成的事。",
+    "让想做的事有个开头，我陪你把它理清。",
+    "让想做的事有个开头，我们从此刻开始。",
+    "让想做的事有个开头，愿这一步恰逢其时。",
+    "从静默里听见答案，说说你想完成的事。",
+    "从静默里听见答案，我陪你把它理清。",
+    "从静默里听见答案，我们从此刻开始。",
+    "从静默里听见答案，愿这一步恰逢其时。",
+    "把复杂化作清简，说说你想完成的事。",
+    "把复杂化作清简，我陪你把它理清。",
+    "把复杂化作清简，我们从此刻开始。",
+    "把复杂化作清简，愿这一步恰逢其时。",
+    "让一阵春风带来灵感，说说你想完成的事。",
+    "让一阵春风带来灵感，我陪你把它理清。",
+    "让一阵春风带来灵感，我们从此刻开始。",
+    "让一阵春风带来灵感，愿这一步恰逢其时。",
+    "从你最在意的地方说起，说说你想完成的事。",
+    "从你最在意的地方说起，我陪你把它理清。",
+    "从你最在意的地方说起，我们从此刻开始。",
+    "从你最在意的地方说起，愿这一步恰逢其时。"
+  ]
+}

@@ -4,10 +4,17 @@ import {
   CodeXmlIcon,
   SparklesIcon,
 } from "lucide-react"
+import { useState } from "react"
 
 import appIcon from "@/assets/icons/application/icon.svg"
 import { PromptComposer } from "@/components/chat/prompt-composer"
 import { Button } from "@/components/ui/button"
+import {
+  formatWelcomePoem,
+  pickPromptPlaceholder,
+  pickWelcomePoem,
+} from "@/data/new-task-content"
+import { useSettingsStore } from "@/store/settings-store"
 import { useWorkspaceStore } from "@/store/workspace-store"
 
 const suggestions = [
@@ -35,6 +42,11 @@ const suggestions = [
 
 export function NewTaskView() {
   const setDraft = useWorkspaceStore((state) => state.setDraft)
+  const poemMetadataMode = useSettingsStore(
+    (state) => state.welcomePoemMetadata
+  )
+  const [welcomePoem] = useState(() => pickWelcomePoem())
+  const [placeholder] = useState(() => pickPromptPlaceholder())
 
   return (
     <section className="flex min-h-0 flex-1 flex-col overflow-hidden bg-background">
@@ -48,7 +60,7 @@ export function NewTaskView() {
             />
             <p className="text-sm text-muted-foreground">Aestival 默认任务</p>
             <h1 className="text-balance text-2xl font-medium tracking-tight sm:text-3xl">
-              长风破浪会有时，直挂云帆济沧海。
+              {formatWelcomePoem(welcomePoem, poemMetadataMode)}
             </h1>
           </div>
           <div className="welcome-suggestions grid w-full grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -73,7 +85,7 @@ export function NewTaskView() {
       </div>
       <div className="shrink-0 px-4 pb-4 sm:px-8 sm:pb-6">
         <div className="mx-auto flex max-w-[840px] flex-col items-center gap-2">
-          <PromptComposer />
+          <PromptComposer placeholder={placeholder} />
           <p className="text-center text-[11px] text-muted-foreground">
             当前为前端 Mock，内容不会发送给模型或写入本地文件。
           </p>

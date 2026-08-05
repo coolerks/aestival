@@ -37,6 +37,7 @@ import { ComposerModelSelector } from "@/components/chat/composer-model-selector
 import { ComposerOptions } from "@/components/chat/composer-options"
 import { SlashCommandMenu } from "@/components/chat/slash-command-menu"
 import { IconButton } from "@/components/shell/icon-button"
+import { pickPromptPlaceholder } from "@/data/new-task-content"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -107,7 +108,11 @@ const ContextUsagePopover = lazy(() =>
   }))
 )
 
-export function PromptComposer() {
+export function PromptComposer({
+  placeholder,
+}: {
+  placeholder?: string
+} = {}) {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const [bypassConfirmOpen, setBypassConfirmOpen] = useState(false)
   const [fullscreenOpen, setFullscreenOpen] = useState(false)
@@ -118,6 +123,10 @@ export function PromptComposer() {
   const runState = useWorkspaceStore((state) => state.runState)
   const conversationId = useWorkspaceStore(
     (state) => state.conversationId
+  )
+  const resolvedPlaceholder = useMemo(
+    () => placeholder ?? pickPromptPlaceholder(),
+    [conversationId, placeholder]
   )
   const composerMode = useWorkspaceStore((state) => state.composerMode)
   const approvalPolicy = useWorkspaceStore(
@@ -391,7 +400,7 @@ export function PromptComposer() {
               setSlashDismissed(false)
             }}
             onKeyDown={handleKeyDown}
-            placeholder="随心输入，描述你想完成的任务…"
+            placeholder={resolvedPlaceholder}
             aria-label="任务输入"
             className="field-sizing-content min-h-[56px] max-h-[188px] px-4 pt-3 text-sm"
           />

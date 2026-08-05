@@ -175,11 +175,17 @@ function AppearanceSettings() {
   const setTheme = useSettingsStore((state) => state.setTheme)
   const motion = useSettingsStore((state) => state.motion)
   const setMotion = useSettingsStore((state) => state.setMotion)
+  const welcomePoemMetadata = useSettingsStore(
+    (state) => state.welcomePoemMetadata
+  )
+  const setWelcomePoemMetadata = useSettingsStore(
+    (state) => state.setWelcomePoemMetadata
+  )
   const fontSize = useSettingsStore((state) => state.fontSize)
   const setFontSize = useSettingsStore((state) => state.setFontSize)
   const codeFont = useSettingsStore((state) => state.codeFontSize)
   const setCodeFont = useSettingsStore((state) => state.setCodeFontSize)
-  return <><SectionIntro title="外观" description="主题选择只更新 Mock 设置；接入持久化前不会更改系统主题。" /><FieldSet><FieldLegend>主题</FieldLegend><ToggleGroup value={[theme]} onValueChange={(values) => values[0] && setTheme(values[0] as typeof theme)} variant="outline" className="grid grid-cols-3" spacing={1}><ToggleGroupItem value="light">浅色</ToggleGroupItem><ToggleGroupItem value="dark">深色</ToggleGroupItem><ToggleGroupItem value="system">跟随系统</ToggleGroupItem></ToggleGroup></FieldSet><div className="divide-y rounded-lg border"><SettingRow title="界面字号" description={`${fontSize}px`}><Slider className="w-48" min={12} max={18} step={1} value={[fontSize]} onValueChange={(values) => setFontSize(values[0] ?? 14)} /></SettingRow><SettingRow title="代码字号" description={`${codeFont}px`}><Slider className="w-48" min={11} max={18} step={1} value={[codeFont]} onValueChange={(values) => setCodeFont(values[0] ?? 13)} /></SettingRow><SettingRow title="界面动画" description="遵循系统减少动态效果设置"><Switch checked={motion} onCheckedChange={setMotion} aria-label="界面动画" /></SettingRow><SettingRow title="紧凑密度" description="缩短列表与工具栏间距"><Switch aria-label="紧凑密度" /></SettingRow></div></>
+  return <><SectionIntro title="外观" description="主题选择只更新 Mock 设置；接入持久化前不会更改系统主题。" /><FieldSet><FieldLegend>主题</FieldLegend><ToggleGroup value={[theme]} onValueChange={(values) => values[0] && setTheme(values[0] as typeof theme)} variant="outline" className="grid grid-cols-3" spacing={1}><ToggleGroupItem value="light">浅色</ToggleGroupItem><ToggleGroupItem value="dark">深色</ToggleGroupItem><ToggleGroupItem value="system">跟随系统</ToggleGroupItem></ToggleGroup></FieldSet><div className="divide-y rounded-lg border"><SettingRow title="界面字号" description={`${fontSize}px`}><Slider className="w-48" min={12} max={18} step={1} value={[fontSize]} onValueChange={(values) => setFontSize(values[0] ?? 14)} /></SettingRow><SettingRow title="代码字号" description={`${codeFont}px`}><Slider className="w-48" min={11} max={18} step={1} value={[codeFont]} onValueChange={(values) => setCodeFont(values[0] ?? 13)} /></SettingRow><SettingRow title="界面动画" description="遵循系统减少动态效果设置"><Switch checked={motion} onCheckedChange={setMotion} aria-label="界面动画" /></SettingRow><SettingRow title="欢迎诗句署名" description="默认只显示诗句正文"><Select value={welcomePoemMetadata} onValueChange={(value) => setWelcomePoemMetadata(value as typeof welcomePoemMetadata)}><SelectTrigger className="w-36" aria-label="欢迎诗句署名"><SelectValue /></SelectTrigger><SelectContent><SelectGroup><SelectItem value="none">不显示</SelectItem><SelectItem value="author">显示作者</SelectItem><SelectItem value="title">显示题名</SelectItem><SelectItem value="author-title">作者与题名</SelectItem></SelectGroup></SelectContent></Select></SettingRow><SettingRow title="紧凑密度" description="缩短列表与工具栏间距"><Switch aria-label="紧凑密度" /></SettingRow></div></>
 }
 
 function ShortcutSettings() {

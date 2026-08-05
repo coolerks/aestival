@@ -1,5 +1,6 @@
 import { create } from "zustand"
 
+import type { WelcomePoemMetadataMode } from "@/data/new-task-content"
 import { mockConnections, mockPairingRequests, type ConnectionStatus, type MockConnection, type SettingsCategory } from "@/data/mock-settings"
 
 export type SettingsDialog = "provider" | "model" | "connection" | "pairing" | "disconnect" | "shortcut" | "reset" | "cache" | null
@@ -26,6 +27,7 @@ type SettingsStore = {
   quietHours: boolean
   theme: "light" | "dark" | "system"
   motion: boolean
+  welcomePoemMetadata: WelcomePoemMetadataMode
   fontSize: number
   codeFontSize: number
   shortcutSearch: string
@@ -51,6 +53,7 @@ type SettingsStore = {
   setQuietHours: (enabled: boolean) => void
   setTheme: (theme: "light" | "dark" | "system") => void
   setMotion: (enabled: boolean) => void
+  setWelcomePoemMetadata: (mode: WelcomePoemMetadataMode) => void
   setFontSize: (size: number) => void
   setCodeFontSize: (size: number) => void
   setShortcutSearch: (search: string) => void
@@ -79,6 +82,7 @@ export const useSettingsStore = create<SettingsStore>((set) => ({
   quietHours: false,
   theme: "system",
   motion: true,
+  welcomePoemMetadata: "none",
   fontSize: 14,
   codeFontSize: 13,
   shortcutSearch: "",
@@ -104,6 +108,7 @@ export const useSettingsStore = create<SettingsStore>((set) => ({
   setQuietHours: (quietHours) => set({ quietHours }),
   setTheme: (theme) => set({ theme }),
   setMotion: (motion) => set({ motion }),
+  setWelcomePoemMetadata: (welcomePoemMetadata) => set({ welcomePoemMetadata }),
   setFontSize: (fontSize) => set({ fontSize }),
   setCodeFontSize: (codeFontSize) => set({ codeFontSize }),
   setShortcutSearch: (shortcutSearch) => set({ shortcutSearch }),
