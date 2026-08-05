@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import type { DragEvent } from "react"
 import {
   BugIcon,
+  FilePlusIcon,
   FileSearchIcon,
   FilesIcon,
   GripVerticalIcon,
@@ -11,9 +12,11 @@ import {
   PanelRightIcon,
   PinIcon,
   PlusIcon,
+  RefreshCwIcon,
   TerminalIcon,
   XIcon,
 } from "lucide-react"
+import { toast } from "sonner"
 
 import { IconButton } from "@/components/shell/icon-button"
 import { Button } from "@/components/ui/button"
@@ -28,7 +31,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input"
-import { Separator } from "@/components/ui/separator"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 import { panelTypeLabels, type WorkspacePanelInstance, type WorkspacePanelPlacement, type WorkspacePanelType } from "@/data/mock-workspace-panels"
@@ -66,6 +68,10 @@ function PanelMenu({ panel, placement }: { panel: WorkspacePanelInstance; placem
   return <DropdownMenu><Tooltip><TooltipTrigger render={<DropdownMenuTrigger render={<Button size="icon-sm" variant="ghost" aria-label={`${panel.title}更多操作`} />} />}><MoreHorizontalIcon /></TooltipTrigger><TooltipContent>{panel.title}更多操作</TooltipContent></Tooltip><DropdownMenuContent align="end"><DropdownMenuGroup><DropdownMenuItem onClick={() => useWorkspacePanelStore.getState().togglePinnedPanel(panel.id)}><PinIcon />{panel.pinned ? "取消固定" : "固定面板"}</DropdownMenuItem>{panel.type === "terminal" ? <DropdownMenuItem onClick={() => useWorkspacePanelStore.getState().setRenamePanelId(panel.id)}><GripVerticalIcon />重命名终端</DropdownMenuItem> : null}</DropdownMenuGroup><DropdownMenuSeparator /><DropdownMenuGroup><DropdownMenuItem onClick={() => { const target = placement === "right" ? "bottom" : "right"; movePanel(panel.id, target); ensurePlacementOpen(target) }}>{placement === "right" ? <PanelBottomIcon /> : <PanelRightIcon />}移到{placement === "right" ? "底部" : "右侧"}</DropdownMenuItem><DropdownMenuItem onClick={() => closePanel(placement, panel.id)}><XIcon />关闭面板</DropdownMenuItem></DropdownMenuGroup></DropdownMenuContent></DropdownMenu>
 }
 
+function FilePanelActions() {
+  return <><IconButton label="新建文件" onClick={() => toast.info("Mock：不会写入本地文件")}><FilePlusIcon /></IconButton><IconButton label="刷新文件树" onClick={() => toast.success("Mock 文件树已刷新")}><RefreshCwIcon /></IconButton></>
+}
+
 function RenamePanelDialog() {
   const renameId = useWorkspacePanelStore((state) => state.renamePanelId)
   const rightPanels = useWorkspacePanelStore((state) => state.rightPanels)
@@ -81,11 +87,10 @@ export function WorkspacePanel({ placement }: { placement: WorkspacePanelPlaceme
   const activeId = useWorkspacePanelStore((state) => placement === "right" ? state.activeRightId : state.activeBottomId)
   const active = panels.find((panel) => panel.id === activeId) ?? null
   const setActive = useWorkspacePanelStore((state) => state.setActivePanel)
-  const close = placement === "right" ? useWorkspaceStore.getState().toggleRightPanel : useWorkspaceStore.getState().toggleBottomPanel
   const handleDrop = (event: DragEvent) => { event.preventDefault(); const id = event.dataTransfer.getData("application/aestival-panel"); if (id) { useWorkspacePanelStore.getState().movePanel(id, placement); ensurePlacementOpen(placement) } }
 
   return <aside className="flex size-full min-h-0 flex-col bg-background" onDragOver={(event) => event.preventDefault()} onDrop={handleDrop}>
-    {placement === "right" ? <><header className="flex h-9 shrink-0 items-center gap-2 px-2">{active ? (() => { const Icon = panelIcons[active.type]; return <><Icon className="size-4" /><span className="min-w-0 flex-1 truncate text-xs font-medium">{active.title}</span><PanelMenu panel={active} placement={placement} /></> })() : <span className="flex-1 text-xs text-muted-foreground">右侧面板</span>}<AddPanelMenu placement={placement} /><IconButton label="关闭右侧栏" onClick={close}><XIcon /></IconButton></header><Separator /></> : <div className="flex h-9 shrink-0 items-center border-b px-1"><Tabs value={activeId ?? ""} onValueChange={(value) => setActive(placement, value)} className="min-w-0 flex-1 gap-0"><TabsList variant="line" className="h-8 max-w-full justify-start overflow-x-auto">{panels.map((panel) => { const Icon = panelIcons[panel.type]; return <div key={panel.id} className="group flex items-center" draggable onDragStart={(event) => event.dataTransfer.setData("application/aestival-panel", panel.id)} onDragOver={(event) => event.preventDefault()} onDrop={(event) => { event.stopPropagation(); const from = event.dataTransfer.getData("application/aestival-panel"); if (from) useWorkspacePanelStore.getState().reorderPanel(placement, from, panel.id) }}><TabsTrigger value={panel.id}><Icon />{panel.title}</TabsTrigger><IconButton label={`关闭${panel.title}`} className={cn("size-6 -ml-1", panel.id !== activeId && "opacity-0 group-hover:opacity-100 group-focus-within:opacity-100")} onClick={() => useWorkspacePanelStore.getState().closePanel(placement, panel.id)}><XIcon /></IconButton></div>})}</TabsList></Tabs><AddPanelMenu placement={placement} /><IconButton label="关闭底部面板" onClick={close}><XIcon /></IconButton></div>}
+    {placement === "right" ? <header className="flex h-9 shrink-0 items-center gap-1 px-2">{active ? (() => { const Icon = panelIcons[active.type]; return <><Icon className="size-4" /><span className="min-w-0 flex-1 truncate text-xs font-medium">{active.title}</span><PanelMenu panel={active} placement={placement} />{active.type === "files" ? <FilePanelActions /> : null}</> })() : <span className="flex-1 text-xs text-muted-foreground">右侧面板</span>}<AddPanelMenu placement={placement} /></header> : <div className="flex h-9 shrink-0 items-center border-b px-1"><Tabs value={activeId ?? ""} onValueChange={(value) => setActive(placement, value)} className="min-w-0 flex-1 gap-0"><TabsList variant="line" className="h-8 max-w-full justify-start overflow-x-auto">{panels.map((panel) => { const Icon = panelIcons[panel.type]; return <div key={panel.id} className="group flex items-center" draggable onDragStart={(event) => event.dataTransfer.setData("application/aestival-panel", panel.id)} onDragOver={(event) => event.preventDefault()} onDrop={(event) => { event.stopPropagation(); const from = event.dataTransfer.getData("application/aestival-panel"); if (from) useWorkspacePanelStore.getState().reorderPanel(placement, from, panel.id) }}><TabsTrigger value={panel.id}><Icon />{panel.title}</TabsTrigger><IconButton label={`关闭${panel.title}`} className={cn("size-6 -ml-1", panel.id !== activeId && "opacity-0 group-hover:opacity-100 group-focus-within:opacity-100")} onClick={() => useWorkspacePanelStore.getState().closePanel(placement, panel.id)}><XIcon /></IconButton></div>})}</TabsList></Tabs>{active?.type === "files" ? <FilePanelActions /> : null}<AddPanelMenu placement={placement} /></div>}
     <div className="min-h-0 flex-1">{active ? <PanelBody panel={active} /> : <EmptyPanelSelection onAdd={() => useWorkspacePanelStore.getState().openPanel("terminal", placement)} />}</div>
     <RenamePanelDialog />
   </aside>

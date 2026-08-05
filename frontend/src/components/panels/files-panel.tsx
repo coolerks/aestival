@@ -9,7 +9,6 @@ import {
 } from "lucide-react"
 import { toast } from "sonner"
 
-import { IconButton } from "@/components/shell/icon-button"
 import { Button } from "@/components/ui/button"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
 import {
@@ -130,11 +129,6 @@ export function FilesPanel() {
   }
   return (
     <div className="flex size-full min-h-0 flex-col">
-      <div className="flex h-9 shrink-0 items-center gap-1 border-b px-2">
-        <span className="min-w-0 flex-1 truncate text-xs text-muted-foreground">Aestival</span>
-        <IconButton label="新建文件" onClick={() => toast.info("Mock：不会写入本地文件")}><FilePlusIcon /></IconButton>
-        <IconButton label="刷新文件树" onClick={() => toast.success("Mock 文件树已刷新")}><RefreshCwIcon /></IconButton>
-      </div>
       <ScrollArea className="min-h-0 flex-1 p-1" tabIndex={0}>
         <TreeNode node={mockFileTree} />
       </ScrollArea>
