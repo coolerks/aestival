@@ -298,21 +298,18 @@ export function SessionProjectGroup({
                   </SidebarMenuSubButton>
                 </SidebarMenuSubItem>
               ) : null}
-              {!query ? (
+              {!query && hasMore ? (
                 <SidebarMenuSubItem>
                   <SidebarMenuSubButton
                     href="#"
-                    aria-disabled={!hasMore}
-                    className="text-muted-foreground"
+                    className="pl-8 text-muted-foreground"
                     onClick={(event) => {
                       event.preventDefault()
-                      if (hasMore) {
-                        loadMoreSessions(projectId)
-                      }
+                      loadMoreSessions(projectId)
                     }}
                   >
-                    {hasMore ? <ChevronDownIcon /> : null}
-                    <span>{hasMore ? "展开更多" : "已显示全部"}</span>
+                    <ChevronDownIcon />
+                    <span>展开更多</span>
                   </SidebarMenuSubButton>
                 </SidebarMenuSubItem>
               ) : null}

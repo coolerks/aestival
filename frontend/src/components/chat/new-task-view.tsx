@@ -39,7 +39,7 @@ export function NewTaskView() {
   return (
     <section className="flex min-h-0 flex-1 flex-col overflow-hidden bg-background">
       <div className="flex min-h-0 flex-1 flex-col items-center justify-center overflow-y-auto px-6 py-10">
-        <div className="welcome-content flex w-full max-w-4xl flex-col items-center gap-8">
+        <div className="welcome-content flex w-full max-w-[840px] flex-col items-center gap-8">
           <div className="flex flex-col items-center gap-3 text-center">
             <img
               src={appIcon}

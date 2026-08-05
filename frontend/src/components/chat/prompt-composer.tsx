@@ -353,7 +353,7 @@ export function PromptComposer() {
     <div className="w-full max-w-[840px]">
       <ContextMenu>
       <ContextMenuTrigger className="block">
-      <InputGroup className="min-h-[126px] flex-col items-stretch rounded-xl bg-background shadow-sm has-[[data-slot=input-group-control]:focus-visible]:border-input has-[[data-slot=input-group-control]:focus-visible]:ring-0 has-disabled:bg-background has-disabled:opacity-100">
+      <InputGroup className="min-h-[108px] flex-col items-stretch rounded-xl bg-background shadow-sm has-[[data-slot=input-group-control]:focus-visible]:border-input has-[[data-slot=input-group-control]:focus-visible]:ring-0 has-disabled:bg-background has-disabled:opacity-100">
         {attachments.length > 0 || composerMode !== "standard" ? (
           <InputGroupAddon
             align="block-start"
@@ -393,7 +393,7 @@ export function PromptComposer() {
             onKeyDown={handleKeyDown}
             placeholder="随心输入，描述你想完成的任务…"
             aria-label="任务输入"
-            className="field-sizing-content min-h-[72px] max-h-[188px] px-4 pt-3 text-sm"
+            className="field-sizing-content min-h-[56px] max-h-[188px] px-4 pt-3 text-sm"
           />
           <PopoverContent
             anchor={textareaRef}
