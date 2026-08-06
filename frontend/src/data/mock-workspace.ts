@@ -22,10 +22,10 @@ export type NavigationItem = {
 
 export const navigationItems: NavigationItem[] = [
   { id: "new-task", label: "新建任务", icon: SquarePenIcon },
+  { id: "tasks", label: "定时任务", icon: CalendarClockIcon },
   { id: "knowledge", label: "知识库", icon: DatabaseIcon },
-  { id: "apps", label: "应用", icon: AppWindowIcon },
   { id: "capabilities", label: "能力", icon: BlocksIcon },
-  { id: "tasks", label: "任务", icon: CalendarClockIcon },
+  { id: "apps", label: "应用", icon: AppWindowIcon },
 ]
 
 export const commandItems = [
