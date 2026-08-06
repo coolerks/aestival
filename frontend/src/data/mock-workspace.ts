@@ -33,7 +33,7 @@ export const commandItems = [
   { id: "knowledge", label: "打开知识库", group: "功能", icon: DatabaseIcon, shortcut: "⌘1" },
   { id: "apps", label: "打开应用", group: "功能", icon: AppWindowIcon, shortcut: "⌘2" },
   { id: "capabilities", label: "打开能力", group: "功能", icon: BlocksIcon, shortcut: "⌘3" },
-  { id: "tasks", label: "打开任务", group: "功能", icon: CalendarClockIcon, shortcut: "⌘4" },
+  { id: "tasks", label: "打开定时任务", group: "功能", icon: CalendarClockIcon, shortcut: "⌘4" },
   { id: "search", label: "搜索会话与聊天记录", group: "搜索", icon: SearchIcon, shortcut: "⌘K" },
   { id: "docs", label: "查看设计方案", group: "最近", icon: BookOpenIcon },
   { id: "workspace", label: "Aestival 前端实现", group: "最近", icon: FolderKanbanIcon },
