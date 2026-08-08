@@ -4,6 +4,7 @@ import {
   FilePlusIcon,
   FolderOpenIcon,
   FolderPlusIcon,
+  PanelRightIcon,
   RefreshCwIcon,
   SearchIcon,
 } from "lucide-react"
@@ -30,6 +31,10 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { mockFiles, mockFileTree, type MockFileTreeNode } from "@/data/mock-workspace-panels"
 import { cn } from "@/lib/utils"
+import {
+  selectActiveEditorResource,
+  useEditorWorkbenchStore,
+} from "@/store/editor-workbench-store"
 import { useWorkspacePanelStore } from "@/store/workspace-panel-store"
 
 import folderProject from "@/assets/icons/material/folder-project.svg"
@@ -46,10 +51,10 @@ const icons = { "folder-project": folderProject, "folder-src": folderSrc, "folde
 
 function TreeNode({ node, depth = 0 }: { node: MockFileTreeNode; depth?: number }) {
   const expandedFolders = useWorkspacePanelStore((state) => state.expandedFolders)
-  const selectedFileIds = useWorkspacePanelStore((state) => state.selectedFileIds)
   const toggleFolder = useWorkspacePanelStore((state) => state.toggleFolder)
-  const selectFile = useWorkspacePanelStore((state) => state.selectFile)
-  const openFile = useWorkspacePanelStore((state) => state.openFile)
+  const activeResourceId = useEditorWorkbenchStore(selectActiveEditorResource)
+  const openFile = useEditorWorkbenchStore((state) => state.openFile)
+  const openFileToSide = useEditorWorkbenchStore((state) => state.openFileToSide)
 
   if (node.kind === "folder") {
     const open = expandedFolders.includes(node.id)
@@ -82,17 +87,14 @@ function TreeNode({ node, depth = 0 }: { node: MockFileTreeNode; depth?: number 
 
   const file = mockFiles.find((item) => item.id === node.fileId)
   if (!file) return null
-  const selected = selectedFileIds.includes(file.id)
+  const selected = activeResourceId === file.id
   return (
     <ContextMenu>
       <ContextMenuTrigger
         render={<Button variant="ghost" />}
         className={cn("flex h-7 w-full items-center gap-1 rounded-md pr-2 text-left text-xs hover:bg-accent", selected && "bg-accent text-accent-foreground")}
         style={{ paddingLeft: depth * 14 + 20 }}
-        onClick={(event) => {
-          selectFile(file.id, event.metaKey || event.ctrlKey)
-          openFile(file.id, false)
-        }}
+        onClick={() => openFile(file.id, false)}
         onDoubleClick={() => openFile(file.id, true)}
       >
         <img src={icons[file.icon]} alt="" className="size-4 shrink-0" />
@@ -101,6 +103,7 @@ function TreeNode({ node, depth = 0 }: { node: MockFileTreeNode; depth?: number 
       </ContextMenuTrigger>
       <ContextMenuContent>
         <ContextMenuItem onClick={() => openFile(file.id, true)}><FolderOpenIcon />固定打开<ContextMenuShortcut>Enter</ContextMenuShortcut></ContextMenuItem>
+        <ContextMenuItem onClick={() => openFileToSide(file.id)}><PanelRightIcon />在侧边打开</ContextMenuItem>
         <ContextMenuItem onClick={() => toast.success("路径已复制（Mock）")}><ClipboardCopyIcon />复制路径<ContextMenuShortcut>⌥⌘C</ContextMenuShortcut></ContextMenuItem>
         <ContextMenuSeparator />
         <ContextMenuItem onClick={() => toast.info("Mock：在系统文件管理器中显示")}> <SearchIcon />在文件管理器中显示</ContextMenuItem>

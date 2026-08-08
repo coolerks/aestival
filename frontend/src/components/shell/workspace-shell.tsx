@@ -19,8 +19,9 @@ import {
 } from "@/components/ui/sheet"
 import { Skeleton } from "@/components/ui/skeleton"
 import { useNarrowWorkspace } from "@/hooks/use-narrow-workspace"
+import { selectOpenResourceIds } from "@/store/editor-layout"
+import { useEditorWorkbenchStore } from "@/store/editor-workbench-store"
 import { useWorkspaceStore } from "@/store/workspace-store"
-import { useWorkspacePanelStore } from "@/store/workspace-panel-store"
 
 const ConversationView = lazy(() =>
   import("@/components/chat/conversation-view").then((module) => ({
@@ -73,7 +74,9 @@ function CurrentAppPage() {
 }
 
 function CurrentPage() {
-  const openFileCount = useWorkspacePanelStore((state) => state.openFiles.length)
+  const openFileCount = useEditorWorkbenchStore((state) =>
+    selectOpenResourceIds(state.workbench).length,
+  )
   const content = <CurrentAppPage />
   return openFileCount > 0 ? <WorkspaceMainTabs chat={content} /> : content
 }

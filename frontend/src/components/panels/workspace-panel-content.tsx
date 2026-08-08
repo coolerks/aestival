@@ -53,6 +53,7 @@ import { mockDebugEvents, mockLogs, mockSearchMatches } from "@/data/mock-worksp
 import { cn } from "@/lib/utils"
 import { copyTextToClipboard, readTextFromClipboard, selectElementContents, selectedText } from "@/lib/context-menu-utils"
 import { useWorkspacePanelStore } from "@/store/workspace-panel-store"
+import { useEditorWorkbenchStore } from "@/store/editor-workbench-store"
 
 function ClearPanelDialog({ open, onOpenChange, title, description, onConfirm }: { open: boolean; onOpenChange: (open: boolean) => void; title: string; description: string; onConfirm: () => void }) {
   return <AlertDialog open={open} onOpenChange={onOpenChange}><AlertDialogContent><AlertDialogHeader><AlertDialogMedia><EraserIcon /></AlertDialogMedia><AlertDialogTitle>{title}</AlertDialogTitle><AlertDialogDescription>{description}</AlertDialogDescription></AlertDialogHeader><AlertDialogFooter><AlertDialogCancel>取消</AlertDialogCancel><AlertDialogAction variant="destructive" onClick={onConfirm}>确认清空</AlertDialogAction></AlertDialogFooter></AlertDialogContent></AlertDialog>
@@ -124,7 +125,7 @@ export function SearchPanel() {
       </div>
       <ScrollArea className="min-h-0 flex-1 p-2">
         <p className="mb-2 text-xs text-muted-foreground">{visible.length} 个 Mock 结果</p>
-        <div className="flex flex-col gap-1">{visible.map((match) => <Button key={match.id} variant="ghost" className="h-auto w-full flex-col items-start rounded-md p-2 text-left text-xs" onClick={() => useWorkspacePanelStore.getState().openFile(match.fileId, true)}><span className="block max-w-full truncate font-medium">{match.path}:{match.line}</span><span className="app-selectable-content max-w-full truncate text-muted-foreground">{match.before}<mark className="bg-accent text-accent-foreground">{match.match}</mark>{match.after}</span></Button>)}</div>
+        <div className="flex flex-col gap-1">{visible.map((match) => <Button key={match.id} variant="ghost" className="h-auto w-full flex-col items-start rounded-md p-2 text-left text-xs" onClick={() => useEditorWorkbenchStore.getState().openFile(match.fileId, true)}><span className="block max-w-full truncate font-medium">{match.path}:{match.line}</span><span className="app-selectable-content max-w-full truncate text-muted-foreground">{match.before}<mark className="bg-accent text-accent-foreground">{match.match}</mark>{match.after}</span></Button>)}</div>
       </ScrollArea>
       <AlertDialog open={dialogOpen} onOpenChange={setDialogOpen}><AlertDialogContent><AlertDialogHeader><AlertDialogTitle>替换全部 Mock 结果？</AlertDialogTitle><AlertDialogDescription>此操作只演示确认流程，不会修改本地文件。</AlertDialogDescription></AlertDialogHeader><AlertDialogFooter><AlertDialogCancel>取消</AlertDialogCancel><AlertDialogAction variant="destructive" onClick={() => toast.success("Mock：未写入任何文件")}>确认替换</AlertDialogAction></AlertDialogFooter></AlertDialogContent></AlertDialog>
     </div>

@@ -18,8 +18,9 @@ import { mockFiles } from "@/data/mock-workspace-panels"
 import { cn } from "@/lib/utils"
 import { toggleWindowMaximise } from "@/services/window-service"
 import { useAppStore } from "@/store/app-store"
+import { selectActiveEditor } from "@/store/editor-layout"
+import { useEditorWorkbenchStore } from "@/store/editor-workbench-store"
 import { useWorkspaceStore } from "@/store/workspace-store"
-import { useWorkspacePanelStore } from "@/store/workspace-panel-store"
 
 export function AppTitlebar() {
   const { state: sidebarState } = useSidebar()
@@ -45,8 +46,11 @@ export function AppTitlebar() {
   )
   const rightPanelOpen = useWorkspaceStore((state) => state.rightPanelOpen)
   const bottomPanelOpen = useWorkspaceStore((state) => state.bottomPanelOpen)
-  const activeMainTab = useWorkspacePanelStore((state) => state.activeMainTab)
-  const activeFileName = mockFiles.find((file) => file.id === activeMainTab)?.name
+  const activeFileId = useEditorWorkbenchStore((state) => {
+    const editor = selectActiveEditor(state.workbench)
+    return editor && editor.kind !== "chat" ? editor.resourceId : null
+  })
+  const activeFileName = mockFiles.find((file) => file.id === activeFileId)?.name
   const title =
     activeFileName ?? (activePage === "new-task" && conversationId
       ? conversationTitle

@@ -1,135 +1,87 @@
-import { CopyIcon, FileIcon, MessageSquareIcon, PinIcon, XIcon } from "lucide-react"
 import { lazy, Suspense, type ReactNode } from "react"
+import { RefreshCwIcon } from "lucide-react"
 import { toast } from "sonner"
 
-import { IconButton } from "@/components/shell/icon-button"
 import {
-  ContextMenu,
-  ContextMenuContent,
-  ContextMenuGroup,
-  ContextMenuItem,
-  ContextMenuShortcut,
-  ContextMenuTrigger,
-} from "@/components/ui/context-menu"
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card"
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog"
+import { Button } from "@/components/ui/button"
 import { mockFiles } from "@/data/mock-workspace-panels"
-import { useWorkspacePanelStore } from "@/store/workspace-panel-store"
+import { useEditorWorkbenchStore } from "@/store/editor-workbench-store"
 
-const WorkspaceFilePreview = lazy(() =>
-  import("./workspace-file-preview").then((module) => ({
-    default: module.WorkspaceFilePreview,
-  }))
+const EditorWorkbench = lazy(() =>
+  import("@/components/editor/editor-workbench").then((module) => ({
+    default: module.EditorWorkbench,
+  })),
 )
 
-export function WorkspaceMainTabs({ chat }: { chat: ReactNode }) {
-  const openFiles = useWorkspacePanelStore((state) => state.openFiles)
-  const active = useWorkspacePanelStore((state) => state.activeMainTab)
-  return (
-    <div className="flex size-full min-h-0 min-w-0 flex-col">
-      <Tabs
-        value={active}
-        onValueChange={useWorkspacePanelStore.getState().setActiveMainTab}
-        className="min-w-0 shrink-0 gap-0"
-      >
-        <TabsList
-          variant="line"
-          className="h-9 w-full min-w-0 justify-start overflow-x-auto overflow-y-hidden no-scrollbar border-b px-2 py-0"
-        >
-          <TabsTrigger value="chat" className="flex-none after:bottom-0!">
-            <MessageSquareIcon />
-            聊天
-          </TabsTrigger>
-          {openFiles.map((tab) => {
-            const file = mockFiles.find((item) => item.id === tab.fileId)
-            if (!file) return null
+function EditorCloseDialog() {
+  const pending = useEditorWorkbenchStore((state) => state.pendingClose)
+  const buffers = useEditorWorkbenchStore((state) => state.editorBuffers)
+  const cancel = useEditorWorkbenchStore((state) => state.cancelPendingClose)
+  const confirm = useEditorWorkbenchStore((state) => state.confirmPendingClose)
+  const compare = useEditorWorkbenchStore((state) => state.comparePendingClose)
+  const resourceId = pending?.type === "group" ? pending.resourceIds[0] : pending?.resourceId
+  const file = mockFiles.find((candidate) => candidate.id === resourceId)
+  const buffer = resourceId ? buffers[resourceId] : undefined
+  const externalChange = Boolean(buffer?.externalChange)
+  const multiple = pending?.type === "group" && pending.resourceIds.length > 1
 
-            return (
-              <ContextMenu key={file.id}>
-                <ContextMenuTrigger className="flex shrink-0 items-center">
-                  <HoverCard>
-                    <HoverCardTrigger
-                      render={
-                        <TabsTrigger
-                          value={file.id}
-                          className="flex-none after:bottom-0!"
-                        >
-                          <FileIcon />
-                          {file.name}
-                          {file.dirty ? (
-                            <span
-                              className="size-1.5 rounded-full bg-foreground"
-                              aria-label="未保存"
-                            />
-                          ) : null}
-                        </TabsTrigger>
-                      }
-                    />
-                    <HoverCardContent align="start">
-                      <p className="truncate text-xs font-medium">{file.path}</p>
-                      <p className="mt-1 text-xs text-muted-foreground">
-                        {file.language} · {file.size} · {file.modifiedAt}
-                      </p>
-                    </HoverCardContent>
-                  </HoverCard>
-                  <IconButton
-                    label={`关闭 ${file.name}`}
-                    className="-ml-1 size-6"
-                    onClick={() =>
-                      useWorkspacePanelStore.getState().requestCloseFile(file.id)
-                    }
-                  >
-                    <XIcon />
-                  </IconButton>
-                </ContextMenuTrigger>
-                <ContextMenuContent>
-                  <ContextMenuGroup>
-                    <ContextMenuItem
-                      onClick={() =>
-                        useWorkspacePanelStore.getState().pinFile(file.id)
-                      }
-                    >
-                      <PinIcon />
-                      固定页签
-                    </ContextMenuItem>
-                    <ContextMenuItem
-                      onClick={() => toast.success("文件路径已复制（Mock）")}
-                    >
-                      <CopyIcon />
-                      复制路径
-                      <ContextMenuShortcut>⌥⌘C</ContextMenuShortcut>
-                    </ContextMenuItem>
-                    <ContextMenuItem
-                      onClick={() =>
-                        useWorkspacePanelStore.getState().requestCloseFile(file.id)
-                      }
-                    >
-                      <XIcon />
-                      关闭页签
-                      <ContextMenuShortcut>⌘W</ContextMenuShortcut>
-                    </ContextMenuItem>
-                  </ContextMenuGroup>
-                </ContextMenuContent>
-              </ContextMenu>
-            )
-          })}
-        </TabsList>
-      </Tabs>
-      <div className="min-h-0 min-w-0 flex-1">
-        {active === "chat" ? (
-          chat
-        ) : (
-          <Suspense
-            fallback={
-              <div className="grid size-full place-items-center text-xs text-muted-foreground">
-                正在加载文件预览…
-              </div>
-            }
-          >
-            <WorkspaceFilePreview fileId={active} />
-          </Suspense>
-        )}
-      </div>
+  return (
+    <AlertDialog open={Boolean(pending)} onOpenChange={(open) => { if (!open) cancel() }}>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>
+            {externalChange
+              ? "文件已在外部改变"
+              : multiple
+                ? `保存 ${pending.resourceIds.length} 个文件的更改？`
+                : `保存 ${file?.name ?? "文件"} 的更改？`}
+          </AlertDialogTitle>
+          <AlertDialogDescription>
+            {externalChange
+              ? "关闭前可以比较外部版本，或选择保留当前工作副本。当前 Mock 不会写入真实文件。"
+              : "关闭前请选择如何处理未保存内容；当前操作只改变前端工作副本。"}
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>取消</AlertDialogCancel>
+          {externalChange && pending?.type !== "group" ? (
+            <Button variant="outline" onClick={compare}><RefreshCwIcon data-icon="inline-start" />比较</Button>
+          ) : null}
+          <Button variant="outline" onClick={() => confirm(false)}>不保存</Button>
+          <AlertDialogAction onClick={() => {
+            confirm(true)
+            toast.success("已保存到工作副本")
+          }}>
+            保存
+          </AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  )
+}
+
+export function WorkspaceMainTabs({ chat }: { chat: ReactNode }) {
+  return (
+    <div className="size-full min-h-0 min-w-0">
+      <Suspense
+        fallback={
+          <div className="grid size-full place-items-center text-xs text-muted-foreground">
+            正在加载文件编辑器…
+          </div>
+        }
+      >
+        <EditorWorkbench chat={chat} />
+      </Suspense>
+      <EditorCloseDialog />
     </div>
   )
 }
