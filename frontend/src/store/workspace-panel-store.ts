@@ -65,6 +65,7 @@ function newPanel(type: WorkspacePanelType, sequence: number): WorkspacePanelIns
     search: "内容搜索",
     logs: "日志",
     debug: "会话调试",
+    board: "项目看板",
   }
   return {
     id: `panel-${type}-${Date.now()}-${sequence}`,
@@ -96,6 +97,7 @@ export const useWorkspacePanelStore = create<WorkspacePanelStore>((set) => ({
   renamePanelId: null,
   replaceDialogOpen: false,
   openPanel: (type, placement) => {
+    if (type === "board") placement = "right"
     const state = useWorkspacePanelStore.getState()
     const all = [...state.rightPanels, ...state.bottomPanels]
     if (type !== "terminal") {
@@ -130,6 +132,7 @@ export const useWorkspacePanelStore = create<WorkspacePanelStore>((set) => ({
   movePanel: (id, to) => set((state) => {
     const panel = [...state.rightPanels, ...state.bottomPanels].find((item) => item.id === id)
     if (!panel) return state
+    if (panel.type === "board" && to === "bottom") return state
     const rightPanels = state.rightPanels.filter((item) => item.id !== id)
     const bottomPanels = state.bottomPanels.filter((item) => item.id !== id)
     if (to === "right") rightPanels.push(panel)

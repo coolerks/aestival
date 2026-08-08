@@ -15,6 +15,7 @@ import {
   Settings2Icon,
   ShieldQuestionIcon,
   SquarePenIcon,
+  SquareKanbanIcon,
   StarIcon,
   TerminalSquareIcon,
 } from "lucide-react"
@@ -101,6 +102,8 @@ function ProjectContextMenuContent({
     (state) => state.setSessionArchived,
   )
   const setActivePage = useWorkspaceStore((state) => state.setActivePage)
+  const setActiveProjectId = useWorkspaceStore((state) => state.setActiveProjectId)
+  const openProjectBoard = useWorkspaceStore((state) => state.openProjectBoard)
   const fixedProject = projectId === "task"
   const projectSessions = sessions.filter(
     (session) => session.projectId === projectId && !session.archived,
@@ -125,10 +128,14 @@ function ProjectContextMenuContent({
           <FolderOpenIcon />
           在系统文件管理器中显示
         </ContextMenuItem>
-        <ContextMenuItem onClick={() => setActivePage("new-task")}>
+        <ContextMenuItem onClick={() => { setActiveProjectId(projectId); setActivePage("new-task") }}>
           <SquarePenIcon />
           在此项目中新建任务
           <ContextMenuShortcut>⌘N</ContextMenuShortcut>
+        </ContextMenuItem>
+        <ContextMenuItem onClick={() => { setActiveProjectId(projectId); openProjectBoard() }}>
+          <SquareKanbanIcon />
+          打开项目看板
         </ContextMenuItem>
         <ContextMenuItem
           onClick={() => useWorkspacePanelStore.getState().openPanel("terminal", "right")}
@@ -224,6 +231,7 @@ export function SessionProjectGroup({
   const conversationId = useWorkspaceStore((state) => state.conversationId)
   const runState = useWorkspaceStore((state) => state.runState)
   const setActivePage = useWorkspaceStore((state) => state.setActivePage)
+  const setActiveProjectId = useWorkspaceStore((state) => state.setActiveProjectId)
   const openMockConversation = useWorkspaceStore(
     (state) => state.openMockConversation
   )
@@ -255,6 +263,7 @@ export function SessionProjectGroup({
           <ContextMenu>
             <ContextMenuTrigger className="block w-full">
               <CollapsibleTrigger
+                onClick={() => setActiveProjectId(projectId)}
                 render={
                   <SidebarMenuButton tooltip={label} />
                 }

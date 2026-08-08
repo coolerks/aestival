@@ -48,7 +48,7 @@ import {
 } from "@/data/mock-session-management"
 
 export type AgentMode = "agent" | "chat"
-export type AppPage = "new-task" | "knowledge" | "apps" | "capabilities" | "tasks" | "settings"
+export type AppPage = "new-task" | "project-board" | "knowledge" | "apps" | "capabilities" | "tasks" | "settings"
 
 function createEmptyConversationPatch() {
   return {
@@ -87,6 +87,8 @@ function updateMessageContent(
 type WorkspaceState = {
   mode: AgentMode
   activePage: AppPage
+  boardReturnPage: Exclude<AppPage, "project-board">
+  activeProjectId: MockSessionProjectId
   commandOpen: boolean
   rightPanelOpen: boolean
   bottomPanelOpen: boolean
@@ -124,6 +126,9 @@ type WorkspaceState = {
   scheduledTasks: MockScheduledTaskRecord[]
   setMode: (mode: AgentMode) => void
   setActivePage: (page: AppPage) => void
+  setActiveProjectId: (projectId: MockSessionProjectId) => void
+  openProjectBoard: () => void
+  returnFromProjectBoard: () => void
   setCommandOpen: (open: boolean) => void
   toggleRightPanel: () => void
   toggleBottomPanel: () => void
@@ -211,6 +216,8 @@ type WorkspaceState = {
 export const useWorkspaceStore = create<WorkspaceState>((set) => ({
   mode: "agent",
   activePage: "new-task",
+  boardReturnPage: "new-task",
+  activeProjectId: "task",
   commandOpen: false,
   rightPanelOpen: false,
   bottomPanelOpen: false,
@@ -253,7 +260,20 @@ export const useWorkspaceStore = create<WorkspaceState>((set) => ({
       mode,
       composerMode: mode === "chat" ? "standard" : state.composerMode,
     })),
-  setActivePage: (activePage) => set({ activePage }),
+  setActivePage: (activePage) => set((state) => activePage === "project-board"
+    ? {
+        activePage,
+        boardReturnPage:
+          state.activePage === "project-board" ? state.boardReturnPage : state.activePage,
+      }
+    : { activePage, boardReturnPage: activePage }),
+  setActiveProjectId: (activeProjectId) => set({ activeProjectId }),
+  openProjectBoard: () => set((state) => ({
+    activePage: "project-board",
+    boardReturnPage:
+      state.activePage === "project-board" ? state.boardReturnPage : state.activePage,
+  })),
+  returnFromProjectBoard: () => set((state) => ({ activePage: state.boardReturnPage })),
   setCommandOpen: (commandOpen) => set({ commandOpen }),
   toggleRightPanel: () =>
     set((state) => ({ rightPanelOpen: !state.rightPanelOpen })),
@@ -345,7 +365,7 @@ export const useWorkspaceStore = create<WorkspaceState>((set) => ({
           {
             id: sessionId,
             title,
-            projectId: "task",
+            projectId: state.activeProjectId,
             relativeTime: "刚刚",
             activityRank,
             starred: false,
@@ -403,7 +423,7 @@ export const useWorkspaceStore = create<WorkspaceState>((set) => ({
           {
             id: conversationId,
             title,
-            projectId: "task",
+            projectId: state.activeProjectId,
             relativeTime: "刚刚",
             activityRank,
             starred: false,
@@ -576,7 +596,7 @@ export const useWorkspaceStore = create<WorkspaceState>((set) => ({
         : {
             id: conversationId,
             title: conversationTitle,
-            projectId: "task",
+            projectId: state.activeProjectId,
             relativeTime: "刚刚",
             activityRank,
             starred: false,
@@ -615,6 +635,8 @@ export const useWorkspaceStore = create<WorkspaceState>((set) => ({
 
       return {
         activePage: "new-task",
+        boardReturnPage: "new-task",
+        activeProjectId: session.projectId,
         conversationId: session.id,
         conversationTitle: session.title,
         messages: [
@@ -770,6 +792,8 @@ export const useWorkspaceStore = create<WorkspaceState>((set) => ({
           ? { ...session, projectId, relativeTime: "刚刚" }
           : session
       ),
+      activeProjectId:
+        state.conversationId === sessionId ? projectId : state.activeProjectId,
       sessionDialog: null,
     })),
   setSessionArchived: (sessionId, archived) =>

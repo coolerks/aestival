@@ -8,7 +8,8 @@
     "build:dev": "tsc && vite build --minify false --mode development",
     "build": "tsc && vite build --mode production",
     "preview": "vite preview",
-    "test:editor-layout": "esbuild scripts/editor-layout-state.test.mjs --bundle --platform=node --format=esm --outfile=/tmp/aestival-editor-layout-state.test.mjs && node --test /tmp/aestival-editor-layout-state.test.mjs"
+    "test:editor-layout": "esbuild scripts/editor-layout-state.test.mjs --bundle --platform=node --format=esm --outfile=/tmp/aestival-editor-layout-state.test.mjs && node --test /tmp/aestival-editor-layout-state.test.mjs",
+    "test:project-board": "esbuild scripts/project-board-state.test.mjs --bundle --platform=node --format=esm --outfile=/tmp/aestival-project-board-state.test.mjs && node --test /tmp/aestival-project-board-state.test.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",

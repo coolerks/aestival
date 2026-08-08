@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { lazy, Suspense, useEffect, useState } from "react"
 import type { DragEvent } from "react"
 import {
   BugIcon,
@@ -13,6 +13,7 @@ import {
   PinIcon,
   PlusIcon,
   RefreshCwIcon,
+  SquareKanbanIcon,
   TerminalIcon,
   XIcon,
 } from "lucide-react"
@@ -40,7 +41,9 @@ import { useWorkspaceStore } from "@/store/workspace-store"
 import { FilesPanel } from "./files-panel"
 import { DebugPanel, EmptyPanelSelection, LogsPanel, SearchPanel, TerminalPanel } from "./workspace-panel-content"
 
-const panelIcons = { files: FilesIcon, terminal: TerminalIcon, search: FileSearchIcon, logs: LogsIcon, debug: BugIcon }
+const ProjectBoardPanel = lazy(() => import("@/components/project-board/project-board-surface").then((module) => ({ default: () => <module.ProjectBoardSurface surface="right" /> })))
+
+const panelIcons = { files: FilesIcon, terminal: TerminalIcon, search: FileSearchIcon, logs: LogsIcon, debug: BugIcon, board: SquareKanbanIcon }
 const panelTypes = Object.keys(panelTypeLabels) as WorkspacePanelType[]
 
 function ensurePlacementOpen(placement: WorkspacePanelPlacement) {
@@ -51,7 +54,8 @@ function ensurePlacementOpen(placement: WorkspacePanelPlacement) {
 
 function AddPanelMenu({ placement }: { placement: WorkspacePanelPlacement }) {
   const openPanel = useWorkspacePanelStore((state) => state.openPanel)
-  return <DropdownMenu><Tooltip><TooltipTrigger render={<DropdownMenuTrigger render={<Button size="icon-sm" variant="ghost" aria-label="添加面板" />} />}><PlusIcon /></TooltipTrigger><TooltipContent>添加面板</TooltipContent></Tooltip><DropdownMenuContent align="end"><DropdownMenuGroup><DropdownMenuLabel>添加到{placement === "right" ? "右侧" : "底部"}</DropdownMenuLabel>{panelTypes.map((type) => { const Icon = panelIcons[type]; return <DropdownMenuItem key={type} onClick={() => { openPanel(type, placement); ensurePlacementOpen(placement) }}><Icon />{panelTypeLabels[type]}{type === "terminal" ? null : <span className="ml-auto text-xs text-muted-foreground">单例</span>}</DropdownMenuItem> })}</DropdownMenuGroup></DropdownMenuContent></DropdownMenu>
+  const availableTypes = panelTypes.filter((type) => placement === "right" || type !== "board")
+  return <DropdownMenu><Tooltip><TooltipTrigger render={<DropdownMenuTrigger render={<Button size="icon-sm" variant="ghost" aria-label="添加面板" />} />}><PlusIcon /></TooltipTrigger><TooltipContent>添加面板</TooltipContent></Tooltip><DropdownMenuContent align="end"><DropdownMenuGroup><DropdownMenuLabel>添加到{placement === "right" ? "右侧" : "底部"}</DropdownMenuLabel>{availableTypes.map((type) => { const Icon = panelIcons[type]; return <DropdownMenuItem key={type} onClick={() => { openPanel(type, placement); ensurePlacementOpen(placement) }}><Icon />{panelTypeLabels[type]}{type === "terminal" ? null : <span className="ml-auto text-xs text-muted-foreground">单例</span>}</DropdownMenuItem> })}</DropdownMenuGroup></DropdownMenuContent></DropdownMenu>
 }
 
 function PanelBody({ panel }: { panel: WorkspacePanelInstance }) {
@@ -59,13 +63,14 @@ function PanelBody({ panel }: { panel: WorkspacePanelInstance }) {
   if (panel.type === "terminal") return <TerminalPanel />
   if (panel.type === "search") return <SearchPanel />
   if (panel.type === "logs") return <LogsPanel />
+  if (panel.type === "board") return <Suspense fallback={<div className="p-4 text-xs text-muted-foreground">正在加载项目看板…</div>}><ProjectBoardPanel /></Suspense>
   return <DebugPanel />
 }
 
 function PanelMenu({ panel, placement }: { panel: WorkspacePanelInstance; placement: WorkspacePanelPlacement }) {
   const movePanel = useWorkspacePanelStore((state) => state.movePanel)
   const closePanel = useWorkspacePanelStore((state) => state.closePanel)
-  return <DropdownMenu><Tooltip><TooltipTrigger render={<DropdownMenuTrigger render={<Button size="icon-sm" variant="ghost" aria-label={`${panel.title}更多操作`} />} />}><MoreHorizontalIcon /></TooltipTrigger><TooltipContent>{panel.title}更多操作</TooltipContent></Tooltip><DropdownMenuContent align="end"><DropdownMenuGroup><DropdownMenuItem onClick={() => useWorkspacePanelStore.getState().togglePinnedPanel(panel.id)}><PinIcon />{panel.pinned ? "取消固定" : "固定面板"}</DropdownMenuItem>{panel.type === "terminal" ? <DropdownMenuItem onClick={() => useWorkspacePanelStore.getState().setRenamePanelId(panel.id)}><GripVerticalIcon />重命名终端</DropdownMenuItem> : null}</DropdownMenuGroup><DropdownMenuSeparator /><DropdownMenuGroup><DropdownMenuItem onClick={() => { const target = placement === "right" ? "bottom" : "right"; movePanel(panel.id, target); ensurePlacementOpen(target) }}>{placement === "right" ? <PanelBottomIcon /> : <PanelRightIcon />}移到{placement === "right" ? "底部" : "右侧"}</DropdownMenuItem><DropdownMenuItem onClick={() => closePanel(placement, panel.id)}><XIcon />关闭面板</DropdownMenuItem></DropdownMenuGroup></DropdownMenuContent></DropdownMenu>
+  return <DropdownMenu><Tooltip><TooltipTrigger render={<DropdownMenuTrigger render={<Button size="icon-sm" variant="ghost" aria-label={`${panel.title}更多操作`} />} />}><MoreHorizontalIcon /></TooltipTrigger><TooltipContent>{panel.title}更多操作</TooltipContent></Tooltip><DropdownMenuContent align="end"><DropdownMenuGroup><DropdownMenuItem onClick={() => useWorkspacePanelStore.getState().togglePinnedPanel(panel.id)}><PinIcon />{panel.pinned ? "取消固定" : "固定面板"}</DropdownMenuItem>{panel.type === "terminal" ? <DropdownMenuItem onClick={() => useWorkspacePanelStore.getState().setRenamePanelId(panel.id)}><GripVerticalIcon />重命名终端</DropdownMenuItem> : null}</DropdownMenuGroup><DropdownMenuSeparator /><DropdownMenuGroup>{panel.type !== "board" ? <DropdownMenuItem onClick={() => { const target = placement === "right" ? "bottom" : "right"; movePanel(panel.id, target); ensurePlacementOpen(target) }}>{placement === "right" ? <PanelBottomIcon /> : <PanelRightIcon />}移到{placement === "right" ? "底部" : "右侧"}</DropdownMenuItem> : null}<DropdownMenuItem onClick={() => closePanel(placement, panel.id)}><XIcon />关闭面板</DropdownMenuItem></DropdownMenuGroup></DropdownMenuContent></DropdownMenu>
 }
 
 function FilePanelActions() {

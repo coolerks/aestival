@@ -3,6 +3,7 @@ import {
   PanelRightIcon,
   SearchIcon,
   ShieldQuestionIcon,
+  SquareKanbanIcon,
   TimerIcon,
 } from "lucide-react"
 import type { MouseEvent } from "react"
@@ -14,6 +15,7 @@ import { Badge } from "@/components/ui/badge"
 import { Spinner } from "@/components/ui/spinner"
 import { SidebarTrigger, useSidebar } from "@/components/ui/sidebar"
 import { navigationItems } from "@/data/mock-workspace"
+import { mockSessionProjects } from "@/data/mock-session-management"
 import { mockFiles } from "@/data/mock-workspace-panels"
 import { cn } from "@/lib/utils"
 import { toggleWindowMaximise } from "@/services/window-service"
@@ -40,6 +42,9 @@ export function AppTitlebar() {
       state.apps.find((app) => app.id === state.selectedAppId)?.name
   )
   const setCommandOpen = useWorkspaceStore((state) => state.setCommandOpen)
+  const activeProjectId = useWorkspaceStore((state) => state.activeProjectId)
+  const openProjectBoard = useWorkspaceStore((state) => state.openProjectBoard)
+  const returnFromProjectBoard = useWorkspaceStore((state) => state.returnFromProjectBoard)
   const toggleRightPanel = useWorkspaceStore((state) => state.toggleRightPanel)
   const toggleBottomPanel = useWorkspaceStore(
     (state) => state.toggleBottomPanel
@@ -51,8 +56,11 @@ export function AppTitlebar() {
     return editor && editor.kind !== "chat" ? editor.resourceId : null
   })
   const activeFileName = mockFiles.find((file) => file.id === activeFileId)?.name
+  const activeProjectLabel = mockSessionProjects.find((project) => project.id === activeProjectId)?.label ?? "任务"
   const title =
-    activeFileName ?? (activePage === "new-task" && conversationId
+    activePage === "project-board"
+      ? `${activeProjectLabel} · 看板`
+      : activeFileName ?? (activePage === "new-task" && conversationId
       ? conversationTitle
       : activePage === "apps" && appCenterView === "editor"
         ? selectedAppName ?? mockAppDraft?.name ?? "应用"
@@ -148,6 +156,17 @@ export function AppTitlebar() {
             onClick={() => setCommandOpen(true)}
           >
             <SearchIcon />
+          </IconButton>
+          <IconButton
+            className={cn(
+              "app-no-drag pointer-events-auto",
+              activePage === "project-board" && "bg-muted text-foreground"
+            )}
+            label={activePage === "project-board" ? "返回先前页面" : `打开${activeProjectLabel}项目看板`}
+            aria-pressed={activePage === "project-board"}
+            onClick={activePage === "project-board" ? returnFromProjectBoard : openProjectBoard}
+          >
+            <SquareKanbanIcon />
           </IconButton>
           <IconButton
             className={cn(

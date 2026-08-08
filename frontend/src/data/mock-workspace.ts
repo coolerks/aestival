@@ -42,6 +42,10 @@ export const commandItems = [
 ] as const
 
 export const pageCopy: Record<Exclude<AppPage, "new-task">, { title: string; description: string }> = {
+  "project-board": {
+    title: "项目看板",
+    description: "规划项目工作项并查看甘特图。",
+  },
   knowledge: {
     title: "知识库",
     description: "管理本地文件、数据库与向量检索来源。",

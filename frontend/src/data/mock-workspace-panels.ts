@@ -1,4 +1,4 @@
-export type WorkspacePanelType = "files" | "terminal" | "search" | "logs" | "debug"
+export type WorkspacePanelType = "files" | "terminal" | "search" | "logs" | "debug" | "board"
 export type WorkspacePanelPlacement = "right" | "bottom"
 
 export type WorkspacePanelInstance = {
@@ -79,6 +79,7 @@ export const panelTypeLabels: Record<WorkspacePanelType, string> = {
   search: "内容搜索",
   logs: "日志",
   debug: "会话调试",
+  board: "项目看板",
 }
 
 export const initialRightPanels: WorkspacePanelInstance[] = [

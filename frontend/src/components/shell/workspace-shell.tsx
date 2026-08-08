@@ -41,13 +41,23 @@ const SessionManagementDialogs = lazy(() =>
   }))
 )
 
+const ProjectBoardPage = lazy(() =>
+  import("@/components/project-board/project-board-page").then((module) => ({
+    default: module.ProjectBoardPage,
+  }))
+)
+
 function CurrentAppPage() {
   const activePage = useWorkspaceStore((state) => state.activePage)
   const conversationId = useWorkspaceStore((state) => state.conversationId)
 
   return (
     <div className="app-selectable-content flex size-full min-h-0">
-      {activePage === "new-task" ? (
+      {activePage === "project-board" ? (
+        <Suspense fallback={<div className="flex size-full flex-col gap-3 p-4"><Skeleton className="h-8 w-64" /><Skeleton className="min-h-0 flex-1" /></div>}>
+          <ProjectBoardPage />
+        </Suspense>
+      ) : activePage === "new-task" ? (
         conversationId ? (
           <Suspense
             fallback={
@@ -74,11 +84,12 @@ function CurrentAppPage() {
 }
 
 function CurrentPage() {
+  const activePage = useWorkspaceStore((state) => state.activePage)
   const openFileCount = useEditorWorkbenchStore((state) =>
     selectOpenResourceIds(state.workbench).length,
   )
   const content = <CurrentAppPage />
-  return openFileCount > 0 ? <WorkspaceMainTabs chat={content} /> : content
+  return openFileCount > 0 && activePage !== "project-board" ? <WorkspaceMainTabs chat={content} /> : content
 }
 
 function HorizontalWorkspace() {
@@ -110,7 +121,7 @@ function HorizontalWorkspace() {
             <SheetHeader className="sr-only">
               <SheetTitle>右侧工作区</SheetTitle>
               <SheetDescription>
-                文件、终端、搜索、日志与会话调试面板。
+                文件、终端、搜索、日志、项目看板与会话调试面板。
               </SheetDescription>
             </SheetHeader>
             <WorkspacePanel placement="right" />
