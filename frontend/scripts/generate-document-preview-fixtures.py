@@ -196,6 +196,14 @@ def main() -> None:
         default=Path(__file__).resolve().parents[1] / "src/assets/document/previews",
     )
     parser.add_argument("--soffice", type=Path, default=Path(shutil.which("soffice") or "soffice"))
+    parser.add_argument(
+        "--presentation-preview",
+        type=Path,
+        help=(
+            "Optional PDF exported by PowerPoint/Keynote. Use this when the local "
+            "LibreOffice build cannot resolve the presentation's CJK fonts."
+        ),
+    )
     args = parser.parse_args()
 
     documents = args.documents.resolve()
@@ -209,7 +217,13 @@ def main() -> None:
     with tempfile.TemporaryDirectory(prefix="aestival-document-previews-") as temp:
         work_dir = Path(temp)
         word_pdf = convert_to_pdf(args.soffice, sources["word"], work_dir)
-        presentation_pdf = convert_to_pdf(args.soffice, sources["presentation"], work_dir)
+        presentation_pdf = (
+            args.presentation_preview.resolve()
+            if args.presentation_preview
+            else convert_to_pdf(args.soffice, sources["presentation"], work_dir)
+        )
+        if not presentation_pdf.exists() or presentation_pdf.stat().st_size == 0:
+            raise FileNotFoundError(f"Missing presentation preview PDF: {presentation_pdf}")
         spreadsheet_pdf = convert_to_pdf(args.soffice, sources["spreadsheet"], work_dir)
 
         generated = {

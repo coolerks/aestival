@@ -4,6 +4,7 @@ import { PlayIcon, PresentationIcon } from "lucide-react"
 import { DocumentPreviewToolbar } from "@/components/documents/document-preview-toolbar"
 import { DocumentPreviewShell } from "@/components/documents/document-preview-shell"
 import { PdfPageCanvas, usePdfDocument } from "@/components/documents/pdf-runtime"
+import { useDocumentPinchZoom } from "@/components/documents/use-document-pinch-zoom"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
 import {
@@ -45,8 +46,21 @@ function PresentationNavigation({
   page: number
   onPageChange: (page: number) => void
 }) {
+  const rootRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const root = rootRef.current
+    const viewport = root?.querySelector<HTMLElement>("[data-slot='scroll-area-viewport']")
+    const current = root?.querySelector<HTMLElement>("[data-slide-current='true']")
+    if (!viewport || !current) return
+    const viewportRect = viewport.getBoundingClientRect()
+    const currentRect = current.getBoundingClientRect()
+    if (currentRect.top < viewportRect.top) viewport.scrollTop -= viewportRect.top - currentRect.top + 8
+    else if (currentRect.bottom > viewportRect.bottom) viewport.scrollTop += currentRect.bottom - viewportRect.bottom + 8
+  }, [page])
+
   return (
-    <div className="flex size-full min-h-0 flex-col bg-muted/20">
+    <div ref={rootRef} data-document-zoom-ignore className="flex size-full min-h-0 flex-col bg-muted/20">
       <div className="flex h-10 shrink-0 items-center gap-2 border-b px-3 text-xs font-medium">
         <PresentationIcon className="size-4" aria-hidden="true" />幻灯片
       </div>
@@ -56,6 +70,7 @@ function PresentationNavigation({
             <button
               type="button"
               key={slide.index}
+              data-slide-current={slide.index === page || undefined}
               className={cn(
                 "flex w-full flex-col gap-1 rounded-md p-1 text-left text-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                 slide.index === page ? "bg-accent text-accent-foreground" : "hover:bg-accent/60",
@@ -180,6 +195,13 @@ export default function PresentationViewer({ editorId, descriptor }: Presentatio
     ? state.zoom
     : Math.max(25, Math.min(400, Math.round(fitScale * 100)))
   const scale = (computedZoom / 100) * 1.25
+  useDocumentPinchZoom({
+    rootRef,
+    zoom: computedZoom,
+    minZoom: 25,
+    maxZoom: 400,
+    onZoomChange: (zoom) => updateState(editorId, { zoom, scaleMode: "custom" }),
+  })
   const activeSlide = useMemo(
     () => descriptor.slides.find((slide) => slide.index === state.page),
     [descriptor.slides, state.page],
@@ -201,9 +223,8 @@ export default function PresentationViewer({ editorId, descriptor }: Presentatio
     />
   )
   const stage = (
-    <div className={cn("relative grid size-full min-h-0 place-items-center overflow-auto bg-muted/30 p-4", state.fullscreen && "bg-black p-8")}>
+    <div data-document-zoom-surface className={cn("relative grid size-full min-h-0 place-items-center overflow-auto bg-muted/30 p-4", state.fullscreen && "bg-black p-8")}>
       <PdfPageCanvas
-        key={`${state.page}-${scale}`}
         document={runtime.document}
         pageNumber={state.page}
         scale={scale}

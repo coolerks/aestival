@@ -80,7 +80,9 @@ export function PdfPageCanvas({
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const textLayerRef = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
-  const [size, setSize] = useState({ width: 595, height: 842 })
+  const [rendered, setRendered] = useState(false)
+  const [size, setSize] = useState({ width: 595 * scale, height: 842 * scale })
+  const renderGenerationRef = useRef(0)
 
   useEffect(() => {
     const host = hostRef.current
@@ -94,6 +96,20 @@ export function PdfPageCanvas({
   }, [])
 
   useEffect(() => {
+    let cancelled = false
+    void document.getPage(pageNumber).then((page) => {
+      if (cancelled) return
+      const viewport = page.getViewport({ scale })
+      setSize((current) => current.width === viewport.width && current.height === viewport.height
+        ? current
+        : { width: viewport.width, height: viewport.height })
+      onAspectRatio?.(viewport.width / viewport.height)
+    }).catch(() => undefined)
+    return () => { cancelled = true }
+  }, [document, onAspectRatio, pageNumber, scale])
+
+  useEffect(() => {
+    const generation = ++renderGenerationRef.current
     if (!visible) return
     let cancelled = false
     let renderTask: RenderTask | null = null
@@ -101,27 +117,33 @@ export function PdfPageCanvas({
     void document.getPage(pageNumber).then(async (page) => {
       if (cancelled) return
       const viewport = page.getViewport({ scale })
-      setSize({ width: viewport.width, height: viewport.height })
-      onAspectRatio?.(viewport.width / viewport.height)
-      const canvas = canvasRef.current
-      if (!canvas) return
-      const context = canvas.getContext("2d", { alpha: false })
-      if (!context) return
       const ratio = Math.min(window.devicePixelRatio || 1, 2)
-      canvas.width = Math.floor(viewport.width * ratio)
-      canvas.height = Math.floor(viewport.height * ratio)
-      canvas.style.width = `${viewport.width}px`
-      canvas.style.height = `${viewport.height}px`
+      const nextCanvas = window.document.createElement("canvas")
+      nextCanvas.width = Math.floor(viewport.width * ratio)
+      nextCanvas.height = Math.floor(viewport.height * ratio)
+      const nextContext = nextCanvas.getContext("2d", { alpha: false })
+      if (!nextContext) return
       renderTask = page.render({
-        canvasContext: context,
+        canvasContext: nextContext,
         viewport,
         transform: ratio === 1 ? undefined : [ratio, 0, 0, ratio, 0, 0],
         annotationMode: AnnotationMode.DISABLE,
       })
       await renderTask.promise
-      if (!renderText || cancelled || !textLayerRef.current) return
+      if (cancelled || generation !== renderGenerationRef.current) return
+      const canvas = canvasRef.current
+      if (!canvas) return
+      const context = canvas.getContext("2d", { alpha: false })
+      if (!context) return
+      canvas.width = nextCanvas.width
+      canvas.height = nextCanvas.height
+      context.drawImage(nextCanvas, 0, 0)
+      setSize({ width: viewport.width, height: viewport.height })
+      setRendered(true)
+      onAspectRatio?.(viewport.width / viewport.height)
+      if (!renderText || !textLayerRef.current) return
       const textContent = await page.getTextContent({ includeMarkedContent: true })
-      if (cancelled || !textLayerRef.current) return
+      if (cancelled || generation !== renderGenerationRef.current || !textLayerRef.current) return
       textLayerRef.current.replaceChildren()
       textLayerRef.current.style.setProperty("--scale-factor", String(scale))
       textLayer = new TextLayer({
@@ -130,6 +152,7 @@ export function PdfPageCanvas({
         viewport,
       })
       await textLayer.render()
+      if (cancelled || generation !== renderGenerationRef.current) return
       const pageText = textLayer.textContentItemsStr.join(" ")
       onText?.(pageNumber, pageText)
       for (const [index, element] of textLayer.textDivs.entries()) {
@@ -160,9 +183,9 @@ export function PdfPageCanvas({
       style={{ width: size.width, height: size.height }}
       data-pdf-page={pageNumber}
     >
-      {visible ? (
+      {visible || rendered ? (
         <>
-          <canvas ref={canvasRef} className="absolute inset-0 block" aria-label={`第 ${pageNumber} 页`} />
+          <canvas ref={canvasRef} className="absolute inset-0 block size-full" aria-label={`第 ${pageNumber} 页`} />
           {renderText ? <div ref={textLayerRef} className="textLayer app-selectable-content" /> : null}
         </>
       ) : null}

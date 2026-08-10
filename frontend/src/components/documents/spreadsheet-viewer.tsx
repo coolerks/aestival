@@ -9,6 +9,7 @@ import { toast } from "sonner"
 
 import { DocumentPreviewToolbar } from "@/components/documents/document-preview-toolbar"
 import { DocumentPreviewShell } from "@/components/documents/document-preview-shell"
+import { useDocumentPinchZoom } from "@/components/documents/use-document-pinch-zoom"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Input } from "@/components/ui/input"
 import { Skeleton } from "@/components/ui/skeleton"
@@ -143,6 +144,13 @@ function SpreadsheetGrid({
   onSelectionAnchorChange: (address: string | null) => void
 }) {
   const gridRef = useRef<HTMLDivElement>(null)
+  const dragSelectionRef = useRef<{
+    pointerId: number
+    startAddress: string
+    lastAddress: string
+    moved: boolean
+    extending: boolean
+  } | null>(null)
   const cells = useMemo(
     () => new Map(sheet.cells.map((cell) => [cell.address, cell])),
     [sheet.cells],
@@ -191,10 +199,57 @@ function SpreadsheetGrid({
   return (
     <div
       ref={gridRef}
-      className="app-selectable-content min-h-0 flex-1 overflow-auto bg-background outline-none"
+      data-document-zoom-surface
+      className="min-h-0 flex-1 touch-pan-x touch-pan-y select-none overflow-auto bg-background outline-none"
       role="grid"
       aria-label={`${sheet.name} 工作表，只读`}
       tabIndex={0}
+      onPointerDown={(event) => {
+        if (event.button !== 0) return
+        const cell = event.target instanceof Element
+          ? event.target.closest<HTMLElement>("[data-cell-address]")
+          : null
+        const address = cell?.dataset.cellAddress
+        if (!address) return
+        event.preventDefault()
+        const startAddress = event.shiftKey ? (selectionAnchor ?? activeCell) : address
+        dragSelectionRef.current = {
+          pointerId: event.pointerId,
+          startAddress,
+          lastAddress: address,
+          moved: false,
+          extending: event.shiftKey,
+        }
+        onSelectionAnchorChange(startAddress)
+        onActiveCellChange(address)
+        gridRef.current?.setPointerCapture(event.pointerId)
+        cell.focus()
+      }}
+      onPointerMove={(event) => {
+        const drag = dragSelectionRef.current
+        if (!drag || drag.pointerId !== event.pointerId) return
+        const cell = document.elementFromPoint(event.clientX, event.clientY)?.closest<HTMLElement>("[data-cell-address]")
+        const address = cell?.dataset.cellAddress
+        if (!address || address === drag.lastAddress) return
+        drag.lastAddress = address
+        drag.moved = true
+        onActiveCellChange(address)
+      }}
+      onPointerUp={(event) => {
+        const drag = dragSelectionRef.current
+        if (!drag || drag.pointerId !== event.pointerId) return
+        if (!drag.moved && !drag.extending) onSelectionAnchorChange(null)
+        if (gridRef.current?.hasPointerCapture(event.pointerId)) {
+          gridRef.current.releasePointerCapture(event.pointerId)
+        }
+        dragSelectionRef.current = null
+      }}
+      onPointerCancel={(event) => {
+        if (gridRef.current?.hasPointerCapture(event.pointerId)) {
+          gridRef.current.releasePointerCapture(event.pointerId)
+        }
+        dragSelectionRef.current = null
+      }}
       onKeyDown={(event) => {
         if ((event.metaKey || event.ctrlKey) && event.key.toLocaleLowerCase() === "c") {
           event.preventDefault(); void copySelection(); return
@@ -266,18 +321,14 @@ function SpreadsheetGrid({
                   fontStyle: cell?.style?.italic ? "italic" : undefined,
                   textAlign: cell?.style?.horizontal === "center" ? "center" : cell?.style?.horizontal === "right" ? "right" : "left",
                   whiteSpace: cell?.style?.wrapText ? "normal" : "nowrap",
-                  boxShadow: active ? "inset 0 0 0 2px var(--spreadsheet-accent)" : undefined,
+                  boxShadow: active
+                    ? "inset 0 0 0 2px var(--spreadsheet-accent)"
+                    : selected && cell?.style?.fill
+                      ? "inset 0 0 0 9999px color-mix(in srgb, var(--spreadsheet-selection) 72%, transparent)"
+                      : undefined,
                 }}
                 role="gridcell"
                 aria-selected={selected}
-                onClick={(event) => {
-                  if (event.shiftKey) {
-                    if (!selectionAnchor) onSelectionAnchorChange(activeCell)
-                  } else {
-                    onSelectionAnchorChange(null)
-                  }
-                  onActiveCellChange(address)
-                }}
               >
                 <span className="block truncate">{cell?.value ?? ""}</span>
               </button>
@@ -300,6 +351,16 @@ export default function SpreadsheetViewer({ editorId, descriptor }: SpreadsheetV
   const state = storedState ?? createDocumentPreviewState("spreadsheet")
   const [manifest, setManifest] = useState<WorkbookManifest | null>(null)
   const [error, setError] = useState<string | null>(null)
+  const rootRef = useRef<HTMLDivElement>(null)
+
+  useDocumentPinchZoom({
+    rootRef,
+    zoom: state.zoom,
+    minZoom: 50,
+    maxZoom: 200,
+    enabled: state.spreadsheetView === "grid",
+    onZoomChange: (zoom) => updateState(editorId, { zoom, scaleMode: "custom" }),
+  })
 
   useEffect(() => ensureState(editorId, "spreadsheet"), [editorId, ensureState])
   useEffect(() => {
@@ -350,14 +411,15 @@ export default function SpreadsheetViewer({ editorId, descriptor }: SpreadsheetV
   }
 
   if (error) {
-    return <div className="grid size-full place-items-center p-6"><Alert variant="destructive" className="max-w-lg"><FileSpreadsheetIcon /><AlertTitle>无法打开工作簿</AlertTitle><AlertDescription>{error}</AlertDescription></Alert></div>
+    return <div ref={rootRef} className="grid size-full place-items-center p-6"><Alert variant="destructive" className="max-w-lg"><FileSpreadsheetIcon /><AlertTitle>无法打开工作簿</AlertTitle><AlertDescription>{error}</AlertDescription></Alert></div>
   }
   if (!manifest || !activeSheet) {
-    return <div className="flex size-full flex-col"><DocumentPreviewToolbar zoom={100} minZoom={50} maxZoom={200} onZoomChange={() => undefined} leading={<SpreadsheetModeToggle value="grid" onChange={setView} />} /><div className="grid min-h-0 flex-1 place-items-center"><div className="flex w-64 flex-col gap-3"><Skeleton className="h-8" /><Skeleton className="h-52" /><span className="text-center text-xs text-muted-foreground">正在加载工作簿网格…</span></div></div></div>
+    return <div ref={rootRef} className="flex size-full flex-col"><DocumentPreviewToolbar zoom={100} minZoom={50} maxZoom={200} onZoomChange={() => undefined} leading={<SpreadsheetModeToggle value="grid" onChange={setView} />} /><div className="grid min-h-0 flex-1 place-items-center"><div className="flex w-64 flex-col gap-3"><Skeleton className="h-8" /><Skeleton className="h-52" /><span className="text-center text-xs text-muted-foreground">正在加载工作簿网格…</span></div></div></div>
   }
 
   return (
     <DocumentPreviewShell
+      ref={rootRef}
       kind="spreadsheet"
       contentClassName="flex flex-col"
       toolbar={
@@ -386,10 +448,18 @@ export default function SpreadsheetViewer({ editorId, descriptor }: SpreadsheetV
         onActiveCellChange={(activeCellAddress) => updateState(editorId, { activeCell: activeCellAddress })}
         onSelectionAnchorChange={(selectionAnchor) => updateState(editorId, { selectionAnchor })}
       />
-      <div className="flex h-9 shrink-0 items-center border-t bg-[var(--spreadsheet-header)] px-2">
+      <div data-document-zoom-ignore className="flex h-9 shrink-0 items-center border-t bg-[var(--spreadsheet-header)] px-2">
         <Tabs value={activeSheet.id} onValueChange={(sheetId) => updateState(editorId, { sheetId, activeCell: "A1", selectionAnchor: null })}>
-          <TabsList className="h-7 bg-transparent p-0">
-            {manifest.sheets.map((sheet) => <TabsTrigger key={sheet.id} value={sheet.id} className="h-7 rounded-none border-b-2 border-transparent px-4 data-active:border-[var(--spreadsheet-accent)] data-active:bg-background">{sheet.name}</TabsTrigger>)}
+          <TabsList className="h-8 gap-0 overflow-visible rounded-none bg-transparent p-0">
+            {manifest.sheets.map((sheet) => (
+              <TabsTrigger
+                key={sheet.id}
+                value={sheet.id}
+                className="h-8 rounded-none border-0 bg-transparent px-4 shadow-none after:inset-x-2 after:bottom-0 after:h-0.5 after:bg-[var(--spreadsheet-accent)] data-active:bg-transparent data-active:shadow-none data-active:after:opacity-100"
+              >
+                {sheet.name}
+              </TabsTrigger>
+            ))}
           </TabsList>
         </Tabs>
         <span className="ml-auto text-[11px] text-muted-foreground">只读 · {activeSheet.maxRow} 行 × {activeSheet.maxColumn} 列</span>

@@ -79,6 +79,7 @@ export function DocumentPreviewToolbar({
 
   return (
     <div
+      data-document-zoom-ignore
       className="flex h-10 shrink-0 items-center gap-1 overflow-hidden border-b bg-background px-2 text-xs"
       onWheel={(event) => event.stopPropagation()}
     >

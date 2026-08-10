@@ -10,6 +10,7 @@ import type { PDFDocumentProxy } from "pdfjs-dist"
 
 import { DocumentPreviewToolbar } from "@/components/documents/document-preview-toolbar"
 import { DocumentPreviewShell } from "@/components/documents/document-preview-shell"
+import { useDocumentPinchZoom } from "@/components/documents/use-document-pinch-zoom"
 import {
   PdfPageCanvas,
   readPdfPageTexts,
@@ -82,6 +83,8 @@ function OutlineTree({
     <div key={item.id}>
       <button
         type="button"
+        data-navigation-page={item.page ?? undefined}
+        data-navigation-current={item.page === currentPage || undefined}
         className={cn(
           "flex min-h-7 w-full items-start gap-2 rounded-md py-1 pr-2 text-left text-xs hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
           item.page === currentPage && "bg-accent text-accent-foreground",
@@ -117,8 +120,19 @@ function DocumentNavigation({
   onNavigationModeChange: (mode: "thumbnails" | "outline") => void
   onPageChange: (page: number) => void
 }) {
+  const rootRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const root = rootRef.current
+    const viewport = root?.querySelector<HTMLElement>("[data-slot='scroll-area-viewport']")
+    const current = root?.querySelector<HTMLElement>("[data-navigation-current='true']")
+    if (!viewport || !current) return
+    const top = current.offsetTop - (viewport.clientHeight - current.offsetHeight) / 2
+    viewport.scrollTo({ top: Math.max(0, top), behavior: "auto" })
+  }, [navigationMode, page])
+
   return (
-    <div className="flex size-full min-h-0 flex-col bg-muted/20">
+    <div ref={rootRef} data-document-zoom-ignore className="flex size-full min-h-0 flex-col bg-muted/20">
       <div className="flex h-10 shrink-0 items-center border-b px-2">
         <ToggleGroup
           value={[navigationMode]}
@@ -155,6 +169,8 @@ function DocumentNavigation({
               <button
                 key={pageNumber}
                 type="button"
+                data-navigation-page={pageNumber}
+                data-navigation-current={pageNumber === page || undefined}
                 className={cn(
                   "mx-auto flex w-full max-w-40 flex-col items-center gap-1 rounded-md p-1 text-xs text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                   pageNumber === page && "bg-accent text-accent-foreground",
@@ -197,33 +213,77 @@ function DocumentPages({
 }) {
   const rootRef = useRef<HTMLDivElement>(null)
   const pageRefs = useRef(new Map<number, HTMLElement>())
+  const suppressTrackingUntilRef = useRef(0)
+  const lastReportedPageRef = useRef(page)
+  const trackingFrameRef = useRef<number | null>(null)
+
+  useEffect(() => {
+    lastReportedPageRef.current = page
+  }, [page])
 
   useEffect(() => {
     if (scrollRequest === 0) return
+    const root = rootRef.current
+    const viewport = root?.querySelector<HTMLElement>("[data-slot='scroll-area-viewport']")
     const element = pageRefs.current.get(page)
-    if (element) {
-      element.scrollIntoView({ block: "start", behavior: "smooth" })
-    }
+    if (!viewport || !element) return
+    suppressTrackingUntilRef.current = performance.now() + 220
+    lastReportedPageRef.current = page
+    const frame = window.requestAnimationFrame(() => {
+      viewport.scrollTo({ top: Math.max(0, element.offsetTop - 16), behavior: "auto" })
+    })
+    return () => window.cancelAnimationFrame(frame)
   }, [page, scrollRequest])
 
   useEffect(() => {
     const root = rootRef.current
     const viewport = root?.querySelector<HTMLElement>("[data-slot='scroll-area-viewport']")
     if (!viewport) return
-    const observer = new IntersectionObserver((entries) => {
-      const visible = entries
-        .filter((entry) => entry.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
-      const next = Number((visible?.target as HTMLElement | undefined)?.dataset.pageNumber)
-      if (Number.isFinite(next) && next > 0) onPageChange(next)
-    }, { root: viewport, threshold: [0.25, 0.55, 0.8] })
-    for (const element of pageRefs.current.values()) observer.observe(element)
-    return () => observer.disconnect()
+    const updateCurrentPage = () => {
+      trackingFrameRef.current = null
+      if (performance.now() < suppressTrackingUntilRef.current) return
+      const viewportRect = viewport.getBoundingClientRect()
+      const anchor = viewportRect.top + Math.min(120, viewportRect.height * 0.22)
+      let nextPage = 1
+      let nearestDistance = Number.POSITIVE_INFINITY
+      for (const [pageNumber, element] of pageRefs.current) {
+        const rect = element.getBoundingClientRect()
+        if (rect.top <= anchor && rect.bottom > anchor) {
+          nextPage = pageNumber
+          nearestDistance = 0
+          break
+        }
+        const distance = Math.min(Math.abs(rect.top - anchor), Math.abs(rect.bottom - anchor))
+        if (distance < nearestDistance) {
+          nearestDistance = distance
+          nextPage = pageNumber
+        }
+      }
+      if (nextPage !== lastReportedPageRef.current) {
+        lastReportedPageRef.current = nextPage
+        onPageChange(nextPage)
+      }
+    }
+    const scheduleUpdate = () => {
+      if (trackingFrameRef.current !== null) return
+      trackingFrameRef.current = window.requestAnimationFrame(updateCurrentPage)
+    }
+    const observer = new ResizeObserver(scheduleUpdate)
+    observer.observe(viewport)
+    const pages = root?.querySelector<HTMLElement>("[data-document-pages]")
+    if (pages) observer.observe(pages)
+    viewport.addEventListener("scroll", scheduleUpdate, { passive: true })
+    scheduleUpdate()
+    return () => {
+      viewport.removeEventListener("scroll", scheduleUpdate)
+      observer.disconnect()
+      if (trackingFrameRef.current !== null) window.cancelAnimationFrame(trackingFrameRef.current)
+    }
   }, [document, onPageChange])
 
   return (
-    <ScrollArea ref={rootRef} className="app-selectable-content size-full bg-muted/30">
-      <div className="mx-auto flex min-w-fit flex-col items-center gap-4 p-4">
+    <ScrollArea ref={rootRef} data-document-zoom-surface className="app-selectable-content size-full bg-muted/30">
+      <div data-document-pages className="mx-auto flex min-w-fit flex-col items-center gap-4 p-4">
         {Array.from({ length: document.numPages }, (_, index) => index + 1).map((pageNumber) => (
           <section
             key={pageNumber}
@@ -266,7 +326,7 @@ export default function PagedDocumentViewer({
   const [outline, setOutline] = useState<PdfOutlineItem[]>([])
   const [outlineReady, setOutlineReady] = useState(false)
   const [pageTexts, setPageTexts] = useState<Record<number, string>>({})
-  const [pageScrollRequest, setPageScrollRequest] = useState(0)
+  const [pageScrollRequest, setPageScrollRequest] = useState(1)
   const [rootRef, width] = useElementWidth<HTMLDivElement>()
   const narrow = width > 0 && width < 720
 
@@ -351,6 +411,13 @@ export default function PagedDocumentViewer({
       ? Math.max(25, Math.min(400, Math.round((Math.min(contentWidth / 595, 650 / 842)) * 80)))
       : state.zoom
   const scale = (computedZoom / 100) * 1.25
+  useDocumentPinchZoom({
+    rootRef,
+    zoom: computedZoom,
+    minZoom: 25,
+    maxZoom: 400,
+    onZoomChange: (zoom) => updateState(editorId, { zoom, scaleMode: "custom" }),
+  })
   const setPage = useCallback((page: number) => {
     updateState(editorId, { page })
   }, [editorId, updateState])
