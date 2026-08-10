@@ -19,6 +19,7 @@ import {
   type EditorSplitDirection,
   type EditorWorkbenchState,
 } from "@/store/editor-layout"
+import { useDocumentPreviewStore } from "@/store/document-preview-store"
 
 export type EditorBuffer = {
   fileId: string
@@ -232,11 +233,14 @@ export const useEditorWorkbenchStore = create<EditorWorkbenchStore>((set, get) =
   workbench: createInitialEditorWorkbenchState(),
   editorBuffers: initialEditorBuffers(),
   pendingClose: null,
-  reset: () => set({
-    workbench: createInitialEditorWorkbenchState(),
-    editorBuffers: initialEditorBuffers(),
-    pendingClose: null,
-  }),
+  reset: () => {
+    useDocumentPreviewStore.getState().reset()
+    set({
+      workbench: createInitialEditorWorkbenchState(),
+      editorBuffers: initialEditorBuffers(),
+      pendingClose: null,
+    })
+  },
   openFile: (fileId, pinned = false, targetGroupId) => set((state) => {
     const file = findFile(fileId)
     const buffer = state.editorBuffers[fileId]
@@ -535,6 +539,15 @@ export const useEditorWorkbenchStore = create<EditorWorkbenchStore>((set, get) =
     }
   }),
 }))
+
+useEditorWorkbenchStore.subscribe((state, previous) => {
+  if (state.workbench.editors === previous.workbench.editors) return
+  const validEditorIds = new Set(Object.keys(state.workbench.editors))
+  const previewStore = useDocumentPreviewStore.getState()
+  for (const editorId of Object.keys(previewStore.states)) {
+    if (!validEditorIds.has(editorId)) previewStore.removeState(editorId)
+  }
+})
 
 export function selectActiveEditorResource(state: EditorWorkbenchStore): string | null {
   return selectActiveResourceId(state.workbench)

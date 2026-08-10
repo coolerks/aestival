@@ -13,7 +13,7 @@ import {
   PinIcon,
   PlusIcon,
   RefreshCwIcon,
-  SquareKanbanIcon,
+  ListTodoIcon,
   TerminalIcon,
   XIcon,
 } from "lucide-react"
@@ -43,7 +43,7 @@ import { DebugPanel, EmptyPanelSelection, LogsPanel, SearchPanel, TerminalPanel 
 
 const ProjectBoardPanel = lazy(() => import("@/components/project-board/project-board-surface").then((module) => ({ default: () => <module.ProjectBoardSurface surface="right" /> })))
 
-const panelIcons = { files: FilesIcon, terminal: TerminalIcon, search: FileSearchIcon, logs: LogsIcon, debug: BugIcon, board: SquareKanbanIcon }
+const panelIcons = { files: FilesIcon, terminal: TerminalIcon, search: FileSearchIcon, logs: LogsIcon, debug: BugIcon, board: ListTodoIcon}
 const panelTypes = Object.keys(panelTypeLabels) as WorkspacePanelType[]
 
 function ensurePlacementOpen(placement: WorkspacePanelPlacement) {

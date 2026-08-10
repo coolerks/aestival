@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "slides": [
+    {
+      "index": 1,
+      "title": "A股一周表现",
+      "description": "重新站上"
+    },
+    {
+      "index": 2,
+      "title": "INDEX SNAPSHOT",
+      "description": "强反弹之后，5日收益仍未转正"
+    },
+    {
+      "index": 3,
+      "title": "SHANGHAI COMPOSITE",
+      "description": "4000点，是这周视频里的视觉锚"
+    },
+    {
+      "index": 4,
+      "title": "TWO-DAY SWING",
+      "description": "6月8日释放风险，6月9日成长修复"
+    },
+    {
+      "index": 5,
+      "title": "SECTOR LEADERSHIP",
+      "description": "资金回到科技链，而不是平均扩散"
+    },
+    {
+      "index": 6,
+      "title": "STYLE ROTATION",
+      "description": "防御托底后，让位给成长修复"
+    },
+    {
+      "index": 7,
+      "title": "MARKET READ",
+      "description": "结论：反弹有效，确认还要等三件事"
+    },
+    {
+      "index": 8,
+      "title": "SOURCES",
+      "description": "来源与口径"
+    }
+  ]
+}

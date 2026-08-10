@@ -199,6 +199,41 @@ textarea,
   letter-spacing: -0.01em;
 }
 
+/* PDF.js 文本层：画布负责视觉，透明文本层负责选择、复制与搜索命中。 */
+.textLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: clip;
+  line-height: 1;
+  text-align: initial;
+  transform-origin: 0 0;
+  text-size-adjust: none;
+}
+
+.textLayer :is(span, br) {
+  position: absolute;
+  color: transparent;
+  white-space: pre;
+  cursor: text;
+  transform-origin: 0 0;
+}
+
+.textLayer ::selection {
+  background: color-mix(in oklab, var(--ring) 28%, transparent);
+}
+
+.textLayer .pdf-search-hit {
+  border-radius: 2px;
+  background: color-mix(in oklab, var(--primary) 24%, transparent);
+}
+
+[data-document-kind="spreadsheet"] {
+  --spreadsheet-accent: oklch(0.49 0.12 153);
+  --spreadsheet-header: color-mix(in oklab, var(--muted) 72%, white);
+  --spreadsheet-selection: color-mix(in oklab, var(--spreadsheet-accent) 14%, transparent);
+}
+
 .markdown-content :where(h1) {
   font-size: 1.25rem;
 }

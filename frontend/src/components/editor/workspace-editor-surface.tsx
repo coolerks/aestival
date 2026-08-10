@@ -3,7 +3,10 @@ import {
   BinaryIcon,
   CopyIcon,
   FileWarningIcon,
-  LockIcon,
+  Grid3X3Icon,
+  PanelLeftIcon,
+  PrinterIcon,
+  RotateCcwIcon,
   SearchIcon,
   TextSelectIcon,
   XIcon,
@@ -12,6 +15,7 @@ import { toast } from "sonner"
 
 import appIcon from "@/assets/icons/application/logo.svg"
 import { MarkdownRenderer } from "@/components/chat/markdown-renderer"
+import { DocumentPreview } from "@/components/documents/document-preview"
 import { DiffEditorSurface, EditorSurface } from "@/components/editor/editor-surface"
 import { EditorStatusBar } from "@/components/editor/editor-status-bar"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
@@ -31,7 +35,6 @@ import {
   ResizablePanelGroup,
 } from "@/components/ui/resizable"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { Separator } from "@/components/ui/separator"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import type { MonacoEditorInstance } from "@/components/shared/monaco-context-menu"
 import type { MockFile } from "@/data/mock-workspace-panels"
@@ -42,6 +45,7 @@ import {
   useEditorWorkbenchStore,
   type EditorBuffer,
 } from "@/store/editor-workbench-store"
+import { useDocumentPreviewStore } from "@/store/document-preview-store"
 
 type WorkspaceEditorSurfaceProps = {
   groupId: string
@@ -68,28 +72,6 @@ function CsvPreview({ source }: { source: string }) {
   )
 }
 
-function PdfPreview({ file }: { file: MockFile }) {
-  return (
-    <ScrollArea className="app-selectable-content size-full bg-muted/30">
-      <div className="mx-auto flex max-w-2xl flex-col gap-4 p-6">
-        <Alert>
-          <LockIcon />
-          <AlertTitle>安全 PDF 预览</AlertTitle>
-          <AlertDescription>脚本、表单提交和外部资源已禁用。{file.content}</AlertDescription>
-        </Alert>
-        {[1, 2, 3].map((page) => (
-          <section key={page} className="aspect-[1/1.414] rounded-sm border bg-background p-10 shadow-sm">
-            <p className="text-xs text-muted-foreground">第 {page} 页</p>
-            <h2 className="mt-8 text-xl font-semibold">Aestival 工作区设计说明</h2>
-            <Separator className="mt-6" />
-            <p className="mt-6 text-sm text-muted-foreground">这是安全的本地 Mock 页面，不会加载真实 PDF 内容或外部链接。</p>
-          </section>
-        ))}
-      </div>
-    </ScrollArea>
-  )
-}
-
 function StaticPreview({ file, source }: { file: MockFile; source: string }) {
   if (file.kind === "csv") return <CsvPreview source={source} />
   if (file.kind === "image") {
@@ -101,7 +83,6 @@ function StaticPreview({ file, source }: { file: MockFile; source: string }) {
       </div>
     )
   }
-  if (file.kind === "pdf") return <PdfPreview file={file} />
   return (
     <div className="flex size-full flex-col gap-4 p-6">
       <Alert variant="destructive">
@@ -152,6 +133,83 @@ function PreviewContextMenu({
           <ContextMenuItem onClick={copySurfaceText}><CopyIcon />复制选中文本/文件内容<ContextMenuShortcut>⌘C</ContextMenuShortcut></ContextMenuItem>
           <ContextMenuItem onClick={() => toast.info("请在当前文件预览中使用系统查找")}><SearchIcon />查找文本<ContextMenuShortcut>⌘F</ContextMenuShortcut></ContextMenuItem>
           <ContextMenuItem onClick={() => surfaceRef.current && selectElementContents(surfaceRef.current)}><TextSelectIcon />全选内容<ContextMenuShortcut>⌘A</ContextMenuShortcut></ContextMenuItem>
+        </ContextMenuGroup>
+      </ContextMenuContent>
+    </ContextMenu>
+  )
+}
+
+function DocumentPreviewContextMenu({
+  groupId,
+  editorId,
+  file,
+  children,
+}: {
+  groupId: string
+  editorId: string
+  file: MockFile
+  children: ReactNode
+}) {
+  const surfaceRef = useRef<HTMLDivElement>(null)
+  const state = useDocumentPreviewStore((store) => store.states[editorId])
+  const updateState = useDocumentPreviewStore((store) => store.updateState)
+  const copySelection = () => {
+    const selection = selectedText()
+    if (!selection) {
+      toast.info("请先选择要复制的文档内容")
+      return
+    }
+    void copyTextToClipboard(selection).then((copied) => {
+      if (copied) toast.success("已复制选中文本")
+      else toast.warning("无法写入剪贴板")
+    })
+  }
+
+  return (
+    <ContextMenu>
+      <ContextMenuTrigger className="min-h-0 flex-1">
+        <div ref={surfaceRef} className="app-selectable-content size-full">{children}</div>
+      </ContextMenuTrigger>
+      <ContextMenuContent>
+        <ContextMenuGroup>
+          <ContextMenuItem onClick={() => toast.success("文件路径已复制（Mock）")}>
+            <CopyIcon />复制文件路径<ContextMenuShortcut>⌥⌘C</ContextMenuShortcut>
+          </ContextMenuItem>
+          <ContextMenuItem onClick={() => useEditorWorkbenchStore.getState().requestCloseEditor(groupId, editorId)}>
+            <XIcon />关闭文档<ContextMenuShortcut>⌘W</ContextMenuShortcut>
+          </ContextMenuItem>
+        </ContextMenuGroup>
+        <ContextMenuSeparator />
+        <ContextMenuGroup>
+          <ContextMenuItem onClick={copySelection}><CopyIcon />复制选中文本<ContextMenuShortcut>⌘C</ContextMenuShortcut></ContextMenuItem>
+          <ContextMenuItem onClick={() => surfaceRef.current && selectElementContents(surfaceRef.current)}><TextSelectIcon />全选文档内容<ContextMenuShortcut>⌘A</ContextMenuShortcut></ContextMenuItem>
+        </ContextMenuGroup>
+        <ContextMenuSeparator />
+        <ContextMenuGroup>
+          {file.kind !== "spreadsheet" ? (
+            <ContextMenuItem onClick={() => updateState(editorId, { sidebarOpen: !state?.sidebarOpen })}>
+              <PanelLeftIcon />{state?.sidebarOpen ? "收起文档导航" : "打开文档导航"}
+            </ContextMenuItem>
+          ) : (
+            <ContextMenuItem onClick={() => {
+              const spreadsheetView = state?.spreadsheetView === "print" ? "grid" : "print"
+              updateState(editorId, {
+                spreadsheetView,
+                zoom: spreadsheetView === "grid"
+                  ? Math.min(200, Math.max(50, state?.zoom ?? 100))
+                  : Math.min(400, Math.max(25, state?.zoom ?? 100)),
+              })
+            }}>
+              {state?.spreadsheetView === "print" ? <Grid3X3Icon /> : <PrinterIcon />}
+              {state?.spreadsheetView === "print" ? "切换到网格" : "切换到打印预览"}
+            </ContextMenuItem>
+          )}
+          <ContextMenuItem onClick={() => updateState(editorId, {
+            zoom: 100,
+            scaleMode: file.kind === "spreadsheet" ? "custom" : "fit-width",
+          })}>
+            <RotateCcwIcon />重置视图
+          </ContextMenuItem>
         </ContextMenuGroup>
       </ContextMenuContent>
     </ContextMenu>
@@ -267,6 +325,16 @@ export function WorkspaceEditorSurface({
           onLineEndingChange={(lineEnding) => setEditorLineEnding(file.id, lineEnding)}
           onLanguageChange={(languageId) => setEditorLanguage(file.id, languageId)}
         />
+      </div>
+    )
+  }
+
+  if (["pdf", "word", "presentation", "spreadsheet"].includes(file.kind)) {
+    return (
+      <div className="flex size-full min-h-0 flex-col">
+        <DocumentPreviewContextMenu groupId={groupId} editorId={editor.id} file={file}>
+          <DocumentPreview editorId={editor.id} file={file} />
+        </DocumentPreviewContextMenu>
       </div>
     )
   }

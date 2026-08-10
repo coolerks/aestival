@@ -33,7 +33,7 @@
 | 组件 | 使用位置 | 具体用途 |
 | --- | --- | --- |
 | `Sidebar` | 全局左侧栏 | Header/Content/Group/Menu/Footer 三段结构、收起图标轨 |
-| `Resizable` | 主工作区、右侧栏、底部面板、设置、应用编辑器 | 横向/纵向分割、最小阈值、恢复默认；项目看板面板只允许进入右侧栏 |
+| `Resizable` | 主工作区、右侧栏、底部面板、设置、应用编辑器、文档导航栏 | 横向/纵向分割、最小阈值、恢复默认；项目看板面板只允许进入右侧栏；文档导航栏宽屏可调、窄屏退化为 Sheet |
 | `Tabs` | 主内容页签、能力、设置详情、应用编辑器、消息内容 | 聊天固定 Tab、文件 Tab、管理页子页面 |
 | `Navigation Menu` | 收起侧栏的页面总览与标题栏导航溢出 | 页面入口、最近目标和管理页相关导航，不替代 Sidebar |
 | `Breadcrumb` | 管理页、文件编辑器、详情页 | 顶层页面路径、文件路径和详情层级 |
@@ -121,6 +121,15 @@
 | `Badge` | 状态、能力、来源、风险、计数 | 文本短、颜色语义稳定 |
 | `Typography` | AI Markdown、文档预览、说明页 | 统一标题、正文、列表、表格与代码排版 |
 
+文档预览业务组合：
+
+| 业务组合 | 使用位置 | 具体用途 |
+| --- | --- | --- |
+| `DocumentPreviewShell` | Office/PDF 编辑器输入 | 单一工具栏、可折叠导航、内容面与状态栏，不重复文件名 |
+| `PagedDocumentViewer` | PDF、Word、Excel 打印预览 | PDF.js 分页、TextLayer、缩略图、真实 Outline、全文搜索和缩放 |
+| `PresentationViewer` | PowerPoint | 幻灯片缩略图、当前页、键盘导航、缩放和 Fullscreen 放映 |
+| `SpreadsheetViewer` | Excel | 名称框、公式栏、只读网格、工作表页签、范围选择、TSV 复制和打印模式 |
+
 ## 8. 组件组合边界
 
 允许的业务组合示例：
@@ -133,7 +142,7 @@
 | 全局搜索 | Dialog、Command、Badge、Kbd、ScrollArea、Empty |
 | 连接向导 | Dialog/Sheet/Drawer、Field、Input/InputGroup/InputOTP、Select、RadioGroup、Checkbox、Accordion、Progress、Badge、Alert |
 | 管理列表 | Breadcrumb、DataTable/Table、Item、Pagination、Command、DropdownMenu、Empty；网格对象按需使用单层 Card |
-| 文件预览 | Tabs、AspectRatio、Carousel、Table、ScrollArea、Alert |
+| 文件预览 | Resizable、ToggleGroup、ScrollArea、Sheet、Popover、Command、Tooltip、Skeleton、Alert、AspectRatio、Table；文档页签只使用编辑组页签，不在预览内复制文件 Tabs |
 | 设置页 | Resizable、Command、Item、Field、Tabs、Accordion、Switch、Slider；外部消息连接追加 DataTable、Badge、AlertDialog |
 | 项目看板 | ToggleGroup、Popover、Calendar、Select、Switch、Button、Card、Badge、ContextMenu、Sheet/Dialog、AlertDialog、Sonner、Empty；拖放由 DnD Kit 提供语义层 |
 

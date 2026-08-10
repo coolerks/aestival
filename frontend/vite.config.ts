@@ -6,6 +6,10 @@ import wails from "@wailsio/runtime/plugins/vite";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  // Wails may serve the embedded frontend from a custom origin. Keeping all
+  // generated assets relative also lets lazy PDF workers and Office fixtures
+  // resolve beside the bundled entry instead of assuming an HTTP root.
+  base: "./",
   server: {
     host: "127.0.0.1",
     allowedHosts: ["terminal.local"],

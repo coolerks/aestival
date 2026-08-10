@@ -81,7 +81,7 @@ export const useWorkspacePanelStore = create<WorkspacePanelStore>((set) => ({
   activeRightId: initialRightPanels[0]?.id ?? null,
   activeBottomId: initialBottomPanels[0]?.id ?? null,
   mockWorkspaceOpen: false,
-  expandedFolders: ["folder-root", "folder-src", "folder-docs"],
+  expandedFolders: ["folder-root", "folder-src", "folder-docs", "folder-documents"],
   searchQuery: "Workspace",
   replaceQuery: "Workbench",
   replaceOpen: false,

@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "documents": {
+    "pdf测试.pdf": {
+      "kind": "pdf",
+      "pageCount": 17,
+      "hasOutline": true,
+      "encrypted": false
+    },
+    "word测试.docx": {
+      "kind": "word",
+      "preview": "word测试.preview.pdf",
+      "pageCount": 19,
+      "hasOutline": true,
+      "encrypted": false
+    },
+    "测试ppt.pptx": {
+      "kind": "presentation",
+      "preview": "测试ppt.preview.pdf",
+      "slideCount": 8,
+      "pageCount": 8,
+      "hasOutline": true,
+      "encrypted": false
+    },
+    "测试excel.xlsx": {
+      "kind": "spreadsheet",
+      "preview": "测试excel.print.pdf",
+      "workbook": "测试excel.workbook.json",
+      "sheetCount": 2,
+      "hasCharts": true,
+      "pageCount": 4,
+      "hasOutline": true,
+      "encrypted": false
+    }
+  }
+}

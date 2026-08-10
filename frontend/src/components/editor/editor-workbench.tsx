@@ -137,6 +137,9 @@ function EditorGroupPane({
   const editor = editors[group.activeEditorId]
   const file = editor?.kind === "chat" ? undefined : filesById.get(editor.resourceId)
   const buffer = editor?.kind === "chat" ? undefined : buffers[editor.resourceId]
+  const documentPreview = file
+    ? ["pdf", "word", "presentation", "spreadsheet"].includes(file.kind)
+    : false
   const canSplitRight = paneSize.width >= 640
   const canSplitDown = paneSize.height >= 460
 
@@ -169,7 +172,7 @@ function EditorGroupPane({
         canSplitRight={canSplitRight}
         canSplitDown={canSplitDown}
       />
-      {editor && file && buffer ? (
+      {editor && file && buffer && !documentPreview ? (
         <EditorToolbar
           editor={editor}
           file={file}

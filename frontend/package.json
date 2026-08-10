@@ -9,7 +9,8 @@
     "build": "tsc && vite build --mode production",
     "preview": "vite preview",
     "test:editor-layout": "esbuild scripts/editor-layout-state.test.mjs --bundle --platform=node --format=esm --outfile=/tmp/aestival-editor-layout-state.test.mjs && node --test /tmp/aestival-editor-layout-state.test.mjs",
-    "test:project-board": "esbuild scripts/project-board-state.test.mjs --bundle --platform=node --format=esm --outfile=/tmp/aestival-project-board-state.test.mjs && node --test /tmp/aestival-project-board-state.test.mjs"
+    "test:project-board": "esbuild scripts/project-board-state.test.mjs --bundle --platform=node --format=esm --outfile=/tmp/aestival-project-board-state.test.mjs && node --test /tmp/aestival-project-board-state.test.mjs",
+    "test:document-preview": "esbuild scripts/document-preview-state.test.mjs --bundle --platform=node --format=esm --outfile=/tmp/aestival-document-preview-state.test.mjs && node --test /tmp/aestival-document-preview-state.test.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
@@ -31,6 +32,7 @@
     "mermaid": "^11.16.0",
     "monaco-editor": "^0.56.0",
     "next-themes": "^0.4.6",
+    "pdfjs-dist": "^4.10.38",
     "react": "^19.2.8",
     "react-day-picker": "^10.0.1",
     "react-dom": "^19.2.8",

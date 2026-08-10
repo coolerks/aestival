@@ -53,7 +53,7 @@ function BoardColumn({ status, items, compact, children, onCreate }: {
   if (!definition) return null
   const Icon = definition.Icon
   return (
-    <section className={cn("min-w-0 border-r last:border-r-0", compact && "border-r-0")} aria-labelledby={`board-column-${status}`}>
+    <section className={cn("min-w-0 last:border-r-0", compact && "border-r-0")} aria-labelledby={`board-column-${status}`}>
       <header className="sticky top-0 z-10 flex h-11 items-center gap-2 border-b bg-background/95 px-3 backdrop-blur-sm">
         <Icon className="size-4 text-muted-foreground" aria-hidden="true" />
         <h2 id={`board-column-${status}`} className="text-xs font-medium">{definition.label}</h2>

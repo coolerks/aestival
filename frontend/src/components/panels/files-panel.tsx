@@ -46,8 +46,24 @@ import json from "@/assets/icons/material/json.svg"
 import document from "@/assets/icons/material/document.svg"
 import image from "@/assets/icons/material/image.svg"
 import pdf from "@/assets/icons/material/pdf.svg"
+import powerpoint from "@/assets/icons/material/powerpoint.svg"
+import table from "@/assets/icons/material/table.svg"
+import word from "@/assets/icons/material/word.svg"
 
-const icons = { "folder-project": folderProject, "folder-src": folderSrc, "folder-docs": folderDocs, react_ts: reactTs, markdown, json, document, image, pdf }
+const icons = {
+  "folder-project": folderProject,
+  "folder-src": folderSrc,
+  "folder-docs": folderDocs,
+  react_ts: reactTs,
+  markdown,
+  json,
+  document,
+  image,
+  pdf,
+  powerpoint,
+  table,
+  word,
+}
 
 function TreeNode({ node, depth = 0 }: { node: MockFileTreeNode; depth?: number }) {
   const expandedFolders = useWorkspacePanelStore((state) => state.expandedFolders)

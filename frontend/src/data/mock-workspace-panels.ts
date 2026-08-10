@@ -1,3 +1,14 @@
+import pdfSampleUrl from "@/assets/document/pdf测试.pdf?url"
+import wordSampleUrl from "@/assets/document/word测试.docx?url"
+import wordPreviewUrl from "@/assets/document/previews/word测试.preview.pdf?url"
+import spreadsheetPrintUrl from "@/assets/document/previews/测试excel.print.pdf?url"
+import spreadsheetManifestUrl from "@/assets/document/previews/测试excel.workbook.json?url"
+import presentationPreviewUrl from "@/assets/document/previews/测试ppt.preview.pdf?url"
+import presentationSlides from "@/assets/document/previews/测试ppt.slides.json"
+import spreadsheetSampleUrl from "@/assets/document/测试excel.xlsx?url"
+import presentationSampleUrl from "@/assets/document/测试ppt.pptx?url"
+import type { DocumentPreviewDescriptor } from "@/types/document-preview"
+
 export type WorkspacePanelType = "files" | "terminal" | "search" | "logs" | "debug" | "board"
 export type WorkspacePanelPlacement = "right" | "bottom"
 
@@ -8,7 +19,17 @@ export type WorkspacePanelInstance = {
   pinned: boolean
 }
 
-export type MockFileKind = "code" | "markdown" | "json" | "csv" | "image" | "pdf" | "binary"
+export type MockFileKind =
+  | "code"
+  | "markdown"
+  | "json"
+  | "csv"
+  | "image"
+  | "pdf"
+  | "word"
+  | "presentation"
+  | "spreadsheet"
+  | "binary"
 
 export type MockFile = {
   id: string
@@ -21,8 +42,9 @@ export type MockFile = {
   size: string
   modifiedAt: string
   kind: MockFileKind
-  icon: "react_ts" | "markdown" | "json" | "document" | "image" | "pdf"
+  icon: "react_ts" | "markdown" | "json" | "document" | "image" | "pdf" | "word" | "powerpoint" | "table"
   content: string
+  preview?: DocumentPreviewDescriptor
   dirty?: boolean
   readonly?: boolean
   externalChange?: boolean
@@ -207,6 +229,84 @@ export default function App() {
     readonly: true,
     content: "41 45 53 54 49 56 41 4c 00 00 00 02 7b 6d 6f 63 6b 7d",
   },
+  {
+    id: "file-document-pdf-sample",
+    name: "pdf测试.pdf",
+    path: "Aestival/documents/pdf测试.pdf",
+    parent: "documents",
+    language: "PDF",
+    encoding: "Binary",
+    lineEnding: "—",
+    size: "428 KB",
+    modifiedAt: "今天 14:42",
+    kind: "pdf",
+    icon: "pdf",
+    readonly: true,
+    content: "17 页 · 包含嵌套目录",
+    preview: { kind: "pdf", sourceUrl: pdfSampleUrl },
+  },
+  {
+    id: "file-document-word-sample",
+    name: "word测试.docx",
+    path: "Aestival/documents/word测试.docx",
+    parent: "documents",
+    language: "Word",
+    encoding: "Binary",
+    lineEnding: "—",
+    size: "2.6 MB",
+    modifiedAt: "今天 14:42",
+    kind: "word",
+    icon: "word",
+    readonly: true,
+    content: "19 页 · 本地保真预览",
+    preview: {
+      kind: "word",
+      sourceUrl: wordSampleUrl,
+      previewPdfUrl: wordPreviewUrl,
+    },
+  },
+  {
+    id: "file-document-presentation-sample",
+    name: "测试ppt.pptx",
+    path: "Aestival/documents/测试ppt.pptx",
+    parent: "documents",
+    language: "PowerPoint",
+    encoding: "Binary",
+    lineEnding: "—",
+    size: "55 KB",
+    modifiedAt: "今天 14:42",
+    kind: "presentation",
+    icon: "powerpoint",
+    readonly: true,
+    content: "8 张幻灯片 · 本地保真预览",
+    preview: {
+      kind: "presentation",
+      sourceUrl: presentationSampleUrl,
+      previewPdfUrl: presentationPreviewUrl,
+      slides: presentationSlides.slides,
+    },
+  },
+  {
+    id: "file-document-spreadsheet-sample",
+    name: "测试excel.xlsx",
+    path: "Aestival/documents/测试excel.xlsx",
+    parent: "documents",
+    language: "Excel",
+    encoding: "Binary",
+    lineEnding: "—",
+    size: "16 KB",
+    modifiedAt: "今天 14:42",
+    kind: "spreadsheet",
+    icon: "table",
+    readonly: true,
+    content: "2 个工作表 · 包含图表打印预览",
+    preview: {
+      kind: "spreadsheet",
+      sourceUrl: spreadsheetSampleUrl,
+      workbookManifestUrl: spreadsheetManifestUrl,
+      printPdfUrl: spreadsheetPrintUrl,
+    },
+  },
 ]
 
 export const mockFileTree: MockFileTreeNode = {
@@ -259,6 +359,18 @@ export const mockFileTree: MockFileTreeNode = {
       kind: "folder",
       icon: "folder-project",
       children: [{ id: "node-cache", name: "workspace-cache.bin", kind: "file", fileId: "file-cache-bin" }],
+    },
+    {
+      id: "folder-documents",
+      name: "documents",
+      kind: "folder",
+      icon: "folder-docs",
+      children: [
+        { id: "node-pdf-sample", name: "pdf测试.pdf", kind: "file", fileId: "file-document-pdf-sample" },
+        { id: "node-word-sample", name: "word测试.docx", kind: "file", fileId: "file-document-word-sample" },
+        { id: "node-presentation-sample", name: "测试ppt.pptx", kind: "file", fileId: "file-document-presentation-sample" },
+        { id: "node-spreadsheet-sample", name: "测试excel.xlsx", kind: "file", fileId: "file-document-spreadsheet-sample" },
+      ],
     },
   ],
 }

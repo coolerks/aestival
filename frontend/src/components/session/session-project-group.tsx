@@ -10,12 +10,12 @@ import {
   FolderIcon,
   FolderMinusIcon,
   FolderOpenIcon,
+  ListTodoIcon,
   MessageSquareIcon,
   PencilIcon,
   Settings2Icon,
   ShieldQuestionIcon,
   SquarePenIcon,
-  SquareKanbanIcon,
   StarIcon,
   TerminalSquareIcon,
 } from "lucide-react"
@@ -134,7 +134,7 @@ function ProjectContextMenuContent({
           <ContextMenuShortcut>⌘N</ContextMenuShortcut>
         </ContextMenuItem>
         <ContextMenuItem onClick={() => { setActiveProjectId(projectId); openProjectBoard() }}>
-          <SquareKanbanIcon />
+          <ListTodoIcon />
           打开项目看板
         </ContextMenuItem>
         <ContextMenuItem

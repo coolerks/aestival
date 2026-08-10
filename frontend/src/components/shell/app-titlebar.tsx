@@ -3,7 +3,7 @@ import {
   PanelRightIcon,
   SearchIcon,
   ShieldQuestionIcon,
-  SquareKanbanIcon,
+  ListTodoIcon,
   TimerIcon,
 } from "lucide-react"
 import type { MouseEvent } from "react"
@@ -166,7 +166,7 @@ export function AppTitlebar() {
             aria-pressed={activePage === "project-board"}
             onClick={activePage === "project-board" ? returnFromProjectBoard : openProjectBoard}
           >
-            <SquareKanbanIcon />
+            <ListTodoIcon />
           </IconButton>
           <IconButton
             className={cn(
