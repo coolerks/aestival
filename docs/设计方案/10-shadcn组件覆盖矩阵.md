@@ -32,14 +32,14 @@
 
 | 组件 | 使用位置 | 具体用途 |
 | --- | --- | --- |
-| `Sidebar` | 全局左侧栏 | Header/Content/Group/Menu/Footer 三段结构、收起图标轨 |
-| `Resizable` | 主工作区、右侧栏、底部面板、设置、应用编辑器、文档导航栏 | 横向/纵向分割、最小阈值、恢复默认；项目看板面板只允许进入右侧栏；文档导航栏宽屏可调、窄屏退化为 Sheet |
-| `Tabs` | 主内容页签、能力、设置详情、应用编辑器、消息内容 | 聊天固定 Tab、文件 Tab、管理页子页面 |
+| `Sidebar` | 全局左侧栏 | Header/Content/Group/Menu/Footer 三段结构、收起图标轨；项目标题行使用 `SidebarGroupAction` 放置 Hover/键盘/无 Hover 均可达的添加按钮 |
+| `Resizable` | 主工作区、右侧栏、底部面板、设置、应用编辑器、文档导航栏、阅读页、笔记编辑组 | 横向/纵向分割、最小阈值、恢复默认；阅读页分隔文章列表与阅读窗，合集选择器并入列表，不能形成第四列；笔记项目按项目保存编辑组/右侧/底部尺寸 |
+| `Tabs` | 主内容页签、能力、设置详情、阅读设置、应用编辑器、消息内容 | 聊天固定 Tab、文件/笔记/全局图谱 Tab、管理页子页面；四种笔记模式不得做成二级 Tabs |
 | `Navigation Menu` | 收起侧栏的页面总览与标题栏导航溢出 | 页面入口、最近目标和管理页相关导航，不替代 Sidebar |
 | `Breadcrumb` | 管理页、文件编辑器、详情页 | 顶层页面路径、文件路径和详情层级 |
 | `Menubar` | 应用代码编辑器的桌面菜单 | 文件、编辑、查看、运行；macOS 可与原生菜单语义对齐 |
 | `Separator` | 侧栏、菜单、工具栏、详情区 | 只在语义分组变化处使用 |
-| `Scroll Area` | 侧栏项目区、文件树、消息表格、长菜单 | 控制唯一滚动区域并保持滚动条样式一致 |
+| `Scroll Area` | 侧栏项目区、文件树、阅读列表/正文、消息表格、长菜单 | 控制明确滚动区域并保持滚动条样式一致；阅读正文不能嵌套竞争纵向滚动区 |
 | `Direction` | 多语言消息、预览与用户内容 | 对 Arabic/Hebrew 等 RTL 内容设置方向；Aestival 中文 UI 默认 LTR |
 | `Pagination` | 知识库内容、同步记录、日志、管理列表 | 明确页码；无限加载仅用于侧栏会话的 5 条增量 |
 
@@ -50,16 +50,16 @@
 | `Button` | 全应用 | 主/次/图标/破坏性动作 |
 | `Button Group` | 输入框底栏、编辑器工具栏、预览缩放 | 视觉相连且语义相关的动作集合 |
 | `Toggle` | 搜索大小写、固定面板、朗读状态 | 单个二态控制 |
-| `Toggle Group` | 代理/聊天收起态、列表/网格、日历视图、项目看板/甘特、搜索选项 | 2–7 个互斥或多选选项 |
+| `Toggle Group` | 代理/聊天收起态、列表/网格、阅读文章筛选、日历视图、项目看板/甘特、搜索选项、笔记编辑模式 | 2–7 个互斥或多选选项；笔记模式固定为源码/并排/即时/预览，切换同一文件页签 |
 | `Dropdown Menu` | 点击式更多菜单、输入框加号、模型/布局动作 | 多级、分组、图标与快捷键 |
 | `Context Menu` | 全局右键 | 按区域提供不同菜单，全面替代浏览器原生右键 |
-| `Command` | 全局搜索、设置搜索、模型/智能体/Skill 选择 | 搜索、分组、键盘导航 |
-| `Combobox` | 模型、智能体、知识库、Skill、多来源选择 | 可搜索的单选/多选 |
+| `Command` | 全局搜索、设置搜索、阅读合集、模型/智能体/Skill 选择 | 搜索、分组、键盘导航；全局只导航阅读/合集，正文搜索留在阅读页内 |
+| `Combobox` | 模型、智能体、知识库、Skill、阅读合集、多来源选择 | 可搜索的单选/多选；来源合集至少选择一个 Feed |
 | `Select` | 状态、排序、类型、上下文档位 | 中等数量的结构化选项 |
 | `Native Select` | 终端 Shell、表格每页数量、简单设备选择 | 需要系统原生键盘/平台行为的简短选项 |
-| `Radio Group` | 审批策略、任务类型、冲突处理、失败策略 | 互斥选项并展示解释 |
-| `Checkbox` | 批量选择、权限清单、导出内容 | 多个独立布尔选项 |
-| `Switch` | 启用/停用、自动同步、自动压缩、通知 | 即时生效的开关 |
+| `Radio Group` | 审批策略、任务类型、项目类型/默认根目录、冲突处理、失败策略、阅读打开/已读/回溯策略 | 添加项目时选择不可转换的项目/笔记类型，并从多根目录中指定唯一默认项；AI 回溯含新文章、7/30/90 天、全部 |
+| `Checkbox` | 批量选择、阅读文章选择、权限清单、导出内容 | 多个独立布尔选项 |
+| `Switch` | 启用/停用、自动同步、自动压缩、通知、阅读未读数字 | 即时生效的开关 |
 | `Kbd` | 菜单、Command、Tooltip、快捷键设置 | 平台化快捷键显示 |
 
 ## 5. 表单与输入
@@ -68,9 +68,9 @@
 | --- | --- | --- |
 | `Field` | 所有创建/编辑表单 | Label、说明、错误、禁用和必填语义 |
 | `Label` | 单独控件与组合表单 | 可点击且与控件建立关联 |
-| `Input` | 名称、地址、搜索、Cron、数字 | 单行内容 |
+| `Input` | 名称、地址、Feed/网站 URL、阅读搜索、Cron、数字 | 单行内容 |
 | `Input Group` | 会话输入、地址、Secret、单位输入 | 前后缀图标、按钮、单位 |
-| `Textarea` | 会话输入、Prompt、说明、约束 | 多行文本；会话默认 2 行最多 8 行 |
+| `Textarea` | 会话输入、Prompt、说明、约束、AI 合集要求、精选口味 | 多行文本；会话默认 2 行最多 8 行；阅读要求保留用户原文 |
 | `Input OTP` | 供应商设备授权、外部消息渠道配对/一次性验证码 | 只在实际连接流程要求一次性验证码时呈现；它授权第三方连接，不引入 Aestival 登录页 |
 | `Slider` | 字号、行高、Chunk、Overlap、音量 | 与数值 Input 联动，不能只靠拖动获得精确值 |
 | `Date Picker` | 统计范围、任务单次日期、项目工作项计划范围 | 日期或范围选择 |
@@ -80,20 +80,20 @@
 
 | 组件 | 使用位置 | 具体用途 |
 | --- | --- | --- |
-| `Dialog` | 全局 Command、创建向导、统计、导出、全屏输入 | 模态复杂任务 |
-| `Alert Dialog` | 删除、断开、清空、绕过审批、替换文件、项目工作项验收与作废 | 明确不可逆、人工门控或高风险后果 |
+| `Dialog` | 全局 Command、添加项目、创建向导、统计、导出、全屏输入、链接消歧 | 添加项目组合 Field/RadioGroup/Item；多根目录重名链接用可搜索列表消歧 |
+| `Alert Dialog` | 删除、断开、取消订阅、清空、绕过审批、替换文件、项目工作项验收与作废 | 明确不可逆、人工门控或高风险后果；取消订阅默认保留历史，可显式同时删除 |
 | `Sheet` | 宽屏详情、右侧检查器、窄屏侧栏、主项目看板任务详情 | 从边缘进入的详情/工具区；右侧看板详情改用 Dialog，避免嵌套 Sheet |
 | `Drawer` | 窄窗口表单和详情 | 垂直空间更友好的替代层 |
 | `Popover` | 上下文圆环、通知、选择详情、状态信息 | 与触发点强关联的轻量内容 |
 | `Hover Card` | 项目、文件页签、引用、图表点 | 补充信息，不承载必须操作 |
 | `Tooltip` | 所有纯图标按钮、禁用项 | 名称、原因与快捷键 |
-| `Alert` | 连接错误、权限风险、离线、上下文上限 | 持续信息与恢复动作 |
+| `Alert` | 连接错误、阅读摘要/源错误、远程模型未授权、权限风险、离线、上下文上限 | 持续信息与恢复动作 |
 | `Sonner` | 保存、复制、Star、撤销 | 全局短反馈首选 |
 | `Toast` | registry 兼容与隔离应用预览 | 不与 Sonner 在同一宿主重复展示 |
-| `Progress` | 安装、同步、导出、解析、录音时长 | 可量化或分步骤过程 |
-| `Spinner` | 流式、任务、连接、按钮内加载 | 不确定时长的局部状态 |
-| `Skeleton` | 页面、列表、会话 5 条加载 | 保持结构稳定 |
-| `Empty` | 无会话、无项目目录、无面板、无数据 | 原因 + 唯一推荐下一步 |
+| `Progress` | 安装、同步、导出、Feed/OPML 预览、AI 回溯、解析、录音时长 | 可量化或分步骤过程；Mock 阶段标明示例状态 |
+| `Spinner` | 流式、任务、连接、Feed 验证、AI 分类、按钮内加载 | 不确定时长的局部状态 |
+| `Skeleton` | 页面、列表、阅读文章/候选源、会话 5 条加载 | 保持结构稳定 |
+| `Empty` | 无会话、无项目目录、无笔记/链接/图谱结果、无面板、无订阅/文章/AI 匹配、无数据 | 原因 + 唯一推荐下一步；图谱区分无笔记、无链接和筛选零结果 |
 
 ## 7. 内容、数据与媒体
 
@@ -109,8 +109,8 @@
 | 组件 | 使用位置 | 具体用途 |
 | --- | --- | --- |
 | `Card` | 独立应用、知识库网格项、单次工具调用、项目工作项、主题预览 | 仅用于可独立识别或整体操作的对象；项目看板列为普通 Section，任务卡保持单层；禁止嵌套 |
-| `Item` | 设置项、Hook、路由顺序、紧凑结果 | 一致的标题、说明、图标和操作布局 |
-| `Data Table` | 数据连接、外部消息连接、配对请求、内容、模型、任务、记录、工具调用 | 筛选、排序、分页、选择 |
+| `Item` | 设置项、Hook、路由顺序、阅读文章/窄窗订阅源、紧凑结果 | 一致的标题、说明、图标和操作布局；文章列表不用 Card |
+| `Data Table` | 数据连接、外部消息连接、阅读订阅源/合集/反馈规则、配对请求、内容、模型、任务、记录、工具调用 | 筛选、排序、分页、选择 |
 | `Table` | 静态对照、CSV/Excel 预览、小型价格表 | 不需要复杂表格状态时使用 |
 | `Chart` | Token、费用、模型分布、上下文圆环、贡献热力图 | 语义颜色、Tooltip、数据表回退 |
 | `Aspect Ratio` | 图片/SVG/视频/应用预览/图标裁切 | 保持媒体比例 |
@@ -119,7 +119,17 @@
 | `Collapsible` | 项目、文件夹、思考大纲、工具输入输出、日志字段 | 保持高密度并可逐项展开 |
 | `Avatar` | 消息模型/智能体标识 | 始终有 AvatarFallback；不用于虚构用户账号 |
 | `Badge` | 状态、能力、来源、风险、计数 | 文本短、颜色语义稳定 |
-| `Typography` | AI Markdown、文档预览、说明页 | 统一标题、正文、列表、表格与代码排版 |
+| `Typography` | AI Markdown、Feed 正文/摘要、文档预览、说明页 | 统一标题、正文、列表、表格与代码排版；阅读正文保持可选择并先安全清洗 |
+
+笔记工作区业务组合：
+
+| 业务组合 | 使用位置 | 具体用途 |
+| --- | --- | --- |
+| `NoteEditorSurface` | Markdown 文件页签 | 动态加载 Vditor，映射源码/并排/即时/预览，接收共享 Buffer；实例与 DOM 不进入 Zustand |
+| `NoteOutlinePanel` | 笔记右侧栏 | H1–H6、搜索、折叠、当前章节和点击定位；使用 Collapsible/ScrollArea/Input |
+| `NoteBacklinksPanel` | 笔记右侧/底部 | 已链接/未链接提及、partial/error 状态和定位；使用 Tabs/Item/Alert/Empty |
+| `NoteMetadataPanel` | 笔记右侧栏 | 标签与 YAML Front Matter 属性；使用 Field/Combobox/Item/Alert |
+| `NoteGraphSurface` | 全局图谱页签/局部图谱面板 | 动态加载 Cytoscape.js；外层使用工具栏、筛选、Alert、Empty 和键盘可访问的同步 Item 列表 |
 
 文档预览业务组合：
 
@@ -145,6 +155,10 @@
 | 文件预览 | Resizable、ToggleGroup、ScrollArea、Sheet、Popover、Command、Tooltip、Skeleton、Alert、AspectRatio、Table；文档页签只使用编辑组页签，不在预览内复制文件 Tabs |
 | 设置页 | Resizable、Command、Item、Field、Tabs、Accordion、Switch、Slider；外部消息连接追加 DataTable、Badge、AlertDialog |
 | 项目看板 | ToggleGroup、Popover、Calendar、Select、Switch、Button、Card、Badge、ContextMenu、Sheet/Dialog、AlertDialog、Sonner、Empty；拖放由 DnD Kit 提供语义层 |
+| 阅读页 | Resizable、ScrollArea、Command/Popover、Item、Separator、ToggleGroup、Checkbox、Typography、Alert、ContextMenu、DropdownMenu、ButtonGroup、Empty；文章行与正文不用 Card |
+| 阅读设置 | Tabs、DataTable/Item、Field、Input、Textarea、Combobox、RadioGroup、Switch、Dialog/Sheet/Drawer、AlertDialog、Progress、Spinner、Skeleton、Sonner |
+| 添加项目 | Dialog、Field、Input、RadioGroup、Item、Button、Tooltip、Alert、Spinner、Sonner；根目录列表不用 Card |
+| 笔记工作区 | SidebarGroupAction、Tabs、Resizable、ToggleGroup、ScrollArea、Collapsible、Item、Command、ContextMenu、DropdownMenu、AlertDialog、Alert、Empty、Skeleton、Spinner、Sonner；Vditor/Cytoscape 只作为领域内核 |
 
 禁止的替代实现：
 
