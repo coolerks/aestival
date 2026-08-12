@@ -35,6 +35,9 @@ func main() {
 			// 窗口四边和四角仍由 AppKit 原生缩放手势优先处理。
 			Backdrop: application.MacBackdropTranslucent,
 			TitleBar: application.MacTitleBarHiddenInsetUnified,
+			WebviewPreferences: application.MacWebviewPreferences{
+				ApplicationNameForUserAgent: "Version/26.6 Safari/605.1.15",
+			},
 		},
 		BackgroundColour: application.NewRGBA(255, 255, 255, 0),
 		URL:              "/",
