@@ -17,6 +17,7 @@ import {
   SearchIcon,
   SettingsIcon,
   SquarePenIcon,
+  PlusIcon,
 } from "lucide-react"
 
 import appIcon from "@/assets/icons/application/icon.svg"
@@ -45,20 +46,23 @@ import {
   SidebarContent,
   SidebarFooter,
   SidebarGroup,
+  SidebarGroupAction,
   SidebarGroupContent,
   SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
+  SidebarMenuBadge,
   SidebarMenuItem,
   SidebarRail,
 } from "@/components/ui/sidebar"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import {
-  mockSessionProjects,
-  type MockSessionProjectId,
-} from "@/data/mock-session-management"
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 import { navigationItems } from "@/data/mock-workspace"
+import { collectionUnreadCount } from "@/lib/reading"
+import { useReadingStore } from "@/store/reading-store"
+import { activateWorkspaceProject } from "@/services/project-workspace-navigation"
+import { useProjectWorkspaceStore } from "@/store/project-workspace-store"
 import { useSettingsStore } from "@/store/settings-store"
 import {
   type AgentMode,
@@ -66,13 +70,16 @@ import {
 } from "@/store/workspace-store"
 
 export function AppSidebar() {
-  const [openProjects, setOpenProjects] = useState<
-    Record<MockSessionProjectId, boolean>
-  >({
-    task: false,
-    aestival: false,
-    "ai-ui": false,
-  })
+  const projects = useProjectWorkspaceStore((state) => state.projects)
+  const activeWorkspaceProjectId = useProjectWorkspaceStore(
+    (state) => state.activeProjectId,
+  )
+  const requestProjectDialog = useProjectWorkspaceStore(
+    (state) => state.requestProjectDialog,
+  )
+  const [openProjects, setOpenProjects] = useState<Record<string, boolean>>(
+    () => Object.fromEntries(projects.map((project) => [project.id, false])),
+  )
   const mode = useWorkspaceStore((state) => state.mode)
   const setMode = useWorkspaceStore((state) => state.setMode)
   const activePage = useWorkspaceStore((state) => state.activePage)
@@ -92,17 +99,41 @@ export function AppSidebar() {
   const showArchivedSessions = useWorkspaceStore(
     (state) => state.showArchivedSessions
   )
+  const readingUnreadCount = useReadingStore((state) =>
+    state.preferences.showUnreadCount
+      ? collectionUnreadCount(
+          {
+            articles: state.articles,
+            collections: state.collections,
+            classifications: state.classifications,
+          },
+          state.selectedCollectionId,
+        )
+      : null,
+  )
   const setShowArchivedSessions = useWorkspaceStore(
     (state) => state.setShowArchivedSessions
   )
 
   const setAllProjectsOpen = (open: boolean) => {
-    setOpenProjects({
-      task: open,
-      aestival: open,
-      "ai-ui": open,
-    })
+    setOpenProjects(
+      Object.fromEntries(projects.map((project) => [project.id, open])),
+    )
   }
+
+  useEffect(() => {
+    setOpenProjects((current) => {
+      const next = { ...current }
+      projects.forEach((project) => {
+        next[project.id] ??= false
+      })
+      Object.keys(next).forEach((id) => {
+        if (!projects.some((project) => project.id === id)) delete next[id]
+      })
+      if (activeWorkspaceProjectId) next[activeWorkspaceProjectId] = true
+      return next
+    })
+  }, [activeWorkspaceProjectId, projects])
 
   useEffect(() => {
     if (!conversationId) {
@@ -156,6 +187,7 @@ export function AppSidebar() {
                 return (
                   <SidebarMenuItem key={item.id}>
                     <SidebarMenuButton
+                      aria-label={item.label}
                       tooltip={item.label}
                       isActive={
                         activePage === item.id &&
@@ -175,6 +207,9 @@ export function AppSidebar() {
                       <Icon />
                       <span>{item.label}</span>
                     </SidebarMenuButton>
+                    {item.id === "reading" && readingUnreadCount ? (
+                      <SidebarMenuBadge>{readingUnreadCount}</SidebarMenuBadge>
+                    ) : null}
                   </SidebarMenuItem>
                 )
               })}
@@ -182,15 +217,34 @@ export function AppSidebar() {
           </SidebarHeader>
 
           <SidebarContent>
-            <SidebarGroup className="gap-2">
+            <SidebarGroup className="group/projects gap-2">
               <SidebarGroupLabel>项目</SidebarGroupLabel>
+              <Tooltip>
+                <TooltipTrigger
+                  render={
+                    <SidebarGroupAction
+                      aria-label="添加项目"
+                      className="pointer-events-none opacity-0 transition-opacity group-focus-within/projects:pointer-events-auto group-focus-within/projects:opacity-100 group-hover/projects:pointer-events-auto group-hover/projects:opacity-100 focus-visible:pointer-events-auto focus-visible:opacity-100 [@media(hover:none)]:pointer-events-auto [@media(hover:none)]:opacity-100"
+                      onClick={requestProjectDialog}
+                    />
+                  }
+                >
+                  <PlusIcon />
+                </TooltipTrigger>
+                <TooltipContent side="right">添加项目 · ⌘⇧O</TooltipContent>
+              </Tooltip>
               <SidebarGroupContent>
-                {mockSessionProjects.map((project) => (
+                {projects.map((project) => (
                   <SessionProjectGroup
                     key={project.id}
                     projectId={project.id}
-                    label={project.label}
-                    open={openProjects[project.id]}
+                    label={project.name}
+                    kind={project.kind}
+                    fixed={project.fixed}
+                    roots={project.roots}
+                    defaultRootId={project.defaultRootId}
+                    open={Boolean(openProjects[project.id])}
+                    onActivate={() => activateWorkspaceProject(project.id)}
                     onOpenChange={(open) =>
                       setOpenProjects((current) => ({
                         ...current,
@@ -287,7 +341,7 @@ export function AppSidebar() {
         </ContextMenuTrigger>
         <ContextMenuContent className="w-56">
           <ContextMenuGroup>
-            <ContextMenuItem onClick={() => setActivePage("new-task")}>
+            <ContextMenuItem onClick={requestProjectDialog}>
               <FolderPlusIcon />
               新建项目
               <ContextMenuShortcut>⌘⇧O</ContextMenuShortcut>

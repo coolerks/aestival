@@ -18,6 +18,7 @@ import {
 import { toast } from "sonner"
 
 import { IconButton } from "@/components/shell/icon-button"
+import { NoteWorkspacePanel } from "@/components/notes/note-workspace-panel"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import {
@@ -35,6 +36,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 import { panelTypeLabels, type WorkspacePanelInstance, type WorkspacePanelPlacement, type WorkspacePanelType } from "@/data/mock-workspace-panels"
 import { cn } from "@/lib/utils"
 import { useWorkspacePanelStore } from "@/store/workspace-panel-store"
+import { useProjectWorkspaceStore } from "@/store/project-workspace-store"
 import { useWorkspaceStore } from "@/store/workspace-store"
 import { FilesPanel } from "./files-panel"
 import { DebugPanel, EmptyPanelSelection, LogsPanel, SearchPanel, TerminalPanel } from "./workspace-panel-content"
@@ -85,7 +87,7 @@ function RenamePanelDialog() {
   return <Dialog open={Boolean(renameId)} onOpenChange={(open) => { if (!open) useWorkspacePanelStore.getState().setRenamePanelId(null) }}><DialogContent><DialogHeader><DialogTitle>重命名终端</DialogTitle><DialogDescription>名称仅保存在当前 Mock UI 状态中。</DialogDescription></DialogHeader><Input value={title} onChange={(e) => setTitle(e.target.value)} autoFocus /><DialogFooter><Button variant="outline" onClick={() => useWorkspacePanelStore.getState().setRenamePanelId(null)}>取消</Button><Button onClick={() => panel && title.trim() && useWorkspacePanelStore.getState().renamePanel(panel.id, title.trim())}>保存</Button></DialogFooter></DialogContent></Dialog>
 }
 
-export function WorkspacePanel({ placement }: { placement: WorkspacePanelPlacement }) {
+function ProjectWorkspacePanel({ placement }: { placement: WorkspacePanelPlacement }) {
   const panels = useWorkspacePanelStore((state) => placement === "right" ? state.rightPanels : state.bottomPanels)
   const activeId = useWorkspacePanelStore((state) => placement === "right" ? state.activeRightId : state.activeBottomId)
   const active = panels.find((panel) => panel.id === activeId) ?? null
@@ -97,4 +99,14 @@ export function WorkspacePanel({ placement }: { placement: WorkspacePanelPlaceme
     <div className="min-h-0 flex-1">{active ? <PanelBody panel={active} /> : <EmptyPanelSelection onAdd={() => useWorkspacePanelStore.getState().openPanel("terminal", placement)} />}</div>
     <RenamePanelDialog />
   </aside>
+}
+
+export function WorkspacePanel({ placement }: { placement: WorkspacePanelPlacement }) {
+  const activeProject = useProjectWorkspaceStore((state) =>
+    state.projects.find((project) => project.id === state.activeProjectId),
+  )
+  if (activeProject?.kind === "note") {
+    return <NoteWorkspacePanel projectId={activeProject.id} placement={placement} />
+  }
+  return <ProjectWorkspacePanel placement={placement} />
 }

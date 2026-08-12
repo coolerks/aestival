@@ -23,6 +23,7 @@ import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
 import { toast } from "sonner"
 
 import { ManagementSearch } from "@/components/shared/management-search"
+import { ReadingSettings } from "@/components/reading/reading-settings"
 import {
   ManagementListFrame,
   ManagementMetricBand,
@@ -89,7 +90,7 @@ import { useSettingsStore } from "@/store/settings-store"
 
 export function SettingsContent({ category }: { category: SettingsCategory }) {
   return <div className="flex w-full flex-col gap-4 p-4">
-    {category === "models" ? <ModelSettings /> : category === "statistics" ? <StatisticsSettings /> : category === "connections" ? <ConnectionSettings /> : category === "notifications" ? <NotificationSettings /> : category === "appearance" ? <AppearanceSettings /> : category === "shortcuts" ? <ShortcutSettings /> : <AboutSettings />}
+    {category === "models" ? <ModelSettings /> : category === "statistics" ? <StatisticsSettings /> : category === "connections" ? <ConnectionSettings /> : category === "reading" ? <ReadingSettings /> : category === "notifications" ? <NotificationSettings /> : category === "appearance" ? <AppearanceSettings /> : category === "shortcuts" ? <ShortcutSettings /> : <AboutSettings />}
     <SettingsOverlays />
   </div>
 }

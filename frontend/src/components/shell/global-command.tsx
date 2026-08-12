@@ -6,6 +6,8 @@ import {
   ChartNoAxesCombinedIcon,
   DownloadIcon,
   FolderInputIcon,
+  FolderIcon,
+  FolderPlusIcon,
   GitForkIcon,
   LibraryBigIcon,
   MessageSquareIcon,
@@ -13,6 +15,10 @@ import {
   StarIcon,
   Trash2Icon,
   BlocksIcon,
+  ListIcon,
+  SparklesIcon,
+  WandSparklesIcon,
+  NotebookPenIcon,
 } from "lucide-react"
 
 import {
@@ -31,9 +37,13 @@ import {
   sortMockSessions,
 } from "@/data/mock-session-management"
 import { commandItems } from "@/data/mock-workspace"
+import { orderedReadingCollections } from "@/lib/reading"
+import { activateWorkspaceProject } from "@/services/project-workspace-navigation"
 import { useKnowledgeStore } from "@/store/knowledge-store"
 import { useAppStore } from "@/store/app-store"
 import { useCapabilityStore } from "@/store/capability-store"
+import { useReadingStore } from "@/store/reading-store"
+import { useProjectWorkspaceStore } from "@/store/project-workspace-store"
 import {
   type AppPage,
   useWorkspaceStore,
@@ -43,6 +53,7 @@ const navigablePages = new Set<AppPage>([
   "new-task",
   "knowledge",
   "apps",
+  "reading",
   "capabilities",
   "tasks",
   "settings",
@@ -75,6 +86,14 @@ export function GlobalCommand() {
     (state) => state.setExportDialogOpen
   )
   const knowledgeBases = useKnowledgeStore((state) => state.knowledgeBases)
+  const projects = useProjectWorkspaceStore((state) => state.projects)
+  const requestProjectDialog = useProjectWorkspaceStore(
+    (state) => state.requestProjectDialog,
+  )
+  const readingCollections = useReadingStore((state) => state.collections)
+  const selectReadingCollection = useReadingStore(
+    (state) => state.selectCollection,
+  )
   const setKnowledgeTab = useKnowledgeStore((state) => state.setActiveTab)
   const openKnowledgeDetails = useKnowledgeStore(
     (state) => state.openKnowledgeDetails
@@ -123,6 +142,39 @@ export function GlobalCommand() {
         <CommandInput placeholder="搜索功能、会话、聊天记录与文件…" />
         <CommandList>
           <CommandEmpty>没有找到匹配结果。</CommandEmpty>
+          <CommandGroup heading="项目">
+            <CommandItem
+              value="添加项目 新建项目 笔记工作区"
+              onSelect={() => {
+                setOpen(false)
+                requestProjectDialog()
+              }}
+            >
+              <FolderPlusIcon />
+              <span>添加项目</span>
+              <CommandShortcut>⌘⇧O</CommandShortcut>
+            </CommandItem>
+            {projects.map((project) => (
+              <CommandItem
+                key={project.id}
+                value={`打开项目 ${project.name} ${project.kind === "note" ? "笔记" : "项目"} ${project.roots.map((root) => root.path).join(" ")}`}
+                onSelect={() => {
+                  activateWorkspaceProject(project.id)
+                  setOpen(false)
+                }}
+              >
+                {project.kind === "note" ? <NotebookPenIcon /> : <FolderIcon />}
+                <div className="min-w-0 flex-1">
+                  <div className="truncate">{project.name}</div>
+                  <div className="truncate text-xs text-muted-foreground">
+                    {project.kind === "note" ? "笔记" : "项目"}
+                    {project.roots[0] ? ` · ${project.roots[0].path}` : " · 系统工作区"}
+                  </div>
+                </div>
+              </CommandItem>
+            ))}
+          </CommandGroup>
+          <CommandSeparator />
           {Object.entries(groupedItems).map(([group, items], index) => (
             <div key={group}>
               {index > 0 && <CommandSeparator />}
@@ -146,6 +198,45 @@ export function GlobalCommand() {
               </CommandGroup>
             </div>
           ))}
+          <CommandSeparator />
+          <CommandGroup heading="阅读合集">
+            {orderedReadingCollections(readingCollections).map((collection) => {
+              const Icon =
+                collection.kind === "system_curated"
+                  ? SparklesIcon
+                  : collection.kind === "system_all"
+                    ? ListIcon
+                    : collection.kind === "source"
+                      ? FolderInputIcon
+                      : WandSparklesIcon
+              return (
+                <CommandItem
+                  key={collection.id}
+                  value={`阅读 ${collection.name} ${collection.kind}`}
+                  onSelect={() => {
+                    selectReadingCollection(collection.id)
+                    setActivePage("reading")
+                    setOpen(false)
+                  }}
+                >
+                  <Icon />
+                  <div className="min-w-0 flex-1">
+                    <div className="truncate">{collection.name}</div>
+                    <div className="truncate text-xs text-muted-foreground">
+                      {collection.kind === "system_curated"
+                        ? "AI 按质量与口味筛选"
+                        : collection.kind === "system_all"
+                          ? "完整时间线"
+                          : collection.kind === "source"
+                            ? "订阅源合集"
+                            : "AI 合集"}
+                    </div>
+                  </div>
+                  <CommandShortcut>阅读</CommandShortcut>
+                </CommandItem>
+              )
+            })}
+          </CommandGroup>
           {currentSession ? (
             <>
               <CommandSeparator />

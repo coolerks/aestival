@@ -1,4 +1,5 @@
-export type MockSessionProjectId = "task" | "aestival" | "ai-ui"
+// UI Mock 项目可在本次运行中动态创建，因此会话项目 ID 不能再限制为种子联合类型。
+export type MockSessionProjectId = string
 
 export type MockSessionStatus =
   | "completed"

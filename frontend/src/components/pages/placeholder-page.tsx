@@ -49,6 +49,12 @@ const SettingsPage = lazy(() =>
   }))
 )
 
+const ReadingPage = lazy(() =>
+  import("@/components/reading/reading-page").then((module) => ({
+    default: module.ReadingPage,
+  }))
+)
+
 type PlaceholderPageProps = {
   page: Exclude<AppPage, "new-task">
 }
@@ -103,6 +109,26 @@ export function PlaceholderPage({ page }: PlaceholderPageProps) {
     return (
       <Suspense fallback={<div className="flex min-h-0 flex-1 flex-col gap-3 p-4"><Skeleton className="h-8 w-72" /><Skeleton className="min-h-0 flex-1 rounded-xl" /></div>}>
         <PageErrorBoundary pageName={name}><Page /></PageErrorBoundary>
+      </Suspense>
+    )
+  }
+  if (page === "reading") {
+    return (
+      <Suspense
+        fallback={
+          <div className="flex min-h-0 flex-1">
+            <div className="flex w-[360px] shrink-0 flex-col gap-3 border-r p-3">
+              <Skeleton className="h-8 w-full" />
+              <Skeleton className="h-8 w-full" />
+              <Skeleton className="min-h-0 flex-1" />
+            </div>
+            <Skeleton className="m-6 min-h-0 flex-1" />
+          </div>
+        }
+      >
+        <PageErrorBoundary pageName="阅读">
+          <ReadingPage />
+        </PageErrorBoundary>
       </Suspense>
     )
   }

@@ -1,6 +1,7 @@
 import { useEffect, type CSSProperties } from "react"
 import { ThemeProvider } from "next-themes"
 
+import { ProjectCreateDialog } from "@/components/projects/project-create-dialog"
 import { AppSidebar } from "@/components/shell/app-sidebar"
 import { AppTitlebar } from "@/components/shell/app-titlebar"
 import { GlobalCommand } from "@/components/shell/global-command"
@@ -12,10 +13,22 @@ import {
 } from "@/components/ui/sidebar"
 import { Toaster } from "@/components/ui/sonner"
 import { TooltipProvider } from "@/components/ui/tooltip"
+import { useProjectWorkspaceStore } from "@/store/project-workspace-store"
 import { useWorkspaceStore } from "@/store/workspace-store"
 
 function AestivalWorkspace() {
   const setCommandOpen = useWorkspaceStore((state) => state.setCommandOpen)
+  const activeProjectId = useWorkspaceStore((state) => state.activeProjectId)
+
+  useEffect(() => {
+    const projects = useProjectWorkspaceStore.getState()
+    if (
+      projects.activeProjectId !== activeProjectId &&
+      projects.projects.some((project) => project.id === activeProjectId)
+    ) {
+      projects.setActiveProject(activeProjectId)
+    }
+  }, [activeProjectId])
 
   useEffect(() => {
     const preventNativeContextMenu = (event: MouseEvent) => {
@@ -27,6 +40,11 @@ function AestivalWorkspace() {
       if (modifier && key === "k") {
         event.preventDefault()
         setCommandOpen(true)
+        return
+      }
+      if (modifier && event.shiftKey && key === "o") {
+        event.preventDefault()
+        useProjectWorkspaceStore.getState().requestProjectDialog()
         return
       }
       if (modifier && key === ",") {
@@ -110,6 +128,7 @@ function AestivalWorkspace() {
           </SidebarInset>
         </div>
         <GlobalCommand />
+        <ProjectCreateDialog />
         <Toaster position="top-right" />
       </SidebarProvider>
     </TooltipProvider>

@@ -1,10 +1,11 @@
-export type SettingsCategory = "models" | "statistics" | "connections" | "notifications" | "appearance" | "shortcuts" | "about"
+export type SettingsCategory = "models" | "statistics" | "connections" | "reading" | "notifications" | "appearance" | "shortcuts" | "about"
 export type ConnectionStatus = "online" | "limited" | "auth" | "error" | "paused"
 
 export const settingsCategories: Array<{ id: SettingsCategory; label: string; description: string; keywords: string }> = [
   { id: "models", label: "模型管理", description: "供应商、模型、路由与使用限制", keywords: "API Key Endpoint 路由 回退 费用 Token" },
   { id: "statistics", label: "信息统计", description: "用量、费用、响应与工具调用", keywords: "图表 热力图 会话 消息 导出" },
   { id: "connections", label: "连接", description: "外部消息平台与访问策略", keywords: "Telegram 飞书 Discord 钉钉 微信 QQ 配对" },
+  { id: "reading", label: "阅读", description: "RSS、合集、精选与阅读偏好", keywords: "RSS Feed Atom JSON OPML 精选 合集 已读 收藏 AI" },
   { id: "notifications", label: "通知", description: "事件、渠道、勿扰与隐私", keywords: "系统 声音 审批 失败 前台" },
   { id: "appearance", label: "外观", description: "主题、动画、字体与密度", keywords: "浅色 深色 字号 圆角 reduced motion" },
   { id: "shortcuts", label: "快捷键", description: "绑定、冲突、预设与录制", keywords: "键盘 Mod Command Ctrl" },

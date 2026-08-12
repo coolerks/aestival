@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react"
 
 import { NewTaskView } from "@/components/chat/new-task-view"
+import { NoteWorkspacePage } from "@/components/notes/note-workspace-page"
 import { WorkspacePanel } from "@/components/panels/workspace-panel"
 import { WorkspaceMainTabs } from "@/components/panels/workspace-main-tabs"
 import { PlaceholderPage } from "@/components/pages/placeholder-page"
@@ -21,6 +22,7 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { useNarrowWorkspace } from "@/hooks/use-narrow-workspace"
 import { selectOpenResourceIds } from "@/store/editor-layout"
 import { useEditorWorkbenchStore } from "@/store/editor-workbench-store"
+import { useProjectWorkspaceStore } from "@/store/project-workspace-store"
 import { useWorkspaceStore } from "@/store/workspace-store"
 
 const ConversationView = lazy(() =>
@@ -85,23 +87,30 @@ function CurrentAppPage() {
 
 function CurrentPage() {
   const activePage = useWorkspaceStore((state) => state.activePage)
+  const activeProject = useProjectWorkspaceStore((state) =>
+    state.projects.find((project) => project.id === state.activeProjectId),
+  )
   const openFileCount = useEditorWorkbenchStore((state) =>
     selectOpenResourceIds(state.workbench).length,
   )
   const content = <CurrentAppPage />
-  return openFileCount > 0 && activePage !== "project-board" ? <WorkspaceMainTabs chat={content} /> : content
+  if (activeProject?.kind === "note" && activePage === "new-task") {
+    return <NoteWorkspacePage chat={content} />
+  }
+  return openFileCount > 0 && activePage !== "project-board" && activePage !== "reading" ? <WorkspaceMainTabs chat={content} /> : content
 }
 
 function HorizontalWorkspace() {
   const rightPanelOpen = useWorkspaceStore((state) => state.rightPanelOpen)
   const toggleRightPanel = useWorkspaceStore((state) => state.toggleRightPanel)
+  const activePage = useWorkspaceStore((state) => state.activePage)
   const isNarrow = useNarrowWorkspace()
 
   if (!rightPanelOpen) {
     return <CurrentPage />
   }
 
-  if (isNarrow) {
+  if (isNarrow || activePage === "reading") {
     return (
       <>
         <CurrentPage />

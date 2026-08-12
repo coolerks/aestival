@@ -48,7 +48,7 @@ import {
 } from "@/data/mock-session-management"
 
 export type AgentMode = "agent" | "chat"
-export type AppPage = "new-task" | "project-board" | "knowledge" | "apps" | "capabilities" | "tasks" | "settings"
+export type AppPage = "new-task" | "project-board" | "knowledge" | "apps" | "reading" | "capabilities" | "tasks" | "settings"
 
 function createEmptyConversationPatch() {
   return {
@@ -132,6 +132,8 @@ type WorkspaceState = {
   setCommandOpen: (open: boolean) => void
   toggleRightPanel: () => void
   toggleBottomPanel: () => void
+  setRightPanelOpen: (open: boolean) => void
+  setBottomPanelOpen: (open: boolean) => void
   setDraft: (draft: string) => void
   setComposerMode: (mode: ComposerMode) => void
   setApprovalPolicy: (policy: ApprovalPolicy) => void
@@ -279,6 +281,8 @@ export const useWorkspaceStore = create<WorkspaceState>((set) => ({
     set((state) => ({ rightPanelOpen: !state.rightPanelOpen })),
   toggleBottomPanel: () =>
     set((state) => ({ bottomPanelOpen: !state.bottomPanelOpen })),
+  setRightPanelOpen: (rightPanelOpen) => set({ rightPanelOpen }),
+  setBottomPanelOpen: (bottomPanelOpen) => set({ bottomPanelOpen }),
   setDraft: (draft) => set({ draft }),
   setComposerMode: (composerMode) => set({ composerMode }),
   setApprovalPolicy: (approvalPolicy) => set({ approvalPolicy }),

@@ -352,3 +352,65 @@ textarea,
     display: none;
   }
 }
+
+/* Vditor 只作为 Markdown 内核；外观回落到 Aestival 语义色与紧凑密度。 */
+.vditor {
+  height: 100% !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: var(--background) !important;
+  color: var(--foreground) !important;
+}
+
+.vditor-toolbar {
+  min-height: 36px;
+  border-color: var(--border) !important;
+  background: color-mix(in oklab, var(--background) 94%, var(--muted)) !important;
+}
+
+.vditor-toolbar button,
+.vditor-toolbar svg {
+  color: var(--muted-foreground) !important;
+}
+
+.vditor-toolbar button:hover,
+.vditor-toolbar button:focus-visible {
+  background: var(--accent) !important;
+  color: var(--accent-foreground) !important;
+}
+
+.vditor-content,
+.vditor-ir,
+.vditor-sv,
+.vditor-preview,
+.vditor-reset {
+  border-color: var(--border) !important;
+  background: var(--background) !important;
+  color: var(--foreground) !important;
+}
+
+.vditor-ir pre.vditor-reset,
+.vditor-sv .vditor-reset {
+  padding: 1.5rem 2rem !important;
+  font-family: var(--font-sans), system-ui, sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.75 !important;
+}
+
+.vditor-sv .vditor-reset {
+  font-family: var(--font-mono), ui-monospace, monospace !important;
+  line-height: 1.65 !important;
+}
+
+.vditor-preview {
+  padding: 1.5rem 2rem !important;
+}
+
+.vditor-reset :where(h1, h2, h3, h4, h5, h6) {
+  color: var(--foreground) !important;
+}
+
+.vditor-reset :where(blockquote, code, pre) {
+  border-color: var(--border) !important;
+  background: var(--muted) !important;
+}

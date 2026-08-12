@@ -12,7 +12,10 @@ import {
   FolderOpenIcon,
   ListTodoIcon,
   MessageSquareIcon,
+  NetworkIcon,
+  NotebookPenIcon,
   PencilIcon,
+  SearchIcon,
   Settings2Icon,
   ShieldQuestionIcon,
   SquarePenIcon,
@@ -35,6 +38,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog"
+import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import {
   Collapsible,
@@ -58,6 +62,14 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
+import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
@@ -71,6 +83,15 @@ import {
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar"
 import { Spinner } from "@/components/ui/spinner"
+import { Input } from "@/components/ui/input"
+import {
+  Item,
+  ItemContent,
+  ItemDescription,
+  ItemGroup,
+  ItemMedia,
+  ItemTitle,
+} from "@/components/ui/item"
 import {
   Tooltip,
   TooltipContent,
@@ -80,31 +101,56 @@ import {
   sortMockSessions,
   type MockSessionProjectId,
 } from "@/data/mock-session-management"
+import { copyTextToClipboard } from "@/lib/context-menu-utils"
+import {
+  activateWorkspaceProject,
+  openWorkspaceNoteGraph,
+} from "@/services/project-workspace-navigation"
+import { useProjectWorkspaceStore } from "@/store/project-workspace-store"
 import { useWorkspacePanelStore } from "@/store/workspace-panel-store"
 import { useWorkspaceStore } from "@/store/workspace-store"
+import type { ProjectKind, ProjectRoot } from "@/types/project-workspace"
 
 type SessionProjectGroupProps = {
   projectId: MockSessionProjectId
   label: string
+  kind: ProjectKind
+  fixed?: boolean
+  roots: ProjectRoot[]
+  defaultRootId: string | null
   open: boolean
+  onActivate: () => void
   onOpenChange: (open: boolean) => void
 }
 
 function ProjectContextMenuContent({
   projectId,
+  kind,
+  fixed,
+  roots,
+  onActivate,
   onOpenChange,
+  onRename,
+  onSettings,
+  onRemove,
 }: {
   projectId: MockSessionProjectId
+  kind: ProjectKind
+  fixed?: boolean
+  roots: ProjectRoot[]
+  onActivate: () => void
   onOpenChange: (open: boolean) => void
+  onRename: () => void
+  onSettings: () => void
+  onRemove: () => void
 }) {
   const sessions = useWorkspaceStore((state) => state.sessions)
   const setSessionArchived = useWorkspaceStore(
     (state) => state.setSessionArchived,
   )
   const setActivePage = useWorkspaceStore((state) => state.setActivePage)
-  const setActiveProjectId = useWorkspaceStore((state) => state.setActiveProjectId)
   const openProjectBoard = useWorkspaceStore((state) => state.openProjectBoard)
-  const fixedProject = projectId === "task"
+  const fixedProject = Boolean(fixed)
   const projectSessions = sessions.filter(
     (session) => session.projectId === projectId && !session.archived,
   )
@@ -114,9 +160,16 @@ function ProjectContextMenuContent({
       <ContextMenuGroup>
         <ContextMenuItem
           onClick={() => {
-            const panels = useWorkspacePanelStore.getState()
-            panels.openMockWorkspace()
-            panels.openPanel("files", "right")
+            onActivate()
+            const workspace = useWorkspaceStore.getState()
+            workspace.setRightPanelOpen(true)
+            if (kind === "note") {
+              useProjectWorkspaceStore.getState().setActiveNotePanel(projectId, "right", "files")
+            } else {
+              const panels = useWorkspacePanelStore.getState()
+              panels.openMockWorkspace()
+              panels.openPanel("files", "right")
+            }
           }}
         >
           <FilesIcon />
@@ -128,27 +181,46 @@ function ProjectContextMenuContent({
           <FolderOpenIcon />
           在系统文件管理器中显示
         </ContextMenuItem>
-        <ContextMenuItem onClick={() => { setActiveProjectId(projectId); setActivePage("new-task") }}>
+        <ContextMenuItem onClick={() => { onActivate(); setActivePage("new-task") }}>
           <SquarePenIcon />
           在此项目中新建任务
           <ContextMenuShortcut>⌘N</ContextMenuShortcut>
         </ContextMenuItem>
-        <ContextMenuItem onClick={() => { setActiveProjectId(projectId); openProjectBoard() }}>
-          <ListTodoIcon />
-          打开项目看板
-        </ContextMenuItem>
-        <ContextMenuItem
-          onClick={() => useWorkspacePanelStore.getState().openPanel("terminal", "right")}
-        >
-          <TerminalSquareIcon />
-          新建终端
-        </ContextMenuItem>
+        {kind === "project" ? (
+          <>
+            <ContextMenuItem onClick={() => { onActivate(); openProjectBoard() }}>
+              <ListTodoIcon />
+              打开项目看板
+            </ContextMenuItem>
+            <ContextMenuItem
+              onClick={() => { onActivate(); useWorkspacePanelStore.getState().openPanel("terminal", "right") }}
+            >
+              <TerminalSquareIcon />
+              新建终端
+            </ContextMenuItem>
+          </>
+        ) : (
+          <>
+            <ContextMenuItem onClick={() => openWorkspaceNoteGraph(projectId)}>
+              <NetworkIcon />
+              打开全局图谱
+            </ContextMenuItem>
+            <ContextMenuItem onClick={() => { onActivate(); toast.info("请在笔记文件面板中选择“新建笔记”", { description: "本轮只更新内存 Mock，不会写入目录。" }) }}>
+              <NotebookPenIcon />
+              新建笔记
+            </ContextMenuItem>
+            <ContextMenuItem onClick={() => { onActivate(); useProjectWorkspaceStore.getState().setActiveNotePanel(projectId, "right", "search"); useWorkspaceStore.getState().setRightPanelOpen(true) }}>
+              <SearchIcon />
+              搜索笔记
+            </ContextMenuItem>
+          </>
+        )}
       </ContextMenuGroup>
       <ContextMenuSeparator />
       <ContextMenuGroup>
         <ContextMenuItem
           disabled={fixedProject}
-          onClick={() => toast.info("项目重命名仍为前端 Mock")}
+          onClick={onRename}
         >
           <PencilIcon />
           重命名
@@ -156,13 +228,22 @@ function ProjectContextMenuContent({
         </ContextMenuItem>
         <ContextMenuItem
           disabled={fixedProject}
-          onClick={() => toast.info("项目设置仍为前端 Mock")}
+          onClick={onSettings}
         >
           <Settings2Icon />
           项目设置
         </ContextMenuItem>
         <ContextMenuItem
-          onClick={() => toast.success("项目路径已复制（Mock）")}
+          onClick={() => {
+            const path = roots[0]?.path
+            if (!path) {
+              toast.info("系统项目没有可复制的用户目录")
+              return
+            }
+            void copyTextToClipboard(path).then((copied) =>
+              copied ? toast.success("项目路径已复制") : toast.warning("无法写入剪贴板"),
+            )
+          }}
         >
           <CopyIcon />
           复制路径
@@ -200,7 +281,7 @@ function ProjectContextMenuContent({
       <ContextMenuItem
         disabled={fixedProject}
         variant="destructive"
-        onClick={() => toast.info("从侧栏移除仍为前端 Mock，未删除本地目录")}
+        onClick={onRemove}
       >
         <FolderMinusIcon />
         从侧栏移除
@@ -212,12 +293,21 @@ function ProjectContextMenuContent({
 export function SessionProjectGroup({
   projectId,
   label,
+  kind,
+  fixed,
+  roots,
+  defaultRootId,
   open,
+  onActivate,
   onOpenChange,
 }: SessionProjectGroupProps) {
   const [archiveSessionId, setArchiveSessionId] = useState<string | null>(
     null
   )
+  const [renameOpen, setRenameOpen] = useState(false)
+  const [renameValue, setRenameValue] = useState(label)
+  const [settingsOpen, setSettingsOpen] = useState(false)
+  const [removeOpen, setRemoveOpen] = useState(false)
   const sessions = useWorkspaceStore((state) => state.sessions)
   const sessionSearchQuery = useWorkspaceStore(
     (state) => state.sessionSearchQuery
@@ -226,12 +316,11 @@ export function SessionProjectGroup({
     (state) => state.showArchivedSessions
   )
   const visibleCount = useWorkspaceStore(
-    (state) => state.sessionVisibleCounts[projectId]
+    (state) => state.sessionVisibleCounts[projectId] ?? 5
   )
   const conversationId = useWorkspaceStore((state) => state.conversationId)
   const runState = useWorkspaceStore((state) => state.runState)
   const setActivePage = useWorkspaceStore((state) => state.setActivePage)
-  const setActiveProjectId = useWorkspaceStore((state) => state.setActiveProjectId)
   const openMockConversation = useWorkspaceStore(
     (state) => state.openMockConversation
   )
@@ -255,6 +344,7 @@ export function SessionProjectGroup({
     : filteredSessions.slice(0, visibleCount)
   const hasMore = visibleSessions.length < filteredSessions.length
   const effectiveOpen = open || Boolean(query)
+  const activeProjectId = useProjectWorkspaceStore((state) => state.activeProjectId)
 
   return (
     <SidebarMenu>
@@ -263,9 +353,17 @@ export function SessionProjectGroup({
           <ContextMenu>
             <ContextMenuTrigger className="block w-full">
               <CollapsibleTrigger
-                onClick={() => setActiveProjectId(projectId)}
+                onClick={onActivate}
+                onKeyDown={(event) => {
+                  if (event.key === "F2" && !fixed) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                    setRenameValue(label)
+                    setRenameOpen(true)
+                  }
+                }}
                 render={
-                  <SidebarMenuButton tooltip={label} />
+                  <SidebarMenuButton tooltip={label} isActive={activeProjectId === projectId} />
                 }
               >
                 {effectiveOpen ? <ChevronDownIcon /> : <ChevronRightIcon />}
@@ -275,7 +373,14 @@ export function SessionProjectGroup({
             </ContextMenuTrigger>
             <ProjectContextMenuContent
               projectId={projectId}
+              kind={kind}
+              fixed={fixed}
+              roots={roots}
+              onActivate={onActivate}
               onOpenChange={onOpenChange}
+              onRename={() => { setRenameValue(label); setRenameOpen(true) }}
+              onSettings={() => setSettingsOpen(true)}
+              onRemove={() => setRemoveOpen(true)}
             />
           </ContextMenu>
           <CollapsibleContent>
@@ -311,6 +416,7 @@ export function SessionProjectGroup({
                               className="h-8 w-full px-2 pr-14 pl-8"
                               onClick={(event) => {
                                 event.preventDefault()
+                                onActivate()
                                 if (isCurrent) {
                                   setActivePage("new-task")
                                 } else {
@@ -502,6 +608,99 @@ export function SessionProjectGroup({
             >
               确认归档
             </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+      <Dialog open={renameOpen} onOpenChange={setRenameOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>重命名项目</DialogTitle>
+            <DialogDescription>名称只保存在本次运行的前端 Mock 状态中。</DialogDescription>
+          </DialogHeader>
+          <Input
+            value={renameValue}
+            autoFocus
+            aria-invalid={!renameValue.trim()}
+            onChange={(event) => setRenameValue(event.target.value)}
+          />
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setRenameOpen(false)}>取消</Button>
+            <Button
+              disabled={!renameValue.trim()}
+              onClick={() => {
+                useProjectWorkspaceStore.getState().renameProject(projectId, renameValue)
+                setRenameOpen(false)
+                toast.success("项目名称已更新（仅本次运行）")
+              }}
+            >保存</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+      <Dialog open={settingsOpen} onOpenChange={setSettingsOpen}>
+        <DialogContent className="sm:max-w-lg">
+          <DialogHeader>
+            <DialogTitle>项目设置</DialogTitle>
+            <DialogDescription>
+              本轮只展示不可转换的类型和已授权根目录，不保存设置或读取目录。
+            </DialogDescription>
+          </DialogHeader>
+          <ItemGroup className="gap-2">
+            <Item variant="outline">
+              <ItemMedia variant="icon">
+                {kind === "note" ? <NotebookPenIcon /> : <TerminalSquareIcon />}
+              </ItemMedia>
+              <ItemContent>
+                <ItemTitle>类型：{kind === "note" ? "笔记" : "项目"}</ItemTitle>
+                <ItemDescription>类型创建后不可转换；需要更换时请新建工作区。</ItemDescription>
+              </ItemContent>
+              <Badge variant="secondary">只读</Badge>
+            </Item>
+            {roots.length ? roots.map((root) => (
+              <Item key={root.id} variant="outline">
+                <ItemMedia variant="icon"><FolderIcon /></ItemMedia>
+                <ItemContent>
+                  <ItemTitle>
+                    {root.displayName}
+                    {defaultRootId === root.id ? <Badge variant="outline">默认</Badge> : null}
+                  </ItemTitle>
+                  <ItemDescription className="app-selectable-content break-all">{root.path}</ItemDescription>
+                </ItemContent>
+              </Item>
+            )) : (
+              <Item variant="outline">
+                <ItemMedia variant="icon"><FolderOpenIcon /></ItemMedia>
+                <ItemContent>
+                  <ItemTitle>未配置用户根目录</ItemTitle>
+                  <ItemDescription>这是既有种子项目；本轮不会补扫或猜测目录。</ItemDescription>
+                </ItemContent>
+              </Item>
+            )}
+          </ItemGroup>
+          <DialogFooter>
+            <Button onClick={() => setSettingsOpen(false)}>完成</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+      <AlertDialog open={removeOpen} onOpenChange={setRemoveOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>从侧栏移除“{label}”？</AlertDialogTitle>
+            <AlertDialogDescription>
+              只会移除本次运行中的项目 Mock；不会删除、移动或修改任何本地文件夹和文件。
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>取消</AlertDialogCancel>
+            <AlertDialogAction
+              variant="destructive"
+              onClick={() => {
+                const projects = useProjectWorkspaceStore.getState()
+                const removedActiveProject = projects.activeProjectId === projectId
+                projects.removeProject(projectId)
+                if (removedActiveProject) activateWorkspaceProject("task")
+                toast.success("项目已从侧栏移除", { description: "本地目录未受影响。" })
+              }}
+            >确认移除</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>

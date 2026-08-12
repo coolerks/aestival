@@ -6,6 +6,7 @@ import {
   KeyboardIcon,
   MenuIcon,
   PaletteIcon,
+  RssIcon,
   SearchIcon,
   ServerCogIcon,
 } from "lucide-react"
@@ -25,6 +26,7 @@ const icons: Record<SettingsCategory, typeof ServerCogIcon> = {
   models: ServerCogIcon,
   statistics: BarChart3Icon,
   connections: CableIcon,
+  reading: RssIcon,
   notifications: BellIcon,
   appearance: PaletteIcon,
   shortcuts: KeyboardIcon,

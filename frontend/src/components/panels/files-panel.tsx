@@ -36,6 +36,7 @@ import {
   useEditorWorkbenchStore,
 } from "@/store/editor-workbench-store"
 import { useWorkspacePanelStore } from "@/store/workspace-panel-store"
+import { useProjectWorkspaceStore } from "@/store/project-workspace-store"
 
 import folderProject from "@/assets/icons/material/folder-project.svg"
 import folderSrc from "@/assets/icons/material/folder-src.svg"
@@ -129,8 +130,24 @@ function TreeNode({ node, depth = 0 }: { node: MockFileTreeNode; depth?: number 
 }
 
 export function FilesPanel() {
+  const activeProject = useProjectWorkspaceStore((state) =>
+    state.projects.find((project) => project.id === state.activeProjectId),
+  )
   const mockWorkspaceOpen = useWorkspacePanelStore((state) => state.mockWorkspaceOpen)
   const openMockWorkspace = useWorkspacePanelStore((state) => state.openMockWorkspace)
+  if (activeProject?.createdInCurrentRun) {
+    return (
+      <Empty className="h-full rounded-none">
+        <EmptyHeader>
+          <EmptyMedia variant="icon"><FolderOpenIcon /></EmptyMedia>
+          <EmptyTitle>文件读取服务尚未接入</EmptyTitle>
+          <EmptyDescription>
+            已记录 {activeProject.roots.length} 个授权根目录，但本轮不会扫描、读取、监听或修改其中的内容。
+          </EmptyDescription>
+        </EmptyHeader>
+      </Empty>
+    )
+  }
   if (!mockWorkspaceOpen) {
     return (
       <Empty className="h-full rounded-none">

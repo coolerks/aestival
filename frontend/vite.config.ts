@@ -4,6 +4,8 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import wails from "@wailsio/runtime/plugins/vite";
 
+import { localVditorAssets } from "./vite-vditor-plugin";
+
 // https://vitejs.dev/config/
 export default defineConfig({
   // Wails may serve the embedded frontend from a custom origin. Keeping all
@@ -16,7 +18,7 @@ export default defineConfig({
     port: Number(process.env.WAILS_VITE_PORT) || 9245,
     strictPort: true,
   },
-  plugins: [react(), tailwindcss(), wails("./bindings")],
+  plugins: [react(), tailwindcss(), wails("./bindings"), localVditorAssets()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
