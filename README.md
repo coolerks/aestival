@@ -5,144 +5,154 @@
 <h1 align="center">Aestival</h1>
 
 <p align="center">
-  本地优先、无登录流程的跨平台 AI Agent 桌面工作区
+  本地优先、无账户体系的跨平台 AI Agent 桌面工作区
 </p>
 
 <p align="center">
-  在同一个窗口中组织项目、会话、代理任务、知识库与开发工具。
+  在一个窗口中组织代理会话、项目文件、Markdown 笔记、RSS 阅读、知识库、任务与扩展能力。
 </p>
 
 > [!IMPORTANT]
-> Aestival 正在开发中。当前仓库以桌面应用外壳、前端 UI 和 Mock 交互为主，尚未接入真实模型调用、数据库、向量检索、MCP、Skill、终端、文件系统、定时任务执行或外部消息平台服务。
+> Aestival 仍在开发中。当前仓库已经实现可运行的桌面外壳和较完整的前端交互，但业务数据主要来自内存 Mock；真实模型调用、工具执行、文件读写、持久化、Feed 抓取、知识检索、定时调度和能力安装尚未接入。请勿把界面中的示例状态视为真实执行结果，也不要在当前版本中填写生产凭据。
 
-![UI](./screenshots/ui.png "UI")
+![Aestival 新建任务首页](./screenshots/首页.png)
 
-![KNOWLEDGE](./screenshots/knowledge.png "KNOWLEDGE")
+## Aestival 是什么
 
-## 🌊 Aestival 是什么
+Aestival 面向希望在本地桌面环境中持续使用 AI 处理项目、阅读资料和沉淀知识的用户。它以项目和会话为主线，把对话、代码与文档、笔记、任务和内容消费放进同一套紧凑工作区，并为高风险动作、远程数据发送和 AI 判断保留显式边界。
 
-Aestival 面向需要长期使用 AI Agent 处理项目任务的桌面场景。它将代理对话、项目上下文、文件浏览、终端、搜索、日志和会话调试放在统一工作区内，并通过明确的权限与状态反馈展示代理执行过程。
+产品方向包括：
 
-产品设计遵循以下原则：
+- 本地优先，不提供 Aestival 账户、登录、注册或云端 Profile。
+- 代理与聊天共用会话体验；聊天模式禁用工具和副作用能力。
+- 项目、会话、文件、笔记、阅读合集和工作项具有明确归属。
+- AI 结果保持可观察、可反馈，不把模型判断伪装成事实。
+- 桌面宽窗口使用可调面板，窄窗口退化为单页或 Sheet，不依赖横向溢出。
+- Mock 数据、界面状态和未来 Wails 服务适配层彼此分离。
 
-* 本地优先，不提供 Aestival 账户、登录或注册流程
-* 启动后可以快速创建任务或继续已有会话
-* 代理执行过程可观察、可授权、可停止、可恢复
-* 项目、会话、文件、知识库与工具状态具有明确归属
-* 代理模式与聊天模式共用会话界面，聊天模式禁用工具和副作用能力
-* 默认使用双栏布局，按需展开右侧检查器和底部工作区面板
+## 当前可体验功能
 
-## ✨ 当前进度
+| 模块 | 实现状态 | 当前体验 |
+| --- | --- | --- |
+| 桌面外壳与导航 | 已实现 | Wails 桌面窗口、原生窗口控件安全区、全局标题栏、可收起侧栏、全局 Command、区域右键菜单和可调工作区面板 |
+| 代理与聊天 | 前端 Mock | 新建任务、代理/聊天模式、附件与 Slash Command、多模型比较、统计、上下文压缩、分叉、临时会话和导出预览 |
+| 富文本消息 | 前端 Mock | Markdown/GFM、KaTeX、Mermaid、Shiki 代码高亮、流式 Marker 和消息滚动跟随 |
+| 项目与会话 | 前端 Mock | 项目分组、会话增量加载、Star、归档、移动、重命名、删除，以及“项目/笔记”两种不可互换的工作区类型 |
+| 代码与文件工作区 | 前端 Mock | Material 文件树、VS Code 语义的独立编辑组、Monaco 编辑与本地补全、Diff、Markdown 源码/预览，以及右侧栏和底部面板 |
+| 文档预览 | 本地样例可体验 | PDF.js 分页与搜索、Word/PPT 预生成保真预览、Excel 只读网格与范围复制；当前仅覆盖仓库内登记样例 |
+| 笔记工作区 | 前端 Mock | Vditor 源码/并排/即时/预览四模式、共享 Buffer、多根目录、文件与知识面板、搜索、反向链接、元数据和 Cytoscape 知识图谱 |
+| 项目看板 | 前端 Mock | 五状态看板、拖放、日期与作废筛选、人类验收完成、任务详情、只读甘特图和 Mock AI 规划 |
+| RSS 阅读 | 前端 Mock | 文章列表与阅读窗、“精选/全部”系统合集、来源合集、AI 合集、订阅源/OPML 管理、AI 披露、理由和显式反馈 |
+| 知识库 | 前端 Mock | 知识库、数据连接、检索测试、同步记录、创建向导、状态筛选和全局检索入口 |
+| 应用与能力 | 前端 Mock | 本地应用管理与 Monaco 草稿；MCP、Skill、智能体、指令和 Hooks 的管理、配置、权限与安全状态 |
+| 定时任务与设置 | 前端 Mock | 任务列表、日历、运行记录、创建流程，以及模型、连接、通知、外观、快捷键、统计和阅读设置 |
 
-| 模块      | 当前状态                                      |
-| ------- | ----------------------------------------- |
-| 桌面应用外壳  | 已实现并完成基础验证                                |
-| 新建任务首页  | 已实现 Mock 交互                               |
-| 代理与聊天   | 已实现消息流、审批、停止、重试与工具调用 Mock                 |
-| 输入区增强   | 已实现附件、Slash Command、模式选择、模型与智能体选择 Mock    |
-| 多模型与上下文 | 已实现多模型比较、会话统计、上下文压缩与分叉 Mock               |
-| 会话管理    | 已实现项目、会话、归档、Star、搜索、移动、删除与临时会话 Mock       |
-| AI 代码预览 | 已实现 HTML、CSS、JavaScript 预览、权限确认与应用草稿 Mock |
-| 知识库     | 已实现知识库、数据连接、检索测试、同步记录与向导 Mock             |
-| 应用中心    | 页面骨架与局部草稿能力，完整管理界面仍在开发                    |
-| 能力中心    | 页面骨架，MCP、Skill、智能体、指令与 Hooks 尚未接入         |
-| 工作区面板   | 设计已完成，文件、终端、搜索、日志与会话调试仍待实现                |
-| 后端业务服务  | 尚未接入                                      |
+最新任务状态和验收边界见 [当前状态](./docs/协作同步/当前状态.md) 与 [任务看板](./docs/协作同步/任务看板.md)。
 
-最新实施状态见 [`docs/协作同步/当前状态.md`](./docs/协作同步/当前状态.md)。
+## 核心界面
 
-## 🧭 规划能力
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <strong>代码与文档工作区</strong><br />
+      独立编辑组、Monaco、文件树，以及 PDF、Word、PowerPoint、Excel 等内容标签。<br /><br />
+      <img src="./screenshots/文件编辑预览.png" alt="Aestival 代码与文档工作区" width="100%" />
+    </td>
+    <td width="50%" valign="top">
+      <strong>笔记工作区</strong><br />
+      Vditor 四种编辑模式、共享内容缓冲区、笔记文件树和知识面板。<br /><br />
+      <img src="./screenshots/笔记漠视.png" alt="Aestival 笔记工作区" width="100%" />
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <strong>RSS 阅读与智能合集</strong><br />
+      文章列表、阅读窗、精选理由、显式反馈和多种合集。<br /><br />
+      <img src="./screenshots/阅读.png" alt="Aestival RSS 阅读与智能合集" width="100%" />
+    </td>
+    <td width="50%" valign="top">
+      <strong>项目看板</strong><br />
+      五状态工作流、拖放、筛选、验收与甘特视图。<br /><br />
+      <img src="./screenshots/任务看板.png" alt="Aestival 项目任务看板" width="100%" />
+    </td>
+  </tr>
+</table>
 
-### 代理与聊天
+<details>
+  <summary><strong>查看更多管理界面</strong></summary>
+  <br />
+  <table>
+    <tr>
+      <td width="50%" valign="top">
+        <strong>知识库</strong><br /><br />
+        <img src="./screenshots/知识库.png" alt="Aestival 知识库管理" width="100%" />
+      </td>
+      <td width="50%" valign="top">
+        <strong>定时任务</strong><br /><br />
+        <img src="./screenshots/定时任务.png" alt="Aestival 定时任务管理" width="100%" />
+      </td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top">
+        <strong>应用中心</strong><br /><br />
+        <img src="./screenshots/应用.png" alt="Aestival 应用中心" width="100%" />
+      </td>
+      <td width="50%" valign="top">
+        <strong>能力中心</strong><br /><br />
+        <img src="./screenshots/能力.png" alt="Aestival 能力中心" width="100%" />
+      </td>
+    </tr>
+  </table>
+</details>
 
-* 流式输出、思考大纲和工具调用过程
-* 图片、文档和语音输入
-* 模型、智能体和权限策略选择
-* 多模型并行对话与结果比较
-* 记忆、知识库检索、网络搜索和工作流触发
-* Token、费用与跨计费段统计
-* 上下文压缩、会话分叉和临时会话
-* Markdown、HTML、PDF、Word 导出
+## 当前实现边界
 
-### 知识库
+当前版本适合体验和评审界面流程，不适合承载真实生产任务。
 
-* 文件知识库
-* PostgreSQL、MySQL、Oracle
-* Milvus、Weaviate、Chroma
-* Elasticsearch、Redis
-* 向量检索与关系数据检索
-* 数据连接、索引、同步和检索调试
+| 边界 | 当前状态 |
+| --- | --- |
+| Wails 桌面能力 | 已接入窗口外壳、窗口状态处理，以及 UI 所需的目录选择和打开外部链接能力 |
+| 页面数据与状态 | 主要保存在 Zustand 内存状态中，刷新或重启后会恢复示例数据 |
+| 模型与 Agent | 不会把输入发送给真实模型，不执行真实工具、工作流或审批动作 |
+| 文件与终端 | 目录选择器可以返回用户选择结果，但不扫描、不读取、不写入文件；终端、搜索、日志和调试均为 Mock |
+| 文档预览 | PDF 可由前端解析；Word、PPT、Excel 使用仓库内预生成样例，尚无任意本地文档转换服务 |
+| RSS 与 AI 合集 | 不发现或刷新真实 Feed，不读写 OPML 文件，不执行模型分类，也不持久化阅读状态 |
+| 知识库与连接 | 不连接数据库、向量库或消息平台，不保存 API Key、Token、密码和数据库凭据 |
+| 应用、MCP 与 Skill | 不安装、不联网、不启动真实应用或扩展能力，权限与运行结果均为界面示例 |
+| 定时任务与项目看板 | 不执行真实调度、AI 规划或后台任务，工作项仅保存在内存 Adapter 中 |
 
-### 应用中心
+## 技术栈
 
-* 创建和管理 HTML、CSS、JavaScript 小应用
-* 从 AI 生成代码创建应用
-* 代码编辑、权限预览和运行配置
-* 使用 Wails 多窗口能力在独立窗口运行应用
+| 领域 | 技术 |
+| --- | --- |
+| 桌面运行时 | Wails 3 Beta、Go 1.25 |
+| 前端 | React 19、TypeScript、Vite 6 |
+| 组件与样式 | Tailwind CSS 4、shadcn/ui、Base UI、Geist |
+| 状态管理 | Zustand |
+| 编辑器 | Monaco Editor、Vditor |
+| 文档与图谱 | PDF.js、Cytoscape.js |
+| 内容渲染 | react-markdown、GFM、KaTeX、Mermaid、Shiki |
+| 布局与拖放 | react-resizable-panels、dnd-kit |
+| 搜索与反馈 | cmdk、Sonner |
+| 图标 | Lucide React、Material Icon Theme 资源 |
+| 图表 | Recharts |
 
-### 能力中心
+## 环境要求
 
-* MCP 管理与市场
-* Skill 创建、导入、安装与市场
-* 自定义智能体
-* 可注入指令
-* Session、Prompt、Tool、Compact 等阶段的 Hooks
+- Go 1.25 或更高版本
+- Node.js 20.18.1 或更高版本
+- npm
+- Wails 3 CLI
+- 对应平台的编译工具和 WebView 依赖
 
-### 桌面工作区
-
-* 文件树与文件图标映射
-* Monaco Editor 代码查看与编辑
-* 常见二进制文件预览
-* 多实例终端
-* 文件内容搜索
-* 日志和会话调试
-
-### 自动化与连接
-
-* 定时任务和 Cron 表达式
-* Telegram、飞书、Discord、钉钉、微信、QQ 等外部连接
-* 配对、允许列表、群聊提及和最小权限控制
-* 通知、快捷键、主题和使用统计
-
-## 🧱 技术栈
-
-| 领域    | 技术                                  |
-| ----- | ----------------------------------- |
-| 桌面运行时 | Wails 3                             |
-| 后端    | Go 1.25                             |
-| 前端    | React 19、TypeScript、Vite 6          |
-| 样式    | Tailwind CSS 4、shadcn/ui、Base UI    |
-| 状态管理  | Zustand                             |
-| 图标    | Lucide React、Material Icon Theme 资源 |
-| 布局    | react-resizable-panels              |
-| 命令与搜索 | cmdk                                |
-| 通知    | Sonner                              |
-| 图表    | Recharts                            |
-| 主题    | next-themes                         |
-
-Wails 3 当前仍处于 Alpha 阶段，项目依赖版本可能随上游更新发生变化。
-
-## 📦 环境要求
-
-* Go 1.25 或更高版本
-* Node.js 20.18.1 或更高版本
-* npm
-* Wails 3 CLI
-* 对应平台的编译工具与 WebView 依赖
-
-安装 Wails 3 CLI：
+安装并检查 Wails 3 CLI：
 
 ```bash
 go install github.com/wailsapp/wails/v3/cmd/wails3@latest
-```
-
-检查本机开发环境：
-
-```bash
 wails3 doctor
 ```
 
-## 🚀 本地开发
+## 本地开发
 
 ```bash
 git clone https://github.com/coolerks/aestival.git
@@ -152,19 +162,18 @@ npm --prefix frontend install
 wails3 dev
 ```
 
-开发模式默认通过 Vite 提供前端热更新，并由 Wails 启动桌面窗口。
-
-仅启动前端：
+开发模式由 Wails 启动桌面窗口，并通过 Vite 提供前端热更新。只调试浏览器端界面时可运行：
 
 ```bash
 npm --prefix frontend run dev
 ```
 
-## 🏗️ 构建与打包
+## 构建与验证
 
-构建当前平台的生产版本：
+构建前端和当前平台桌面应用：
 
 ```bash
+npm --prefix frontend run build
 wails3 build
 ```
 
@@ -174,98 +183,95 @@ wails3 build
 wails3 package
 ```
 
-构建产物默认写入 `bin/` 目录。macOS 打包产物为 `bin/aestival.app`。
-
-前端生产构建：
+项目还提供独立的前端状态测试：
 
 ```bash
-npm --prefix frontend run build
+npm --prefix frontend run test:editor-layout
+npm --prefix frontend run test:project-board
+npm --prefix frontend run test:document-preview
+npm --prefix frontend run test:reading
+npm --prefix frontend run test:project-workspace
 ```
 
-常用验证命令：
+Go 侧基础验证：
 
 ```bash
-npm --prefix frontend run build
 go test ./...
 go vet ./...
-wails3 package
 ```
 
-## 🗂️ 项目结构
+构建产物默认写入 `bin/`；macOS 应用包为 `bin/aestival.app`。
+
+## 项目结构
 
 ```text
 aestival/
 ├── frontend/
 │   ├── src/
-│   │   ├── assets/icons/       # 应用与文件图标
-│   │   ├── components/         # 页面与交互组件
-│   │   ├── data/               # 前端 Mock 数据
-│   │   └── store/              # Zustand 状态
+│   │   ├── assets/             # 应用图标、文件图标和本地预览样例
+│   │   ├── components/         # UI 基础组件与按领域拆分的业务组件
+│   │   ├── data/               # 明确标记的前端 Mock 数据
+│   │   ├── lib/                # 纯状态逻辑与工具函数
+│   │   ├── services/           # UI Adapter 与集中式 Wails 调用
+│   │   ├── store/              # Zustand 业务状态
+│   │   └── types/              # 前端领域类型
 │   └── package.json
 ├── docs/
-│   ├── 设计.md                 # 产品功能设计
+│   ├── 需求调研/               # 竞品与需求调研
 │   ├── 设计方案/               # UI、交互、状态与验收基线
-│   ├── 协作同步/               # 状态、任务、决策与变更记录
+│   ├── 协作同步/               # 当前状态、任务、决策、风险与变更记录
+│   ├── 设计.md
 │   └── 文件图标映射.md
-├── build/                       # 各平台构建与打包配置
-├── main.go                      # Wails 应用入口与主窗口配置
-├── go.mod
+├── screenshots/                # README 与项目界面截图
+├── build/                      # Wails 跨平台构建与打包配置
+├── main.go                     # Wails 应用入口和窗口配置
 ├── Taskfile.yml
-└── AGENTS.md                    # 项目协作规则
+└── AGENTS.md                   # 项目协作与实现约束
 ```
 
-## 🎨 图标资源
+## 设计与协作文档
 
-| 用途          | 文件                                                        |
-| ----------- | --------------------------------------------------------- |
-| 应用主图标       | `frontend/src/assets/icons/application/logo.svg`          |
-| 状态栏与任务栏模板图标 | `frontend/src/assets/icons/application/icon-template.svg` |
-| 应用内品牌图标     | `frontend/src/assets/icons/application/icon.svg`          |
-| 文件和文件夹图标    | `frontend/src/assets/icons/material/`                     |
-| 文件图标映射规则    | `docs/文件图标映射.md`                                          |
+- [产品功能设计](./docs/设计.md)
+- [设计方案导航](./docs/设计方案/README.md)
+- [代理与聊天](./docs/设计方案/04-代理与聊天.md)
+- [工作区面板与文件预览](./docs/设计方案/09-工作区面板与文件预览.md)
+- [项目看板与甘特图](./docs/设计方案/13-项目看板与甘特图.md)
+- [Office 与 PDF 文档预览](./docs/设计方案/14-文档预览.md)
+- [RSS 阅读与智能合集](./docs/设计方案/15-RSS阅读与智能合集.md)
+- [项目与笔记工作区](./docs/设计方案/16-项目与笔记工作区.md)
+- [状态模型与验收标准](./docs/设计方案/11-状态模型与验收标准.md)
+- [当前状态](./docs/协作同步/当前状态.md)
+- [任务看板](./docs/协作同步/任务看板.md)
+- [决策记录](./docs/协作同步/决策记录.md)
+- [依赖与风险](./docs/协作同步/依赖与风险.md)
 
-文件图标资源使用 [Material Icon Theme](https://github.com/material-extensions/vscode-material-icon-theme)。
+## 参与开发
 
-## 📚 设计文档
+开始修改前请依次阅读：
 
-* [`docs/设计.md`](./docs/设计.md)：产品定位与完整功能清单
-* [`docs/设计方案/README.md`](./docs/设计方案/README.md)：UI 设计基线与文档导航
-* [`docs/设计方案/01-视觉系统与窗口布局.md`](./docs/设计方案/01-视觉系统与窗口布局.md)：视觉语言与窗口结构
-* [`docs/设计方案/04-代理与聊天.md`](./docs/设计方案/04-代理与聊天.md)：代理、聊天与消息交互
-* [`docs/设计方案/05-知识库与全局搜索.md`](./docs/设计方案/05-知识库与全局搜索.md)：知识库与检索体验
-* [`docs/设计方案/07-能力中心.md`](./docs/设计方案/07-能力中心.md)：MCP、Skill、智能体、指令与 Hooks
-* [`docs/设计方案/09-工作区面板与文件预览.md`](./docs/设计方案/09-工作区面板与文件预览.md)：文件、终端、日志与调试面板
-* [`docs/设计方案/11-状态模型与验收标准.md`](./docs/设计方案/11-状态模型与验收标准.md)：状态模型与验收标准
+1. [AGENTS.md](./AGENTS.md)
+2. [协作同步说明](./docs/协作同步/README.md)
+3. [当前状态](./docs/协作同步/当前状态.md)
+4. [任务看板](./docs/协作同步/任务看板.md)
+5. 与任务相关的设计方案、决策记录和依赖风险
 
-## 🤝 参与开发
+实现时需要遵守项目的核心约束：
 
-开始修改前，请阅读：
+- 用户可见界面优先使用中文，代码标识符和协议字段保持标准英文。
+- 复用 `frontend/src/components/ui` 中的 shadcn/ui 组件，不建立平行基础组件体系。
+- Card 只用于边界独立对象，禁止 Card 嵌套和卡片墙。
+- 全局禁用浏览器原生右键；不同区域使用匹配语义的 ContextMenu。
+- 破坏性操作使用 AlertDialog，短反馈使用 Sonner。
+- Mock、UI 状态与未来服务适配层保持分离，不伪造后端成功。
+- 每次实质变更同步更新当前状态、任务看板和变更日志。
 
-1. [`AGENTS.md`](./AGENTS.md)
-2. [`docs/协作同步/README.md`](./docs/协作同步/README.md)
-3. [`docs/协作同步/当前状态.md`](./docs/协作同步/当前状态.md)
-4. [`docs/协作同步/任务看板.md`](./docs/协作同步/任务看板.md)
-5. [`docs/协作同步/决策记录.md`](./docs/协作同步/决策记录.md)
+## 已知限制
 
-界面实现需要遵守项目设计基线：
+- 当前主要是前端交互原型，数据不持久化，尚未形成可用于生产的 Agent 运行时。
+- 重型编辑与预览模块虽然按需加载，主界面、Monaco、Vditor 和 Cytoscape 仍需继续做体积与性能治理。
+- 任意 Office 文档的本地转换、真实项目目录的安全访问、RSS 抓取安全和远程模型隐私披露仍需专门的后端设计。
+- Wails 3 仍处于 Beta 阶段，上游 API 和构建链可能继续变化。
 
-* 页面名称只显示在全局标题栏
-* 全局使用自定义 ContextMenu，禁用浏览器原生右键菜单
-* 优先使用 shadcn/ui 已有组件
-* Card 仅用于边界独立的对象，禁止 Card 嵌套
-* 破坏性操作使用 AlertDialog
-* 菜单项需要图标，存在快捷键时在右侧展示
-* 管理页面需要覆盖空、加载、错误和成功状态
+## 许可证
 
-## ⚠️ 已知限制
-
-* 当前数据主要保存在前端内存状态中，刷新或重启后不会持久化
-* 密码、Token 和数据库凭据不会被当前 Mock 界面保存
-* 知识库、数据连接和检索页面尚未连接真实服务
-* 应用、能力和任务页面仍有较多功能处于设计或骨架阶段
-* 前端主 Bundle 仍有体积提示，重型页面正在按需拆分
-* Wails 3 Alpha 和相关前端依赖仍可能出现破坏性更新
-
-## 📄 许可证
-
-本项目采用 [MIT](./LICENSE) 许可证。 
+本项目采用 [MIT](./LICENSE) 许可证。
